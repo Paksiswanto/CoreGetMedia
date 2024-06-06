@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Author extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'id',
+    ];
+
+    protected $primaryKey = 'id';
+    protected $table = 'authors';
+
+    public $incrementing = false;
+    public $keyType = 'char';
 }
