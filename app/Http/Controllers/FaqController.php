@@ -2,12 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Interfaces\FaqInterface;
 use App\Models\Faq;
 use App\Http\Requests\StoreFaqRequest;
 use App\Http\Requests\UpdateFaqRequest;
 
 class FaqController extends Controller
 {
+    private FaqInterface $faqs;
+
+    public function __construct(FaqInterface $faqs)
+    {
+        $this->faqs = $faqs;
+    }
     /**
      * Display a listing of the resource.
      */
@@ -29,7 +36,8 @@ class FaqController extends Controller
      */
     public function store(StoreFaqRequest $request)
     {
-        //
+        $data = $request->validated();
+        $this->faqs->store($data);
     }
 
     /**
@@ -53,7 +61,8 @@ class FaqController extends Controller
      */
     public function update(UpdateFaqRequest $request, Faq $faq)
     {
-        //
+        $data = $request->validated();
+        $this->faqs->update($faq->id, $data);
     }
 
     /**
@@ -61,6 +70,6 @@ class FaqController extends Controller
      */
     public function destroy(Faq $faq)
     {
-        //
+        $this->faqs->delete($faq->id);
     }
 }
