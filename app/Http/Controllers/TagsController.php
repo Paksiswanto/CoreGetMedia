@@ -25,7 +25,7 @@ class TagsController extends Controller
     public function index()
     {
         $tags = $this->tags->get();
-        return view('', compact('tags'));
+        return view('pages.admin.tag.index', compact('tags'));
     }
 
     /**
