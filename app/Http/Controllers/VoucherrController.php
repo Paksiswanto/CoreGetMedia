@@ -2,18 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Interfaces\VoucherInterface;
 use App\Models\Voucherr;
 use App\Http\Requests\StoreVoucherrRequest;
 use App\Http\Requests\UpdateVoucherrRequest;
 
 class VoucherrController extends Controller
 {
+
+    private VoucherInterface $voucher;
+    public function __construct(VoucherInterface $voucher)
+    {
+        $this->voucher = $voucher;
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $vouchers = $this->voucher->get();
+        return view('' , compact('vouchers'));
     }
 
     /**
@@ -29,7 +37,8 @@ class VoucherrController extends Controller
      */
     public function store(StoreVoucherrRequest $request)
     {
-        //
+        $this->voucher->store($request->validated());
+        return redirect()->back()->with('success' , 'Data berhasil ditambahkan');
     }
 
     /**
@@ -53,7 +62,8 @@ class VoucherrController extends Controller
      */
     public function update(UpdateVoucherrRequest $request, Voucherr $voucherr)
     {
-        //
+        $this->voucher->update($voucherr->id, $request->validated());
+        return redirect()->back()->with('success' , 'Data berhasil di perbarui');
     }
 
     /**
@@ -61,6 +71,7 @@ class VoucherrController extends Controller
      */
     public function destroy(Voucherr $voucherr)
     {
-        //
+        $this->voucher->delete($voucherr->id);
+        return redirect()->back()->with('success' , 'Data berhasil di hapus');
     }
 }

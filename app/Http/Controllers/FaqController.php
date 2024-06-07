@@ -20,7 +20,8 @@ class FaqController extends Controller
      */
     public function index()
     {
-        //
+        $faqs = $this->faqs->get();
+        return view('' . compact('faqs'));
     }
 
     /**
@@ -36,8 +37,8 @@ class FaqController extends Controller
      */
     public function store(StoreFaqRequest $request)
     {
-        $data = $request->validated();
-        $this->faqs->store($data);
+        $this->faqs->store($request->validated());
+        return redirect()->back()->with('success' , 'Data berhasil ditambahkan');
     }
 
     /**
@@ -61,8 +62,8 @@ class FaqController extends Controller
      */
     public function update(UpdateFaqRequest $request, Faq $faq)
     {
-        $data = $request->validated();
-        $this->faqs->update($faq->id, $data);
+        $this->faqs->update($faq->id, $request->validated());
+        return redirect()->back()->with('success' , 'Data berhasil di perbarui');
     }
 
     /**
@@ -71,5 +72,7 @@ class FaqController extends Controller
     public function destroy(Faq $faq)
     {
         $this->faqs->delete($faq->id);
+        return redirect()->back()->with('success' , 'Data berhasil di hapus');
+
     }
 }
