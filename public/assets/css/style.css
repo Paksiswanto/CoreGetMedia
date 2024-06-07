@@ -2341,7 +2341,9 @@ select {
   top: 30px;
   left: 30px;
   display: inline-block;
-  background-color: var(--secondaryColor);
+  /* background-color: var(--secondaryColor); */
+  background-color: #DD1818;
+
   border-radius: 5px;
   padding: 8px 15px;
   line-height: 24px;
@@ -2464,7 +2466,8 @@ select {
   left: 15px;
   font-size: 14px;
   color: var(--whiteColor);
-  background-color: var(--secondaryColor);
+  /* background-color: var(--secondaryColor); */
+  background-color: #DD1818;
   border-radius: 5px;
   padding: 2px 11px;
 }
