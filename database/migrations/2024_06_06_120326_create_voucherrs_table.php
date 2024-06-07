@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Enums\QuotaEnum;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -13,6 +14,12 @@ return new class extends Migration
     {
         Schema::create('voucherrs', function (Blueprint $table) {
             $table->id();
+            $table->string('code');
+            $table->integer('quota')->nullable();
+            $table->integer('presentation');
+            $table->enum('status' , [QuotaEnum::UNLIMITED->value , QuotaEnum::QUOTA->value]);
+            $table->date('start_date');
+            $table->date('end_date');
             $table->timestamps();
         });
     }
