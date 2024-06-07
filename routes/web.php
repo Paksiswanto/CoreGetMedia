@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FaqController;
+use App\Http\Controllers\SubCategoryController;
+use App\Http\Controllers\TagsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -36,7 +40,7 @@ Route::get('/dashboard', function () {
 
 Route::get('faq-list', [FaqController::class, 'index'])->name('faq.list.admin');
 
-Route::get('tag-list', [TagController::class, 'index'])->name('tag.list.admin');
+Route::get('tag-list', [TagsController::class, 'index'])->name('tag.list.admin');
 
 Route::get('category-list', [CategoryController::class, 'index'])->name('category.list.admin');
 

@@ -13,7 +13,7 @@ class TagsController extends Controller
      */
     public function index()
     {
-        return view('pages.admin.tag.index', compact('faqs'));
+        return view('pages.admin.tag.index');
     }
 
     /**
