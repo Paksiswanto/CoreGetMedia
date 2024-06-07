@@ -82,7 +82,7 @@
 <html lang="en">
 
 <head>
- 
+
 
 
     <meta charset="utf-8">
@@ -229,7 +229,7 @@
         <div class="loader-section section-left"></div>
         <div class="loader-section section-right"></div>
     </div>
-   
+
     <div class="authentication-wrapper authentication-cover authentication-bg">
         <div class="authentication-inner row">
             <div class="d-none d-lg-flex col-lg-7 p-0">
@@ -257,24 +257,24 @@
 
                     <h3 class="mb-5 mobile-title">Buat Akun GetMedia.id</h3>
 
-                    <form id="form-register" class="py-3" action="{{ route('register') }}">
+                    <form method="POST" class="py-3" action="{{ route('register') }}">
+                        @csrf
                         <div class="row">
                             <div class="my-2 col-12">
                                 <label for="name" class="form-label mb-2">Nama Lengkap</label>
-                                <input type="text" class="form-control " id="create-name" name="name">
+                                <input type="text" class="form-control " id="name" name="name">
                                 <ul class="text-error mt-1"></ul>
                             </div>
                             <div class="my-2 col-lg-12">
                                 <label for="email" class="form-label mb-2">Email</label>
-                                <input type="email" id="create-email" class="form-control" name="email">
+                                <input type="email" id="email" class="form-control" name="email">
                                 <ul class="text-error mt-1"></ul>
                             </div>
                             <div class="my-2 col-lg-6 mb-3">
                                 <label for="password" class="form-label mb-2">Password</label>
                                 <div class="input-group input-group-merge has-validation">
                                     <input type="password" id="password" class="form-control" name="password">
-                                    <span class="input-group-text cursor-pointer"
-                                        onclick="togglePasswordVisibility()">
+                                    <span class="input-group-text cursor-pointer">
                                         <svg xmlns="http://www.w3.org/2000/svg" id="togglePasswordIcon"
                                             width="20" height="20" viewBox="0 0 256 256">
                                             <path fill="currentColor"
@@ -291,11 +291,10 @@
                             <div class="my-2 col-lg-6 mb-3">
                                 <label for="password" class="form-label mb-2">Konfirmasi Password</label>
                                 <div class="input-group input-group-merge has-validation">
-                                    <input type="password" id="password-konfirm"
+                                    <input type="password" id="password-confirm"
                                         class="form-control @error('password') is-invalid @enderror"
-                                        name="password-confirm" value="{{ old('password') }}">
-                                    <span class="input-group-text cursor-pointer"
-                                        onclick="togglePasswordVisibility2()">
+                                        name="password_confirmation" value="{{ old('password') }}">
+                                    <span class="input-group-text cursor-pointer">
                                         <svg xmlns="http://www.w3.org/2000/svg" id="togglePasswordIcon2"
                                             width="20" height="20" viewBox="0 0 256 256">
                                             <path fill="currentColor"
@@ -330,144 +329,6 @@
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <script src="{{ asset('admin/dist/libs/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('admin/dist/libs/sweetalert2/dist/sweetalert2.min.js') }}"></script>
-
-    <script>
-        function togglePasswordVisibility() {
-            var passwordInput = document.getElementById('password');
-            var togglePasswordIcon = document.getElementById('togglePasswordIcon');
-
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                togglePasswordIcon.innerHTML =
-                    '<svg xmlns="http://www.w3.org/2000/svg" width="250" height="250" viewBox="0 0 256 256"><path fill="#737373" d="M245.48 125.57c-.34-.78-8.66-19.23-27.24-37.81C201 70.54 171.38 50 128 50S55 70.54 37.76 87.76c-18.58 18.58-26.9 37-27.24 37.81a6 6 0 0 0 0 4.88c.34.77 8.66 19.22 27.24 37.8C55 185.47 84.62 206 128 206s73-20.53 90.24-37.75c18.58-18.58 26.9-37 27.24-37.8a6 6 0 0 0 0-4.88M128 194c-31.38 0-58.78-11.42-81.45-33.93A134.77 134.77 0 0 1 22.69 128a134.56 134.56 0 0 1 23.86-32.06C69.22 73.42 96.62 62 128 62s58.78 11.42 81.45 33.94A134.56 134.56 0 0 1 233.31 128C226.94 140.21 195 194 128 194m0-112a46 46 0 1 0 46 46a46.06 46.06 0 0 0-46-46m0 80a34 34 0 1 1 34-34a34 34 0 0 1-34 34"/></svg>';
-            } else {
-                passwordInput.type = 'password';
-                togglePasswordIcon.innerHTML =
-                    '<svg xmlns="http://www.w3.org/2000/svg" width="250" height="250" viewBox="0 0 256 256"><path fill="#737373" d="M53.92 34.62a8 8 0 1 0-11.84 10.76l19.24 21.17C25 88.84 9.38 123.2 8.69 124.76a8 8 0 0 0 0 6.5c.35.79 8.82 19.57 27.65 38.4C61.43 194.74 93.12 208 128 208a127.11 127.11 0 0 0 52.07-10.83l22 24.21a8 8 0 1 0 11.84-10.76Zm47.33 75.84l41.67 45.85a32 32 0 0 1-41.67-45.85M128 192c-30.78 0-57.67-11.19-79.93-33.25A133.16 133.16 0 0 1 25 128c4.69-8.79 19.66-33.39 47.35-49.38l18 19.75a48 48 0 0 0 63.66 70l14.73 16.2A112 112 0 0 1 128 192m6-95.43a8 8 0 0 1 3-15.72a48.16 48.16 0 0 1 38.77 42.64a8 8 0 0 1-7.22 8.71a6.39 6.39 0 0 1-.75 0a8 8 0 0 1-8-7.26A32.09 32.09 0 0 0 134 96.57m113.28 34.69c-.42.94-10.55 23.37-33.36 43.8a8 8 0 1 1-10.67-11.92a132.77 132.77 0 0 0 27.8-35.14a133.15 133.15 0 0 0-23.12-30.77C185.67 75.19 158.78 64 128 64a118.37 118.37 0 0 0-19.36 1.57A8 8 0 1 1 106 49.79A134 134 0 0 1 128 48c34.88 0 66.57 13.26 91.66 38.35c18.83 18.83 27.3 37.62 27.65 38.41a8 8 0 0 1 0 6.5Z"/></svg>';
-            }
-        }
-        $('#password-konfirm').keyup(function() {
-            if ($(this).val() != $('#password').val()) {
-                $('.error-confirm-password').html('Password tidak sama').addClass(
-                    'is-invalid text-danger mt-2')
-                $('#password-konfirm').addClass('is-invalid')
-            } else {
-                $(this).removeClass('is-invalid')
-                $('.error-confirm-password').html('')
-
-            }
-        })
-
-        function togglePasswordVisibility2() {
-            var passwordInput = document.getElementById('password-konfirm');
-            var togglePasswordIcon = document.getElementById('togglePasswordIcon2');
-
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                togglePasswordIcon.innerHTML =
-                    '<svg xmlns="http://www.w3.org/2000/svg" width="250" height="250" viewBox="0 0 256 256"><path fill="#737373" d="M245.48 125.57c-.34-.78-8.66-19.23-27.24-37.81C201 70.54 171.38 50 128 50S55 70.54 37.76 87.76c-18.58 18.58-26.9 37-27.24 37.81a6 6 0 0 0 0 4.88c.34.77 8.66 19.22 27.24 37.8C55 185.47 84.62 206 128 206s73-20.53 90.24-37.75c18.58-18.58 26.9-37 27.24-37.8a6 6 0 0 0 0-4.88M128 194c-31.38 0-58.78-11.42-81.45-33.93A134.77 134.77 0 0 1 22.69 128a134.56 134.56 0 0 1 23.86-32.06C69.22 73.42 96.62 62 128 62s58.78 11.42 81.45 33.94A134.56 134.56 0 0 1 233.31 128C226.94 140.21 195 194 128 194m0-112a46 46 0 1 0 46 46a46.06 46.06 0 0 0-46-46m0 80a34 34 0 1 1 34-34a34 34 0 0 1-34 34"/></svg>';
-            } else {
-                passwordInput.type = 'password';
-                togglePasswordIcon.innerHTML =
-                    '<svg xmlns="http://www.w3.org/2000/svg" width="250" height="250" viewBox="0 0 256 256"><path fill="#737373" d="M53.92 34.62a8 8 0 1 0-11.84 10.76l19.24 21.17C25 88.84 9.38 123.2 8.69 124.76a8 8 0 0 0 0 6.5c.35.79 8.82 19.57 27.65 38.4C61.43 194.74 93.12 208 128 208a127.11 127.11 0 0 0 52.07-10.83l22 24.21a8 8 0 1 0 11.84-10.76Zm47.33 75.84l41.67 45.85a32 32 0 0 1-41.67-45.85M128 192c-30.78 0-57.67-11.19-79.93-33.25A133.16 133.16 0 0 1 25 128c4.69-8.79 19.66-33.39 47.35-49.38l18 19.75a48 48 0 0 0 63.66 70l14.73 16.2A112 112 0 0 1 128 192m6-95.43a8 8 0 0 1 3-15.72a48.16 48.16 0 0 1 38.77 42.64a8 8 0 0 1-7.22 8.71a6.39 6.39 0 0 1-.75 0a8 8 0 0 1-8-7.26A32.09 32.09 0 0 0 134 96.57m113.28 34.69c-.42.94-10.55 23.37-33.36 43.8a8 8 0 1 1-10.67-11.92a132.77 132.77 0 0 0 27.8-35.14a133.15 133.15 0 0 0-23.12-30.77C185.67 75.19 158.78 64 128 64a118.37 118.37 0 0 0-19.36 1.57A8 8 0 1 1 106 49.79A134 134 0 0 1 128 48c34.88 0 66.57 13.26 91.66 38.35c18.83 18.83 27.3 37.62 27.65 38.41a8 8 0 0 1 0 6.5Z"/></svg>';
-            }
-        }
-        var isSubmitting = false;
-
-        $('#form-register').submit(function(e) {
-            e.preventDefault();
-            if ($('#password-konfirm').val() === '' ) {
-                $('.error-confirm-password').html('Password tidak sama').addClass(
-                    'is-invalid text-danger mt-2')
-
-                    $('#password-konfirm').addClass('is-invalid')
-                return
-            }
-             if ($('#password-konfirm').val() != $('#password').val()) {
-                $('.error-confirm-password').html('Password tidak sama').addClass(
-                    'is-invalid text-danger mt-2')
-                $('#password-konfirm').addClass('is-invalid')
-                return
-            }
-            $('#load').removeClass('loaded').addClass('load')
-            if (isSubmitting) {
-                return;
-            }
-
-            isSubmitting = true;
-
-            $.ajax({
-                url: '{{ route('register') }}',
-                method: 'POST',
-                dataType: 'JSON',
-                data: $(this).serialize(),
-                success: function(response) {
-                    $('#load').removeClass('load').addClass('loaded')
-
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Berhasil!!',
-                        text: 'Terimakasih telah mendaftar di GetMedia. Silahkan cek email anda untuk melakukan verifikasi email'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            window.location.href = '{{ route('login') }}';
-                        }
-                    });
-
-                    isSubmitting = false;
-                },
-                error: function(response) {
-                    $('#load').removeClass('load').addClass('loaded')
-
-                    var response = response.responseJSON;
-                    Swal.fire({
-                        title: 'Error',
-                        icon: 'error',
-                        text: response.message
-                    });
-
-                    var status = response.meta.code;
-                    if (status == 422) {
-                        handleValidate(response.data, 'create');
-                        if (response.data.password) {
-                            $('.error-password').html('Password mohon untuk diisi').addClass(
-                                'is-invalid text-danger mt-2');
-                            $('#password').addClass('is-invalid');
-                            $('.is-invalid').change(function() {
-                                $(this).removeClass('is-invalid');
-                                $('.error-password').html('');
-                            });
-                        }
-                    }
-
-                    isSubmitting =
-                    false;
-                }
-            });
-        });
-
-
-
-        function handleValidate(messages, type) {
-            const keys = Object.keys(messages);
-            for (const key of keys) {
-                const text = messages[key];
-                var ErrorList = $('<li>').text(text[0]).addClass('text-danger')
-                let inputElement = $(`#${type}-${key}`)
-                let select2Element = $(`#${type}-${key}`).siblings('.select2-container');
-                if (!inputElement.is('div')) {
-                    inputElement.addClass('is-invalid mt-2')
-                    select2Element.addClass('is-invalid mt-2');
-                }
-                inputElement.next('ul').html(ErrorList)
-                select2Element.next('ul').html(ErrorList)
-            }
-            $('.is-invalid').change(function() {
-                $(this).removeClass('is-invalid')
-                $(this).next('ul').html('')
-            })
-        }
-    </script>
 </body>
 
 
