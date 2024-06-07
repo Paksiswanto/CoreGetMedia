@@ -2,12 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Interfaces\CategoryInterface;
 use App\Models\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 
 class CategoryController extends Controller
 {
+    private CategoryInterface $categories;
+
+    public function __construct(CategoryInterface $categories)
+    {
+        $this->categories = $categories;
+    }
     /**
      * Display a listing of the resource.
      */
@@ -29,7 +36,8 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        //
+        $data = $request->validated();
+        $this->categories->store($data);
     }
 
     /**
@@ -53,7 +61,8 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        $data = $request->validated();
+        $this->categories->update($category->id, $data);
     }
 
     /**
@@ -61,6 +70,6 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $this->categories->delete($category->id);
     }
 }
