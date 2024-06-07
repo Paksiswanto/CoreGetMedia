@@ -121,7 +121,7 @@
                 <div class="col-md-12 col-lg-12">
                     <h4 class="mb-5">Berita Trending</h4>
                     <div class="row">
-                        
+
                         <div class="col-md-12 col-lg-6 mb-3">
                             <div class="mb-2" style="max-width: 540px;">
                                 <div class="row g-2">
@@ -149,7 +149,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -160,24 +160,24 @@
             <div class="card-body">
                 <h4 class="mb-5">Kategori Trending</h4>
                 <div>
-                    
+
                     <div class="fs-5 mb-4 mt-5 d-flex justify-content-between">
                         <div>
                             Pendidikan
                         </div>
                         <div>
                             {{-- @if ($index == 1 || $index == 2) --}}
-                            <span class="badge bg-light-warning text-warning">{{ $category->news_categories_count }}</span>
+                            {{-- <span class="badge bg-light-warning text-warning">{{ $category->news_categories_count }}</span> --}}
                             {{-- @elseif ($index == 3 || $index == 4) --}}
-                            <span class="badge bg-light-success text-success">{{ $category->news_categories_count }}</span>
+                            {{-- <span class="badge bg-light-success text-success">{{ $category->news_categories_count }}</span> --}}
                             {{-- @elseif ($index == 0) --}}
-                            <span class="badge bg-light-danger text-danger">{{ $category->news_categories_count }}</span>
+                            {{-- <span class="badge bg-light-danger text-danger">{{ $category->news_categories_count }}</span> --}}
                             {{-- @else --}}
-                            <span class="badge bg-light-success text-success">{{ $category->news_categories_count }}</span>
+                            {{-- <span class="badge bg-light-success text-success">{{ $category->news_categories_count }}</span> --}}
                             {{-- @endif --}}
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -189,7 +189,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="mb-5">Penulis Terbanyak</h4>
-                
+
                 <div>
                     <div class="d-flex justify-content-between mb-3">
                         <div class="d-flex align-items-center">
@@ -205,7 +205,7 @@
                         </div>
                     </div>
                 </div>
-               
+
             </div>
         </div>
     </div>
@@ -354,7 +354,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                                 <div class="tab-pane p-3" id="statistik" role="tabpanel">
@@ -697,7 +697,7 @@
 <script src="{{asset('admin/dist/js/apps/notes.js')}}"></script>
 <script src="{{asset('admin/dist/js/apps/chat.js')}}"></script>
 
-<script>
+{{-- <script>
     var monthlyData = <?php echo json_encode($news2); ?>;
     var monthlyDataString = JSON.stringify(monthlyData);
     var monthlyDataObj = JSON.parse(monthlyDataString);
@@ -913,6 +913,6 @@
     chart.render();
     var chart = new ApexCharts(document.querySelector("#chart-advertisement-premium"), options);
     chart.render();
-</script>
+</script> --}}
 
 @endsection

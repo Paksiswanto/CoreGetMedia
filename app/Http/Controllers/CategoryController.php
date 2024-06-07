@@ -6,14 +6,17 @@ use App\Contracts\Interfaces\CategoryInterface;
 use App\Models\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
+use App\Services\CategoryService;
 
 class CategoryController extends Controller
 {
     private CategoryInterface $categories;
+    private CategoryService $service;
 
-    public function __construct(CategoryInterface $categories)
+    public function __construct(CategoryInterface $categories, CategoryService $service)
     {
         $this->categories = $categories;
+        $this->service = $service;
     }
     /**
      * Display a listing of the resource.
@@ -37,7 +40,8 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        $this->categories->store($request->validated());
+        $data = $this->service->storeOrUpdate($request);
+        $this->categories->store($data);
         return redirect()->back()->with('success' , 'Data berhasil ditambahkan');
     }
 
@@ -60,9 +64,10 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCategoryRequest $request, Category $category)
+    public function update(StoreCategoryRequest $request, Category $category)
     {
-        $this->categories->update($category->id , $request->validated());
+        $data = $this->service->storeOrUpdate($request);
+        $this->categories->update($category->id , $data);
         return redirect()->back()->with('success' , 'Data berhasil di perbarui');
     }
 

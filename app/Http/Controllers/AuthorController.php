@@ -2,12 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Interfaces\AuthorInterface;
 use App\Models\Author;
 use App\Http\Requests\StoreAuthorRequest;
 use App\Http\Requests\UpdateAuthorRequest;
 
 class AuthorController extends Controller
 {
+    private AuthorInterface $author;
+
+
+    public function __construct(AuthorInterface $author)
+    {
+        $this->author = $author;
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -29,7 +38,8 @@ class AuthorController extends Controller
      */
     public function store(StoreAuthorRequest $request)
     {
-        //
+        $this->author->store($request->validates());
+        return back()->with('success', 'Berhasil mendaftarkan diri');
     }
 
     /**
@@ -61,6 +71,7 @@ class AuthorController extends Controller
      */
     public function destroy(Author $author)
     {
-        //
+        $this->author->delete($author->id);
+        return back()->wihh('success', 'Berhasil menghapus data');
     }
 }

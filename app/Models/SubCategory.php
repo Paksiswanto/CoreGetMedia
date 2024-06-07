@@ -27,4 +27,14 @@ class SubCategory extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    /**
+     * Get all of the NewsSubCategories for the SubCategory
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function NewsSubCategories(): HasMany
+    {
+        return $this->hasMany(NewsSubCategory::class);
+    }
 }

@@ -33,3 +33,4 @@ Route::get('subcategory', function () {
 Route::get('/dashboard', function () {
     return view('pages.admin.home.index');
 })->name('dashboard.admin');
+

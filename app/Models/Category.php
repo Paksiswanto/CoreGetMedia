@@ -14,6 +14,7 @@ class Category extends Model
 
     protected $fillable = [
         'name',
+        'slug',
     ];
 
     protected $table = 'categories';
@@ -26,5 +27,15 @@ class Category extends Model
     public function subCategories(): HasMany
     {
         return $this->hasMany(SubCategory::class);
+    }
+
+    /**
+     * Get all of the newsCategories for the Category
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function newsCategories(): HasMany
+    {
+        return $this->hasMany(NewsCategory::class);
     }
 }

@@ -2,18 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Interfaces\TagInterface;
 use App\Models\Tags;
 use App\Http\Requests\StoreTagsRequest;
 use App\Http\Requests\UpdateTagsRequest;
+use App\Services\TagsService;
 
 class TagsController extends Controller
 {
+    private TagInterface $tags;
+    private TagsService $tagservice;
+
+    public function __construct(TagInterface $tags, TagsService $tagservice)
+    {
+        $this->tags = $tags;
+        $this->tagservice = $tagservice;
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $tags = $this->tags->get();
+        return view('', compact('tags'));
     }
 
     /**
@@ -29,7 +41,9 @@ class TagsController extends Controller
      */
     public function store(StoreTagsRequest $request)
     {
-        //
+        $data = $this->tagservice->storeOrUpdate($request);
+        $this->tags->store($data);
+        return back()->with('success' , 'Data berhasil ditambahkan');
     }
 
     /**
@@ -51,9 +65,11 @@ class TagsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTagsRequest $request, Tags $tags)
+    public function update(StoreTagsRequest $request, Tags $tags)
     {
-        //
+        $data = $this->tagservice->storeOrUpdate($request);
+        $this->tags->update($tags->id, $data);
+        return back()->with('success' , 'Data berhasil di perbarui');
     }
 
     /**
@@ -61,6 +77,7 @@ class TagsController extends Controller
      */
     public function destroy(Tags $tags)
     {
-        //
+        $this->tags->delete($tags->id);
+        return back()->with('success' , 'Data berhasil di hapus');
     }
 }
