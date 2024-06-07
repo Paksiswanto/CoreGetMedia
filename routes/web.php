@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.index');
 });
 
 Auth::routes();
@@ -23,7 +23,9 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/category', function(){
-    
+
 });
 
-
+Route::get('dashboard', function () {
+    return view('pages.admin.home.index');
+})->name('dashboard.admin');
