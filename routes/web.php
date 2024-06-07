@@ -41,3 +41,7 @@ Route::get('tag-list', [TagController::class, 'index'])->name('tag.list.admin');
 Route::get('category-list', [CategoryController::class, 'index'])->name('category.list.admin');
 
 Route::get('subcategory-list', [SubCategoryController::class, 'index'])->name('subcategory.list.admin');
+
+Route::get('voucher-list', function(){
+    return view('pages.admin.voucher.index');
+})->name('voucher.list.admin');
