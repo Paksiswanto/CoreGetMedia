@@ -14,10 +14,11 @@
 @section('content')
     <div class="col-lg-12">
         <div class="breadcrumb-wrap">
-            <h2 class="breadcrumb-title">Category</h2>
+            <h2 class="breadcrumb-title">SubCategory</h2>
             <ul class="breadcrumb-menu list-style">
                 <li><a href="/">Home</a></li>
                 <li>Category</li>
+                <li>SubCategory</li>
             </ul>
         </div>
     </div>
