@@ -23,7 +23,7 @@ class SubCategoryController extends Controller
     public function index()
     {
         $subCategories = $this->subCategories->get();
-        return view('', compact('subCategories'));
+        return view('pages.admin.categories.subcategories.index', compact('subCategories'));
     }
 
     /**
