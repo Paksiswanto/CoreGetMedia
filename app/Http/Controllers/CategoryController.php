@@ -20,10 +20,11 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = $this->categories->get();
+        return view('' , compact('categories'));
     }
 
-    /**
+    /** 
      * Show the form for creating a new resource.
      */
     public function create()
@@ -36,8 +37,8 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        $data = $request->validated();
-        $this->categories->store($data);
+        $this->categories->store($request->validated());
+        return redirect()->back()->with('success' , 'Data berhasil ditambahkan');
     }
 
     /**
@@ -61,8 +62,8 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        $data = $request->validated();
-        $this->categories->update($category->id, $data);
+        $this->categories->update($category->id , $request->validated());
+        return redirect()->back()->with('success' , 'Data berhasil di perbarui');
     }
 
     /**
@@ -71,5 +72,6 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $this->categories->delete($category->id);
+        return redirect()->back()->with('success' , 'Data berhasil di hapus');
     }
 }
