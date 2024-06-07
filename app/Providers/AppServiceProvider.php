@@ -4,9 +4,11 @@ namespace App\Providers;
 
 use App\Contracts\Interfaces\CategoryInterface;
 use App\Contracts\Interfaces\FaqInterface;
+use App\Contracts\Interfaces\RegisterInterface;
 use App\Contracts\Interfaces\SubCategoryInterface;
 use App\Contracts\Repositories\CategoryRepository;
 use App\Contracts\Repositories\FaqRepository;
+use App\Contracts\Repositories\RegisterRepository;
 use App\Contracts\Repositories\SubCategoryRepository;
 use Illuminate\Support\ServiceProvider;
 
@@ -17,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
         CategoryInterface::class => CategoryRepository::class,
         SubCategoryInterface::class => SubCategoryRepository::class,
         FaqInterface::class => FaqRepository::class,
+        RegisterInterface::class => RegisterRepository::class
     ];
 
     /**
