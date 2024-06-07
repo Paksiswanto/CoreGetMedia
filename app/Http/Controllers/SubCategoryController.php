@@ -22,7 +22,8 @@ class SubCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $subCategories = $this->subCategories->get();
+        return view('', compact('subCategories'));
     }
 
     /**
@@ -41,6 +42,7 @@ class SubCategoryController extends Controller
         $data = $request->validated();
         $data['category_id'] = $category->id;
         $this->subCategories->store($data);
+        return redirect()->back()->with('success' , 'Data berhasil ditambahkan');
     }
 
     /**
@@ -64,8 +66,8 @@ class SubCategoryController extends Controller
      */
     public function update(UpdateSubCategoryRequest $request, SubCategory $subCategory)
     {
-        $data = $request->validated();
-        $this->subCategories->update($subCategory->id, $data);
+        $this->subCategories->update($subCategory->id, $request->validated());
+        return redirect()->back()->with('success' , 'Data berhasil di perbarui');
     }
 
     /**
@@ -74,5 +76,6 @@ class SubCategoryController extends Controller
     public function destroy(SubCategory $subCategory)
     {
         $this->subCategories->delete($subCategory->id);
+        return redirect()->back()->with('success' , 'Data berhasil di hapus');
     }
 }

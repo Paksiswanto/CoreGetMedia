@@ -11,7 +11,7 @@ class StoreVoucherrRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,12 @@ class StoreVoucherrRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'code' => 'required',
+            'quota' => 'nullable',
+            'presentation' => 'required',
+            'status' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required'
         ];
     }
 }
