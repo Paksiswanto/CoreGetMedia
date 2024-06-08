@@ -29,14 +29,16 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/dashboard', function () {
     return view('pages.admin.home.index');
     })->name('dashboard.admin');
-    
-    Route::get('faq-list', [FaqController::class, 'index'])->name('faq.list.admin');
-    
-    Route::get('tag-list', [TagsController::class, 'index'])->name('tag.list.admin');
-    
-    Route::get('category-list', [CategoryController::class, 'index'])->name('category.list.admin');
-    
+
+Route::get('category-list', [CategoryController::class, 'index'])->name('category.list.admin');
+Route::resource('category', CategoryController::class);
+
 Route::get('subcategory-list', [SubCategoryController::class, 'index'])->name('subcategory.list.admin');
+
+Route::get('faq-list', [FaqController::class, 'index'])->name('faq.list.admin');
+Route::get('category-list', [CategoryController::class, 'index'])->name('category.list.admin');
+Route::get('subcategory-list', [SubCategoryController::class, 'index'])->name('subcategory.list.admin');
+Route::get('tag-list', [TagsController::class, 'index'])->name('tag.list.admin');
 
 Route::get('voucher-list', function(){
     return view('pages.admin.voucher.index');
@@ -50,10 +52,10 @@ Route::get('author-list', function(){
     return view('pages.admin.author.author-list');
 })->name('author-list.admin');
 
-Route::get('author-banned', function(){ 
+Route::get('author-banned', function(){
     return view('pages.admin.author.author-banned');
     })->name('author-banned.admin');
-    
+
     Route::get('confirm-author-list', function(){
     return view('pages.admin.author.confirm-author');
 })->name('confirm-author.admin');
@@ -83,7 +85,6 @@ Route::get('detail-', function(){
 })->name('detail-advertisement.admin');
 
 // user
-
 Route::get('news/category', function(){
     return view('pages.user.category.index');
 })->name('news.category');
