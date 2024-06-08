@@ -29,13 +29,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/dashboard', function () {
     return view('pages.admin.home.index');
     })->name('dashboard.admin');
-    
+
     Route::get('faq-list', [FaqController::class, 'index'])->name('faq.list.admin');
-    
+
     Route::get('tag-list', [TagsController::class, 'index'])->name('tag.list.admin');
-    
+
     Route::get('category-list', [CategoryController::class, 'index'])->name('category.list.admin');
-    
+
 Route::get('subcategory-list', [SubCategoryController::class, 'index'])->name('subcategory.list.admin');
 
 Route::get('voucher-list', function(){
@@ -50,10 +50,10 @@ Route::get('author-list', function(){
     return view('pages.admin.author.author-list');
 })->name('author-list.admin');
 
-Route::get('author-banned', function(){ 
+Route::get('author-banned', function(){
     return view('pages.admin.author.author-banned');
     })->name('author-banned.admin');
-    
+
     Route::get('confirm-author-list', function(){
     return view('pages.admin.author.confirm-author');
 })->name('confirm-author.admin');
@@ -72,7 +72,7 @@ Route::get('singlepost/news', function(){
 
 Route::get('advertisement-list', function(){
     return view('pages.admin.advertisement.advertisement-list');
-})->name(('advertisement-list.admin'))
+})->name(('advertisement-list.admin'));
 
 Route::get('confirm-advertisement', function(){
     return view('pages.admin.advertisement.confirm-advertisement');
@@ -94,4 +94,4 @@ Route::get('news/subcategory', function () {
 
 Route::get('all-news', function(){
     return view('pages.user.all-news.index');
-})->name(news.all-news);
+})->name('news.all-news');
