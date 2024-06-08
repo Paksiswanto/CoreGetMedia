@@ -20,234 +20,12 @@
 @endsection
 
 @section('content')
-<body>
-    <div class="loader-wrapper">
-        <div class="loader"></div>
-        <div class="loader-section section-left"></div>
-        <div class="loader-section section-right"></div>
-    </div>
-
-    <div class="switch-theme-mode">
-        <label id="switch" class="switch">
-            <input type="checkbox" onchange="toggleTheme()" id="slider" />
-            <span class="slider round"></span>
-        </label>
-    </div>
-
-    <div class="responsive-navbar offcanvas offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="navbarOffcanvas">
-        <div class="offcanvas-header">
-            <a href="index.html" class="logo d-inline-block">
-                <img class="logo-light" src="assets/img/logo.webp" alt="logo" />
-                <img class="logo-dark" src="assets/img/logo-white.webp" alt="logo" />
-            </a>
-            <button type="button" class="close-btn" data-bs-dismiss="offcanvas" aria-label="Close">
-                <i class="ri-close-line"></i>
-            </button>
-        </div>
-        <div class="offcanvas-body">
-            <div class="accordion" id="navbarAccordion">
-                <div class="accordion-item">
-                    <button class="accordion-button collapsed active" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Home</button>
-                    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#navbarAccordion">
-                        <div class="accordion-body">
-                            <div class="accordion" id="navbarAccordion2">
-                                <div class="accordion-item">
-                                    <a class="accordion-link active" href="index.html"> Home Demo One </a>
-                                </div>
-                                <div class="accordion-item">
-                                    <a class="accordion-link" href="index-2.html"> Home Demo Two </a>
-                                </div>
-                                <div class="accordion-item">
-                                    <a class="accordion-link" href="index-3.html"> Home Demo Three </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapbaxour" aria-expanded="false" aria-controls="collapbaxour">Pages</button>
-                    <div id="collapbaxour" class="accordion-collapse collapse" data-bs-parent="#navbarAccordion">
-                        <div class="accordion-body">
-                            <div class="accordion" id="navbarAccordion45">
-                                <div class="accordion-item">
-                                    <a class="accordion-link" href="about.html"> About Us </a>
-                                </div>
-                                <div class="accordion-item">
-                                    <a class="accordion-link" href="contact.html"> Contact Us </a>
-                                </div>
-                                <div class="accordion-item">
-                                    <a href="team.html" class="accordion-link"> Team </a>
-                                </div>
-                                <div class="accordion-item">
-                                    <a href="author.html" class="accordion-link"> Author </a>
-                                </div>
-                                <div class="accordion-item">
-                                    <a href="privacy-policy.html" class="accordion-link"> Privacy Policy </a>
-                                </div>
-                                <div class="accordion-item">
-                                    <a href="terms-conditions.html" class="accordion-link"> Terms & Conditions </a>
-                                </div>
-                                <div class="accordion-item">
-                                    <a href="error-404.html" class="accordion-link"> 404 Error Page </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Business</button>
-                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#navbarAccordion">
-                        <div class="accordion-body">
-                            <div class="accordion" id="navbarAccordion7">
-                                <div class="accordion-item">
-                                    <a href="business.html" class="accordion-link"> Business News </a>
-                                </div>
-                                <div class="accordion-item">
-                                    <a href="business-details.html" class="accordion-link"> Business News Details </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Politics</button>
-                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#navbarAccordion">
-                        <div class="accordion-body">
-                            <div class="accordion" id="navbarAccordion30">
-                                <div class="accordion-item">
-                                    <a href="politics.html" class="accordion-link"> Political News </a>
-                                </div>
-                                <div class="accordion-item">
-                                    <a href="politics-details.html" class="accordion-link"> Political News Details </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Video</button>
-                    <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#navbarAccordion">
-                        <div class="accordion-body">
-                            <div class="accordion" id="navbarAccordion11">
-                                <div class="accordion-item">
-                                    <a href="featured-video.html" class="accordion-link"> Featured Video </a>
-                                </div>
-                                <div class="accordion-item">
-                                    <a href="featured-video-details.html" class="accordion-link"> Featured Video Details </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFourth" aria-expanded="false" aria-controls="collapseFourth">Sports</button>
-                    <div id="collapseFourth" class="accordion-collapse collapse" data-bs-parent="#navbarAccordion">
-                        <div class="accordion-body">
-                            <div class="accordion" id="navbarAccordion111">
-                                <div class="accordion-item">
-                                    <a href="sports.html" class="accordion-link"> Sports News </a>
-                                </div>
-                                <div class="accordion-item">
-                                    <a href="sports-details.html" class="accordion-link"> Sports News Details </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">Shop</button>
-                    <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#navbarAccordion">
-                        <div class="accordion-body">
-                            <div class="accordion" id="navbarAccordion70">
-                                <div class="accordion-item">
-                                    <a href="shop-grid.html" class="accordion-link"> Shop Grid </a>
-                                </div>
-                                <div class="accordion-item">
-                                    <a href="shop-left-sidebar.html" class="accordion-link"> Shop Left Sidebar </a>
-                                </div>
-                                <div class="accordion-item">
-                                    <a href="shop-right-sidebar.html" class="accordion-link"> Shop Right Sidebar </a>
-                                </div>
-                                <div class="accordion-item">
-                                    <a href="shop-details.html" class="accordion-link"> Shop Details </a>
-                                </div>
-                                <div class="accordion-item">
-                                    <a href="cart.html" class="accordion-link"> Cart </a>
-                                </div>
-                                <div class="accordion-item">
-                                    <a href="wishlist.html" class="accordion-link"> Wishlist </a>
-                                </div>
-                                <div class="accordion-item">
-                                    <a href="checkout.html" class="accordion-link"> Checkout </a>
-                                </div>
-                                <div class="accordion-item">
-                                    <a href="login.html" class="accordion-link"> Login </a>
-                                </div>
-                                <div class="accordion-item">
-                                    <a href="signup.html" class="accordion-link"> Sign Up </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="offcanvas-contact-info">
-                <h4>Contact Info</h4>
-                <ul class="contact-info list-style">
-                    <li>
-                        <i class="ri-map-pin-fill"></i>
-                        <p>28/A Street, New York, USA</p>
-                    </li>
-                    <li>
-                        <i class="ri-mail-fill"></i>
-                        <a href="https://templates.hibootstrap.com/cdn-cgi/l/email-protection#9df5f8f1f1f2ddfffce5f2b3fef2f0"><span class="__cf_email__" data-cfemail="fa929f969695ba989b8295d4999597">[email&#160;protected]</span></a>
-                    </li>
-                    <li>
-                        <i class="ri-phone-fill"></i>
-                        <a href="tel:1800123456789">+1 800 123 456 789</a>
-                    </li>
-                </ul>
-                <ul class="social-profile list-style">
-                    <li>
-                        <a href="https://www.fb.com/" target="_blank"><i class="ri-facebook-fill"></i></a>
-                    </li>
-                    <li>
-                        <a href="https://www.instagram.com/" target="_blank"><i class="ri-instagram-line"></i></a>
-                    </li>
-                    <li>
-                        <a href="https://www.linkedin.com/" target="_blank"><i class="ri-linkedin-fill"></i></a>
-                    </li>
-                    <li>
-                        <a href="https://www.twitter.com/" target="_blank"><i class="ri-twitter-fill"></i></a>
-                    </li>
-                </ul>
-            </div>
-            <div class="others-option d-flex d-lg-none align-items-center">
-                <div class="option-item">
-                    <a href="login.html" class="btn-two">Sign In</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade searchModal" id="searchModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form>
-                    <input type="text" class="form-control" placeholder="Search here...." />
-                    <button type="submit"><i class="fi fi-rr-search"></i></button>
-                </form>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ri-close-line"></i></button>
-            </div>
-        </div>
-    </div>
-
     <div class="container-fluid">
         <div class="trending-news-box">
             <div class="row gx-5">
-                <div class="col-xxl-2 col-xl-3 col-lg-3 col-md-4">
-                    <h4>Trending Now</h4>
+                <div class="col-xxl-2 col-xl-3 col-lg-3 col-md-4 d-flx">
                     <div class="trending-prev"><i class="flaticon-left-arrow"></i></div>
+                    <h4>Trending Now</h4>
                     <div class="trending-next"><i class="flaticon-right-arrow"></i></div>
                 </div>
                 <div class="col-xxl-10 col-xl-9 col-lg-9 col-md-8">
@@ -255,10 +33,10 @@
                         <div class="swiper-wrapper">
                             <div class="swiper-slide news-card-one">
                                 <div class="news-card-img">
-                                    <img src="assets/img/news/trending-1.webp" alt="Image" />
+                                    <img src="{{asset('assets/img/news/trending-1.webp')}}" alt="Image" />
                                 </div>
                                 <div class="news-card-info">
-                                    <h3><a href="business-details.html">Climate Change & Your Future Health</a></h3>
+                                    <h3><a href="{{route('singlepost.news')}}">Climate Change & Your Future Health</a></h3>
                                     <ul class="news-metainfo list-style">
                                         <li><i class="fi fi-rr-clock-three"></i>15 Min Read</li>
                                     </ul>
@@ -266,10 +44,10 @@
                             </div>
                             <div class="swiper-slide news-card-one">
                                 <div class="news-card-img">
-                                    <img src="assets/img/news/trending-2.webp" alt="Image" />
+                                    <img src="{{asset('assets/img/news/trending-2.webp')}}" alt="Image" />
                                 </div>
                                 <div class="news-card-info">
-                                    <h3><a href="business-details.html">Female Hawks Win $10,000 Funding Boost</a></h3>
+                                    <h3><a href="{{route('singlepost.news')}}">Female Hawks Win $10,000 Funding Boost</a></h3>
                                     <ul class="news-metainfo list-style">
                                         <li><i class="fi fi-rr-clock-three"></i>10 Min Read</li>
                                     </ul>
@@ -277,10 +55,10 @@
                             </div>
                             <div class="swiper-slide news-card-one">
                                 <div class="news-card-img">
-                                    <img src="assets/img/news/trending-3.webp" alt="Image" />
+                                    <img src="{{asset('assets/img/news/trending-3.webp')}}" alt="Image" />
                                 </div>
                                 <div class="news-card-info">
-                                    <h3><a href="business-details.html">Goodwin Must Break Clarkson Hold</a></h3>
+                                    <h3><a href="{{route('singlepost.news')}}">Goodwin Must Break Clarkson Hold</a></h3>
                                     <ul class="news-metainfo list-style">
                                         <li><i class="fi fi-rr-clock-three"></i>8 Min Read</li>
                                     </ul>
@@ -291,7 +69,7 @@
                                     <img src="assets/img/news/trending-4.webp" alt="Image" />
                                 </div>
                                 <div class="news-card-info">
-                                    <h3><a href="business-details.html">Major GWC Collection Is Coming To QVC</a></h3>
+                                    <h3><a href="{{route('singlepost.news')}}">Major GWC Collection Is Coming To QVC</a></h3>
                                     <ul class="news-metainfo list-style">
                                         <li><i class="fi fi-rr-clock-three"></i>12 Min Read</li>
                                     </ul>
@@ -313,7 +91,7 @@
                         <a href="business.html" class="news-cat">Politics</a>
                     </div>
                     <div class="news-card-info">
-                        <h3><a href="business-details.html">What The Federal Infrastructure Package Means For Minnesota</a></h3>
+                        <h3><a href="{{route('singlepost.news')}}">What The Federal Infrastructure Package Means For Minnesota</a></h3>
                         <ul class="news-metainfo list-style">
                             <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 25, 2023</a></li>
                             <li><i class="fi fi-rr-clock-three"></i>10 Min Read</li>
@@ -322,11 +100,11 @@
                 </div>
                 <div class="news-card-three">
                     <div class="news-card-img">
-                        <img src="assets/img/news/news-3.webp" alt="Image" />
+                        <img src="{{asset('assets/img/news/news-3.webp')}}" alt="Image" />
                     </div>
                     <div class="news-card-info">
                         <a href="business.html" class="news-cat">Fashion</a>
-                        <h3><a href="business-details.html">How To Recreate The High Pony-tail That Celebrities Love</a></h3>
+                        <h3><a href="{{route('singlepost.news')}}">How To Recreate The High Pony-tail That Celebrities Love</a></h3>
                         <ul class="news-metainfo list-style">
                             <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 15, 2023</a></li>
                             <li><i class="fi fi-rr-clock-three"></i>11 Min Read</li>
@@ -335,11 +113,11 @@
                 </div>
                 <div class="news-card-three">
                     <div class="news-card-img">
-                        <img src="assets/img/news/news-4.webp" alt="Image" />
+                        <img src="{{asset('assets/img/news/news-4.webp')}}" alt="Image" />
                     </div>
                     <div class="news-card-info">
                         <a href="business.html" class="news-cat">Fashion</a>
-                        <h3><a href="business-details.html">Tempores Imperdiet Rhoncus Ipsam Lobortis Kolats.</a></h3>
+                        <h3><a href="{{route('singlepost.news')}}">Tempores Imperdiet Rhoncus Ipsam Lobortis Kolats.</a></h3>
                         <ul class="news-metainfo list-style">
                             <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 14, 2023</a></li>
                             <li><i class="fi fi-rr-clock-three"></i>10 Min Read</li>
@@ -348,11 +126,11 @@
                 </div>
                 <div class="news-card-three">
                     <div class="news-card-img">
-                        <img src="assets/img/news/news-5.webp" alt="Image" />
+                        <img src="{{asset('assets/img/news/news-5.webp')}}" alt="Image" />
                     </div>
                     <div class="news-card-info">
                         <a href="business.html" class="news-cat">Fashion</a>
-                        <h3><a href="business-details.html">Beauty Queens Need Beauty Material & Products</a></h3>
+                        <h3><a href="{{route('singlepost.news')}}">Beauty Queens Need Beauty Material & Products</a></h3>
                         <ul class="news-metainfo list-style">
                             <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 10, 2023</a></li>
                             <li><i class="fi fi-rr-clock-three"></i>8 Min Read</li>
@@ -364,7 +142,7 @@
                 <div class="news-card-four">
                     <img src="assets/img/news/news-58.webp" alt="Image" />
                     <div class="news-card-info">
-                        <h3><a href="business-details.html">Best VR Headsets For PC And Gaming This Year</a></h3>
+                        <h3><a href="{{route('singlepost.news')}}">Best VR Headsets For PC And Gaming This Year</a></h3>
                         <ul class="news-metainfo list-style">
                             <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 08, 2023</a></li>
                             <li><i class="fi fi-rr-clock-three"></i>14 Min Read</li>
@@ -377,7 +155,7 @@
                         <a href="business.html" class="news-cat">Fashion</a>
                     </div>
                     <div class="news-card-info">
-                        <h3><a href="business-details.html">Man Wearing Black Pullover Hoodie To Smoke Light In</a></h3>
+                        <h3><a href="{{route('singlepost.news')}}">Man Wearing Black Pullover Hoodie To Smoke Light In</a></h3>
                         <p>Lorem ipsum or lipsum as it is sometmes known is dum text used in laying print, graphic or web desi…</p>
                         <ul class="news-metainfo list-style">
                             <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 08, 2023</a></li>
@@ -391,7 +169,7 @@
                         <a href="business.html" class="news-cat">Travel</a>
                     </div>
                     <div class="news-card-info">
-                        <h3><a href="business-details.html">Selective Focus Photography Of Orange Fox Life</a></h3>
+                        <h3><a href="{{route('singlepost.news')}}">Selective Focus Photography Of Orange Fox Life</a></h3>
                         <p>Lorem ipsum or lipsum as it is sometmes known is dum text used in laying print, graphic or web desi…</p>
                         <ul class="news-metainfo list-style">
                             <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 03, 2023</a></li>
@@ -407,7 +185,7 @@
                         <a href="business.html" class="news-cat">Politics</a>
                     </div>
                     <div class="news-card-info">
-                        <h3><a href="business-details.html">Elijah James: The Nashville Photographer Shares Her Unique Journey</a></h3>
+                        <h3><a href="{{route('singlepost.news')}}">Elijah James: The Nashville Photographer Shares Her Unique Journey</a></h3>
                         <ul class="news-metainfo list-style">
                             <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 03, 2023</a></li>
                             <li><i class="fi fi-rr-clock-three"></i>12 Min Read</li>
@@ -420,7 +198,7 @@
                     </div>
                     <div class="news-card-info">
                         <a href="business.html" class="news-cat">Travel</a>
-                        <h3><a href="business-details.html">A Complimentary Day At Mandarin The Oriental</a></h3>
+                        <h3><a href="{{route('singlepost.news')}}">A Complimentary Day At Mandarin The Oriental</a></h3>
                         <ul class="news-metainfo list-style">
                             <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Mar 15, 2023</a></li>
                             <li><i class="fi fi-rr-clock-three"></i>10 Min Read</li>
@@ -433,7 +211,7 @@
                     </div>
                     <div class="news-card-info">
                         <a href="business.html" class="news-cat">Business</a>
-                        <h3><a href="business-details.html">First Prototype Flight Using Kinetic Launch System</a></h3>
+                        <h3><a href="{{route('singlepost.news')}}">First Prototype Flight Using Kinetic Launch System</a></h3>
                         <ul class="news-metainfo list-style">
                             <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 22, 2023</a></li>
                             <li><i class="fi fi-rr-clock-three"></i>8 Min Read</li>
@@ -446,7 +224,7 @@
                     </div>
                     <div class="news-card-info">
                         <a href="business.html" class="news-cat">Health</a>
-                        <h3><a href="business-details.html">Life Health Continues To Spread Rapidly, Are Many People</a></h3>
+                        <h3><a href="{{route('singlepost.news')}}">Life Health Continues To Spread Rapidly, Are Many People</a></h3>
                         <ul class="news-metainfo list-style">
                             <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 15, 2023</a></li>
                             <li><i class="fi fi-rr-clock-three"></i>10 Min Read</li>
@@ -475,7 +253,7 @@
                             <a href="business.html" class="news-cat">Lifestyle</a>
                         </div>
                         <div class="news-card-info">
-                            <h3><a href="business-details.html">Good Day To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style</a></h3>
+                            <h3><a href="{{route('singlepost.news')}}">Good Day To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style</a></h3>
                             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus, harum. Dolore voluptate nisi fugit, expedita ipsum accusamus porro iure placeat asperiores deleniti corrupti voluptatibus, harum earum</p>
                             
                             <ul class="news-metainfo list-style">
@@ -496,7 +274,7 @@
                             <a href="business.html" class="news-cat">Lifestyle</a>
                         </div>
                         <div class="news-card-info">
-                            <h3><a href="business-details.html">Good Day To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style</a></h3>
+                            <h3><a href="{{route('singlepost.news')}}">Good Day To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style</a></h3>
                             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus, harum. Dolore voluptate nisi fugit, expedita ipsum accusamus porro iure placeat asperiores deleniti corrupti voluptatibus, harum earum</p>
                             
                             <ul class="news-metainfo list-style">
@@ -517,7 +295,7 @@
                             <a href="business.html" class="news-cat">Lifestyle</a>
                         </div>
                         <div class="news-card-info">
-                            <h3><a href="business-details.html">Good Day To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style</a></h3>
+                            <h3><a href="{{route('singlepost.news')}}">Good Day To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style</a></h3>
                             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus, harum. Dolore voluptate nisi fugit, expedita ipsum accusamus porro iure placeat asperiores deleniti corrupti voluptatibus, harum earum</p>
                             
                             <ul class="news-metainfo list-style">
@@ -538,7 +316,7 @@
                             <a href="business.html" class="news-cat">Lifestyle</a>
                         </div>
                         <div class="news-card-info">
-                            <h3><a href="business-details.html">Good Day To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style</a></h3>
+                            <h3><a href="{{route('singlepost.news')}}">Good Day To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style</a></h3>
                             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus, harum. Dolore voluptate nisi fugit, expedita ipsum accusamus porro iure placeat asperiores deleniti corrupti voluptatibus, harum earum</p>
                             
                             <ul class="news-metainfo list-style">
@@ -559,7 +337,7 @@
                             <a href="business.html" class="news-cat">Lifestyle</a>
                         </div>
                         <div class="news-card-info">
-                            <h3><a href="business-details.html">Good Day To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style</a></h3>
+                            <h3><a href="{{route('singlepost.news')}}">Good Day To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style</a></h3>
                             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus, harum. Dolore voluptate nisi fugit, expedita ipsum accusamus porro iure placeat asperiores deleniti corrupti voluptatibus, harum earum</p>
                             
                             <ul class="news-metainfo list-style">
@@ -590,7 +368,7 @@
                             <div class="news-card-four">
                                 <img src="assets/img/news/news-31.webp" alt="Image" />
                                 <div class="news-card-info">
-                                    <h3><a href="business-details.html">Kyrgios And Djokovic Agree To Post-match Meal</a></h3>
+                                    <h3><a href="{{route('singlepost.news')}}">Kyrgios And Djokovic Agree To Post-match Meal</a></h3>
                                     <ul class="news-metainfo list-style">
                                         <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 25, 2023</a></li>
                                         <li><i class="fi fi-rr-clock-three"></i>15 Min Read</li>
@@ -603,7 +381,7 @@
                                     <a href="business.html" class="news-cat">Sports</a>
                                 </div>
                                 <div class="news-card-info">
-                                    <h3><a href="business-details.html">Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange</a></h3>
+                                    <h3><a href="{{route('singlepost.news')}}">Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange</a></h3>
                                     <p>Lorem ipsum or lipsum as it is sometmes known is dum text used in laying print, graphic or web desi…</p>
                                     <ul class="news-metainfo list-style">
                                         <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 03, 2023</a></li>
@@ -617,7 +395,7 @@
                                     <a href="business.html" class="news-cat">Fashion</a>
                                 </div>
                                 <div class="news-card-info">
-                                    <h3><a href="business-details.html">Selective Focus Photography Of Orange Fox Life</a></h3>
+                                    <h3><a href="{{route('singlepost.news')}}">Selective Focus Photography Of Orange Fox Life</a></h3>
                                     <p>Lorem ipsum or lipsum as it is sometmes known is dum text used in laying print, graphic or web desi…</p>
                                     <ul class="news-metainfo list-style">
                                         <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 03, 2023</a></li>
@@ -633,7 +411,7 @@
                                     <a href="business.html" class="news-cat">Politics</a>
                                 </div>
                                 <div class="news-card-info">
-                                    <h3><a href="business-details.html">Beyond Good & Evil 2 Has Been In Development Longer Than Literally Any Game, Ever</a></h3>
+                                    <h3><a href="{{route('singlepost.news')}}">Beyond Good & Evil 2 Has Been In Development Longer Than Literally Any Game, Ever</a></h3>
                                     <ul class="news-metainfo list-style">
                                         <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 15, 2023</a></li>
                                         <li><i class="fi fi-rr-clock-three"></i>15 Min Read</li>
@@ -646,7 +424,7 @@
                                 </div>
                                 <div class="news-card-info">
                                     <a href="business.html" class="news-cat">Travel</a>
-                                    <h3><a href="business-details.html">World Trending Best 10 Website Travel Tips For Runners Groups Of</a></h3>
+                                    <h3><a href="{{route('singlepost.news')}}">World Trending Best 10 Website Travel Tips For Runners Groups Of</a></h3>
                                     <ul class="news-metainfo list-style">
                                         <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 22, 2023</a></li>
                                         <li><i class="fi fi-rr-clock-three"></i>15 Min Read</li>
@@ -659,7 +437,7 @@
                                 </div>
                                 <div class="news-card-info">
                                     <a href="business.html" class="news-cat">Business</a>
-                                    <h3><a href="business-details.html">How To Find The Right Template For Your Specific Product</a></h3>
+                                    <h3><a href="{{route('singlepost.news')}}">How To Find The Right Template For Your Specific Product</a></h3>
                                     <ul class="news-metainfo list-style">
                                         <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 15, 2023</a></li>
                                         <li><i class="fi fi-rr-clock-three"></i>15 Min Read</li>
@@ -672,7 +450,7 @@
                                 </div>
                                 <div class="news-card-info">
                                     <a href="business.html" class="news-cat">Health</a>
-                                    <h3><a href="business-details.html">Life Health Continues To Spread Rapidly, Are Many People</a></h3>
+                                    <h3><a href="{{route('singlepost.news')}}">Life Health Continues To Spread Rapidly, Are Many People</a></h3>
                                     <ul class="news-metainfo list-style">
                                         <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 16, 2023</a></li>
                                         <li><i class="fi fi-rr-clock-three"></i>15 Min Read</li>
@@ -792,7 +570,7 @@
                                                     </div>
                                                     <h5>By <a href="author.html">OLIVIA EMMA</a></h5>
                                                 </div>
-                                                <h3><a href="business-details.html">How Maps Reshape American Politics In World</a></h3>
+                                                <h3><a href="{{route('singlepost.news')}}">How Maps Reshape American Politics In World</a></h3>
                                                 <ul class="news-metainfo list-style">
                                                     <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 03, 2023</a></li>
                                                     <li><i class="fi fi-rr-comment"></i>03</li>
@@ -814,7 +592,7 @@
                                                     </div>
                                                     <h5>By <a href="author.html">ELIJAH JAMES</a></h5>
                                                 </div>
-                                                <h3><a href="business-details.html">Will Humans be able to live in Mars in the future?</a></h3>
+                                                <h3><a href="{{route('singlepost.news')}}">Will Humans be able to live in Mars in the future?</a></h3>
                                                 <ul class="news-metainfo list-style">
                                                     <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Mar 22, 2023</a></li>
                                                     <li><i class="fi fi-rr-comment"></i>03</li>
@@ -836,7 +614,7 @@
                                                     </div>
                                                     <h5>By<a href="author.html">BANKS GAIN</a></h5>
                                                 </div>
-                                                <h3><a href="business-details.html">Here’s the proof momentum strategy work</a></h3>
+                                                <h3><a href="{{route('singlepost.news')}}">Here’s the proof momentum strategy work</a></h3>
                                                 <ul class="news-metainfo list-style">
                                                     <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 15, 2023</a></li>
                                                     <li><i class="fi fi-rr-comment"></i>03</li>
@@ -858,7 +636,7 @@
                                                     </div>
                                                     <h5>By <a href="author.html">HARPAR LUNA</a></h5>
                                                 </div>
-                                                <h3><a href="business-details.html">The Promise And Potential Of Synthetic Assets</a></h3>
+                                                <h3><a href="{{route('singlepost.news')}}">The Promise And Potential Of Synthetic Assets</a></h3>
                                                 <ul class="news-metainfo list-style">
                                                     <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 14, 2023</a></li>
                                                     <li><i class="fi fi-rr-comment"></i>03</li>
@@ -884,7 +662,7 @@
                                                     </div>
                                                     <h5>By <a href="author.html">OLIVIA EMMA</a></h5>
                                                 </div>
-                                                <h3><a href="business-details.html">Joe Gibbs discusses Ty Gibbs incident at Martinsville</a></h3>
+                                                <h3><a href="{{route('singlepost.news')}}">Joe Gibbs discusses Ty Gibbs incident at Martinsville</a></h3>
                                                 <ul class="news-metainfo list-style">
                                                     <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 07, 2023</a></li>
                                                     <li><i class="fi fi-rr-comment"></i>03</li>
@@ -906,7 +684,7 @@
                                                     </div>
                                                     <h5>By <a href="author.html">ELIJAH JAMES</a></h5>
                                                 </div>
-                                                <h3><a href="business-details.html">The Heart of a Champion: Mental Toughness in Sports</a></h3>
+                                                <h3><a href="{{route('singlepost.news')}}">The Heart of a Champion: Mental Toughness in Sports</a></h3>
                                                 <ul class="news-metainfo list-style">
                                                     <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 03, 2023</a></li>
                                                     <li><i class="fi fi-rr-comment"></i>03</li>
@@ -928,7 +706,7 @@
                                                     </div>
                                                     <h5>By<a href="author.html">BANKS GAIN</a></h5>
                                                 </div>
-                                                <h3><a href="business-details.html">Breaking Barriers: Inspiring Stories in Sports</a></h3>
+                                                <h3><a href="{{route('singlepost.news')}}">Breaking Barriers: Inspiring Stories in Sports</a></h3>
                                                 <ul class="news-metainfo list-style">
                                                     <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 03, 2023</a></li>
                                                     <li><i class="fi fi-rr-comment"></i>03</li>
@@ -950,7 +728,7 @@
                                                     </div>
                                                     <h5>By <a href="author.html">HARPAR LUNA</a></h5>
                                                 </div>
-                                                <h3><a href="business-details.html">Unleashing Your Inner Athlete: The Power of Sports</a></h3>
+                                                <h3><a href="{{route('singlepost.news')}}">Unleashing Your Inner Athlete: The Power of Sports</a></h3>
                                                 <ul class="news-metainfo list-style">
                                                     <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 03, 2023</a></li>
                                                     <li><i class="fi fi-rr-comment"></i>03</li>
@@ -976,7 +754,7 @@
                                                     </div>
                                                     <h5>By <a href="author.html">OLIVIA EMMA</a></h5>
                                                 </div>
-                                                <h3><a href="business-details.html">Navigating the Entrepreneurial Journey: Tips for Success</a></h3>
+                                                <h3><a href="{{route('singlepost.news')}}">Navigating the Entrepreneurial Journey: Tips for Success</a></h3>
                                                 <ul class="news-metainfo list-style">
                                                     <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 15, 2023</a></li>
                                                     <li><i class="fi fi-rr-comment"></i>03</li>
@@ -998,7 +776,7 @@
                                                     </div>
                                                     <h5>By <a href="author.html">ELIJAH JAMES</a></h5>
                                                 </div>
-                                                <h3><a href="business-details.html">Revolutionizing Business: The Power of Innovation</a></h3>
+                                                <h3><a href="{{route('singlepost.news')}}">Revolutionizing Business: The Power of Innovation</a></h3>
                                                 <ul class="news-metainfo list-style">
                                                     <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Mar 03, 2023</a></li>
                                                     <li><i class="fi fi-rr-comment"></i>03</li>
@@ -1020,7 +798,7 @@
                                                     </div>
                                                     <h5>By<a href="author.html">BANKS GAIN</a></h5>
                                                 </div>
-                                                <h3><a href="business-details.html">From Start-Up to Scale-Up: Growing Your Business</a></h3>
+                                                <h3><a href="{{route('singlepost.news')}}">From Start-Up to Scale-Up: Growing Your Business</a></h3>
                                                 <ul class="news-metainfo list-style">
                                                     <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 22, 2023</a></li>
                                                     <li><i class="fi fi-rr-comment"></i>03</li>
@@ -1042,7 +820,7 @@
                                                     </div>
                                                     <h5>By <a href="author.html">HARPAR LUNA</a></h5>
                                                 </div>
-                                                <h3><a href="business-details.html">Building a Thriving Business: Strategies for Success</a></h3>
+                                                <h3><a href="{{route('singlepost.news')}}">Building a Thriving Business: Strategies for Success</a></h3>
                                                 <ul class="news-metainfo list-style">
                                                     <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 05, 2023</a></li>
                                                     <li><i class="fi fi-rr-comment"></i>03</li>
@@ -1063,9 +841,6 @@
             </div>
         </div>
     </div>
-
-
-
 
     <div class="container-fluid pb-50">
         <div class="instagram-slider swiper">
