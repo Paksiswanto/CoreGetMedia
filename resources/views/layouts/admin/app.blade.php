@@ -88,7 +88,8 @@
     <div class="page-wrapper" id="main-wrapper" data-theme="blue_theme" data-layout="vertical" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
         <!-- Sidebar Start -->
-        @hasrole('admin')
+        @include('layouts.admin.sidebar')
+        {{-- @hasrole('admin')
             @include('layouts.admin.sidebar')
         @endrole
         @hasrole('author')
@@ -96,7 +97,7 @@
         @endrole
         @hasrole('user')
             @include('layouts.user.side')
-        @endrole
+        @endrole --}}
         <!--  Sidebar End -->
         <!--  Main wrapper -->
         <div class="body-wrapper">

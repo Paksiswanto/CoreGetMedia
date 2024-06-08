@@ -25,7 +25,7 @@
                 aria-expanded="false">
                 <div class="d-flex align-items-center">
                         <div class="">
-                            <img src="{{ asset( Auth::user()->photo ? 'storage/'.Auth::user()->photo : "default.png")  }}" class="rounded-circle user-profile"
+                            <img src="{{asset('admin/dist/images/profile/user-10.jpg')}}" class="rounded-circle user-profile"
                                 style="object-fit: cover" width="35" height="35" alt="" />
                         </div>
                     </div>
@@ -37,20 +37,20 @@
                             <h5 class="mb-0 fs-5 fw-semibold">User Profile</h5>
                         </div>
                         <div class="d-flex align-items-center py-9 mx-7 border-bottom">
-                            <img src="{{ asset( Auth::user()->photo ? 'storage/'.Auth::user()->photo : "default.png")  }}" class="rounded-circle user-profile" style="object-fit: cover"
+                            <img src="{{asset('admin/dist/images/profile/user-10.jpg')}}" class="rounded-circle user-profile" style="object-fit: cover"
                                 width="80" height="80" alt="" />
                             <div class="ms-3">
-                                <h5 class="mb-1 fs-3 username">{{ auth()->user()->name }}</h5>
-                                <span class="mb-1 d-block text-dark role">{{ auth()->user()->roles->pluck('name')[0] }}</span>
+                                <h5 class="mb-1 fs-3 username">Karin</h5>
+                                <span class="mb-1 d-block text-dark role">Admin</span>
                                 <p class="mb-0 d-flex text-dark align-items-center gap-2 email">
                                     <i class="ti ti-mail fs-4"></i>
-                                    {{ auth()->user()->email }}
+                                    karin@gmail.com
                                 </p>
                             </div>
                         </div>
 
                         <div class="message-body">
-                            <a class="py-8 px-7 mt-8 d-flex align-items-center" href="{{ route('profile.author.update') }}">
+                            <a class="py-8 px-7 mt-8 d-flex align-items-center" href="#">
                                 <span
                                     class="d-flex align-items-center justify-content-center bg-light rounded-1 p-6">
                                     {{-- <img src="{{ asset( Auth::user()->photo ? 'storage/'.Auth::user()->photo : "https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-account.svg")  }}" width="24" height="24" alt="" /> --}}
@@ -84,8 +84,8 @@
                     </li>
                     <li class="nav item">
                         <div class="d-none d-md-flex flex-column align-items-end justify-content-center">
-                            <span class="mt-2 fs-4 lh-1 text-end fw-semibold">{{ auth()->user()->name }}</span>
-                            <span class="fs-4 text-end">{{ auth()->user()->email }}</span>
+                            <span class="mt-2 fs-4 lh-1 text-end fw-semibold">Karin</span>
+                            <span class="fs-4 text-end">karin@gmail.com</span>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -93,7 +93,7 @@
                             aria-expanded="false">
                             <div class="d-flex align-items-center">
                                 <div class="">
-                                    <img src="{{ asset( Auth::user()->photo ? 'storage/'.Auth::user()->photo : "default.png")  }}" class="rounded-circle user-profile"
+                                    <img src="{{asset('admin/dist/images/profile/user-10.jpg')}}" class="rounded-circle user-profile"
                                         style="object-fit: cover" width="35" height="35" alt="" />
                                 </div>
                             </div>
@@ -105,19 +105,19 @@
                                     <h5 class="mb-0 fs-5 fw-semibold">User Profile</h5>
                                 </div>
                                 <div class="d-flex align-items-center py-9 mx-7 border-bottom">
-                                    <img src="{{ asset( Auth::user()->photo ? 'storage/'.Auth::user()->photo : "default.png")  }}" class="rounded-circle user-profile" style="object-fit: cover"
+                                    <img src="{{asset('admin/dist/images/profile/user-10.jpg')}}" class="rounded-circle user-profile" style="object-fit: cover"
                                         width="80" height="80" alt="" />
                                     <div class="ms-3">
-                                        <h5 class="mb-1 fs-3 username">{{ auth()->user()->name }}</h5>
-                                        <span class="mb-1 d-block text-dark role">{{ auth()->user()->roles->pluck('name')[0] }}</span>
+                                        <h5 class="mb-1 fs-3 username">Karin</h5>
+                                        <span class="mb-1 d-block text-dark role">Admin</span>
                                         <p class="mb-0 d-flex text-dark align-items-center gap-2 email">
                                             <i class="ti ti-mail fs-4"></i>
-                                            {{ auth()->user()->email }}
+                                            karin@gmail.com
                                         </p>
                                     </div>
                                 </div>
                                 <div class="message-body">
-                                    <a class="py-8 px-7 mt-8 d-flex align-items-center" href="{{ route('profile.author.update') }}">
+                                    <a class="py-8 px-7 mt-8 d-flex align-items-center" href="#">
                                         <span
                                             class="d-flex align-items-center justify-content-center bg-light rounded-1 p-6">
                                             {{-- <img src="{{ asset( Auth::user()->photo ? 'storage/'.Auth::user()->photo : "https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-account.svg")  }}" width="24" height="24" alt="" /> --}}

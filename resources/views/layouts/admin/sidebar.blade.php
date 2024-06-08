@@ -3,7 +3,7 @@
     <div  style="background-color: #0E2336;">
         <div class="brand-logo d-flex align-items-center justify-content-between">
             <a href="Javascript:void(0)" class="text-nowrap logo-img">
-                <img src="{{asset('assets/img/logo-get-media.png')}}" class="dark-logo" width="180" alt="" />
+                <img src="{{asset('assets/img/logo/get-media-light.svg')}}" class="dark-logo" width="180" alt="" />
             </a>
             <div class="close-btn d-lg-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                 <i class="ti ti-x fs-8 text-muted"></i>
