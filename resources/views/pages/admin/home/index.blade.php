@@ -121,7 +121,7 @@
                 <div class="col-md-12 col-lg-12">
                     <h4 class="mb-5">Artikel Trending</h4>
                     <div class="row">
-                        
+
                         <div class="col-md-12 col-lg-6 mb-3">
                             <div class="mb-2" style="max-width: 540px;">
                                 <div class="row g-2">
@@ -149,7 +149,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -160,7 +160,7 @@
             <div class="card-body">
                 <h4 class="mb-5">Kategori Trending</h4>
                 <div>
-                    
+
                     <div class="fs-5 mb-4 mt-5 d-flex justify-content-between">
                         <div>
                             Pendidikan
@@ -201,7 +201,7 @@
                             <span class="badge bg-light-success text-success">38</span>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -213,7 +213,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="mb-5">Penulis Terbanyak</h4>
-                
+
                 <div>
                     <div class="d-flex justify-content-between mb-3">
                         <div class="d-flex align-items-center">
@@ -229,7 +229,7 @@
                         </div>
                     </div>
                 </div>
-               
+
             </div>
         </div>
     </div>
@@ -378,7 +378,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                                 <div class="tab-pane p-3" id="statistik" role="tabpanel">
@@ -722,6 +722,7 @@
 <script src="{{asset('admin/dist/js/apps/chat.js')}}"></script>
 
 <script>
+
     var options = {
         series: [{
             data: values,
@@ -909,6 +910,6 @@
     chart.render();
     var chart = new ApexCharts(document.querySelector("#chart-advertisement-premium"), options);
     chart.render();
-</script>
+</script> --}}
 
 @endsection
