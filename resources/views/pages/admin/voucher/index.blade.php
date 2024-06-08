@@ -66,7 +66,7 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <li>
-                                        <button class="dropdown-item btn-edit" data-bs-toggle="modal" data-bs-target="#modal-update" data-id="${data.id}" >Edit</button>
+                                        <button class="dropdown-item btn-edit" data-bs-toggle="modal" data-bs-target="#modal-update" >Edit</button>
                                     </li>
                                 </ul>
                             </div>
@@ -134,7 +134,7 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <li>
-                                        <button class="dropdown-item btn-edit" data-bs-toggle="modal" data-bs-target="#modal-update" data-id="${data.id}" >Edit</button>
+                                        <button class="dropdown-item btn-edit" data-bs-toggle="modal" data-bs-target="#modal-update">Edit</button>
                                     </li>
                                 </ul>
                             </div>
@@ -202,7 +202,7 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <li>
-                                        <button class="dropdown-item btn-edit" data-bs-toggle="modal" data-bs-target="#modal-update" data-id="${data.id}" >Edit</button>
+                                        <button class="dropdown-item btn-edit" data-bs-toggle="modal" data-bs-target="#modal-update">Edit</button>
                                     </li>
                                 </ul>
                             </div>
@@ -270,7 +270,7 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <li>
-                                        <button class="dropdown-item btn-edit" data-bs-toggle="modal" data-bs-target="#modal-update" data-id="${data.id}" >Edit</button>
+                                        <button class="dropdown-item btn-edit" data-bs-toggle="modal" data-bs-target="#modal-update" >Edit</button>
                                     </li>
                                 </ul>
                             </div>
@@ -338,7 +338,7 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <li>
-                                        <button class="dropdown-item btn-edit" data-bs-toggle="modal" data-bs-target="#modal-update" data-id="${data.id}" >Edit</button>
+                                        <button class="dropdown-item btn-edit" data-bs-toggle="modal" data-bs-target="#modal-update">Edit</button>
                                     </li>
                                 </ul>
                             </div>
@@ -406,7 +406,7 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <li>
-                                        <button class="dropdown-item btn-edit" data-bs-toggle="modal" data-bs-target="#modal-update" data-id="${data.id}" >Edit</button>
+                                        <button class="dropdown-item btn-edit" data-bs-toggle="modal" data-bs-target="#modal-update">Edit</button>
                                     </li>
                                 </ul>
                             </div>
