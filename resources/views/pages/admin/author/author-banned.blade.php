@@ -50,11 +50,11 @@
         <table class="table mb-3">
             <thead>
                 <tr>
-                    <th class="text-white" style="background-color: #175A95; border-radius: 5px 0 0 5px">No</th>
+                    <th class="text-white" style="background-color: #175A95;">No</th>
                     <th class="text-white" style="background-color: #175A95; ">Name</th>
                     <th class="text-white" style="background-color: #175A95; ">Email</th>
                     <th class="text-white" style="background-color: #175A95; ">Status</th>
-                    <th class="text-white" style="background-color: #175A95; border-radius: 0 5px 5px 0">Actions</th>
+                    <th class="text-white" style="background-color: #175A95;">Actions</th>
                 </tr>
             </thead>
             <tbody>
