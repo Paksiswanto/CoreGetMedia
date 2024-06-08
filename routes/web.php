@@ -54,9 +54,25 @@ Route::get('admin-account-list', function(){
     return view('pages.admin.account.admin');
 })->name('admin-account.list.admin');
 
+Route::get('author-list', function(){
+    return view('pages.admin.author.author-list');
+})->name('author-list.admin');
+
+Route::get('author-banned', function(){ 
+    return view('pages.admin.author.author-banned');
+})->name('author-banned.admin');
+
+Route::get('confirm-author-list', function(){
+    return view('pages.admin.author.confirm-author');
+})->name('confirm-author.admin');
+
 Route::get('user-account-list', function(){
     return view('pages.admin.account.user');
 })->name('user-account.list.admin');
+
+Route::get('admin-account-list', function(){
+    return view('pages.admin.account.admin');
+})->name('admin-account.list.admin');
 
 Route::get('singlepost/news', function(){
     return view('pages.user.singlepost.index');
