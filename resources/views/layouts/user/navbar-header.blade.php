@@ -80,88 +80,88 @@
                         <a href="/" class="nav-link active"> Beranda </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{route('')}}" class="dropdown-toggle nav-link"> Pendidikan </a>
+                        <a href="{{route('news.category')}}" class="dropdown-toggle nav-link"> Pendidikan </a>
                         <ul class="dropdown-menu">
                             <li class="nav-item">
-                                <a href="about.html" class="nav-link"> psikologi </a>
+                                <a href="{{route('news.subcategory')}}" class="nav-link"> psikologi </a>
                             </li>
                             <li class="nav-item">
-                                <a href="contact.html" class="nav-link"> Biografi </a>
+                                <a href="{{route('news.subcategory')}}" class="nav-link"> Biografi </a>
                             </li>
                             
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="{{route('')}}" class="dropdown-toggle nav-link"> Hiburan </a>
+                        <a href="{{route('news.category')}}" class="dropdown-toggle nav-link"> Hiburan </a>
                         <ul class="dropdown-menu">
                             <li class="nav-item">
-                                <a href="" class="nav-link"> Food </a>
+                                <a href="{{route('news.subcategory')}}" class="nav-link"> Food </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/" class="nav-link"> Music </a>
+                                <a href="{{route('news.subcategory')}}" class="nav-link"> Music </a>
                             </li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="{{route('')}}" class="dropdown-toggle nav-link"> kategori 3 </a>
+                        <a href="{{route('news.category')}}" class="dropdown-toggle nav-link"> kategori 3 </a>
                         <ul class="dropdown-menu">
                             <li class="nav-item">
-                                <a href="politics.html" class="nav-link"> sub kategori 1 </a>
+                                <a href="{{route('news.subcategory')}}" class="nav-link"> sub kategori 1 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="politics-details.html" class="nav-link"> sub kategori 2 </a>
+                                <a href="{{route('news.subcategory')}}" class="nav-link"> sub kategori 2 </a>
                             </li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="{{route('')}}" class="dropdown-toggle nav-link"> kategori 4 </a>
+                        <a href="{{route('news.category')}}" class="dropdown-toggle nav-link"> kategori 4 </a>
                         <ul class="dropdown-menu">
                             <li class="nav-item">
-                                <a href="featured-video.html" class="nav-link"> sub kategori 1 </a>
+                                <a href="{{route('news.subcategory')}}" class="nav-link"> sub kategori 1 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="featured-video-details.html" class="nav-link"> sub kategori 2 </a>
+                                <a href="{{route('news.subcategory')}}" class="nav-link"> sub kategori 2 </a>
                             </li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="{{route('')}}" class="dropdown-toggle nav-link"> kategori 5 </a>
+                        <a href="{{route('news.category')}}" class="dropdown-toggle nav-link"> kategori 5 </a>
                         <ul class="dropdown-menu">
                             <li class="nav-item">
-                                <a href="sports.html" class="nav-link"> sub kategori 1 </a>
+                                <a href="{{route('news.subcategory')}}" class="nav-link"> sub kategori 1 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="sports-details.html" class="nav-link"> sub kategori 2 </a>
+                                <a href="{{route('news.subcategory')}}" class="nav-link"> sub kategori 2 </a>
                             </li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="{{route('')}}" class="nav-link dropdown-toggle"> kategori 6 </a>
+                        <a href="{{route('news.category')}}" class="nav-link dropdown-toggle"> kategori 6 </a>
                         <ul class="dropdown-menu">
                             <li class="nav-item">
-                                <a href="shop-grid.html" class="nav-link"> sub kategori 1 </a>
+                                <a href="{{route('news.subcategory')}}" class="nav-link"> sub kategori 1 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="shop-left-sidebar.html" class="nav-link"> sub kategori 2 </a>
+                                <a href="{{route('news.subcategory')}}" class="nav-link"> sub kategori 2 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="shop-right-sidebar.html" class="nav-link"> sub kategori 3 </a>
+                                <a href="{{route('news.subcategory')}}" class="nav-link"> sub kategori 3 </a>
                             </li>
                             
                         </ul>
                     </li>
                 </ul>
                 <div class="others-option d-flex align-items-center">
-                    <div class="option-item">
+                    {{-- <div class="option-item">
                         <a class="shopcart" href="cart.html"><i class="flaticon-shopping-cart"></i> <span>5</span></a>
-                    </div>
+                    </div> --}}
                     <div class="option-item">
                         <button type="button" class="search-btn" data-bs-toggle="modal" data-bs-target="#searchModal">
                             <i class="flaticon-loupe"></i>
                         </button>
                     </div>
                     <div class="option-item">
-                        <a href="login.html" class="btn-two">Sign In</a>
+                        <a href="{{route('login')}}" class="btn-two">Sign In</a>
                     </div>
                 </div>
             </div>
