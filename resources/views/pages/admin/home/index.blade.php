@@ -119,21 +119,21 @@
         <div class="card">
             <div class="card-body">
                 <div class="col-md-12 col-lg-12">
-                    <h4 class="mb-5">Berita Trending</h4>
+                    <h4 class="mb-5">Artikel Trending</h4>
                     <div class="row">
                         
                         <div class="col-md-12 col-lg-6 mb-3">
                             <div class="mb-2" style="max-width: 540px;">
                                 <div class="row g-2">
                                     <div class="col-md-4">
-                                        <img src="{{asset('admin/assets/images/custom-select.html')}}" class="img-responsive" height="100" style="width: 100%; object-fit:cover;" alt="">
+                                        <img src="{{asset('assets/img/news/news-10.webp')}}" class="img-responsive" height="100" style="width: 100%; object-fit:cover;" alt="">
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body p-2">
                                             <h5 class="card-text">
-                                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Debitis dignissimos exercitationem rem blanditiis ipsam sunt quasi deserunt assumenda eum sint impedit culpa molestiae, est tempore facilis? Consequatur error natus velit!
+                                                Lorem ipsum dolor, sit amet consectetur adipisicing elit...
                                             </h5>
-                                            <div class="d-flex gap-3 align-items-center ms-0">
+                                            <div class="d-flex gap-3 align-items-center ms-0 mt-4">
                                                 <p class="card-text m-0"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 2048 2048">
                                                         <path fill="#DD1818" d="M1536 171h341v1877H0V171h341V0h171v171h853V0h171zm171 1706V683H171v1194zm0-1365V341H171v171z" />
                                                     </svg><small class="ms-1">
@@ -167,14 +167,38 @@
                         </div>
                         <div>
                             {{-- @if ($index == 1 || $index == 2) --}}
-                            <span class="badge bg-light-warning text-warning">{{ $category->news_categories_count }}</span>
-                            {{-- @elseif ($index == 3 || $index == 4) --}}
+                            <span class="badge bg-light-warning text-warning">23</span>
+                            {{-- @elseif ($index == 3 || $index == 4)
                             <span class="badge bg-light-success text-success">{{ $category->news_categories_count }}</span>
-                            {{-- @elseif ($index == 0) --}}
+                            @elseif ($index == 0)
                             <span class="badge bg-light-danger text-danger">{{ $category->news_categories_count }}</span>
-                            {{-- @else --}}
+                            @else
                             <span class="badge bg-light-success text-success">{{ $category->news_categories_count }}</span>
-                            {{-- @endif --}}
+                            @endif --}}
+                        </div>
+                    </div>
+                    <div class="fs-5 mb-4 mt-5 d-flex justify-content-between">
+                        <div>
+                            Hiburan
+                        </div>
+                        <div>
+                            <span class="badge bg-light-success text-success">20</span>
+                        </div>
+                    </div>
+                    <div class="fs-5 mb-4 mt-5 d-flex justify-content-between">
+                        <div>
+                            Sekolah Vokasi
+                        </div>
+                        <div>
+                            <span class="badge bg-light-danger text-danger">15</span>
+                        </div>
+                    </div>
+                    <div class="fs-5 mb-4 mt-5 d-flex justify-content-between">
+                        <div>
+                            Teknologi
+                        </div>
+                        <div>
+                            <span class="badge bg-light-success text-success">38</span>
                         </div>
                     </div>
                     
@@ -332,9 +356,9 @@
                                                     <div class="col-md-8">
                                                         <div class="card-body p-2">
                                                             <h5 class="card-text">
-                                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem veritatis unde ipsam nostrum eligendi, ducimus temporibus corporis quae eaque exercitationem a recusandae odit nulla nesciunt laborum itaque dicta aspernatur impedit accusantium ad tempora vitae cumque commodi fugiat. Tempore atque quam esse repellat voluptatum quibusdam. Veritatis ex ea sapiente optio quidem?
+                                                                Lorem ipsum dolor sit amet consectetur adipisicing elit...
                                                             </h5>
-                                                            <div class="d-flex gap-3 align-items-center ms-0">
+                                                            <div class="d-flex gap-3 align-items-center ms-0 mt-4">
                                                                 <p class="card-text m-0">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 2048 2048">
                                                                         <path fill="#DD1818" d="M1536 171h341v1877H0V171h341V0h171v171h853V0h171zm171 1706V683H171v1194zm0-1365V341H171v171z" />
@@ -698,15 +722,6 @@
 <script src="{{asset('admin/dist/js/apps/chat.js')}}"></script>
 
 <script>
-    var monthlyData = <?php echo json_encode($news2); ?>;
-    var monthlyDataString = JSON.stringify(monthlyData);
-    var monthlyDataObj = JSON.parse(monthlyDataString);
-    var values = [];
-    for (var key in monthlyDataObj) {
-        if (monthlyDataObj.hasOwnProperty(key)) {
-            values.push(monthlyDataObj[key]);
-        }
-    }
     var options = {
         series: [{
             data: values,
@@ -743,21 +758,10 @@
     chart.render();
 
 
-    // var visitor = <?php echo json_encode($visitorChart); ?>;
-    // var monthlVisitorString = JSON.stringify(visitor);
-    // var monthlyDataVisitor = JSON.parse(monthlVisitorString);
-
-    var visitorUnique = [];
-    for (var key in monthlyDataVisitor) {
-        if (monthlyDataVisitor.hasOwnProperty(key)) {
-            visitorUnique.push(monthlyDataVisitor[key]); // Mengubah values menjadi visitorUnique
-        }
-    }
-
     var options = {
         series: [{
             name: "Pengunjung Unique",
-            data: visitorUnique
+            data: [10,12]
         }],
         chart: {
             height: 350,
@@ -810,18 +814,10 @@
 </script>
 
 <script>
-    // var monthlyData = <?php echo json_encode($statistikPremium); ?>;
-    // var monthlyDataString = JSON.stringify(monthlyData);
-    // var monthlyDataObj = JSON.parse(monthlyDataString);
-    // var values = [];
-    // for (var key in monthlyDataObj) {
-    //     if (monthlyDataObj.hasOwnProperty(key)) {
-    //         values.push(monthlyDataObj[key]);
-    //     }
-    // }
+
     var options = {
         series: [{
-            data: values,
+            data: [10,23,32],
         }],
         chart: {
             type: 'line',
