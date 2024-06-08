@@ -16,6 +16,17 @@
         color: var(--secondaryColor);
         background-color: #ffffff;
     }    
+    .btn-three {
+        color: #175A95;
+    }
+    .theme-dark .btn-three {
+        background-color: #222222;
+        color: #ffffff;
+    }
+    .btn-three i{
+        color: #175A95;
+    }
+
     </style>
 @endsection
 
@@ -23,12 +34,12 @@
     <div class="container-fluid">
         <div class="trending-news-box">
             <div class="row gx-5">
-                <div class="col-xxl-2 col-xl-3 col-lg-3 col-md-4 d-flx">
-                    <div class="trending-prev"><i class="flaticon-left-arrow"></i></div>
-                    <h4>Trending Now</h4>
-                    <div class="trending-next"><i class="flaticon-right-arrow"></i></div>
+                <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 d-flex justify-content-center">
+                    <div class="trending-prev me-3"><i class="flaticon-left-arrow"></i></div>
+                    <h4>Artikel Popular</h4>
+                    <div class="trending-next ms-3"><i class="flaticon-right-arrow"></i></div>
                 </div>
-                <div class="col-xxl-10 col-xl-9 col-lg-9 col-md-8">
+                <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
                     <div class="trending-news-slider swiper">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide news-card-one">
@@ -38,7 +49,7 @@
                                 <div class="news-card-info">
                                     <h3><a href="{{route('singlepost.news')}}">Climate Change & Your Future Health</a></h3>
                                     <ul class="news-metainfo list-style">
-                                        <li><i class="fi fi-rr-clock-three"></i>15 Min Read</li>
+                                        <li><i class="fi fi-rr-eye"></i>15x dilihat</li>
                                     </ul>
                                 </div>
                             </div>
@@ -49,7 +60,7 @@
                                 <div class="news-card-info">
                                     <h3><a href="{{route('singlepost.news')}}">Female Hawks Win $10,000 Funding Boost</a></h3>
                                     <ul class="news-metainfo list-style">
-                                        <li><i class="fi fi-rr-clock-three"></i>10 Min Read</li>
+                                        <li><i class="fi fi-rr-eye"></i>10x dilihat</li>
                                     </ul>
                                 </div>
                             </div>
@@ -60,7 +71,7 @@
                                 <div class="news-card-info">
                                     <h3><a href="{{route('singlepost.news')}}">Goodwin Must Break Clarkson Hold</a></h3>
                                     <ul class="news-metainfo list-style">
-                                        <li><i class="fi fi-rr-clock-three"></i>8 Min Read</li>
+                                        <li><i class="fi fi-rr-eye"></i>8x dilihat</li>
                                     </ul>
                                 </div>
                             </div>
@@ -71,7 +82,7 @@
                                 <div class="news-card-info">
                                     <h3><a href="{{route('singlepost.news')}}">Major GWC Collection Is Coming To QVC</a></h3>
                                     <ul class="news-metainfo list-style">
-                                        <li><i class="fi fi-rr-clock-three"></i>12 Min Read</li>
+                                        <li><i class="fi fi-rr-eye"></i>12x dilihat</li>
                                     </ul>
                                 </div>
                             </div>
@@ -88,13 +99,13 @@
                 <div class="news-card-two">
                     <div class="news-card-img">
                         <img src="assets/img/news/news-1.webp" alt="Image" />
-                        <a href="business.html" class="news-cat">Politics</a>
+                        <a href="{{route('news.category')}}" class="news-cat">Politics</a>
                     </div>
                     <div class="news-card-info">
                         <h3><a href="{{route('singlepost.news')}}">What The Federal Infrastructure Package Means For Minnesota</a></h3>
                         <ul class="news-metainfo list-style">
                             <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 25, 2023</a></li>
-                            <li><i class="fi fi-rr-clock-three"></i>10 Min Read</li>
+                            <li><i class="fi fi-rr-eye"></i>10x dilihat</li>
                         </ul>
                     </div>
                 </div>
@@ -103,11 +114,11 @@
                         <img src="{{asset('assets/img/news/news-3.webp')}}" alt="Image" />
                     </div>
                     <div class="news-card-info">
-                        <a href="business.html" class="news-cat">Fashion</a>
+                        <a href="{{route('news.category')}}" class="news-cat">Fashion</a>
                         <h3><a href="{{route('singlepost.news')}}">How To Recreate The High Pony-tail That Celebrities Love</a></h3>
                         <ul class="news-metainfo list-style">
                             <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 15, 2023</a></li>
-                            <li><i class="fi fi-rr-clock-three"></i>11 Min Read</li>
+                            <li><i class="fi fi-rr-eye"></i>11x dilihat</li>
                         </ul>
                     </div>
                 </div>
@@ -116,11 +127,11 @@
                         <img src="{{asset('assets/img/news/news-4.webp')}}" alt="Image" />
                     </div>
                     <div class="news-card-info">
-                        <a href="business.html" class="news-cat">Fashion</a>
+                        <a href="{{route('news.category')}}" class="news-cat">Fashion</a>
                         <h3><a href="{{route('singlepost.news')}}">Tempores Imperdiet Rhoncus Ipsam Lobortis Kolats.</a></h3>
                         <ul class="news-metainfo list-style">
                             <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 14, 2023</a></li>
-                            <li><i class="fi fi-rr-clock-three"></i>10 Min Read</li>
+                            <li><i class="fi fi-rr-eye"></i>10x dilihat</li>
                         </ul>
                     </div>
                 </div>
@@ -129,11 +140,11 @@
                         <img src="{{asset('assets/img/news/news-5.webp')}}" alt="Image" />
                     </div>
                     <div class="news-card-info">
-                        <a href="business.html" class="news-cat">Fashion</a>
+                        <a href="{{route('news.category')}}" class="news-cat">Fashion</a>
                         <h3><a href="{{route('singlepost.news')}}">Beauty Queens Need Beauty Material & Products</a></h3>
                         <ul class="news-metainfo list-style">
                             <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 10, 2023</a></li>
-                            <li><i class="fi fi-rr-clock-three"></i>8 Min Read</li>
+                            <li><i class="fi fi-rr-eye"></i>8x dilihat</li>
                         </ul>
                     </div>
                 </div>
@@ -145,35 +156,35 @@
                         <h3><a href="{{route('singlepost.news')}}">Best VR Headsets For PC And Gaming This Year</a></h3>
                         <ul class="news-metainfo list-style">
                             <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 08, 2023</a></li>
-                            <li><i class="fi fi-rr-clock-three"></i>14 Min Read</li>
+                            <li><i class="fi fi-rr-eye"></i>14x dilihat</li>
                         </ul>
                     </div>
                 </div>
                 <div class="news-card-five">
                     <div class="news-card-img">
                         <img src="assets/img/news/news-59.webp" alt="Image" />
-                        <a href="business.html" class="news-cat">Fashion</a>
+                        <a href="{{route('news.category')}}" class="news-cat">Fashion</a>
                     </div>
                     <div class="news-card-info">
                         <h3><a href="{{route('singlepost.news')}}">Man Wearing Black Pullover Hoodie To Smoke Light In</a></h3>
                         <p>Lorem ipsum or lipsum as it is sometmes known is dum text used in laying print, graphic or web desi…</p>
                         <ul class="news-metainfo list-style">
                             <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 08, 2023</a></li>
-                            <li><i class="fi fi-rr-clock-three"></i>10 Min Read</li>
+                            <li><i class="fi fi-rr-eye"></i>10x dilihat</li>
                         </ul>
                     </div>
                 </div>
                 <div class="news-card-five">
                     <div class="news-card-img">
                         <img src="assets/img/news/news-60.webp" alt="Image" />
-                        <a href="business.html" class="news-cat">Travel</a>
+                        <a href="{{route('news.category')}}" class="news-cat">Travel</a>
                     </div>
                     <div class="news-card-info">
                         <h3><a href="{{route('singlepost.news')}}">Selective Focus Photography Of Orange Fox Life</a></h3>
                         <p>Lorem ipsum or lipsum as it is sometmes known is dum text used in laying print, graphic or web desi…</p>
                         <ul class="news-metainfo list-style">
                             <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 03, 2023</a></li>
-                            <li><i class="fi fi-rr-clock-three"></i>11 Min Read</li>
+                            <li><i class="fi fi-rr-eye"></i>11x dilihat</li>
                         </ul>
                     </div>
                 </div>
@@ -182,13 +193,13 @@
                 <div class="news-card-two">
                     <div class="news-card-img">
                         <img src="assets/img/news/news-2.webp" alt="Image" />
-                        <a href="business.html" class="news-cat">Politics</a>
+                        <a href="{{route('news.category')}}" class="news-cat">Politics</a>
                     </div>
                     <div class="news-card-info">
                         <h3><a href="{{route('singlepost.news')}}">Elijah James: The Nashville Photographer Shares Her Unique Journey</a></h3>
                         <ul class="news-metainfo list-style">
                             <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 03, 2023</a></li>
-                            <li><i class="fi fi-rr-clock-three"></i>12 Min Read</li>
+                            <li><i class="fi fi-rr-eye"></i>12x dilihat</li>
                         </ul>
                     </div>
                 </div>
@@ -197,11 +208,11 @@
                         <img src="assets/img/news/news-7.webp" alt="Image" />
                     </div>
                     <div class="news-card-info">
-                        <a href="business.html" class="news-cat">Travel</a>
+                        <a href="{{route('news.category')}}" class="news-cat">Travel</a>
                         <h3><a href="{{route('singlepost.news')}}">A Complimentary Day At Mandarin The Oriental</a></h3>
                         <ul class="news-metainfo list-style">
                             <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Mar 15, 2023</a></li>
-                            <li><i class="fi fi-rr-clock-three"></i>10 Min Read</li>
+                            <li><i class="fi fi-rr-eye"></i>10x dilihat</li>
                         </ul>
                     </div>
                 </div>
@@ -210,11 +221,11 @@
                         <img src="assets/img/news/news-6.webp" alt="Image" />
                     </div>
                     <div class="news-card-info">
-                        <a href="business.html" class="news-cat">Business</a>
+                        <a href="{{route('news.category')}}" class="news-cat">Business</a>
                         <h3><a href="{{route('singlepost.news')}}">First Prototype Flight Using Kinetic Launch System</a></h3>
                         <ul class="news-metainfo list-style">
                             <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 22, 2023</a></li>
-                            <li><i class="fi fi-rr-clock-three"></i>8 Min Read</li>
+                            <li><i class="fi fi-rr-eye"></i>8x dilihat</li>
                         </ul>
                     </div>
                 </div>
@@ -223,11 +234,11 @@
                         <img src="assets/img/news/news-8.webp" alt="Image" />
                     </div>
                     <div class="news-card-info">
-                        <a href="business.html" class="news-cat">Health</a>
+                        <a href="{{route('news.category')}}" class="news-cat">Health</a>
                         <h3><a href="{{route('singlepost.news')}}">Life Health Continues To Spread Rapidly, Are Many People</a></h3>
                         <ul class="news-metainfo list-style">
                             <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 15, 2023</a></li>
-                            <li><i class="fi fi-rr-clock-three"></i>10 Min Read</li>
+                            <li><i class="fi fi-rr-eye"></i>10x dilihat</li>
                         </ul>
                     </div>
                 </div>
@@ -250,7 +261,7 @@
                     <div class="news-card-five mb-3">
                         <div class="news-card-img">
                             <img src="assets/img/news/news-9.webp" alt="Image" />
-                            <a href="business.html" class="news-cat">Lifestyle</a>
+                            <a href="{{route('news.category')}}" class="news-cat">Lifestyle</a>
                         </div>
                         <div class="news-card-info">
                             <h3><a href="{{route('singlepost.news')}}">Good Day To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style</a></h3>
@@ -264,14 +275,14 @@
                                     <a href="author.html">James William</a>
                                 </li>
                                 <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Mar 03, 2023</a></li>
-                                <li><i class="fi fi-rr-clock-three"></i>15 Min Read</li>
+                                <li><i class="fi fi-rr-eye"></i>15x dilihat</li>
                             </ul>
                         </div>
                     </div>
                     <div class="news-card-five mb-3">
                         <div class="news-card-img">
                             <img src="assets/img/news/news-9.webp" alt="Image" />
-                            <a href="business.html" class="news-cat">Lifestyle</a>
+                            <a href="{{route('news.category')}}" class="news-cat">Lifestyle</a>
                         </div>
                         <div class="news-card-info">
                             <h3><a href="{{route('singlepost.news')}}">Good Day To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style</a></h3>
@@ -285,14 +296,14 @@
                                     <a href="author.html">James William</a>
                                 </li>
                                 <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Mar 03, 2023</a></li>
-                                <li><i class="fi fi-rr-clock-three"></i>15 Min Read</li>
+                                <li><i class="fi fi-rr-eye"></i>15x dilihat</li>
                             </ul>
                         </div>
                     </div>
                     <div class="news-card-five mb-3">
                         <div class="news-card-img">
                             <img src="assets/img/news/news-9.webp" alt="Image" />
-                            <a href="business.html" class="news-cat">Lifestyle</a>
+                            <a href="{{route('news.category')}}" class="news-cat">Lifestyle</a>
                         </div>
                         <div class="news-card-info">
                             <h3><a href="{{route('singlepost.news')}}">Good Day To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style</a></h3>
@@ -306,14 +317,14 @@
                                     <a href="author.html">James William</a>
                                 </li>
                                 <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Mar 03, 2023</a></li>
-                                <li><i class="fi fi-rr-clock-three"></i>15 Min Read</li>
+                                <li><i class="fi fi-rr-eye"></i>15x dilihat</li>
                             </ul>
                         </div>
                     </div>
                     <div class="news-card-five mb-3">
                         <div class="news-card-img">
                             <img src="assets/img/news/news-9.webp" alt="Image" />
-                            <a href="business.html" class="news-cat">Lifestyle</a>
+                            <a href="{{route('news.category')}}" class="news-cat">Lifestyle</a>
                         </div>
                         <div class="news-card-info">
                             <h3><a href="{{route('singlepost.news')}}">Good Day To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style</a></h3>
@@ -327,14 +338,14 @@
                                     <a href="author.html">James William</a>
                                 </li>
                                 <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Mar 03, 2023</a></li>
-                                <li><i class="fi fi-rr-clock-three"></i>15 Min Read</li>
+                                <li><i class="fi fi-rr-eye"></i>15x dilihat</li>
                             </ul>
                         </div>
                     </div>
                     <div class="news-card-five mb-3">
                         <div class="news-card-img">
                             <img src="assets/img/news/news-9.webp" alt="Image" />
-                            <a href="business.html" class="news-cat">Lifestyle</a>
+                            <a href="{{route('news.category')}}" class="news-cat">Lifestyle</a>
                         </div>
                         <div class="news-card-info">
                             <h3><a href="{{route('singlepost.news')}}">Good Day To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style</a></h3>
@@ -348,7 +359,7 @@
                                     <a href="author.html">James William</a>
                                 </li>
                                 <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Mar 03, 2023</a></li>
-                                <li><i class="fi fi-rr-clock-three"></i>15 Min Read</li>
+                                <li><i class="fi fi-rr-eye"></i>15x dilihat</li>
                             </ul>
                         </div>
                     </div>
@@ -360,7 +371,7 @@
                             <h2 class="section-title">Artikel Paling Populer</h2>
                         </div>
                         <div class="col-md-5 text-md-end">
-                            <a href="business.html" class="link-one">Lihat Semua<i class="flaticon-right-arrow"></i></a>
+                            <a href="{{route('news.category')}}" class="link-one">Lihat Semua<i class="flaticon-right-arrow"></i></a>
                         </div>
                     </div>
                     <div class="row gx-45">
@@ -371,35 +382,35 @@
                                     <h3><a href="{{route('singlepost.news')}}">Kyrgios And Djokovic Agree To Post-match Meal</a></h3>
                                     <ul class="news-metainfo list-style">
                                         <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 25, 2023</a></li>
-                                        <li><i class="fi fi-rr-clock-three"></i>15 Min Read</li>
+                                        <li><i class="fi fi-rr-eye"></i>15x dilihat</li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="news-card-five">
                                 <div class="news-card-img">
                                     <img src="assets/img/news/news-32.webp" alt="Image" />
-                                    <a href="business.html" class="news-cat">Sports</a>
+                                    <a href="{{route('news.category')}}" class="news-cat">Sports</a>
                                 </div>
                                 <div class="news-card-info">
                                     <h3><a href="{{route('singlepost.news')}}">Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange</a></h3>
                                     <p>Lorem ipsum or lipsum as it is sometmes known is dum text used in laying print, graphic or web desi…</p>
                                     <ul class="news-metainfo list-style">
                                         <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 03, 2023</a></li>
-                                        <li><i class="fi fi-rr-clock-three"></i>15 Min Read</li>
+                                        <li><i class="fi fi-rr-eye"></i>15x dilihat</li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="news-card-five">
                                 <div class="news-card-img">
                                     <img src="assets/img/news/news-33.webp" alt="Image" />
-                                    <a href="business.html" class="news-cat">Fashion</a>
+                                    <a href="{{route('news.category')}}" class="news-cat">Fashion</a>
                                 </div>
                                 <div class="news-card-info">
                                     <h3><a href="{{route('singlepost.news')}}">Selective Focus Photography Of Orange Fox Life</a></h3>
                                     <p>Lorem ipsum or lipsum as it is sometmes known is dum text used in laying print, graphic or web desi…</p>
                                     <ul class="news-metainfo list-style">
                                         <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 03, 2023</a></li>
-                                        <li><i class="fi fi-rr-clock-three"></i>15 Min Read</li>
+                                        <li><i class="fi fi-rr-eye"></i>15x dilihat</li>
                                     </ul>
                                 </div>
                             </div>
@@ -408,13 +419,13 @@
                             <div class="news-card-two">
                                 <div class="news-card-img">
                                     <img src="assets/img/news/news-34.webp" alt="Image" />
-                                    <a href="business.html" class="news-cat">Politics</a>
+                                    <a href="{{route('news.category')}}" class="news-cat">Politics</a>
                                 </div>
                                 <div class="news-card-info">
                                     <h3><a href="{{route('singlepost.news')}}">Beyond Good & Evil 2 Has Been In Development Longer Than Literally Any Game, Ever</a></h3>
                                     <ul class="news-metainfo list-style">
                                         <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 15, 2023</a></li>
-                                        <li><i class="fi fi-rr-clock-three"></i>15 Min Read</li>
+                                        <li><i class="fi fi-rr-eye"></i>15x dilihat</li>
                                     </ul>
                                 </div>
                             </div>
@@ -423,11 +434,11 @@
                                     <img src="assets/img/news/news-35.webp" alt="Image" />
                                 </div>
                                 <div class="news-card-info">
-                                    <a href="business.html" class="news-cat">Travel</a>
+                                    <a href="{{route('news.category')}}" class="news-cat">Travel</a>
                                     <h3><a href="{{route('singlepost.news')}}">World Trending Best 10 Website Travel Tips For Runners Groups Of</a></h3>
                                     <ul class="news-metainfo list-style">
                                         <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 22, 2023</a></li>
-                                        <li><i class="fi fi-rr-clock-three"></i>15 Min Read</li>
+                                        <li><i class="fi fi-rr-eye"></i>15x dilihat</li>
                                     </ul>
                                 </div>
                             </div>
@@ -436,11 +447,11 @@
                                     <img src="assets/img/news/news-36.webp" alt="Image" />
                                 </div>
                                 <div class="news-card-info">
-                                    <a href="business.html" class="news-cat">Business</a>
+                                    <a href="{{route('news.category')}}" class="news-cat">Business</a>
                                     <h3><a href="{{route('singlepost.news')}}">How To Find The Right Template For Your Specific Product</a></h3>
                                     <ul class="news-metainfo list-style">
                                         <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 15, 2023</a></li>
-                                        <li><i class="fi fi-rr-clock-three"></i>15 Min Read</li>
+                                        <li><i class="fi fi-rr-eye"></i>15x dilihat</li>
                                     </ul>
                                 </div>
                             </div>
@@ -449,11 +460,11 @@
                                     <img src="assets/img/news/news-37.webp" alt="Image" />
                                 </div>
                                 <div class="news-card-info">
-                                    <a href="business.html" class="news-cat">Health</a>
+                                    <a href="{{route('news.category')}}" class="news-cat">Health</a>
                                     <h3><a href="{{route('singlepost.news')}}">Life Health Continues To Spread Rapidly, Are Many People</a></h3>
                                     <ul class="news-metainfo list-style">
                                         <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 16, 2023</a></li>
-                                        <li><i class="fi fi-rr-clock-three"></i>15 Min Read</li>
+                                        <li><i class="fi fi-rr-eye"></i>15x dilihat</li>
                                     </ul>
                                 </div>
                             </div>
@@ -468,19 +479,19 @@
                     <div class="sidebar-widget">
                         <h3 class="sidebar-widget-title">Kategori</h3>
                         <ul class="category-widget list-style">
-                            <li><a href="business.html"><img src="assets/img/icons/arrow-right.svg"
+                            <li><a href="{{route('news.category')}}"><img src="assets/img/icons/arrow-right.svg"
                                         alt="Image">Kategori <span>(6)</span></a></li>
-                            <li><a href="business.html"><img src="assets/img/icons/arrow-right.svg"
+                            <li><a href="{{route('news.category')}}"><img src="assets/img/icons/arrow-right.svg"
                                         alt="Image">Kategori<span>(3)</span></a></li>
-                            <li><a href="business.html"><img src="assets/img/icons/arrow-right.svg"
+                            <li><a href="{{route('news.category')}}"><img src="assets/img/icons/arrow-right.svg"
                                         alt="Image">Kategori<span>(2)</span></a></li>
-                            <li><a href="business.html"><img src="assets/img/icons/arrow-right.svg"
+                            <li><a href="{{route('news.category')}}"><img src="assets/img/icons/arrow-right.svg"
                                         alt="Image">Kategori<span>(8)</span></a></li>
-                            <li><a href="business.html"><img src="assets/img/icons/arrow-right.svg"
+                            <li><a href="{{route('news.category')}}"><img src="assets/img/icons/arrow-right.svg"
                                         alt="Image">Kategori<span>(6)</span></a></li>
-                            <li><a href="business.html"><img src="assets/img/icons/arrow-right.svg"
+                            <li><a href="{{route('news.category')}}"><img src="assets/img/icons/arrow-right.svg"
                                         alt="Image">Kategori<span>(2)</span></a></li>
-                            <li><a href="business.html"><img src="assets/img/icons/arrow-right.svg"
+                            <li><a href="{{route('news.category')}}"><img src="assets/img/icons/arrow-right.svg"
                                         alt="Image">Kategori<span>(4)</span></a></li>
                         </ul>
                     </div>
@@ -538,7 +549,7 @@
                     <div class="editor-box">
                         <div class="row align-items-end mb-40">
                             <div class="col-xl-6 col-md-6">
-                                <h2 class="section-title">Pilihan Editor<img class="section-title-img" src="assets/img/section-img.webp" alt="Image" /></h2>
+                                <h2 class="section-title">Pilihan Editor</h2>
                             </div>
                             <div class="col-xl-6 col-md-6">
                                 <ul class="nav nav-tabs news-tablist d-flex justify-content-end" role="tablist">
@@ -561,7 +572,7 @@
                                         <div class="news-card-six">
                                             <div class="news-card-img">
                                                 <img src="assets/img/news/news-38.webp" alt="Image" />
-                                                <a href="business.html" class="news-cat">Politics</a>
+                                                <a href="{{route('news.category')}}" class="news-cat">Politics</a>
                                             </div>
                                             <div class="news-card-info">
                                                 <div class="news-author">
@@ -574,7 +585,7 @@
                                                 <ul class="news-metainfo list-style">
                                                     <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 03, 2023</a></li>
                                                     <li><i class="fi fi-rr-comment"></i>03</li>
-                                                    <li><i class="fi fi-rr-clock-three"></i>15 Min Read</li>
+                                                    <li><i class="fi fi-rr-eye"></i>15x dilihat</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -583,7 +594,7 @@
                                         <div class="news-card-six">
                                             <div class="news-card-img">
                                                 <img src="assets/img/news/news-39.webp" alt="Image" />
-                                                <a href="business.html" class="news-cat">Politics</a>
+                                                <a href="{{route('news.category')}}" class="news-cat">Politics</a>
                                             </div>
                                             <div class="news-card-info">
                                                 <div class="news-author">
@@ -596,7 +607,7 @@
                                                 <ul class="news-metainfo list-style">
                                                     <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Mar 22, 2023</a></li>
                                                     <li><i class="fi fi-rr-comment"></i>03</li>
-                                                    <li><i class="fi fi-rr-clock-three"></i>10 Min Read</li>
+                                                    <li><i class="fi fi-rr-eye"></i>10x dilihat</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -605,7 +616,7 @@
                                         <div class="news-card-six">
                                             <div class="news-card-img">
                                                 <img src="assets/img/news/news-40.webp" alt="Image" />
-                                                <a href="business.html" class="news-cat">Politics</a>
+                                                <a href="{{route('news.category')}}" class="news-cat">Politics</a>
                                             </div>
                                             <div class="news-card-info">
                                                 <div class="news-author">
@@ -618,7 +629,7 @@
                                                 <ul class="news-metainfo list-style">
                                                     <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 15, 2023</a></li>
                                                     <li><i class="fi fi-rr-comment"></i>03</li>
-                                                    <li><i class="fi fi-rr-clock-three"></i>15 Min Read</li>
+                                                    <li><i class="fi fi-rr-eye"></i>15x dilihat</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -627,7 +638,7 @@
                                         <div class="news-card-six">
                                             <div class="news-card-img">
                                                 <img src="assets/img/news/news-41.webp" alt="Image" />
-                                                <a href="business.html" class="news-cat">Politics</a>
+                                                <a href="{{route('news.category')}}" class="news-cat">Politics</a>
                                             </div>
                                             <div class="news-card-info">
                                                 <div class="news-author">
@@ -640,7 +651,7 @@
                                                 <ul class="news-metainfo list-style">
                                                     <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 14, 2023</a></li>
                                                     <li><i class="fi fi-rr-comment"></i>03</li>
-                                                    <li><i class="fi fi-rr-clock-three"></i>15 Min Read</li>
+                                                    <li><i class="fi fi-rr-eye"></i>15x dilihat</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -653,7 +664,7 @@
                                         <div class="news-card-six">
                                             <div class="news-card-img">
                                                 <img src="assets/img/news/news-42.webp" alt="Image" />
-                                                <a href="business.html" class="news-cat">Sports</a>
+                                                <a href="{{route('news.category')}}" class="news-cat">Sports</a>
                                             </div>
                                             <div class="news-card-info">
                                                 <div class="news-author">
@@ -666,7 +677,7 @@
                                                 <ul class="news-metainfo list-style">
                                                     <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 07, 2023</a></li>
                                                     <li><i class="fi fi-rr-comment"></i>03</li>
-                                                    <li><i class="fi fi-rr-clock-three"></i>12 Min Read</li>
+                                                    <li><i class="fi fi-rr-eye"></i>12x dilihat</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -675,7 +686,7 @@
                                         <div class="news-card-six">
                                             <div class="news-card-img">
                                                 <img src="assets/img/news/news-43.webp" alt="Image" />
-                                                <a href="business.html" class="news-cat">Sports</a>
+                                                <a href="{{route('news.category')}}" class="news-cat">Sports</a>
                                             </div>
                                             <div class="news-card-info">
                                                 <div class="news-author">
@@ -688,7 +699,7 @@
                                                 <ul class="news-metainfo list-style">
                                                     <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 03, 2023</a></li>
                                                     <li><i class="fi fi-rr-comment"></i>03</li>
-                                                    <li><i class="fi fi-rr-clock-three"></i>15 Min Read</li>
+                                                    <li><i class="fi fi-rr-eye"></i>15x dilihat</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -697,7 +708,7 @@
                                         <div class="news-card-six">
                                             <div class="news-card-img">
                                                 <img src="assets/img/news/news-44.webp" alt="Image" />
-                                                <a href="business.html" class="news-cat">Sports</a>
+                                                <a href="{{route('news.category')}}" class="news-cat">Sports</a>
                                             </div>
                                             <div class="news-card-info">
                                                 <div class="news-author">
@@ -710,7 +721,7 @@
                                                 <ul class="news-metainfo list-style">
                                                     <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 03, 2023</a></li>
                                                     <li><i class="fi fi-rr-comment"></i>03</li>
-                                                    <li><i class="fi fi-rr-clock-three"></i>12 Min Read</li>
+                                                    <li><i class="fi fi-rr-eye"></i>12x dilihat</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -719,7 +730,7 @@
                                         <div class="news-card-six">
                                             <div class="news-card-img">
                                                 <img src="assets/img/news/news-45.webp" alt="Image" />
-                                                <a href="business.html" class="news-cat">Sports</a>
+                                                <a href="{{route('news.category')}}" class="news-cat">Sports</a>
                                             </div>
                                             <div class="news-card-info">
                                                 <div class="news-author">
@@ -732,7 +743,7 @@
                                                 <ul class="news-metainfo list-style">
                                                     <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 03, 2023</a></li>
                                                     <li><i class="fi fi-rr-comment"></i>03</li>
-                                                    <li><i class="fi fi-rr-clock-three"></i>14 Min Read</li>
+                                                    <li><i class="fi fi-rr-eye"></i>14x dilihat</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -745,7 +756,7 @@
                                         <div class="news-card-six">
                                             <div class="news-card-img">
                                                 <img src="assets/img/news/news-46.webp" alt="Image" />
-                                                <a href="business.html" class="news-cat">Business</a>
+                                                <a href="{{route('news.category')}}" class="news-cat">Business</a>
                                             </div>
                                             <div class="news-card-info">
                                                 <div class="news-author">
@@ -758,7 +769,7 @@
                                                 <ul class="news-metainfo list-style">
                                                     <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 15, 2023</a></li>
                                                     <li><i class="fi fi-rr-comment"></i>03</li>
-                                                    <li><i class="fi fi-rr-clock-three"></i>15 Min Read</li>
+                                                    <li><i class="fi fi-rr-eye"></i>15x dilihat</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -767,7 +778,7 @@
                                         <div class="news-card-six">
                                             <div class="news-card-img">
                                                 <img src="assets/img/news/news-47.webp" alt="Image" />
-                                                <a href="business.html" class="news-cat">Business</a>
+                                                <a href="{{route('news.category')}}" class="news-cat">Business</a>
                                             </div>
                                             <div class="news-card-info">
                                                 <div class="news-author">
@@ -780,7 +791,7 @@
                                                 <ul class="news-metainfo list-style">
                                                     <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Mar 03, 2023</a></li>
                                                     <li><i class="fi fi-rr-comment"></i>03</li>
-                                                    <li><i class="fi fi-rr-clock-three"></i>10 Min Read</li>
+                                                    <li><i class="fi fi-rr-eye"></i>10x dilihat</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -789,7 +800,7 @@
                                         <div class="news-card-six">
                                             <div class="news-card-img">
                                                 <img src="assets/img/news/news-48.webp" alt="Image" />
-                                                <a href="business.html" class="news-cat">Business</a>
+                                                <a href="{{route('news.category')}}" class="news-cat">Business</a>
                                             </div>
                                             <div class="news-card-info">
                                                 <div class="news-author">
@@ -802,7 +813,7 @@
                                                 <ul class="news-metainfo list-style">
                                                     <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 22, 2023</a></li>
                                                     <li><i class="fi fi-rr-comment"></i>03</li>
-                                                    <li><i class="fi fi-rr-clock-three"></i>15 Min Read</li>
+                                                    <li><i class="fi fi-rr-eye"></i>15x dilihat</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -811,7 +822,7 @@
                                         <div class="news-card-six">
                                             <div class="news-card-img">
                                                 <img src="assets/img/news/news-49.webp" alt="Image" />
-                                                <a href="business.html" class="news-cat">Business</a>
+                                                <a href="{{route('news.category')}}" class="news-cat">Business</a>
                                             </div>
                                             <div class="news-card-info">
                                                 <div class="news-author">
@@ -824,7 +835,7 @@
                                                 <ul class="news-metainfo list-style">
                                                     <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 05, 2023</a></li>
                                                     <li><i class="fi fi-rr-comment"></i>03</li>
-                                                    <li><i class="fi fi-rr-clock-three"></i>15 Min Read</li>
+                                                    <li><i class="fi fi-rr-eye"></i>15x dilihat</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -836,81 +847,50 @@
                 </div>
             </div>
             <div class="">
-                <a href="business.html" class="btn-three d-block w-100 mt-20">More Posts<i class="flaticon-arrow-right"></i></a>
+                <a href="{{route('news.category')}}" class="btn-three d-block w-100 mt-20">Lihat Lainnya<i class="flaticon-arrow-right "></i></a>
 
             </div>
         </div>
     </div>
 
-    <div class="container-fluid pb-50">
-        <div class="instagram-slider swiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <a class="instagram-slide" href="https://www.instagram.com/" target="_blank">
-                        <img src="assets/img/instagram/insta-1.webp" alt="Image" />
-                        <span>@Baxo on Instagram<i class="flaticon-right-arrow"></i></span>
-                    </a>
-                </div>
-                <div class="swiper-slide">
-                    <a class="instagram-slide" href="https://www.instagram.com/" target="_blank">
-                        <img src="assets/img/instagram/insta-2.webp" alt="Image" />
-                        <span>@Baxo on Instagram<i class="flaticon-right-arrow"></i></span>
-                    </a>
-                </div>
-                <div class="swiper-slide">
-                    <a class="instagram-slide" href="https://www.instagram.com/" target="_blank">
-                        <img src="assets/img/instagram/insta-3.webp" alt="Image" />
-                        <span>@Baxo on Instagram<i class="flaticon-right-arrow"></i></span>
-                    </a>
-                </div>
-                <div class="swiper-slide">
-                    <a class="instagram-slide" href="https://www.instagram.com/" target="_blank">
-                        <img src="assets/img/instagram/insta-4.webp" alt="Image" />
-                        <span>@Baxo on Instagram<i class="flaticon-right-arrow"></i></span>
-                    </a>
-                </div>
-                <div class="swiper-slide">
-                    <a class="instagram-slide" href="https://www.instagram.com/" target="_blank">
-                        <img src="assets/img/instagram/insta-5.webp" alt="Image" />
-                        <span>@Baxo on Instagram<i class="flaticon-right-arrow"></i></span>
-                    </a>
-                </div>
-                <div class="swiper-slide">
-                    <a class="instagram-slide" href="https://www.instagram.com/" target="_blank">
-                        <img src="assets/img/instagram/insta-6.webp" alt="Image" />
-                        <span>@Baxo on Instagram<i class="flaticon-right-arrow-1"></i></span>
-                    </a>
+    <div class="container-fluid pb-75 pt-100">
+        <div>
+            <h2 class="section-title">Pilihan Editor</h2>
+        </div>
+        <div class="row gx-5 mt-5">
+            <div class="col-xl-4">
+                <div class="news-card-four">
+                    <img src="{{asset('assets/img/news/news-32.webp')}}" alt="Image" />
+                    <div class="news-card-info">
+                        <h3><a href="{{route('singlepost.news')}}">Best VR Headsets For PC And Gaming This Year</a></h3>
+                        <ul class="news-metainfo list-style">
+                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 08, 2023</a></li>
+                            <li><i class="fi fi-rr-eye"></i>14x dilihat</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <div class="container-fluid">
-        <div class="footer-wrap">
-            <div class="row align-items-center">
-                <div class="col-lg-4">
-                    <p class="copyright-text">© <span>Baxo</span> is proudly owned by <a href="https://hibootstrap.com/">HiBootstrap</a></p>
+            <div class="col-xl-4">
+                <div class="news-card-four">
+                    <img src="{{asset('assets/img/news/news-32.webp')}}" alt="Image" />
+                    <div class="news-card-info">
+                        <h3><a href="{{route('singlepost.news')}}">Best VR Headsets For PC And Gaming This Year</a></h3>
+                        <ul class="news-metainfo list-style">
+                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 08, 2023</a></li>
+                            <li><i class="fi fi-rr-eye"></i>14x dilihat</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="col-lg-4 text-center">
-                    <ul class="social-profile list-style">
-                        <li>
-                            <a href="https://www.fb.com/" target="_blank"><i class="flaticon-facebook-1"></i></a>
-                        </li>
-                        <li>
-                            <a href="https://www.twitter.com/" target="_blank"><i class="flaticon-twitter-1"></i></a>
-                        </li>
-                        <li>
-                            <a href="https://www.instagram.com/" target="_blank"><i class="flaticon-instagram-2"></i></a>
-                        </li>
-                        <li>
-                            <a href="https://www.linkedin.com/" target="_blank"><i class="flaticon-linkedin"></i></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-4">
-                    <div class="footer-right">
-                        <button class="subscribe-btn" data-bs-toggle="modal" data-bs-target="#newsletter-popup">Become a subscriber<i class="flaticon-right-arrow"></i></button>
-                        <p>Get all the latest posts delivered straight to your inbox.</p>
+            </div>
+            <div class="col-xl-4">
+                <div class="news-card-four">
+                    <img src="{{asset('assets/img/news/news-32.webp')}}" alt="Image" />
+                    <div class="news-card-info">
+                        <h3><a href="{{route('singlepost.news')}}">Best VR Headsets For PC And Gaming This Year</a></h3>
+                        <ul class="news-metainfo list-style">
+                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 08, 2023</a></li>
+                            <li><i class="fi fi-rr-eye"></i>14x dilihat</li>
+                        </ul>
                     </div>
                 </div>
             </div>
