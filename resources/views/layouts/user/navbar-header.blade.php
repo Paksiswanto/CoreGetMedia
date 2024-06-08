@@ -16,7 +16,9 @@
             --bs-bg-opacity: 1;
             background-color: rgba(var(--bs-danger-rgb), var(--bs-bg-opacity)) !important;
         }
-
+        .btn-two {
+            background-color: #175A95;
+        }
         .navbar-area .navbar .navbar-nav .nav-item .dropdown-menu {
             width: auto;
         }
@@ -60,11 +62,11 @@
             <a class="sidebar-toggler md-none" data-bs-toggle="offcanvas" href="#navbarOffcanvas" role="button" aria-controls="navbarOffcanvas">
                 <img src="{{asset('assets/img/icons/menubar-white.svg')}}" alt="Image" />
             </a>
-            <a class="navbar-brand d-lg-none" href="index.html">
+            <a class="navbar-brand d-lg-none" href="/">
                 <img class="logo-light" src="{{asset('assets/img/logo/get-media-light.svg')}}" alt="logo" />
                 <img class="logo-dark" src="{{asset('assets/img/logo/get-media-light.svg')}}" alt="logo" />
             </a>
-            <button type="button" class="search-btn d-lg-none" data-bs-toggle="modal" data-bs-target="#searchModal">
+            <button type="button" class="search-btn d-lg-none" data-bs-toggle="modal" data-bs-target="#searchModal" style="margin-top: 12px;">
                 <i class="flaticon-loupe"></i>
             </button>
             <a class="navbar-toggler" data-bs-toggle="offcanvas" href="#navbarOffcanvas" role="button" aria-controls="navbarOffcanvas">
@@ -161,7 +163,7 @@
                         </button>
                     </div>
                     <div class="option-item">
-                        <a href="{{route('login')}}" class="btn-two">Sign In</a>
+                        <a href="{{route('login')}}" class="btn-two">Masuk</a>
                     </div>
                 </div>
             </div>

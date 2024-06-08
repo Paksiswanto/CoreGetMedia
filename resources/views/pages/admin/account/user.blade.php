@@ -74,11 +74,11 @@
         <table class="table border text-nowrap customize-table mb-0 align-middle">
             <thead>
                 <tr>
-                    <th style="background-color: #D9D9D9;  border-radius: 5px 0 0 5px;">No</th>
+                    <th style="background-color: #D9D9D9;">No</th>
                     <th style="background-color: #D9D9D9;">Nama</th>
                     <th style="background-color: #D9D9D9;">Email</th>
                     <th style="background-color: #D9D9D9;">Nomer Telepon</th>
-                    <th style="background-color: #D9D9D9;  border-radius: 5px 0 0 5px;">Aksi</th>
+                    <th style="background-color: #D9D9D9;">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -97,7 +97,7 @@
                 </tr>
 
                 <tr>
-                    <td>1</td>
+                    <td>2</td>
                     <td>
                         <img src="{{asset('admin/dist/images/profile/user-5.jpg')}}" class="rounded-circle me-2 user-profile" style="object-fit: cover" width="35" height="35" alt="" />
                     </td>

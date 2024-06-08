@@ -155,7 +155,7 @@
                         <h5>Karin</h5>
                         <p class="fs-5">karin@gmail.com</p>
                         <div class="">
-                            <button class="btn btn-light-danger px-4 text-danger">User</button>
+                            <button class="btn btn-light-primary px-4 text-primary">Admin</button>
                         </div>
                     </div>
                 </div>

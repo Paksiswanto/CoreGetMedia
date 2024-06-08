@@ -2372,7 +2372,8 @@ select {
   margin-left: 25px;
 }
 .news-card-three .news-card-info .news-cat {
-  color: var(--secondaryColor);
+  /* color: var(--secondaryColor); */
+  color: #175A95;
   display: block;
 }
 .news-card-three .news-card-info h3 {
