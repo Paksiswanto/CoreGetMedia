@@ -8,6 +8,25 @@
                 margin-top: 12px;
             }
         }
+        .tag-list li a:hover {
+            background-color: #175A95;
+            color: var(--whiteColor);
+        }
+        .tag-list li a {
+            color: var(--optionalColor);
+            background-color: var(--whiteColor);
+            border-radius: 5px;
+            padding: 7px 15px 3px 17px;
+            font-size: 14px;
+            line-height: 30px;
+            display: inline-block;
+            border: 1px solid #eee;
+        }
+        .theme-dark .tag-list li a:hover {
+            background-color: #175A95;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--whiteColor);
+        }
     </style>
 @endsection
 
@@ -29,7 +48,7 @@
                     <div class="">
                         <div class="news-card-four" style="height: 550px;">
                             <div class="news-card-img">
-                                <a href="#"> <img src="assets/img/news/video/news-1.webp" alt="Image" width="100%" style="object-fit: cover" height="450" /></a>
+                                <a href="#"> <img src="{{asset('assets/img/news/news-10.webp')}}" alt="Image" width="100%" style="object-fit: cover" height="450" /></a>
                             </div>
 
                             <div class="news-card-info">
@@ -62,7 +81,79 @@
 
                         <div class="news-card-five">
                             <div class="news-card-img">
-                                <a href="#"><img src="assets/img/news/news-32.webp" alt="Image" height="140" width="100%" /></a>
+                                <a href="#"><img src="{{asset('assets/img/news/news-1.webp')}}" alt="Image" height="140" width="100%" /></a>
+                                <a data-toggle="tooltip" data-placement="top" title="Sports"
+                                    href="#" class="news-cat">Sports</a>
+                            </div>
+                            <div class="news-card-info">
+                                <h3><a data-toggle="tooltip" data-placement="top" title="Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange"
+                                        href="#">Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange
+                                    </a>
+                                </h3>
+                                <p>Lorem ipsum or lipsum as it is sometmes known is dum text used in laying print, graphic or web desi…</p>
+                                <ul class="news-metainfo list-style">
+                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 03, 2023</a></li>
+                                    <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">10</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="news-card-five">
+                            <div class="news-card-img">
+                                <a href="#"><img src="{{asset('assets/img/news/news-1.webp')}}" alt="Image" height="140" width="100%" /></a>
+                                <a data-toggle="tooltip" data-placement="top" title="Sports"
+                                    href="#" class="news-cat">Sports</a>
+                            </div>
+                            <div class="news-card-info">
+                                <h3><a data-toggle="tooltip" data-placement="top" title="Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange"
+                                        href="#">Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange
+                                    </a>
+                                </h3>
+                                <p>Lorem ipsum or lipsum as it is sometmes known is dum text used in laying print, graphic or web desi…</p>
+                                <ul class="news-metainfo list-style">
+                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 03, 2023</a></li>
+                                    <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">10</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="news-card-five">
+                            <div class="news-card-img">
+                                <a href="#"><img src="{{asset('assets/img/news/news-1.webp')}}" alt="Image" height="140" width="100%" /></a>
+                                <a data-toggle="tooltip" data-placement="top" title="Sports"
+                                    href="#" class="news-cat">Sports</a>
+                            </div>
+                            <div class="news-card-info">
+                                <h3><a data-toggle="tooltip" data-placement="top" title="Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange"
+                                        href="#">Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange
+                                    </a>
+                                </h3>
+                                <p>Lorem ipsum or lipsum as it is sometmes known is dum text used in laying print, graphic or web desi…</p>
+                                <ul class="news-metainfo list-style">
+                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 03, 2023</a></li>
+                                    <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">10</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="news-card-five">
+                            <div class="news-card-img">
+                                <a href="#"><img src="{{asset('assets/img/news/news-1.webp')}}" alt="Image" height="140" width="100%" /></a>
+                                <a data-toggle="tooltip" data-placement="top" title="Sports"
+                                    href="#" class="news-cat">Sports</a>
+                            </div>
+                            <div class="news-card-info">
+                                <h3><a data-toggle="tooltip" data-placement="top" title="Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange"
+                                        href="#">Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange
+                                    </a>
+                                </h3>
+                                <p>Lorem ipsum or lipsum as it is sometmes known is dum text used in laying print, graphic or web desi…</p>
+                                <ul class="news-metainfo list-style">
+                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 03, 2023</a></li>
+                                    <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">10</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="news-card-five">
+                            <div class="news-card-img">
+                                <a href="#"><img src="{{asset('assets/img/news/news-1.webp')}}" alt="Image" height="140" width="100%" /></a>
                                 <a data-toggle="tooltip" data-placement="top" title="Sports"
                                     href="#" class="news-cat">Sports</a>
                             </div>
@@ -99,7 +190,79 @@
 
                         <div class="news-card-five">
                             <div class="news-card-img">
-                                <a href="#"><img src="assets/img/news/news-32.webp" alt="Image" height="140" width="100%" /></a>
+                                <a href="#"><img src="{{asset('assets/img/news/news-38.webp')}}" alt="Image" height="140" width="100%" /></a>
+                                <a data-toggle="tooltip" data-placement="top" title="Sports"
+                                    href="#" class="news-cat">Sports</a>
+                            </div>
+                            <div class="news-card-info">
+                                <h3><a data-toggle="tooltip" data-placement="top" title="Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange"
+                                        href="#">Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange
+                                    </a>
+                                </h3>
+                                <p>Lorem ipsum or lipsum as it is sometmes known is dum text used in laying print, graphic or web desi…</p>
+                                <ul class="news-metainfo list-style">
+                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 03, 2023</a></li>
+                                    <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">10</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="news-card-five">
+                            <div class="news-card-img">
+                                <a href="#"><img src="{{asset('assets/img/news/news-38.webp')}}" alt="Image" height="140" width="100%" /></a>
+                                <a data-toggle="tooltip" data-placement="top" title="Sports"
+                                    href="#" class="news-cat">Sports</a>
+                            </div>
+                            <div class="news-card-info">
+                                <h3><a data-toggle="tooltip" data-placement="top" title="Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange"
+                                        href="#">Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange
+                                    </a>
+                                </h3>
+                                <p>Lorem ipsum or lipsum as it is sometmes known is dum text used in laying print, graphic or web desi…</p>
+                                <ul class="news-metainfo list-style">
+                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 03, 2023</a></li>
+                                    <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">10</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="news-card-five">
+                            <div class="news-card-img">
+                                <a href="#"><img src="{{asset('assets/img/news/news-38.webp')}}" alt="Image" height="140" width="100%" /></a>
+                                <a data-toggle="tooltip" data-placement="top" title="Sports"
+                                    href="#" class="news-cat">Sports</a>
+                            </div>
+                            <div class="news-card-info">
+                                <h3><a data-toggle="tooltip" data-placement="top" title="Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange"
+                                        href="#">Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange
+                                    </a>
+                                </h3>
+                                <p>Lorem ipsum or lipsum as it is sometmes known is dum text used in laying print, graphic or web desi…</p>
+                                <ul class="news-metainfo list-style">
+                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 03, 2023</a></li>
+                                    <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">10</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="news-card-five">
+                            <div class="news-card-img">
+                                <a href="#"><img src="{{asset('assets/img/news/news-38.webp')}}" alt="Image" height="140" width="100%" /></a>
+                                <a data-toggle="tooltip" data-placement="top" title="Sports"
+                                    href="#" class="news-cat">Sports</a>
+                            </div>
+                            <div class="news-card-info">
+                                <h3><a data-toggle="tooltip" data-placement="top" title="Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange"
+                                        href="#">Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange
+                                    </a>
+                                </h3>
+                                <p>Lorem ipsum or lipsum as it is sometmes known is dum text used in laying print, graphic or web desi…</p>
+                                <ul class="news-metainfo list-style">
+                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 03, 2023</a></li>
+                                    <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">10</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="news-card-five">
+                            <div class="news-card-img">
+                                <a href="#"><img src="{{asset('assets/img/news/news-38.webp')}}" alt="Image" height="140" width="100%" /></a>
                                 <a data-toggle="tooltip" data-placement="top" title="Sports"
                                     href="#" class="news-cat">Sports</a>
                             </div>
@@ -122,7 +285,7 @@
                     <div class="">
                         <div class="sidebar">
                             <div class="sidebar-widget">
-                                <h3 class="sidebar-widget-title">Kategori Popular</h3>
+                                <h3 class="sidebar-widget-title">Kategori Populer</h3>
                                 <ul class="category-widget list-style">
                                     <li>
                                         <a data-toggle="tooltip" data-placement="top" title="Fashion"
@@ -165,7 +328,43 @@
                                 </h3>
                                 <div class="news-card-three">
                                     <div class="news-card-img" style="height: 100px; width: 100px">
-                                        <img src="assets/img/news/news-3.webp" alt="Image" />
+                                        <img src="{{asset('assets/img/news/news-3.webp')}}" alt="Image" />
+                                    </div>
+                                    <div class="news-card-info">
+                                        <h3><a href="business-details.html">Man Wearing Black Pullover Hoodie To Smoke Light In</a></h3>
+                                        <ul class="news-metainfo list-style d-flex">
+                                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 15, 2023</a></li>
+                                            <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">10</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="news-card-three">
+                                    <div class="news-card-img" style="height: 100px; width: 100px">
+                                        <img src="{{asset('assets/img/news/news-3.webp')}}" alt="Image" />
+                                    </div>
+                                    <div class="news-card-info">
+                                        <h3><a href="business-details.html">Man Wearing Black Pullover Hoodie To Smoke Light In</a></h3>
+                                        <ul class="news-metainfo list-style d-flex">
+                                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 15, 2023</a></li>
+                                            <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">10</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="news-card-three">
+                                    <div class="news-card-img" style="height: 100px; width: 100px">
+                                        <img src="{{asset('assets/img/news/news-3.webp')}}" alt="Image" />
+                                    </div>
+                                    <div class="news-card-info">
+                                        <h3><a href="business-details.html">Man Wearing Black Pullover Hoodie To Smoke Light In</a></h3>
+                                        <ul class="news-metainfo list-style d-flex">
+                                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 15, 2023</a></li>
+                                            <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">10</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="news-card-three">
+                                    <div class="news-card-img" style="height: 100px; width: 100px">
+                                        <img src="{{asset('assets/img/news/news-3.webp')}}" alt="Image" />
                                     </div>
                                     <div class="news-card-info">
                                         <h3><a href="business-details.html">Man Wearing Black Pullover Hoodie To Smoke Light In</a></h3>
@@ -177,8 +376,8 @@
                                 </div>
                             </div>
 
-                            <div class="sidebar-widget">
-                                <h3 class="sidebar-widget-title">Popular Tags</h3>
+                            <div class="sidebar-widget bg-transparent shadow-sm">
+                                <h3 class="sidebar-widget-title">Tag Populer</h3>
                                 <ul class="tag-list list-style">
                                 <li><a href="news-by-tags.html">BUSINESS</a></li>
                                 <li><a href="news-by-tags.html">FOOD</a></li>
