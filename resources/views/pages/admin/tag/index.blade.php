@@ -133,5 +133,4 @@
         </div>
     </div>
 
-    <x-delete-modal-component />
 @endsection

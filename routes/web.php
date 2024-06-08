@@ -27,12 +27,12 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/category', function(){
-    return view('pages.users.category.index');
-});
+    return view('pages.user.category.index');
+})->name('news.category');
 
 Route::get('subcategory', function () {
-    return view('pages.users.subcategory.index');
-});
+    return view('pages.user.subcategory.index');
+})->name('news.subcategory');
 
 Route::get('/dashboard', function () {
     return view('pages.admin.home.index');
@@ -49,3 +49,15 @@ Route::get('subcategory-list', [SubCategoryController::class, 'index'])->name('s
 Route::get('voucher-list', function(){
     return view('pages.admin.voucher.index');
 })->name('voucher.list.admin');
+
+Route::get('admin-account-list', function(){
+    return view('pages.admin.account.admin');
+})->name('admin-account.list.admin');
+
+Route::get('user-account-list', function(){
+    return view('pages.admin.account.user');
+})->name('user-account.list.admin');
+
+Route::get('singlepost/news', function(){
+    return view('pages.user.singlepost.index');
+})->name('singlepost.news');
