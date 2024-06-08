@@ -855,7 +855,7 @@
 
     <div class="container-fluid pb-75 pt-100">
         <div>
-            <h2 class="section-title">Pilihan Editor</h2>
+            <h2 class="section-title">Artikel Premium</h2>
         </div>
         <div class="row gx-5 mt-5">
             <div class="col-xl-4">

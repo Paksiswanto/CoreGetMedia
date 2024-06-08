@@ -72,7 +72,7 @@ Route::get('singlepost/news', function(){
 
 Route::get('advertisement-list', function(){
     return view('pages.admin.advertisement.advertisement-list');
-})->name(('advertisement-list.admin'))
+})->name(('advertisement-list.admin'));
 
 Route::get('confirm-advertisement', function(){
     return view('pages.admin.advertisement.confirm-advertisement');
@@ -94,4 +94,4 @@ Route::get('news/subcategory', function () {
 
 Route::get('all-news', function(){
     return view('pages.user.all-news.index');
-})->name(news.all-news);
+})->name('news.all-news');

@@ -640,10 +640,10 @@ select {
   color: var(--secondaryColor);
 }
 .btn-three:before {
-  background: var(--secondaryColor);
+  background: #175A95;
 }
 .btn-three:after {
-  background-color: var(--secondaryColor);
+  background-color: #175A95;
 }
 .btn-three:hover {
   color: var(--whiteColor);
