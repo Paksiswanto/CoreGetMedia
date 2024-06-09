@@ -9,9 +9,9 @@
                         <p class="copyright-text mt-4">
                             {{-- @if ($firstContact)
                                 {{ $firstContact->slogan }}
-                            @endif --}}
+                            @endif ©  --}}
                         </p>
-                        {{-- <p class="copyright-text mt-4" style="font-size: 20px">© <span>Get</span>Media berita terlengkap dengan berita terbaru dan terpopuler.</p> --}}
+                        <p class="copyright-text mt-4" style="font-size: 20px"><span>Get</span>Media berita terlengkap dengan berita terbaru dan terpopuler.</p>
                     </li>
                     <li>
                     {{-- <ul style="list-style-type: none;" class="p-4">
@@ -31,7 +31,7 @@
                     <li class="mb-2"><a href="/aboutus" style="color: #FFFFFF">Tentang Kami</a></li>
                     <li class="mb-2"><a href="/contact-us" style="color: #FFFFFF">Hubungi Kami</a></li>
                     <li class="mb-2"><a href="/author" style="color: #FFFFFF">Penulis</a></li>
-                    <li class="mb-2"><a href="/faq" style="color: #FFFFFF">Faq</a></li>
+                    <li class="mb-2"><a href="{{route('faq-list.user')}}" style="color: #FFFFFF">Faq</a></li>
                 </ul>
             </div>
 

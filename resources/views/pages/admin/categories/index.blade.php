@@ -80,9 +80,9 @@
                 </thead>
                 <tbody>
                     <tr>
-                        @forelse ($categories as $category)
+                        {{-- @forelse ($categories as $category) --}}
                             <td>1</td>
-                            <td>{{ $category->name }}</td>
+                            <td>Pendidikan</td>
                             <td>3</td>
                             <td>
                                 <button type="button" style="background-color: #FFD643;" class="btn btn-sm text-white me-2" data-bs-toggle="modal" data-bs-target="#modal-update">
@@ -107,8 +107,8 @@
                                     </svg>
                                 </a>
                             </td>
-                        @empty
-                        @endforelse
+                        {{-- @empty
+                        @endforelse --}}
                     </tr>
                 </tbody>
             </table>
@@ -124,7 +124,7 @@
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('category.store') }}" method="POST">
+                <form action="#" method="POST">
                     @method('post')
                     @csrf
                     <div class="modal-body">
