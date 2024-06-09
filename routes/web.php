@@ -26,6 +26,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
+// ----- ADMIN -----
 Route::get('/dashboard', function () {
     return view('pages.admin.home.index');
     })->name('dashboard.admin');
@@ -80,11 +82,19 @@ Route::get('confirm-advertisement', function(){
     return view('pages.admin.advertisement.confirm-advertisement');
 })->name('confirm-advertisement.admin');
 
-Route::get('detail-', function(){
+Route::get('detail-advertisement', function(){
     return view('pages.admin.advertisement.detail-advertisement');
 })->name('detail-advertisement.admin');
 
-// user
+Route::get('about-getmedia', function(){
+    return view('pages.admin.about.index');
+})->name('about-getmedia.admin');
+
+Route::get('inbox-admin', function(){
+    return view('pages.admin.inbox.index');
+})->name('inbox-list.admin');
+
+// ----- USER -----
 Route::get('news/category', function(){
     return view('pages.user.category.index');
 })->name('news.category');
@@ -96,3 +106,11 @@ Route::get('news/subcategory', function () {
 Route::get('all-news', function(){
     return view('pages.user.all-news.index');
 })->name('news.all-news');
+
+Route::get('faq', function(){
+    return view('pages.user.faq.index');
+})->name('faq-list.user');
+
+
+
+// ----- AUTHOR -----
