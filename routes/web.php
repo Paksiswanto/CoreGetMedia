@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\TagsController;
+use App\Http\Controllers\VoucherrController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -52,11 +53,12 @@ Route::post('tag-list', [TagsController::class, 'store'])->name('tag.store.admin
 Route::put('tag-list/{tags}', [TagsController::class, 'update'])->name('tag.update.admin');
 Route::delete('tag-list/{tags}', [TagsController::class, 'destroy'])->name('tag.destroy.admin');
 
-Route::get('voucher-list', function(){
-    return view('pages.admin.voucher.index');
-    })->name('voucher.list.admin');
+Route::get('voucher-list', [VoucherrController::class, 'index'] )->name('voucher.list.admin');
+Route::post('voucher-create', [VoucherrController::class, 'store'])->name('voucher.store.admin');
+Route::put('voucher-update/{voucherr}', [VoucherrController::class, 'update'])->name('voucher.update.admin');
+Route::delete('voucher-delete/{voucherr}', [VoucherrController::class, 'destroy'])->name('voucher.delete.admin');
 
-    Route::get('admin-account-list', function(){
+Route::get('admin-account-list', function(){
         return view('pages.admin.account.admin');
 })->name('admin-account.list.admin');
 
@@ -138,14 +140,14 @@ Route::get('all-news', function(){
     return view('pages.user.all-news.index');
 })->name('news.all-news');
 
+Route::get('about-us', function(){
+    return view('pages.user.aboutus.aboutus');
+})->name('about.us');
+
 //Author
 Route::get('create-news', function(){
     return view('pages.author.news.create');
 })->name('create.news');
-
-Route::get('author-inbox', function(){
-    return view('pages.author.inbox');
-})->name('author.inbox');
 
 Route::get('list-news', function (){
     return view('pages.author.news.list-news');
@@ -162,8 +164,6 @@ Route::get('list-delete-news', function () {
 Route::get('profile-author', function(){
     return view('pages.author.profile');
 })->name('profile.author');
-
-
 
 Route::get('faq', function(){
     return view('pages.user.faq.index');
