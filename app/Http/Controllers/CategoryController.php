@@ -27,7 +27,7 @@ class CategoryController extends Controller
         return view('pages.admin.categories.index' , compact('categories'));
     }
 
-    /** 
+    /**
      * Show the form for creating a new resource.
      */
     public function create()
@@ -66,6 +66,7 @@ class CategoryController extends Controller
      */
     public function update(StoreCategoryRequest $request, Category $category)
     {
+        // dd($category->id);
         $data = $this->service->storeOrUpdate($request);
         $this->categories->update($category->id , $data);
         return redirect()->back()->with('success' , 'Data berhasil di perbarui');
