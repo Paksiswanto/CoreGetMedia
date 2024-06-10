@@ -179,7 +179,7 @@ Route::get('profile-update', function(){
 
 Route::get('coin', function(){
     return view('pages.user.coin.index');
-})->name('s');
+})->name('coin.user');
 
 Route::get('exchange-coin', function(){
     return view('pages.user.coin.exchange-coin');
@@ -188,6 +188,15 @@ Route::get('exchange-coin', function(){
 Route::get('history-coin', function(){
     return view('pages.user.coin.history');
 })->name('history-coin.user');
+
+Route::get('news-liked', function(){
+    return view('pages.user.news-liked.index');
+})->name('news-liked.user');
+
+Route::get('contact-us', function(){
+    return view('pages.user.contact-us.index');
+})->name('contact-us.index');
+// AUTHOR
 
 Route::get('list-author', function(){
     return view('pages.user.author.list-author');

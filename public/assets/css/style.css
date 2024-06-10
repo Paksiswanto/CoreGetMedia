@@ -1743,7 +1743,8 @@ select {
   right: -7px;
   content: "/";
   font-size: 18px;
-  color: var(--paraColor);
+  color: #fff;
+  /* color: var(--paraColor); */
 }
 .breadcrumb-menu li:first-child {
   margin-left: 0;
