@@ -43,8 +43,14 @@ Route::put('subcategory-update/{subCategory}', [SubCategoryController::class, 'u
 Route::delete('subcategory-delete/{subCategory}', [SubCategoryController::class, 'destroy'])->name('subcategory.delete.admin');
 
 Route::get('faq-list', [FaqController::class, 'index'])->name('faq.list.admin');
-Route::get('category-list', [CategoryController::class, 'index'])->name('category.list.admin');
+Route::post('faq-list', [FaqController::class, 'store'])->name('faq.store.admin');
+Route::put('faq-list/{faq}', [FaqController::class, 'update'])->name('faq.update.admin');
+Route::delete('faq-list/{faq}', [FaqController::class, 'destroy'])->name('faq.destroy.admin');
+
 Route::get('tag-list', [TagsController::class, 'index'])->name('tag.list.admin');
+Route::post('tag-list', [TagsController::class, 'store'])->name('tag.store.admin');
+Route::put('tag-list/{tags}', [TagsController::class, 'update'])->name('tag.update.admin');
+Route::delete('tag-list/{tags}', [TagsController::class, 'destroy'])->name('tag.destroy.admin');
 
 Route::get('voucher-list', function(){
     return view('pages.admin.voucher.index');
