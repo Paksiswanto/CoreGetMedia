@@ -38,6 +38,10 @@ Route::resource('category', CategoryController::class);
 Route::get('subcategory-list', [SubCategoryController::class, 'index'])->name('subcategory.list.admin');
 
 Route::get('faq-list', [FaqController::class, 'index'])->name('faq.list.admin');
+Route::post('faq-list', [FaqController::class, 'store'])->name('faq.store.admin');
+Route::put('faq-list/{faq}', [FaqController::class, 'update'])->name('faq.update.admin');
+Route::delete('faq-list', [FaqController::class, 'destroy'])->name('faq.destroy.admin');
+
 Route::get('category-list', [CategoryController::class, 'index'])->name('category.list.admin');
 Route::get('subcategory-list', [SubCategoryController::class, 'index'])->name('subcategory.list.admin');
 Route::get('tag-list', [TagsController::class, 'index'])->name('tag.list.admin');
