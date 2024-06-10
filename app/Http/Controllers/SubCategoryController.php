@@ -20,10 +20,10 @@ class SubCategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($category)
     {
-        $subCategories = $this->subCategories->get();
-        return view('pages.admin.categories.subcategories.index', compact('subCategories'));
+        $subCategories = $this->subCategories->where($category);
+        return view('pages.admin.categories.subcategories.index', compact('subCategories', 'category'));
     }
 
     /**

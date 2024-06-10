@@ -50,7 +50,7 @@
                 </button>
             </div>
         </div>
-       
+
     </div>
 
     <div class="">
@@ -62,18 +62,22 @@
                     <th style="background-color: #D9D9D9;">Aksi</th>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Psikologi</td>
-                        <td><button style="background-color: #FFD643;" class="btn btn-sm btn-edit text-white me-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24"><path fill="#ffffff" d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h8.925l-2 2H5v14h14v-6.95l2-2V19q0 .825-.587 1.413T19 21zm4-6v-4.25l9.175-9.175q.3-.3.675-.45t.75-.15q.4 0 .763.15t.662.45L22.425 3q.275.3.425.663T23 4.4t-.137.738t-.438.662L13.25 15zM21.025 4.4l-1.4-1.4zM11 13h1.4l5.8-5.8l-.7-.7l-.725-.7L11 11.575zm6.5-6.5l-.725-.7zl.7.7z"/></svg>
-                            </button>
-                            <button type="submit" style="background-color: #EF6E6E"
-                                class="btn btn-sm btn-delete text-white me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24"><path fill="#ffffff" d="M7 21q-.825 0-1.412-.587T5 19V6q-.425 0-.712-.288T4 5t.288-.712T5 4h4q0-.425.288-.712T10 3h4q.425 0 .713.288T15 4h4q.425 0 .713.288T20 5t-.288.713T19 6v13q0 .825-.587 1.413T17 21zM17 6H7v13h10zm-7 11q.425 0 .713-.288T11 16V9q0-.425-.288-.712T10 8t-.712.288T9 9v7q0 .425.288.713T10 17m4 0q.425 0 .713-.288T15 16V9q0-.425-.288-.712T14 8t-.712.288T13 9v7q0 .425.288.713T14 17M7 6v13z"/></svg>
-                            </button>
-                        </td>
-                    </tr>
+                    @forelse ($subCategories as $subcategory)
+                        <tr>
+                            <td>1</td>
+                            <td>{{ $subcategory->name }}</td>
+                            <td>
+                                <button id="btn-edti-{{ $subcategory->id }}" data-id="{{$subcategory->id}}" data-name="{{ $subcategory->name }}" style="background-color: #FFD643;" class="btn btn-sm btn-edit text-white me-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24"><path fill="#ffffff" d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h8.925l-2 2H5v14h14v-6.95l2-2V19q0 .825-.587 1.413T19 21zm4-6v-4.25l9.175-9.175q.3-.3.675-.45t.75-.15q.4 0 .763.15t.662.45L22.425 3q.275.3.425.663T23 4.4t-.137.738t-.438.662L13.25 15zM21.025 4.4l-1.4-1.4zM11 13h1.4l5.8-5.8l-.7-.7l-.725-.7L11 11.575zm6.5-6.5l-.725-.7zl.7.7z"/></svg>
+                                </button>
+                                <button data-id="{{$subcategory->id}}" type="submit" style="background-color: #EF6E6E"
+                                    class="btn btn-sm btn-delete text-white me-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24"><path fill="#ffffff" d="M7 21q-.825 0-1.412-.587T5 19V6q-.425 0-.712-.288T4 5t.288-.712T5 4h4q0-.425.288-.712T10 3h4q.425 0 .713.288T15 4h4q.425 0 .713.288T20 5t-.288.713T19 6v13q0 .825-.587 1.413T17 21zM17 6H7v13h10zm-7 11q.425 0 .713-.288T11 16V9q0-.425-.288-.712T10 8t-.712.288T9 9v7q0 .425.288.713T10 17m4 0q.425 0 .713-.288T15 16V9q0-.425-.288-.712T14 8t-.712.288T13 9v7q0 .425.288.713T14 17M7 6v13z"/></svg>
+                                </button>
+                            </td>
+                        </tr>
+                    @empty
+                    @endforelse
                 </tbody>
             </table>
 
@@ -89,7 +93,8 @@
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Sub Kategori</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form>
+                <form action="{{ route('subcategory.create.admin', ['category' => $category]) }}" method="POSt">
+                    @method('post')
                     @csrf
                     <div class="modal-body">
                         <div>
@@ -116,7 +121,8 @@
                     <h1 class="modal-title fs-5" id="editModalLabel">Edit</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form id="form-update">
+                <form id="form-update" method="POST">
+                    @method('put')
                     @csrf
                     <div class="modal-body text-start">
                         <label class="form-label mt-2">Name</label>
@@ -135,8 +141,8 @@
     <div class="modal fade" id="modal-delete" tabindex="-1" aria-labelledby="mySmallModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm">
             <form id="form-delete" method="POST" class="modal-content">
+                @method('DELETE')
                 @csrf
-                @method('post')
                 <div class="modal-header d-flex align-items-center">
                     <h4 class="modal-title" id="myModalLabel">
                         Hapus data
@@ -144,9 +150,9 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-    
+
                     <p>Apakah anda yakin akan menghapus data ini? </p>
-    
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light-danger text-danger font-medium waves-effect"
@@ -161,4 +167,22 @@
             </form>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script>
+        $('.btn-edit').click(function() {
+            var id = $(this).data('id');
+            var name = $(this).data('name');
+            $('#update-name').val(name);
+            $('#form-update').attr('action', '/subcategory-update/' + id);
+            $('#modal-update').modal('show');
+        })
+
+        $('.btn-delete').click(function() {
+            var id = $(this).data('id');
+            $('#form-delete').attr('action', '/subcategory-delete/' + id);
+            $('#modal-delete').modal('show');
+        })
+    </script>
 @endsection

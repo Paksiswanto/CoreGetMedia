@@ -33,13 +33,17 @@ Route::get('/dashboard', function () {
     })->name('dashboard.admin');
 
 Route::get('category-list', [CategoryController::class, 'index'])->name('category.list.admin');
+Route::put('category-update/{category}', [CategoryController::class, 'update'])->name('category.update.admin');
+Route::delete('category-delete/{category}', [CategoryController::class, 'destroy'])->name('category.delete.admin');
 Route::resource('category', CategoryController::class);
 
-Route::get('subcategory-list', [SubCategoryController::class, 'index'])->name('subcategory.list.admin');
+Route::get('subcategory-list/{category}', [SubCategoryController::class, 'index'])->name('subcategory.list.admin');
+Route::post('subcategory-create/{category}', [SubCategoryController::class, 'store'])->name('subcategory.create.admin');
+Route::put('subcategory-update/{subCategory}', [SubCategoryController::class, 'update'])->name('subcategory.update.admin');
+Route::delete('subcategory-delete/{subCategory}', [SubCategoryController::class, 'destroy'])->name('subcategory.delete.admin');
 
 Route::get('faq-list', [FaqController::class, 'index'])->name('faq.list.admin');
 Route::get('category-list', [CategoryController::class, 'index'])->name('category.list.admin');
-Route::get('subcategory-list', [SubCategoryController::class, 'index'])->name('subcategory.list.admin');
 Route::get('tag-list', [TagsController::class, 'index'])->name('tag.list.admin');
 
 Route::get('voucher-list', function(){
