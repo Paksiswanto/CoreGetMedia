@@ -581,7 +581,7 @@
                 <h4>Lorem Ipsum dolor</h4>
             </div>
             <div class="d-flex justify-content-center">
-                <img src="{{ asset('premium.svg') }}" width="50%" height="200" style="object-fit:cover" class="mb-4" alt="...">
+                <img src="{{ asset('assets/img/premium/premium1.svg') }}" width="50%" height="200" style="object-fit:cover" class="mb-4" alt="...">
             </div>
             <div class="d-flex align-items-center">
                 <div class="ms-auto">
@@ -627,7 +627,7 @@
                 <h4>Lorem Ipsum dolor</h4>
             </div>
             <div class="d-flex justify-content-center">
-                <img src="{{ asset('premium.svg') }}" width="50%" height="200" style="object-fit:cover" class="mb-4" alt="...">
+                <img src="{{ asset('assets/img/premium/premium2.svg') }}" width="50%" height="200" style="object-fit:cover" class="mb-4" alt="...">
             </div>
             <div class="d-flex align-items-center">
                 <div class="ms-auto">
@@ -673,7 +673,7 @@
                 <h4>Lorem Ipsum dolor</h4>
             </div>
             <div class="d-flex justify-content-center">
-                <img src="{{ asset('premium.svg') }}" width="50%" height="200" style="object-fit:cover" class="mb-4" alt="...">
+                <img src="{{ asset('assets/img/premium/premium3.svg') }}" width="50%" height="200" style="object-fit:cover" class="mb-4" alt="...">
             </div>
             <div class="d-flex align-items-center">
                 <div class="ms-auto">
@@ -723,35 +723,37 @@
 
 <script>
 
+         
     var options = {
-        series: [{
-            data: values,
+          series: [{
+            name: "Desktops",
+            data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
         }],
-        chart: {
-            type: 'line',
-            height: 350,
-            zoom: {
-                type: 'x',
-                enabled: true,
-                autoScaleYaxis: true
-            },
-        },
-        plotOptions: {
-            bar: {
-                borderRadius: 4,
-                horizontal: false,
-            }
-        },
-        // title: {
-        //     text: 'Penulis Terbanyak'
-        // },
-        dataLabels: {
+          chart: {
+          height: 350,
+          type: 'line',
+          zoom: {
             enabled: false
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          curve: 'straight'
+        },
+        title: {
+          text: 'Product Trends by Month',
+          align: 'left'
+        },
+        grid: {
+          row: {
+            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+            opacity: 0.5
+          },
         },
         xaxis: {
-            categories: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September',
-                'Oktober', 'November', 'Desember'
-            ]
+          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', "Nov", 'Des'],
         }
     };
 
@@ -760,31 +762,35 @@
 
 
     var options = {
-        series: [{
-            name: "Pengunjung Unique",
-            data: [10,12]
+          series: [{
+            name: "Desktops",
+            data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
         }],
-        chart: {
-            height: 350,
-            type: 'line',
-            zoom: {
-                enabled: false
-            }
+          chart: {
+          height: 350,
+          type: 'line',
+          zoom: {
+            enabled: false
+          }
         },
         dataLabels: {
-            enabled: false
+          enabled: false
         },
         stroke: {
-            curve: 'straight'
+          curve: 'straight'
+        },
+        title: {
+          text: 'Product Trends by Month',
+          align: 'left'
         },
         grid: {
-            row: {
-                colors: ['#f3f3f3', 'transparent'],
-                opacity: 0.5
-            },
+          row: {
+            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+            opacity: 0.5
+          },
         },
         xaxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
+          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', "Nov", 'Des'],
         }
     };
 
@@ -816,38 +822,39 @@
 
 <script>
 
-    var options = {
-        series: [{
-            data: [10,23,32],
+       
+var options = {
+          series: [{
+            name: "Desktops",
+            data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
         }],
-        chart: {
-            type: 'line',
-            height: 350,
-            zoom: {
-                type: 'x',
-                enabled: true,
-                autoScaleYaxis: true
-            },
-        },
-        colors: ['#FF0000'],
-        plotOptions: {
-            bar: {
-                borderRadius: 4,
-                horizontal: false,
-            }
-        },
-        // title: {
-        //     text: 'Penulis Terbanyak'
-        // },
-        dataLabels: {
+          chart: {
+          height: 350,
+          type: 'line',
+          zoom: {
             enabled: false
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          curve: 'straight'
+        },
+        title: {
+          text: 'Product Trends by Month',
+          align: 'left'
+        },
+        grid: {
+          row: {
+            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+            opacity: 0.5
+          },
         },
         xaxis: {
-            categories: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September',
-                'Oktober', 'November', 'Desember'
-            ]
+          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
         }
-    };
+        };
 
     var chart = new ApexCharts(document.querySelector("#chart-news-premium"), options);
     chart.render();
@@ -908,8 +915,61 @@
 
     var chart = new ApexCharts(document.querySelector("#current-year"), options);
     chart.render();
+
+    var options = {
+        color: "#adb5bd",
+        series: [80, 55],
+        labels: ["Income", "Expance"],
+        chart: {
+            type: "donut",
+            fontFamily: "Plus Jakarta Sans', sans-serif",
+            foreColor: "#adb0bb",
+        },
+        plotOptions: {
+            pie: {
+                donut: {
+                    size: '70%',
+                    background: 'transparent',
+                    labels: {
+                        show: true,
+                        name: {
+                            show: true,
+                            offsetY: 7,
+                        },
+                        value: {
+                            show: false,
+                        },
+                        total: {
+                            show: true,
+                            color: '#5A6A85',
+                            fontSize: '20px',
+                            fontWeight: "600",
+                            label: '',
+                        },
+                    },
+                },
+            },
+        },
+
+        dataLabels: {
+            enabled: false,
+        },
+        stroke: {
+            show: false,
+        },
+        legend: {
+            show: false,
+        },
+        colors: ["var(--bs-primary)", "var(--bs-secondary)"],
+
+        tooltip: {
+            theme: "dark",
+            fillSeriesColor: false,
+        },
+    };
+
     var chart = new ApexCharts(document.querySelector("#chart-advertisement-premium"), options);
     chart.render();
-</script> --}}
+</script>
 
 @endsection

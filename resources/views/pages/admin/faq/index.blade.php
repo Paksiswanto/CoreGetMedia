@@ -11,7 +11,6 @@
 @endsection
 
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Admin | Faq-List</title>
 </head>
 
@@ -54,9 +53,9 @@
                     <h5 class="modal-title" id="tambahdataLabel">Tambah Data</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form id="form-create" method="post">
-                    @method('post')
-                    @csrf
+                <form  method="post">
+                    {{-- @method('post')
+                    @csrf --}}
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="question" class="form-label">Pertanyaan:</label>
@@ -167,9 +166,9 @@
 
     <div class="modal fade" id="modal-delete" tabindex="-1" aria-labelledby="mySmallModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm">
-            <form id="form-delete" method="POST" class="modal-content">
-                @csrf
-                @method('post')
+            <form method="POST" class="modal-content">
+                {{-- @csrf
+                @method('post') --}}
                 <div class="modal-header d-flex align-items-center">
                     <h4 class="modal-title" id="myModalLabel">
                         Hapus data

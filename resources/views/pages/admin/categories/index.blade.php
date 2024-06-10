@@ -76,16 +76,13 @@
                     <th style="background-color: #D9D9D9;">No</th>
                     <th style="background-color: #D9D9D9;">Kategori</th>
                     <th style="background-color: #D9D9D9;">Dipakai</th>
-                    <th style="background-color: #D9D9D9;">Sub Kategori</th>
                     <th style="background-color: #D9D9D9;">Aksi</th>
                 </thead>
                 <tbody>
                     <tr>
-                        @forelse ($categories as $category)
                             <td>1</td>
-                            <td>{{ $category->name }}</td>
-                            <td>{{ $category->newsCategories->count() }}</td>
-                            <td>{{ $category->subCategories->count() }}</td>
+                            <td>Pendidikan</td>
+                            <td>3</td>
                             <td>
                                 <button id="btn-edit-{{ $category->id }}" data-id="{{ $category->id }}" style="background-color: #FFD643;" class="btn btn-sm text-white me-2" data-bs-toggle="modal" data-bs-target="#modal-update">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24">
@@ -110,8 +107,6 @@
                                     </svg>
                                 </a>
                             </td>
-                        @empty
-                        @endforelse
                     </tr>
                 </tbody>
             </table>
@@ -125,7 +120,7 @@
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('category.store') }}" method="POST">
+                <form action="#" method="POST">
                     @method('post')
                     @csrf
                     <div class="modal-body">

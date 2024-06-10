@@ -1,5 +1,10 @@
 @extends('layouts.user.app')
 
+@section('style')
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+
+@endsection                        
+
 @section('content')
     <div class="breadcrumb-wrap">
         <div class="container">
@@ -18,22 +23,175 @@
             <div class="row gx-55 gx-5">
                 <div class="col-lg-8">
                     <article>
+                        <div>
+                            <h1>Jiraiya Banks Wants To Teach You How To Build A House</h1>
+                        </div>
                         <div class="news-img">
                             <img src="{{asset('assets/img/news/single-news-1.webp')}}" alt="Image">
                             <a href="business.html" class="news-cat">Business</a>
                         </div>
-                        <ul class="news-metainfo list-style">
-                            <li class="author">
-                                <span class="author-img">
-                                    <img src="{{asset('assets/img/author/author-thumb-4.webp')}}" alt="Image">
-                                </span>
-                                <a href="author.html">James William</a>
-                            </li>
-                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Mar 03, 2023</a></li>
-                            <li><i class="fi fi-rr-clock-three"></i>15 Min Read</li>
-                        </ul>
+                        <div>
+                            <ul class="news-metainfo list-style">
+                                <div class="d-flex justify-content-between">
+                                    <div class="col-lg-11 col-md-11">
+                                        <div class="row">
+                                            <div class="col-md-12 col-lg-3 mb-3">
+                                                <li class="author">
+                                                    <span class="author-img">
+                                                        <img src="{{asset('admin/dist/images/profile/user-1.jpg')}}"
+                                                            alt="Image" width="40px" height="30px"
+                                                            style="border-radius: 50%; object-fit:cover;" />
+                                                    </span>
+                                                    <div>
+                                                        <a style="display: inline;text-decoration:none"
+                                                            data-toggle="tooltip" data-placement="top"
+                                                            title="author - Karin"
+                                                            href="#">Karin</a>
+                                                        </span>
+                                                    </div>
+                                                </li>
+                                            </div>
+    
+                                            <div class="col-md-12 col-sm-12 col-lg-9">
+                                                <li><i class="fi fi-rr-calendar-minus"></i>
+                                                    <span id="formattedDate" class="font-date">09 Mei 2024</span>
+                                                </li>
+                                                <li>
+                                                    <i class="fi fi-rr-eye" style="margin-top: 2px;"></i>
+                                                    <span>20x dilihat</span>
+                                                </li>
+                                                <li>
+                                                    <form class="d-flex">
+                                                        
+                                                        <i><button type="submit"
+                                                            style="background: transparent;border:transparent"
+                                                            class="liked">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><path fill="#434343" d="M14.17 1L7 8.18V21h12.31L23 12.4V8h-8.31l1.12-5.38zM1 9h4v12H1z"/></svg>
+                                                        </button></i>
+                                                    </form>
+    
+                                                    {{-- @auth()
+                                                        <form id="form-like">
+                                                            @csrf
+                                                            @if (auth()->check())
+                                                                <button type="submit"
+                                                                    style="background: transparent;border:transparent"
+                                                                    class="like">
+                                                                    <svg class="last mb-1" xmlns="http://www.w3.org/2000/svg"
+                                                                        width="18" height="18" viewBox="0 0 24 24">
+                                                                        <path fill="#E93314"
+                                                                            d="M18 21H7V8l7-7l1.25 1.25q.175.175.288.475t.112.575v.35L14.55 8H21q.8 0 1.4.6T23 10v2q0 .175-.05.375t-.1.375l-3 7.05q-.225.5-.75.85T18 21m-9-2h9l3-7v-2h-9l1.35-5.5L9 8.85zM9 8.85V19zM7 8v2H4v9h3v2H2V8z" />
+                                                                    </svg>
+                                                                </button>
+                                                            @endif
+    
+                                                        </form>
+    
+                                                        <form id="form-liked" style="display: none;">
+                                                            @csrf
+                                                            <button type="submit"
+                                                                style="background: transparent;border:transparent"
+                                                                class="liked">
+                                                                <svg class="last mb-1" xmlns="http://www.w3.org/2000/svg"
+                                                                    width="18" height="18" viewBox="0 0 24 24">
+                                                                    <path fill="red"
+                                                                        d="M18 21H8V8l7-7l1.25 1.25q.175.175.288.475t.112.575v.35L15.55 8H21q.8 0 1.4.6T23 10v2q0 .175-.037.375t-.113.375l-3 7.05q-.225.5-.75.85T18 21M6 8v13H2V8z" />
+                                                                </svg>
+                                                            </button>
+                                                        </form>
+                                                    @else
+                                                        <form id="form-like">
+                                                            @csrf
+                                                            <button type="button"
+                                                                style="background: transparent;border:transparent"
+                                                                class="like not-login">
+                                                                <svg class="mb-1" xmlns="http://www.w3.org/2000/svg"
+                                                                    width="18" height="18" viewBox="0 0 24 24">
+                                                                    <path fill="#E93314"
+                                                                        d="M18 21H7V8l7-7l1.25 1.25q.175.175.288.475t.112.575v.35L14.55 8H21q.8 0 1.4.6T23 10v2q0 .175-.05.375t-.1.375l-3 7.05q-.225.5-.75.85T18 21m-9-2h9l3-7v-2h-9l1.35-5.5L9 8.85zM9 8.85V19zM7 8v2H4v9h3v2H2V8z" />
+                                                                </svg>
+                                                            </button>
+                                                        </form>
+    
+                                                        <form id="form-liked" style="display: none;">
+                                                            @csrf
+                                                            <button type="submit"
+                                                                style="background: transparent;border:transparent"
+                                                                class="liked">
+                                                                <svg class="mb-1" xmlns="http://www.w3.org/2000/svg"
+                                                                    width="18" height="18" viewBox="0 0 24 24">
+                                                                    <path fill="red"
+                                                                        d="M18 21H8V8l7-7l1.25 1.25q.175.175.288.475t.112.575v.35L15.55 8H21q.8 0 1.4.6T23 10v2q0 .175-.037.375t-.113.375l-3 7.05q-.225.5-.75.85T18 21M6 8v13H2V8z" />
+                                                                </svg>
+                                                            </button>
+                                                        </form>
+                                                    @endauth --}}
+    
+                                                    <span class="ms-2">12</span>
+                                                </li>
+                                            </div>
+                                        </div>
+                                    </div>
+    
+                                    <div class="col-md-1 col-sm-1 col-lg-1">
+                                        <li>
+                                            <a class="" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24">
+                                                    <path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="3" d="M12 12h.01v.01H12zm0-7h.01v.01H12zm0 14h.01v.01H12z"/>
+                                                </svg>
+                                            </a>
+                                            
+                                            {{-- <a class="" href="#" role="button" id="dropdownMenuLink"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
+                                                    viewBox="0 0 24 24">
+                                                    <path fill="none" stroke="currentColor" stroke-linejoin="round"
+                                                        stroke-width="3"
+                                                        d="M12 12h.01v.01H12zm0-7h.01v.01H12zm0 14h.01v.01H12z" />
+                                                </svg>
+                                            </a> --}}
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                <li>
+                                                    <button class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#share">
+                                                        Bagikan
+                                                    </button>
+                                                </li>
+                                                <li>
+                                                    <button class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#tambahdataLabel">
+                                                        Laporkan
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                            
+                                            {{-- <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                <li>
+                                                    <button class="btn btn-sm" data-bs-toggle="modal"
+                                                        data-bs-target="#share">
+                                                        Bagikan
+                                                    </button>
+                                                </li>
+                                                <li>
+                                                    <button class="btn btn-sm" data-bs-toggle="modal"
+                                                        data-bs-target="#tambahdataLabel">
+                                                        Laporkan
+                                                    </button>
+                                                </li>
+                                            </ul> --}}
+                                        </li>
+                                    </div>
+                                </div>
+                                {{-- <li class="author">
+                                    <span class="author-img">
+                                        <img src="{{asset('assets/img/author/author-thumb-4.webp')}}" alt="Image">
+                                    </span>
+                                    <a href="author.html">James William</a>
+                                </li>
+                                <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Mar 03, 2023</a></li>
+                                <li><i class="fi fi-rr-clock-three"></i>15 Min Read</li> --}}
+                            </ul>
+                        </div>
                         <div class="news-para">
-                            <h1>Jiraiya Banks Wants To Teach You How To Build A House</h1>
+                            
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
                                 has been the industry's stand dummy text ever since the 1500s, when an unknown printer
                                 took a galley of type and scrambled it to make a type specim book. It has survived not
@@ -113,21 +271,63 @@
                                 ipsa porro obcaecati accusantium tempore officiis tenetur est!</p>
                         </div>
                     </article>
-                    <div class="post-pagination">
-                        <a class="prev-post" href="business-details.html">
-                            <span>PREVIOUS</span>
-                            <h6>The Future Of Business: Predictions And Trends To Watch</h6>
-                        </a>
-                        <a class="next-post" href="business-details.html">
-                            <span>NEXT</span>
-                            <h6>From Start-up To Scale-up: Navigating Growth In Your Business</h6>
-                        </a>
+                    
+                    <div id="cmt-form">
+                        @auth                            
+                            <div class="mb-30">
+                                <h3 class="comment-box-title">Tinggalkan Komentar</h3>
+                            </div>
+                            <form action="#" class="comment-form">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <textarea name="messages" id="messages" cols="30" rows="10"
+                                                placeholder="Tinggalkan komentar"></textarea>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-12 mt-1 d-flex justify-content-end">
+                                        <button class="btn-two">Komentar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        @else
+                            <div class="mb-30">
+                                <h3 class="comment-box-title">Tinggalkan Komentar</h3>
+                            </div>
+                            <form action="#" class="comment-form">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" name="name" id="name" required placeholder="Nama">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="email" name="email" id="email" required
+                                                placeholder="Alamat Email*">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <textarea name="messages" id="messages" cols="30" rows="10"
+                                                placeholder="Tinggalkan komentar"></textarea>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-12 mt-1 d-flex justify-content-end">
+                                        <button class="btn-two">Komentar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        @endauth
                     </div>
-                    <h3 class="comment-box-title">3 Comments</h3>
+
+                    <h3 class="comment-box-title mt-5">3 Komentar</h3>
                     <div class="comment-item-wrap">
                         <div class="comment-item">
                             <div class="comment-author-img">
-                                <img src="{{asset('assets/img/author/author-thumb-5.webp')}}" alt="Image">
+                                <img src="{{asset('admin/dist/images/profile/user-6.jpg')}}" alt="Image">
                             </div>
                             <div class="comment-author-wrap">
                                 <div class="comment-author-info">
@@ -135,20 +335,47 @@
                                         <div class="col-md-9 col-sm-12 col-12 order-md-1 order-sm-1 order-1">
                                             <div class="comment-author-name">
                                                 <h5>Killian Mider</h5>
-                                                <span class="comment-date">Jul 22, 2023 | 7:10 PM</span>
+                                                <span class="comment-date">2 Menit yang lalu</span>
                                             </div>
                                         </div>
-                                        <div
-                                            class="col-md-3 col-sm-12 col-12 text-md-end order-md-2 order-sm-3 order-3">
-                                            <a href="#cmt-form" class="reply-btn">Reply</a>
+                                        <div class="col-md-3 col-sm-3 col-3 text-md-end order-md-1 order-sm-1 order-1">
+                                            {{-- <a href="#cmt-form">Reply</a> --}}
+                                            
+                                            <a class="" href="javascript:void(0)" role="button" id="dropdownMenuLink1"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
+                                                    viewBox="0 0 24 24">
+                                                    <path fill="none" stroke="currentColor" stroke-linejoin="round"
+                                                        stroke-width="3"
+                                                        d="M12 12h.01v.01H12zm0-7h.01v.01H12zm0 14h.01v.01H12z" />
+                                                </svg>
+                                            </a>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
+                                                <li>
+                                                    <button class="btn btn-sm" data-bs-toggle="modal"
+                                                        data-bs-target="#edit-replay">
+                                                        Edit
+                                                    </button>
+                                                </li>
+                                                <li>
+                                                    <button class="btn btn-sm" data-bs-toggle="modal"
+                                                        data-bs-target="#report">
+                                                        Laporkan
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                            
                                         </div>
-                                        <div class="col-md-12 col-sm-12 col-12 order-md-3 order-sm-2 order-2">
+                                        <div class="col-md-12 col-sm-12 col-12 order-md-3 order-sm-3 order-3">
                                             <div class="comment-text">
                                                 <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
                                                     sed diam nonumy eirmod tempor invidunt ut labore et dolore
                                                     magna aliquyam.
                                                 </p>
                                             </div>
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 col-12 text-md-start order-md-3 order-sm-3 order-3">
+                                            <a href="#cmt-form" class="reply-btn">Balas</a>
                                         </div>
                                     </div>
                                 </div>
@@ -156,7 +383,7 @@
                         </div>
                         <div class="comment-item reply">
                             <div class="comment-author-img">
-                                <img src="assets/img/author/author-thumb-2.webp" alt="Image">
+                                <img src="{{asset('assets/img/author/author-thumb-4.webp')}}" alt="Image">
                             </div>
                             <div class="comment-author-wrap">
                                 <div class="comment-author-info">
@@ -164,43 +391,38 @@
                                         <div class="col-md-9 col-sm-12 col-12 order-md-1 order-sm-1 order-1">
                                             <div class="comment-author-name">
                                                 <h5>Everly Leah </h5>
-                                                <span class="comment-date">Jul 23, 2023 | 7:10 PM</span>
+                                                <span class="comment-date">1 hari yang lalu</span>
                                             </div>
                                         </div>
-                                        <div
-                                            class="col-md-3 col-sm-12 col-12 text-md-end order-md-2 order-sm-3 order-3">
-                                            <a href="#cmt-form" class="reply-btn">Reply</a>
+                                        <div class="col-md-3 col-sm-3 col-3 text-md-end order-md-1 order-sm-1 order-1">
+                                            {{-- <a href="#cmt-form">Reply</a> --}}
+                                            
+                                            <a class="" href="javascript:void(0)" role="button" id="dropdownMenuLink2"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
+                                                    viewBox="0 0 24 24">
+                                                    <path fill="none" stroke="currentColor" stroke-linejoin="round"
+                                                        stroke-width="3"
+                                                        d="M12 12h.01v.01H12zm0-7h.01v.01H12zm0 14h.01v.01H12z" />
+                                                </svg>
+                                            </a>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink2">
+                                                <li>
+                                                    <button class="btn btn-sm" data-bs-toggle="modal"
+                                                        data-bs-target="#edit-replay">
+                                                        Edit
+                                                    </button>
+                                                </li>
+                                                <li>
+                                                    <button class="btn btn-sm" data-bs-toggle="modal"
+                                                        data-bs-target="#report">
+                                                        Laporkan
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                            
                                         </div>
-                                        <div class="col-md-12 col-sm-12 col-12 order-md-3 order-sm-2 order-2">
-                                            <div class="comment-text">
-                                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                                                    sed diam nonumy eirmod tempor invidunt ut labore et dolore
-                                                    magna aliquyam erat.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="comment-item">
-                            <div class="comment-author-img">
-                                <img src="assets/img/author/author-thumb-3.webp" alt="Image">
-                            </div>
-                            <div class="comment-author-wrap">
-                                <div class="comment-author-info">
-                                    <div class="row align-items-start">
-                                        <div class="col-md-9 col-sm-12 col-12 order-md-1 order-sm-1 order-1">
-                                            <div class="comment-author-name">
-                                                <h5>Michel Ohio</h5>
-                                                <span class="comment-date">Jun 14, 2023 | 7:10 PM</span>
-                                            </div>
-                                        </div>
-                                        <div
-                                            class="col-md-3 col-sm-12 col-12 text-md-end order-md-2 order-sm-3 order-3">
-                                            <a href="#cmt-form" class="reply-btn">Reply</a>
-                                        </div>
-                                        <div class="col-md-12 col-sm-12 col-12 order-md-3 order-sm-2 order-2">
+                                        <div class="col-md-12 col-sm-12 col-12 order-md-3 order-sm-3 order-3">
                                             <div class="comment-text">
                                                 <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
                                                     sed diam nonumy eirmod tempor invidunt ut labore et dolore
@@ -208,49 +430,128 @@
                                                 </p>
                                             </div>
                                         </div>
+                                        <div class="col-md-12 col-sm-12 col-12 text-md-start order-md-3 order-sm-3 order-3">
+                                            <a href="#cmt-form" class="reply-btn">Balas</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment-item reply">
+                            <div class="comment-author-img">
+                                <img src="{{asset('assets/img/author/author-thumb-4.webp')}}" alt="Image">
+                            </div>
+                            <div class="comment-author-wrap">
+                                <div class="comment-author-info">
+                                    <div class="row align-items-start">
+                                        <div class="col-md-9 col-sm-12 col-12 order-md-1 order-sm-1 order-1">
+                                            <div class="comment-author-name">
+                                                <h5>Everly Leah </h5>
+                                                <span class="comment-date">1 hari yang lalu</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-3 col-3 text-md-end order-md-1 order-sm-1 order-1">
+                                            {{-- <a href="#cmt-form">Reply</a> --}}
+                                            
+                                            <a class="" href="javascript:void(0)" role="button" id="dropdownMenuLink2"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
+                                                    viewBox="0 0 24 24">
+                                                    <path fill="none" stroke="currentColor" stroke-linejoin="round"
+                                                        stroke-width="3"
+                                                        d="M12 12h.01v.01H12zm0-7h.01v.01H12zm0 14h.01v.01H12z" />
+                                                </svg>
+                                            </a>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink2">
+                                                <li>
+                                                    <button class="btn btn-sm" data-bs-toggle="modal"
+                                                        data-bs-target="#edit-replay">
+                                                        Edit
+                                                    </button>
+                                                </li>
+                                                <li>
+                                                    <button class="btn btn-sm" data-bs-toggle="modal"
+                                                        data-bs-target="#report">
+                                                        Laporkan
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                            
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 col-12 order-md-3 order-sm-3 order-3">
+                                            <div class="comment-text">
+                                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+                                                    sed diam nonumy eirmod tempor invidunt ut labore et dolore
+                                                    magna aliquyam.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 col-12 text-md-start order-md-3 order-sm-3 order-3">
+                                            <a href="#cmt-form" class="reply-btn">Balas</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="comment-item">
+                            <div class="comment-author-img">
+                                <img src="{{asset('assets/img/author/author-thumb-4.webp')}}" alt="Image">
+                            </div>
+                            <div class="comment-author-wrap">
+                                <div class="comment-author-info">
+                                    <div class="row align-items-start">
+                                        <div class="col-md-9 col-sm-12 col-12 order-md-1 order-sm-1 order-1">
+                                            <div class="comment-author-name">
+                                                <h5>Michel Ohio</h5>
+                                                <span class="comment-date">2 minggu yang lalu</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-3 col-3 text-md-end order-md-1 order-sm-1 order-1">
+                                            {{-- <a href="#cmt-form">Reply</a> --}}
+                                            
+                                            <a class="" href="javascript:void(0)" role="button" id="dropdownMenuLink1"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
+                                                    viewBox="0 0 24 24">
+                                                    <path fill="none" stroke="currentColor" stroke-linejoin="round"
+                                                        stroke-width="3"
+                                                        d="M12 12h.01v.01H12zm0-7h.01v.01H12zm0 14h.01v.01H12z" />
+                                                </svg>
+                                            </a>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
+                                                <li>
+                                                    <button class="btn btn-sm" data-bs-toggle="modal"
+                                                        data-bs-target="#edit-replay">
+                                                        Edit
+                                                    </button>
+                                                </li>
+                                                <li>
+                                                    <button class="btn btn-sm" data-bs-toggle="modal"
+                                                        data-bs-target="#report">
+                                                        Laporkan
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                            
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 col-12 order-md-3 order-sm-3 order-3">
+                                            <div class="comment-text">
+                                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+                                                    sed diam nonumy eirmod tempor invidunt ut labore et dolore
+                                                    magna aliquyam.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 col-12 text-md-start order-md-3 order-sm-3 order-3">
+                                            <a href="#cmt-form" class="reply-btn">Balas</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div id="cmt-form">
-                        <div class="mb-30">
-                            <h3 class="comment-box-title">Leave A Comment</h3>
-                            <p>Your email address will not be published. Required fields are marked.</p>
-                        </div>
-                        <form action="#" class="comment-form">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" name="name" id="name" required placeholder="Name*">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="email" name="email" id="email" required
-                                            placeholder="Email Address*">
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <textarea name="messages" id="messages" cols="30" rows="10"
-                                            placeholder="Please Enter Your Comment Here"></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-check checkbox">
-                                        <input class="form-check-input" type="checkbox" id="test_2">
-                                        <label class="form-check-label" for="test_2">
-                                            Save my info for the next time I commnet.
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mt-3">
-                                    <button class="btn-two">Post A Comment<i class="flaticon-right-arrow"></i></button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                    
                 </div>
                 <div class="col-lg-4">
                     <div class="sidebar">
@@ -295,40 +596,9 @@
         </div>
     </div>
 
-
-    <div class="container">
-        <div class="footer-wrap">
-            <div class="row align-items-center">
-                <div class="col-lg-4">
-                    <p class="copyright-text">© <span>Baxo</span> is proudly owned by <a
-                            href="https://hibootstrap.com/">HiBootstrap</a></p>
-                </div>
-                <div class="col-lg-4 text-center">
-                    <ul class="social-profile list-style">
-                        <li><a href="https://www.fb.com/" target="_blank"><i class="flaticon-facebook-1"></i></a></li>
-                        <li><a href="https://www.twitter.com/" target="_blank"><i class="flaticon-twitter-1"></i></a>
-                        </li>
-                        <li><a href="https://www.instagram.com/" target="_blank"><i
-                                    class="flaticon-instagram-2"></i></a></li>
-                        <li><a href="https://www.linkedin.com/" target="_blank"><i class="flaticon-linkedin"></i></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-4">
-                    <div class="footer-right">
-                        <button class="subscribe-btn" data-bs-toggle="modal" data-bs-target="#newsletter-popup">Become a
-                            subscriber<i class="flaticon-right-arrow"></i></button>
-                        <p>Get all the latest posts delivered straight to your inbox.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <button type="button" id="backtotop" class="position-fixed text-center border-0 p-0">
+    {{-- <button type="button" id="backtotop" class="position-fixed text-center border-0 p-0">
         <i class="ri-arrow-up-line"></i>
-    </button>
+    </button> --}}
 
     <div class="modal fade" id="newsletter-popup" tabindex="-1" aria-labelledby="newsletter-popup" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl">
@@ -339,7 +609,7 @@
                 <div class="modal-body">
                     <div class="newsletter-bg bg-f"></div>
                     <div class="newsletter-content">
-                        <img src="assets/img/newsletter-icon.webp" alt="Image" class="newsletter-icon">
+                        <img src="{{asset('assets/img/newsletter-bg.webp')}}" alt="Image" class="newsletter-icon">
                         <h2>Join Our Newsletter & Read The New Posts First</h2>
                         <form action="#" class="newsletter-form">
                             <input type="email" placeholder="Email Address">
@@ -366,7 +636,8 @@
                 </button>
                 <div class="modal-body">
                     <div class="video-popup">
-                        <iframe width="885" height="498" src="https://www.youtube.com/embed/3FjT7etqxt8"
+                        <iframe width="885" height="498" 
+                        {{-- src="https://www.youtube.com/embed/3FjT7etqxt8" --}}
                             title="How to Design an Elvis Movie Poster in Photoshop"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowfullscreen></iframe>
@@ -376,4 +647,8 @@
         </div>
     </div>
 
+@endsection
+
+@section('script')
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 @endsection

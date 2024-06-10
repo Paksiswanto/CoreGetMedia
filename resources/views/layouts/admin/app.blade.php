@@ -14,7 +14,7 @@
     <!--  Favicon -->
     <link rel="shortcut icon" type="{{ asset('image/png') }}" href="{{ env('APP_LOGO') }}" />
     <!-- Owl Carousel  -->
-    <link rel="stylesheet" href="{{ asset('admin/assets/dist/libs/owl.carousel/dist/assets/owl.carousel.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('admin/assets/dist/libs/owl.carousel/dist/assets/owl.carousel.min.css') }}"> --}}
     <!-- Core Css -->
     <link rel="stylesheet" href="{{ asset('admin/dist/libs/sweetalert2/dist/sweetalert2.min.css') }}">
     <link id="themeColors" rel="stylesheet" href="{{ asset('admin/dist/css/style.min.css') }}" />
@@ -23,7 +23,7 @@
         href="{{ asset('admin/dist/libs/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/dist/libs/select2/dist/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/dist/libs/sweetalert2/dist/sweetalert2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin/dist/css/app.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('admin/dist/css/app.css') }}"> --}}
     <link rel="stylesheet"
         href="{{ asset('admin/dist/libs/bootstrap-duallistbox/dist/bootstrap-duallistbox.min.css') }}">
     @yield('style')
@@ -76,12 +76,12 @@
 <body>
     <!-- Preloader -->
     <div class="preloader">
-        <img src="{{ asset('assets/img/logo-get.png') }}" style="width:150px !important" alt="loader"
+        <img src="{{ asset('assets/img/logo/logo-get.svg') }}" style="width:150px !important" alt="loader"
             class="lds-ripple img-fluid animate-bounce bounce2" />
     </div>
     <!-- Preloader -->
     <div class="preloader">
-        <img src="{{ asset('assets/img/logo-get.png') }}" style="width:150px !important" alt="loader"
+        <img src="{{ asset('assets/img/logo/logo-get.svg') }}" style="width:150px !important" alt="loader"
             class="lds-ripple img-fluid animate-bounce bounce2" />
     </div>
     <!--  Body Wrapper -->
@@ -307,14 +307,14 @@
                     </div>`
         }
 
-        function showNoData(message) {
-            return `<div class="d-flex justify-content-center" style="min-height:16rem">
-                        <div class="my-auto ">
-                            <img src="{{ asset('assets/img/no-data.svg') }}" width="250" height="400"/>
-                            <h4 class="text-center">${message}</h4>
-                            </div>
-                    </div>`
-        }
+        // function showNoData(message) {
+        //     return `<div class="d-flex justify-content-center" style="min-height:16rem">
+        //                 <div class="my-auto ">
+        //                     <img src="{{ asset('assets/img/no-data.svg') }}" width="250" height="400"/>
+        //                     <h4 class="text-center">${message}</h4>
+        //                     </div>
+        //             </div>`
+        // }
         $("#inputDate").on("change", function() {
             const inputDateValue = $(this).val();
             const parts = inputDateValue.split("-");

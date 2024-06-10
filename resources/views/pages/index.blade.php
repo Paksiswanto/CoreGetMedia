@@ -32,6 +32,15 @@
 
 @section('content')
     <div class="container-fluid">
+        <div class="mt-3">
+        @php
+            use Carbon\Carbon;
+            Carbon::setLocale('id');
+            $today = Carbon::now()->isoFormat('dddd, D MMMM YYYY');
+        @endphp
+        <p>{{ $today }}</p>
+        </div>
+        {{-- <p>Senin, 10 Juni 2024</p> --}}
         <div class="trending-news-box">
             <div class="row gx-5">
                 <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 d-flex justify-content-center">
@@ -855,7 +864,7 @@
 
     <div class="container-fluid pb-75 pt-100">
         <div>
-            <h2 class="section-title">Pilihan Editor</h2>
+            <h2 class="section-title">Artikel Premium</h2>
         </div>
         <div class="row gx-5 mt-5">
             <div class="col-xl-4">

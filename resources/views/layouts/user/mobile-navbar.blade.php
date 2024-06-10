@@ -309,7 +309,7 @@
                         <div class="">
                             <ul class="navbar-nav mx-auto">
                                 <div class="news-card-img mb-2 ms-2" style="padding-right: 0px;">
-                                    <a href="#">
+                                    <a href="/profile-user">
                                         <img src="{{asset('admin/dist/images/profile/user-2.jpg')}}" alt="Image" width="55px" height="55px" style="border-radius: 50%; object-fit:cover;"/>
                                     </a>
                                 </div>
