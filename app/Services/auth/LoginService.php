@@ -27,10 +27,6 @@ class LoginService
         $data = $request->validated();
         if (auth()->attempt(['email' => $request->email, 'password' => $request->password])) {
         $user = auth()->user();
-        if ($user->roles->pluck('name')[0] == 'author' && $user->author->status == 'reject') {
-            auth()->logout();
-            return redirect()->back()->withErrors(trans('auth.author_banned'))->withInput();
-        }
 
         if (!$user->email_verified_at) {
             auth()->logout();
@@ -40,10 +36,10 @@ class LoginService
             $role = auth()->user()->roles->pluck('name')[0];
             switch ($role) {
                 case "user":
-                    return redirect('/');
+                    return redirect('profile-user');
                     break;
                 case "author":
-                    return redirect('/');
+                    return redirect('profile-author');
                     break;
                 case 'admin':
                     return redirect('dashboard');

@@ -97,3 +97,22 @@ Route::get('all-news', function(){
     return view('pages.user.all-news.index');
 })->name('news.all-news');
 
+
+//Author
+
+Route::get('create-news', function(){
+    return view('pages.author.news.create');
+})->name('create.news');
+
+Route::get('list-news', function (){
+    return view('pages.author.news.list-news');
+})->name('news.list.author');
+
+Route::get('list-delete-news', function () {
+    return view('pages.author.news.list-delete');
+})->name('news.delete.list.author');
+
+Route::get('profile-author', function(){
+    return view('pages.author.profile');
+})->name('profile.author');
+
