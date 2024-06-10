@@ -137,9 +137,17 @@ Route::get('create-news', function(){
     return view('pages.author.news.create');
 })->name('create.news');
 
+Route::get('author-inbox', function(){
+    return view('pages.author.inbox');
+})->name('author.inbox');
+
 Route::get('list-news', function (){
     return view('pages.author.news.list-news');
 })->name('news.list.author');
+
+Route::get('news-statistic', function(){
+    return view('pages.author.news.statistic');
+})->name('news.author.statistic');
 
 Route::get('list-delete-news', function () {
     return view('pages.author.news.list-delete');
@@ -148,6 +156,8 @@ Route::get('list-delete-news', function () {
 Route::get('profile-author', function(){
     return view('pages.author.profile');
 })->name('profile.author');
+
+
 
 Route::get('faq', function(){
     return view('pages.user.faq.index');
@@ -173,11 +183,10 @@ Route::get('history-coin', function(){
     return view('pages.user.coin.history');
 })->name('history-coin.user');
 
+Route::get('list-author', function(){
+    return view('pages.user.author.list-author');
+})->name('user.list.author');
+
 Route::get('inbox-user', function(){
     return view('pages.user.inbox.index');
 })->name('inbox-user.user');
-
-
-
-// ----- AUTHOR -----
-
