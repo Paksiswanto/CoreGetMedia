@@ -248,7 +248,7 @@
     </div>
 </div>
 
-<div class="">
+{{-- <div class="">
     <ul class="nav nav-tabs gap-2 mb-4 d-flex justify-content-between" role="tablist">
         <div class="d-flex gap-2">
             <li class="nav-item premium ">
@@ -557,8 +557,7 @@
             </div>
         </div>
     </div>
-</div>
-
+</div> --}}
 
 
 <div class="row">
