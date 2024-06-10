@@ -2,107 +2,59 @@
 
 @section('style')
 <style>
-    .border-primary {
-        border-color: #0f4d8a !important;
-        border-width: 5px !important;
+/* 
+    .social-profile li a {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .social-profile li a i {
+    color: var(--whiteColor);
+    }
+    .social-profile li a:hover {
+    border-color: transparent;
+    background-color: var(--secondaryColor);
+    }
+    .social-profile li a:hover i {
+    color: var(--whiteColor);
+    }
+    .social-profile li a {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .social-profile li a i {
+    color: var(--whiteColor);
+    }
+ } */
+    .social-profile li a {
+    border: 1px solid #eee;
+    }
+    .social-profile li a:hover {
+    border-color: transparent;
     }
 
-    .btn-primary {
-        --bs-btn-color: #fff;
-        --bs-btn-bg: #0f4d8a;
-        --bs-btn-border-color: #0f4d8a;
-        --bs-btn-hover-color: #fff;
-        --bs-btn-hover-bg: #0b5ed7;
-        --bs-btn-hover-border-color: #0a58ca;
-        --bs-btn-focus-shadow-rgb: 49, 132, 253;
-        --bs-btn-active-color: #fff;
-        --bs-btn-a --ctive-bg: #0a58ca;
-        --bs-btn-active-border-color: #0a53be;
-        --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-        --bs-btn-disabled-color: #fff;
-        --bs-btn-disabled-bg: #0f4d8a;
-        --bs-btn-disabled-border-color: #0f4d8a;
-    }
-
-    .strip-right {
-        border-right: 1px solid #0f4d8a;
-        padding-right: 30px;
-        height: 60%;
-    }
-
-    .strip-right h6,
-    .strip-right p {
-        margin-left: 1px;
-    }
-
-    .card-detail {
-        border-radius: 8px;
-        border: 1px solid #eee;
-    }
-
-    .card-author {
-        position: absolute;
-        /* margin-top: ;  */
-    }
-
-    .box {
-        background-image: linear-gradient(180deg, #ffffff 50%, #aad7ff 300%);
-        background-size: 100% 0%;
-        background-repeat: no-repeat;
-        background-position: bottom;
-        transition: background-size 0.5s ease;
-    }
-
-    .box:hover {
-        background-size: 100% 100%;
-    }
-
-    .theme-dark .box {
-        background-color: #000000;
-        background-image: linear-gradient(180deg, #000000 24%, #175A95 200%);
-        background-size: 100% 0%;
-        background-repeat: no-repeat;
-        background-position: bottom;
-        transition: background-size 0.5s ease;
-    }
-
-    .theme-dark .box:hover {
-        background-size: 100% 100%;
-    }
-
-    .theme-dark .text-card {
-        color: #fff !important;
-    }
-
-    .theme-dark .card-detail {
-        border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    }
-
-    .author-box {
-        width: 1200px;
-        padding: 30px 40px 0px 40px;
-        border-radius: 20px;
-    }
-
-    .search-box-widget button {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        height: 40px;
-        background-color: #175A95;
-        border-radius: 5px;
-        padding: 10px 10px 10px 10px;
-        border: none;
-        width: 40px;
-    }
-
-    .page-nav li a.active,
-    .page-nav li a:hover {
-        color: var(--whiteColor);
-        opacity: 1;
-        background-color: #175A95;
-        border-color: transparent;
-    }
+    .social-profile {
+  margin-top: 16px;
+}
+.social-profile li {
+  margin-right: 5px;
+}
+.social-profile li:last-child {
+  margin-right: 0;
+}
+.social-profile li a {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: rgba(103, 77, 243, 0.1);
+}
+.social-profile li a i {
+  color: #fff;
+  font-size: 15px;
+}
+.social-profile li a:hover {
+  background-color: #175A95;
+}
+.social-profile li a:hover i {
+  color: var(--whiteColor);
+}
 
     .breadcrumb-wrap {
         padding: 80px 0 74px;
@@ -166,17 +118,22 @@
                         </div>
                     </div>
 
-                    <div class="">
+                    {{-- <div class=""> --}}
                         <ul class="social-profile list-style">
-                            <li><a href="https://www.fb.com/" target="_blank"><i class="ri-facebook-fill"></i></a></li>
-                            <li><a href="https://www.twitter.com/" target="_blank"><i class="ri-twitter-fill"></i></a>
+                            <li>
+                                <a href="https://www.fb.com/" target="_blank"><i class="ri-facebook-fill"></i></a>
                             </li>
-                            <li><a href="https://www.instagram.com/" target="_blank"><i
-                                        class="ri-instagram-line"></i></a></li>
-                            <li><a href="https://www.linkedin.com/" target="_blank"><i class="ri-linkedin-fill"></i></a>
+                            <li>
+                                <a href="https://www.twitter.com/" target="_blank"><i class="ri-twitter-fill"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/" target="_blank"><i class="ri-instagram-line"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://www.linkedin.com/" target="_blank"><i class="ri-linkedin-fill"></i></a>
                             </li>
                         </ul>
-                    </div>
+                    {{-- </div> --}}
                 </div>
             </div>
         </div>

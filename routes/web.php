@@ -196,6 +196,12 @@ Route::get('news-liked', function(){
 Route::get('contact-us', function(){
     return view('pages.user.contact-us.index');
 })->name('contact-us.index');
+
+Route::get('privacy-policy', function(){
+    return view('pages.user.privacy-policy.index');
+})->name('privacy-policy');
+
+
 // AUTHOR
 
 Route::get('list-author', function(){

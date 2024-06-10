@@ -618,7 +618,7 @@
                         <div class="form-check checkbox">
                             <input class="form-check-input" type="checkbox" id="test_21">
                             <label class="form-check-label" for="test_21">
-                                I've read and accept <a href="privacy-policy.html">Privacy Policy</a>
+                                I've read and accept <a href="{{route('privacy-policy')}}">Privacy Policy</a>
                             </label>
                         </div>
                     </div>
