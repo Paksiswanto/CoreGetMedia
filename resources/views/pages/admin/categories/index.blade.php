@@ -99,7 +99,7 @@
                                     </svg>
                                 </button>
 
-                                <a data-bs-toggle="tooltip" title="Sub Category" class="btn btn-sm text-white"
+                                <a href="{{route('subcategory.list.admin')}}" data-bs-toggle="tooltip" title="Sub Category" class="btn btn-sm text-white"
                                     style="background-color: #1EBB9E;">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24">
                                         <path fill="#ffffff"

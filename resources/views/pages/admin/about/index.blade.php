@@ -66,8 +66,8 @@
                     <input type="text" id="slogan" name="slogan" placeholder=""
                         {{-- @if ($data)
                             value="{{ $data->slogan }}"
-                        @endif
-                        class="form-control @error('slogan') is-invalid @enderror" --}}
+                        @endif --}}
+                        class="form-control @error('slogan') is-invalid @enderror"
                         >
                     @error('slogan')
                         <span class="invalid-feedback" role="alert" style="color: red;">
@@ -81,8 +81,8 @@
                     <input type="text" id="email" name="email" placeholder=""
                         {{-- @if ($data)
                             value="{{ $data->email }}"
-                        @endif
-                        class="form-control @error('email') is-invalid @enderror" --}}
+                        @endif --}}
+                        class="form-control @error('email') is-invalid @enderror"
                         >
                     @error('email')
                         <span class="invalid-feedback" role="alert" style="color: red;">
@@ -97,8 +97,8 @@
                     <input type="text" id="phoone_number" name="phone_number" placeholder=""
                         {{-- @if ($data)
                             value="{{ $data->phone_number }}"
-                        @endif
-                        class="form-control @error('phone_number') is-invalid @enderror" --}}
+                        @endif --}}
+                        class="form-control @error('phone_number') is-invalid @enderror"
                         >
                     @error('phone_number')
                     <span class="invalid-feedback" role="alert" style="color: red;">
