@@ -36,9 +36,9 @@
         <h5 class="text-white mt-1 d-none d-md-block">Rp.12.000</h5>
 
         <div class="d-flex justify-content-center">
-            <a href="{{route('user.history.coin')}}" class="text-white fs-4 text-mobile me-3 mb-2 mb-md-0">Riwayat</a>
+            <a href="{{route('history-coin.user')}}" class="text-white fs-4 text-mobile me-3 mb-2 mb-md-0">Riwayat</a>
             <span class="text-white me-3">|</span>
-            <a href="{{route('user.tukar.coin')}}" class="text-white fs-4 tetxt-mobile">
+            <a href="{{route('history-coin.user')}}" class="text-white fs-4 tetxt-mobile">
                 <div class="d-flex align-items-center">
                     Tukarkan Koin
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24">
