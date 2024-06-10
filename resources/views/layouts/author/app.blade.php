@@ -12,9 +12,8 @@
     <meta name="keywords" content="Mordenize" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!--  Favicon -->
-    <link rel="shortcut icon" type="{{ asset('image/png') }}" href="{{ env('APP_LOGO') }}" />
+    <link rel="shortcut icon" type="{{ asset('image/png') }}" href="{{ asset('assets/img/logo-get.png') }}" />
     <!-- Owl Carousel  -->
-    {{-- <link rel="stylesheet" href="{{ asset('admin/assets/dist/libs/owl.carousel/dist/assets/owl.carousel.min.css') }}"> --}}
     <!-- Core Css -->
     <link rel="stylesheet" href="{{ asset('admin/dist/libs/sweetalert2/dist/sweetalert2.min.css') }}">
     <link id="themeColors" rel="stylesheet" href="{{ asset('admin/dist/css/style.min.css') }}" />
@@ -23,15 +22,16 @@
         href="{{ asset('admin/dist/libs/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/dist/libs/select2/dist/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/dist/libs/sweetalert2/dist/sweetalert2.min.css') }}">
-    {{-- <link rel="stylesheet" href="{{ asset('admin/dist/css/app.css') }}"> --}}
-    <link rel="stylesheet"
-        href="{{ asset('admin/dist/libs/bootstrap-duallistbox/dist/bootstrap-duallistbox.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/dist/css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/dist/libs/bootstrap-duallistbox/dist/bootstrap-duallistbox.min.css') }}">
+
+
+
     @yield('style')
     <style>
         .important {
             color: red;
         }
-
         .bounce2 {
             animation: bounce2 2s ease infinite;
         }
@@ -54,41 +54,25 @@
                 transform: translateY(-15px);
             }
         }
-
-        .notification {
-            content: "";
-            position: absolute;
-            top: 22px;
-            right: 9px;
-            width: 8px;
-            height: 8px;
-        }
-        .rounded-circle {
-            border-radius: 50% !important;
-        }
-        .bg-primary {
-            --bs-bg-opacity: 1;
-            background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
-        }
     </style>
 </head>
 
 <body>
-    <!-- Preloader -->
     <div class="preloader">
-        <img src="{{ asset('assets/img/logo/logo-get.svg') }}" class="lds-ripple img-fluid animate-bounce" alt="loader"
+        <img src="{{ asset('assets/img/logo-get.png') }}" style="width:150px !important" alt="loader"
             class="lds-ripple img-fluid animate-bounce bounce2" />
     </div>
     <!-- Preloader -->
     <div class="preloader">
-        <img src="{{ asset('assets/img/logo/logo-get.svg') }}" class="lds-ripple img-fluid animate-bounce" alt="loader"
+        <img src="{{ asset('assets/img/logo-get.png') }}" style="width:150px !important" alt="loader"
             class="lds-ripple img-fluid animate-bounce bounce2" />
     </div>
+
     <!--  Body Wrapper -->
     <div class="page-wrapper" id="main-wrapper" data-theme="blue_theme" data-layout="vertical" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
         <!-- Sidebar Start -->
-        @include('layouts.admin.sidebar')
+        @include('layouts.author.sidebar')
         <!--  Sidebar End -->
         <!--  Main wrapper -->
         <div class="body-wrapper">
@@ -98,6 +82,8 @@
             <div class="container-fluid">
                 @yield('content')
             </div>
+
+
         </div>
     </div>
     <!--  Import Js Files -->
@@ -105,6 +91,7 @@
     <script src="{{ asset('admin/dist/libs/simplebar/dist/simplebar.min.js') }}"></script>
     <script src="{{ asset('admin/dist/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
     <!--  core files -->
+    <script src="{{ asset('admin/dist/js/dashboard.js') }}"></script>
     <script src="{{ asset('admin/dist/js/app.min.js') }}"></script>
     <script src="{{ asset('admin/dist/js/app.init.js') }}"></script>
     <script src="{{ asset('admin/dist/js/app-style-switcher.js') }}"></script>
@@ -117,7 +104,7 @@
     <script src="{{ asset('admin/dist/libs/jquery-steps/build/jquery.steps.min.js') }}"></script>
     <script src="{{ asset('admin/dist/libs/jquery-validation/dist/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('admin/dist/js/forms/form-wizard.js') }}"></script>
-    <!--Axios-->
+
 
     <script src="{{ asset('admin/dist/libs/sweetalert2/dist/sweetalert2.min.js') }}"></script>
     <script src="{{ asset('admin/dist/libs/select2/dist/js/select2.full.min.js') }}"></script>
@@ -139,18 +126,18 @@
             const keys = Object.keys(messages);
             for (const key of keys) {
                 const text = messages[key];
-                var ErrorList = $('<li>').text(text[0]).addClass('text-danger')
+                var ErrorList = $('<li>').text(text[0])
                 let inputElement = $(`#${type}-${key}`)
                 let select2Element = $(`#${type}-${key}`).siblings('.select2-container');
                 if (!inputElement.is('div')) {
-                    inputElement.addClass('is-invalid')
-                    select2Element.addClass('is-invalid');
+                    inputElement.addClass('error')
+                    select2Element.addClass('error');
                 }
                 inputElement.next('ul').html(ErrorList)
                 select2Element.next('ul').html(ErrorList)
             }
-            $('.is-invalid').change(function() {
-                $(this).removeClass('is-invalid')
+            $('.error').change(function() {
+                $(this).removeClass('error')
                 $(this).next('ul').html('')
             })
         }
@@ -307,14 +294,14 @@
                     </div>`
         }
 
-        // function showNoData(message) {
-        //     return `<div class="d-flex justify-content-center" style="min-height:16rem">
-        //                 <div class="my-auto ">
-        //                     <img src="{{ asset('assets/img/no-data.svg') }}" width="250" height="400"/>
-        //                     <h4 class="text-center">${message}</h4>
-        //                     </div>
-        //             </div>`
-        // }
+        function showNoData(message) {
+            return `<div class="d-flex justify-content-center" style="min-height:16rem">
+                        <div class="my-auto ">
+                            <img src="{{ asset('no-data.svg') }}" width="400" height="400"/>
+                            <h4 class="text-center">${message}</h4>
+                            </div>
+                    </div>`
+        }
         $("#inputDate").on("change", function() {
             const inputDateValue = $(this).val();
             const parts = inputDateValue.split("-");
@@ -338,10 +325,17 @@
             return formattedDate;
         }
     </script>
+
     @yield('script')
     <script>
-        $('.preloader').fadeOut();
-    </script>
+  document.addEventListener('DOMContentLoaded', function() {
+        var preloader = document.querySelector('.preloader');
+        if (preloader) {
+            preloader.style.display = 'none';
+        }
+    });
+
+</script>
 </body>
 
 </html>
