@@ -111,6 +111,24 @@ Route::get('faq', function(){
     return view('pages.user.faq.index');
 })->name('faq-list.user');
 
+Route::get('profile-user', function(){
+    return view('pages.user.profile.index');
+})->name('profile-user.user');
 
+Route::get('profile-update', function(){
+    return view('pages.user.profile.update');
+})->name('profile-update.user');
+
+Route::get('coin', function(){
+    return view('pages.user.coin.index');
+})->name('coin.user');
+
+Route::get('exchange-coin', function(){
+    return view('pages.user.coin.exchange-coin');
+})->name('exchange-coin.user');
+
+Route::get('history-coin', function(){
+    return view('pages.user.coin.history');
+})->name('history-coin.user');
 
 // ----- AUTHOR -----
