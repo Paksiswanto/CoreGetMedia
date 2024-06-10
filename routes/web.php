@@ -94,6 +94,27 @@ Route::get('inbox-admin', function(){
     return view('pages.admin.inbox.index');
 })->name('inbox-list.admin');
 
+Route::get('subscribe-list', function(){
+    return view('pages.admin.subscribe.index');
+})->name('subscribe-list.admin');
+
+Route::get('news-list', function(){
+    return view('pages.admin.news.news-list');
+})->name('news-list.admin');
+
+Route::get('confirm-news', function(){
+    return view('pages.admin.news.confirm-news');
+})->name('confirm-news.admin');
+
+Route::get('detail-nes', function(){
+    return view('pages.admin.news.detail-news');
+})->name('detail-news.admin');
+
+Route::get('news-premium', function(){
+    return view('pages.admin.news_premium.index');
+})->name('news-premium.admin');
+
+
 // ----- USER -----
 Route::get('news/category', function(){
     return view('pages.user.category.index');
@@ -121,7 +142,7 @@ Route::get('profile-update', function(){
 
 Route::get('coin', function(){
     return view('pages.user.coin.index');
-})->name('coin.user');
+})->name('s');
 
 Route::get('exchange-coin', function(){
     return view('pages.user.coin.exchange-coin');
@@ -130,5 +151,11 @@ Route::get('exchange-coin', function(){
 Route::get('history-coin', function(){
     return view('pages.user.coin.history');
 })->name('history-coin.user');
+
+Route::get('inbox-user', function(){
+    return view('pages.user.inbox.index');
+})->name('inbox-user.user');
+
+
 
 // ----- AUTHOR -----
