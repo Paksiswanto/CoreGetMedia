@@ -7,14 +7,17 @@ use App\Models\SubCategory;
 use App\Http\Requests\StoreSubCategoryRequest;
 use App\Http\Requests\UpdateSubCategoryRequest;
 use App\Models\Category;
+use App\Services\SubCategoryService;
 
 class SubCategoryController extends Controller
 {
+    private SubCategoryService $service;
     private SubCategoryInterface $subCategories;
 
-    public function __construct(SubCategoryInterface $subCategories)
+    public function __construct(SubCategoryInterface $subCategories, SubCategoryService $service)
     {
         $this->subCategories = $subCategories;
+        $this->service = $service;
     }
 
     /**
@@ -39,7 +42,7 @@ class SubCategoryController extends Controller
      */
     public function store(StoreSubCategoryRequest $request, Category $category)
     {
-        $data = $request->validated();
+        $data = $this->service->storeOrUpdate($request);
         $data['category_id'] = $category->id;
         $this->subCategories->store($data);
         return redirect()->back()->with('success' , 'Data berhasil ditambahkan');
@@ -64,8 +67,9 @@ class SubCategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateSubCategoryRequest $request, SubCategory $subCategory)
+    public function update(StoreSubCategoryRequest $request, SubCategory $subCategory)
     {
+        $data = $this->service->storeOrUpdate($request);
         $this->subCategories->update($subCategory->id, $request->validated());
         return redirect()->back()->with('success' , 'Data berhasil di perbarui');
     }

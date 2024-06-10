@@ -53,16 +53,6 @@
                         <span class="hide-menu">Tag</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link {{ request()->routeIs('inbox-list.admin' ? 'active' : '') }}"
-                        href="{{route('inbox-list.admin')}}" aria-expanded="false">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9l3.75 3a2 2 0 0 0 2.5 0L17 9m4 8V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2"/></svg>
-                        <span class="hide-menu">Inbox</span>
-                        {{-- @if ($totalUnread > 0)
-                            <span id="total" class="badge total ms-auto bg-danger ">{{ $totalUnread }}</span>
-                        @endif --}}
-                    </a>
-                </li>
                 <li class="nav-small-cap">
                     <i class="ti ti-dots nav-small-cap-icon fs-4 text-white"></i>
                     <span class="hide-menu text-white">Penulis</span>

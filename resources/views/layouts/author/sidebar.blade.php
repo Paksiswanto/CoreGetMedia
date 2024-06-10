@@ -33,14 +33,6 @@
                       <span class="hide-menu">Statistik</span>
                     </a>
                     <ul aria-expanded="false" class="collapse first-level">
-                      {{-- <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">
-                          <div class="round-16 d-flex align-items-center justify-content-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="currentColor" d="M12.025 21q-.425 0-.712-.288T11.025 20v-1.15Q9.9 18.6 9.05 17.975t-1.375-1.75q-.175-.35-.012-.737t.587-.563q.35-.15.725.013t.575.537q.425.75 1.075 1.138t1.6.387q1.025 0 1.737-.462t.713-1.438q0-.875-.55-1.387t-2.55-1.163q-2.15-.675-2.95-1.612t-.8-2.288q0-1.625 1.05-2.525t2.15-1.025V4q0-.425.288-.713T12.025 3t.713.288t.287.712v1.1q.95.15 1.65.613t1.15 1.137q.225.325.088.725t-.563.575q-.35.15-.725.013t-.7-.488t-.763-.537t-1.087-.188q-1.1 0-1.675.488T9.825 8.65q0 .825.75 1.3t2.6 1q1.725.5 2.613 1.588t.887 2.512q0 1.775-1.05 2.7t-2.6 1.15V20q0 .425-.288.713t-.712.287"/></svg>
-                          </div>
-                          <span class="hide-menu">Pendapatan</span>
-                        </a>
-                      </li> --}}
                       <li class="sidebar-item">
                         <a href="{{ route('news.author.statistic') }}" class="sidebar-link {{ request()->routeIs('news.author.statistic' ? 'active' : '') }}">
                             <div class="round-16 d-flex align-items-center justify-content-center">
@@ -52,14 +44,12 @@
                     </ul>
                 </li>
 
-                <li class="sidebar-item">
-                    <a class="sidebar-link {{ request()->routeIs('author.inbox' ? 'active' : '') }}"
-                        href="{{ route('author.inbox') }}" aria-expanded="false">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="25"  height="25" viewBox="0 0 24 24"><path fill="currentColor" d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2m6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5zM7.58 4.08L6.15 2.65C3.75 4.48 2.17 7.3 2.03 10.5h2a8.445 8.445 0 0 1 3.55-6.42m12.39 6.42h2c-.15-3.2-1.73-6.02-4.12-7.85l-1.42 1.43a8.495 8.495 0 0 1 3.54 6.42"/></svg>
-                        <span class="hide-menu">Kotak Surat</span>
-                    </a>
-                </li>
 
+
+
+
+
+                
                 <li class="nav-small-cap">
                     <i class="ti ti-dots nav-small-cap-icon fs-4 text-white"></i>
                     <span class="hide-menu text-white">Berita</span>

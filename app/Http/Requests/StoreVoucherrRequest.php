@@ -24,7 +24,7 @@ class StoreVoucherrRequest extends FormRequest
         return [
             'code' => 'required',
             'quota' => 'nullable',
-            'presentation' => 'required',
+            'presentation' => 'required|numeric',
             'status' => 'required',
             'start_date' => 'required',
             'end_date' => 'required'

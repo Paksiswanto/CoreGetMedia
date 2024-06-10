@@ -51,14 +51,20 @@
                         </ul>
                     </div>
                     <div class="p-4 text-center">
-                        <img src="{{asset('admin/dist/images/profile/user-2.jpg')}}" alt="" class="rounded-circle mb-3"
-                            style="object-fit: cover" width="80" height="80">
+                        <div>
+                            <img src="{{asset('admin/dist/images/profile/user-2.jpg')}}" alt="" class="rounded-circle mb-3" style="object-fit: cover" width="120" height="120">
+                        </div>
+                        <div>
+                            <img src="{{asset('admin/dist/images/profile/user-2.jpg')}}" alt="" class="rounded-circle" style="object-fit: cover; margin-top: -4pc;" width="40" height="40">
+                        </div>
                         <h5>Karin</h5>
                         <p class="fs-5">karin@gmail.com</p>
-                        <div class="">
-                            <button class="btn btn-light-primary px-4 text-primary">Admin</button>
-                        </div>
                     </div>
+                </div>
+                <div class="card-footer" style="border-top-width: 4px">
+                    <h5 class="text-center">
+                        Admin
+                    </h5>
                 </div>
             </div>
         </div>
@@ -163,7 +169,7 @@
         </div>
 
     </div>
-    
+
 
     <div class="modal fade" id="modal-create" tabindex="-1" aria-labelledby="tambahdataLabel" aria-hidden="true">
         <div class="modal-dialog">
