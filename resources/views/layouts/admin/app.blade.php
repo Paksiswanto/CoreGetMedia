@@ -76,12 +76,12 @@
 <body>
     <!-- Preloader -->
     <div class="preloader">
-        <img src="{{ asset('assets/img/logo/logo-get.svg') }}" style="width:150px !important" alt="loader"
+        <img src="{{ asset('assets/img/logo/logo-get.svg') }}" class="lds-ripple img-fluid animate-bounce" alt="loader"
             class="lds-ripple img-fluid animate-bounce bounce2" />
     </div>
     <!-- Preloader -->
     <div class="preloader">
-        <img src="{{ asset('assets/img/logo/logo-get.svg') }}" style="width:150px !important" alt="loader"
+        <img src="{{ asset('assets/img/logo/logo-get.svg') }}" class="lds-ripple img-fluid animate-bounce" alt="loader"
             class="lds-ripple img-fluid animate-bounce bounce2" />
     </div>
     <!--  Body Wrapper -->
