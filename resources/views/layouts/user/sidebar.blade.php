@@ -53,11 +53,11 @@
 
     <!-- Preloader -->
     <div class="preloader">
-        <img src="{{ env('APP_LOGO') }}" alt="loader" class="lds-ripple img-fluid animate-bounce" />
+        <img src="{{asset('assets/img/logo/logo-get.svg')}}" alt="loader" class="lds-ripple img-fluid animate-bounce" />
     </div>
     <!-- Preloader -->
     <div class="preloader">
-        <img src="{{ env('APP_LOGO') }}" alt="loader" class="lds-ripple img-fluid animate-bounce" />
+        <img src="{{asset('assets/img/logo/logo-get.svg')}}" alt="loader" class="lds-ripple img-fluid animate-bounce" />
     </div>
     <!--  Body Wrapper -->
     <div class="page-wrapper" id="main-wrapper" data-theme="blue_theme" data-layout="vertical" data-sidebartype="full"
