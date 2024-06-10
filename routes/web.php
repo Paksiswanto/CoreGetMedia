@@ -193,6 +193,9 @@ Route::get('news-liked', function(){
     return view('pages.user.news-liked.index');
 })->name('news-liked.user');
 
+Route::get('contact-us', function(){
+    return view('pages.user.contact-us.index');
+})->name('contact-us.index');
 // AUTHOR
 
 Route::get('list-author', function(){
