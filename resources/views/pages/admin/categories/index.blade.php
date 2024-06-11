@@ -82,7 +82,7 @@
                 <tbody>
                     @forelse ($categories as $category)
                         <tr>
-                            <td>1</td>
+                            <td>{{$loop->iteration                                                                                                                                                                                          }}</td>
                             <td>{{ $category->name }}</td>
                             <td>{{ $category->newsCategories->count() }}</td>
                             <td>{{ $category->subCategories->count() }}</td>

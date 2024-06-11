@@ -76,4 +76,13 @@ class TagRepository extends BaseRepository implements TagInterface
             ->findOrFail($id)
             ->update($data);
     }
+
+    public function getByPopular(): mixed
+    {
+        return $this->model->query()
+            ->whereRelation('newsTags.news', 'status', NewsStatusEnum::ACTIVE->value)
+            ->withCount('newsTags')
+            ->take(12)
+            ->get();
+    }
 }

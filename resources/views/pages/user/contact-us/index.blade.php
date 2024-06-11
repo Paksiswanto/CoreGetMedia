@@ -67,10 +67,10 @@
 @section('content')
 <div class="breadcrumb-wrap">
     <div class="container">
-        <h2 class="breadcrumb-title text-white">Penulis</h2>
+        <h2 class="breadcrumb-title text-white">Hubungi Kami</h2>
         <ul class="breadcrumb-menu list-style text-white">
             <li><a class="text-white" href="/">Beranda</a></li>
-            <li>Penulis</li>
+            <li>Hubungi Kami</li>
         </ul>
     </div>
 </div>

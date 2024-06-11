@@ -64,7 +64,7 @@
                 <tbody>
                     @forelse ($subCategories as $subcategory)
                         <tr>
-                            <td>1</td>
+                            <td>{{$loop->iteration}}</td>
                             <td>{{ $subcategory->name }}</td>
                             <td>
                                 <button id="btn-edti-{{ $subcategory->id }}" data-id="{{$subcategory->id}}" data-name="{{ $subcategory->name }}" style="background-color: #FFD643;" class="btn btn-sm btn-edit text-white me-2">
