@@ -27,6 +27,26 @@
         color: #175A95;
     }
 
+    .tag-list li a:hover {
+            background-color: #175A95;
+            color: var(--whiteColor);
+        }
+        .tag-list li a {
+            color: var(--optionalColor);
+            background-color: var(--whiteColor);
+            border-radius: 5px;
+            padding: 7px 15px 3px 17px;
+            font-size: 14px;
+            line-height: 30px;
+            display: inline-block;
+            border: 1px solid #eee;
+        }
+        .theme-dark .tag-list li a:hover {
+            background-color: #175A95;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--whiteColor);
+        }
+
     </style>
 @endsection
 
@@ -528,7 +548,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="sidebar-widget">
+                    <div class="sidebar-widget bg-transparent shadow-smer">
                         <h3 class="sidebar-widget-title">Tag Populer</h3>
                         <ul class="tag-list list-style">
                             <li><a href="{{route('list-tag.user')}}">BUSINESS</a></li>
