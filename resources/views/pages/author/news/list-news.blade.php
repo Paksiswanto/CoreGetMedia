@@ -51,6 +51,10 @@
                     <option value="active">Approved</option>
                     <option value="nonactive">Reject</option>
                 </select>
+
+                <div class="justify-content-end">
+                    <a href="{{ route('create.news') }}" class="btn btn-primary">Tambah</a>
+                </div>
             </div>
         </div>
     </form>

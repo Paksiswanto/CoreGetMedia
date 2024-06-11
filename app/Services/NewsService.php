@@ -146,10 +146,23 @@ class NewsService
     {
         $data = $request->validated();
 
-        $old_photo = $news->photo;
+        if ($request->has('tag')) {
+            $newTags = [];
+            foreach ($request->input('tag') as $tagName) {
+                $tag = Tags::updateOrCreate(
+                    ['name' => $tagName],
+                    ['slug' => Str::slug($tagName)]
+                );
+                $newTags[] = $tag->id;
+            }
+
+            $data['tag'] = $newTags;
+        }
+
+        $old_photo = $news->image;
         $new_photo = "";
 
-        if ($request->hasFile('photo')) {
+        if ($request->hasFile('image')) {
 
             if (file_exists(public_path($old_photo))) {
                 unlink(public_path($old_photo));
@@ -161,7 +174,7 @@ class NewsService
 
         $domQuestion = new \DOMDocument();
         libxml_use_internal_errors(true);
-        $content = $data['content'] ?? '-';
+        $content = $data['description'] ?? '-';
         if (!$content) {
             $domQuestion->loadHTML($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NOIMPLIED);
             $this->processImages($domQuestion);
@@ -172,9 +185,12 @@ class NewsService
             'user_id' => auth()->user()->id,
             'name' => $data['name'],
             'slug' => Str::slug($data['name']),
-            'image' => $new_photo ? $new_photo : $old_photo,
+            'image' => $new_photo ?: $old_photo,
             'description' => $data['description'],
-            'date' => $data['date']
+            'date' => $data['date'],
+            'category' => $data['category'],
+            'sub_category' => $data['sub_category'],
+            'tag' => $data['tag']
         ];
     }
 
