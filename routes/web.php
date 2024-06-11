@@ -6,6 +6,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\TagsController;
 use App\Http\Controllers\VoucherrController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -75,9 +76,10 @@ Route::get('author-banned', function(){
     return view('pages.admin.author.confirm-author');
 })->name('confirm-author.admin');
 
-Route::get('user-account-list', function(){
-    return view('pages.admin.account.user');
-})->name('user-account.list.admin');
+Route::get('user-account-list', [UserController::class, 'index'])->name('user-account.list.admin');
+// Route::get('user-account-list', function(){
+//     return view('pages.admin.account.user');
+// })->name('user-account.list.admin');
 
 Route::get('admin-account-list', function(){
     return view('pages.admin.account.admin');
@@ -145,6 +147,15 @@ Route::get('about-us', function(){
     return view('pages.user.aboutus.aboutus');
 })->name('about.us');
 
+
+Route::get('create-news', function(){
+    return view('pages.author.news.create');
+})->name('create.news');
+
+Route::get('list-news', function (){
+    return view('pages.author.news.list-news');
+})->name('news.list.author');
+
 //Author
 Route::get('create-news', [NewsController::class, 'create'])->name('create.news');
 Route::post('store-news', [NewsController::class, 'store'])->name('store.news');
@@ -152,6 +163,7 @@ Route::get('get-sub-category', [SubCategoryController::class, 'show'])->name('ge
 Route::get('list-news', [NewsController::class, 'index'])->name('news.list.author');
 Route::get('edit-news/{news}', [NewsController::class, 'edit'])->name('edit.news');
 Route::put('update-news/{news}', [NewsController::class, 'update'])->name('update.news');
+
 
 Route::get('news-statistic', function(){
     return view('pages.author.news.statistic');
@@ -202,8 +214,17 @@ Route::get('privacy-policy', function(){
 })->name('privacy-policy');
 
 Route::get('list-tag', function(){
-    return view('pages.user.tag.idex');
+    return view('pages.user.tag.index');
 })->name('list-tag.user');
+
+Route::get('all-category', function(){
+    return view('pages.user.category.all-category');
+})->name('all-category.user');
+
+Route::get('all-subcategory', function(){
+    return view('pages.user.subcategory.all-subcategory');
+
+})->name('all-subcategory.user');
 
 // AUTHOR
 

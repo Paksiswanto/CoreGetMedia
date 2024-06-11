@@ -10,7 +10,7 @@ use App\Http\Requests\UpdateAuthorRequest;
 class AuthorController extends Controller
 {
     private AuthorInterface $author;
-
+    
 
     public function __construct(AuthorInterface $author)
     {
