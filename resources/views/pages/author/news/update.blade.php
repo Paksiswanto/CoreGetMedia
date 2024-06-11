@@ -208,7 +208,7 @@
                 </div>
             </div>
         </div>
-        <div class="d-flex">
+        <div class="d-flex justify-content-end">
             <button type="reset" class="btn btn-danger m-2">
                 Batal
             </button>
