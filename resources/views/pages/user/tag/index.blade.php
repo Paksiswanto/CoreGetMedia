@@ -27,19 +27,16 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             color: var(--whiteColor);
         }
-        .breadcrumb-menu li:after {
-            color: #000;
-        }
     </style>
 @endsection
 
 @section('content')
     <div class="col-lg-12">
         <div class="breadcrumb-wrap">
-            <h2 class="breadcrumb-title">Sub Category</h2>
+            <h2 class="breadcrumb-title">Tag</h2>
             <ul class="breadcrumb-menu list-style">
                 <li><a href="/">Home</a></li>
-                <li>Category</li>
+                <li>Tag</li>
             </ul>
         </div>
     </div>
@@ -71,7 +68,7 @@
                     <div class="mb-5">
                         <div class="d-flex justify-content-between mb-3 mt-3">
                             <h3>Trending</h3>
-                            <a href="{{route('all-subcategory.user')}}">
+                            <a href="#">
                                 <p>Lihat lainnya
                                     <i><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
                                             viewBox="0 0 24 24">

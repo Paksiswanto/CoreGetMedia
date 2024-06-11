@@ -3143,7 +3143,8 @@ select {
   content: "";
   width: 0;
   height: 1px;
-  background-color: var(--secondaryColor);
+  background-color: #175A95;
+  /* background-color: var(--secondaryColor); */
   transition: var(--transition);
   visibility: visible;
   opacity: 0;

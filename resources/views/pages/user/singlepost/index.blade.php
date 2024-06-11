@@ -556,7 +556,7 @@
                 <div class="col-lg-4">
                     <div class="sidebar">
                         <div class="sidebar-widget">
-                            <h3 class="sidebar-widget-title">Kategori</h3>
+                            <h3 class="sidebar-widget-title">Kategori Populer</h3>
                             <ul class="category-widget list-style">
                                 <li><a href="business.html"><img src="{{asset('assets/img/icons/arrow-right.svg')}}"
                                             alt="Image">Kategori <span>(6)</span></a></li>
@@ -575,19 +575,19 @@
                             </ul>
                         </div>
                         <div class="sidebar-widget">
-                            <h3 class="sidebar-widget-title">Popular Tags</h3>
+                            <h3 class="sidebar-widget-title">Tag Populer</h3>
                             <ul class="tag-list list-style">
-                                <li><a href="news-by-tags.html">BUSINESS</a></li>
-                                <li><a href="news-by-tags.html">FOOD</a></li>
-                                <li><a href="news-by-tags.html">SCIENCE</a></li>
-                                <li><a href="news-by-tags.html">LIFESTYLE</a></li>
-                                <li><a href="news-by-tags.html">SPORTS</a></li>
-                                <li><a href="news-by-tags.html">PHOTO</a></li>
-                                <li><a href="news-by-tags.html">TECHNOLOGY</a></li>
-                                <li><a href="news-by-tags.html">CONTENT</a></li>
-                                <li><a href="news-by-tags.html">FEATURED</a></li>
-                                <li><a href="news-by-tags.html">AUDIO</a></li>
-                                <li><a href="news-by-tags.html">FASHION</a></li>
+                                <li><a href="{{route('list-tag.user')}}">BUSINESS</a></li>
+                                <li><a href="{{route('list-tag.user')}}">FOOD</a></li>
+                                <li><a href="{{route('list-tag.user')}}">SCIENCE</a></li>
+                                <li><a href="{{route('list-tag.user')}}">LIFESTYLE</a></li>
+                                <li><a href="{{route('list-tag.user')}}">SPORTS</a></li>
+                                <li><a href="{{route('list-tag.user')}}">PHOTO</a></li>
+                                <li><a href="{{route('list-tag.user')}}">TECHNOLOGY</a></li>
+                                <li><a href="{{route('list-tag.user')}}">CONTENT</a></li>
+                                <li><a href="{{route('list-tag.user')}}">FEATURED</a></li>
+                                <li><a href="{{route('list-tag.user')}}">AUDIO</a></li>
+                                <li><a href="{{route('list-tag.user')}}">FASHION</a></li>
                             </ul>
                         </div>
                     </div>
@@ -609,24 +609,22 @@
                 <div class="modal-body">
                     <div class="newsletter-bg bg-f"></div>
                     <div class="newsletter-content">
-                        <img src="{{asset('assets/img/newsletter-bg.webp')}}" alt="Image" class="newsletter-icon">
+                        <img src="{{asset('assets/img/newsletter-icon.webp')}}" alt="Image" class="newsletter-icon" />
                         <h2>Join Our Newsletter & Read The New Posts First</h2>
                         <form action="#" class="newsletter-form">
-                            <input type="email" placeholder="Email Address">
+                            <input type="email" placeholder="Email Address" />
                             <button type="button" class="btn-one">Subscribe<i class="flaticon-arrow-right"></i></button>
                         </form>
                         <div class="form-check checkbox">
-                            <input class="form-check-input" type="checkbox" id="test_21">
-                            <label class="form-check-label" for="test_21">
-                                I've read and accept <a href="{{route('privacy-policy')}}">Privacy Policy</a>
-                            </label>
+                            <input class="form-check-input" type="checkbox" id="test_21" />
+                            <label class="form-check-label" for="test_21"> I've read and accept <a href="{{route('privacy-policy')}}">Privacy Policy</a> </label>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
+    
     <div class="modal fade" id="quickview-modal" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="quickview-modal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl">

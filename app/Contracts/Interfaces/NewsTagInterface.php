@@ -8,7 +8,7 @@ use App\Contracts\Interfaces\Eloquent\ShowInterface;
 use App\Contracts\Interfaces\Eloquent\StoreInterface;
 use App\Contracts\Interfaces\Eloquent\UpdateInterface;
 
-interface UserInterface extends GetInterface, StoreInterface, UpdateInterface, ShowInterface, DeleteInterface
+interface NewsTagInterface extends GetInterface, StoreInterface, UpdateInterface, ShowInterface, DeleteInterface
 {
-    public function AccountUser();
+    public function where($news) : mixed;
 }

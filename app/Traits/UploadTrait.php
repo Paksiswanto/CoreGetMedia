@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use App\Helpers\ImageCompressing;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 
@@ -47,4 +48,56 @@ trait UploadTrait
 
         return Storage::put($disk, $file);
     }
+
+    /**
+     * Handle get original name
+     * @param UploadedFile $file
+     * @return string
+     */
+
+     public function originalName(UploadedFile $file): string
+     {
+         return $file->getClientOriginalName();
+     }
+
+     /**
+      * Handle get original extension
+      *
+      * @param UploadedFile $file
+      * @return string
+      */
+
+     public function originalExtension(UploadedFile $file): string
+     {
+         return $file->getClientOriginalExtension();
+     }
+
+     /**
+      * Get the storage path
+      *
+      * @return void
+      */
+     public function folderStorage(String $folderNameEnum, String $folderName)
+     {
+         $destinationPath = $folderName . '/' . $folderNameEnum;
+         if (!file_exists(public_path('storage/' . $destinationPath))) {
+             mkdir(public_path('storage/' . $destinationPath), 0777, true);
+         }
+         return $destinationPath;
+     }
+
+     /**
+      * Image uploader with resize image
+      *
+      * $imagePath The image path
+      * @param string $storePath the store path
+      * @param array{name:string, duplicate:bool, quality:int} $options The compress option
+      * @see https://image.intervention.io/v3/introduction/index
+      * @see https://image.intervention.io/v3/modifying/resizing
+      */
+     public function compressImage($fileName, $imagePath, $storePath, array $options = []): mixed
+     {
+         $storedImage = ImageCompressing::process($fileName, $imagePath, $storePath, $options)->toArray();
+         return $storedImage['files'];
+     }
 }
