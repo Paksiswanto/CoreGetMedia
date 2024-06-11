@@ -49,7 +49,7 @@
                     <span style="color: #92989F; font-size: 15px;">Kontak</span>
                     <li class="mb-2"><p>getmedia@gmail.com</p></li>
                     <li class="mb-2">+62 *** **** ****  </li>
-                    <li class="mb-2"><span style="color: #92989F; font-size: 15px;">Berlangganaan</span></li>
+                    {{-- <li class="mb-2"><span style="color: #92989F; font-size: 15px;">Berlangganaan</span></li> --}}
                 </ul>
             </div>
 

@@ -34,7 +34,7 @@
 
 @section('content')
     <div class="d-flex justify-content-center">
-        <img src="{{ asset('assets/img/faq.svg') }}"  alt="" class="" srcset="">
+        <img src="{{ asset('assets/img/faq-icon.png') }}"  alt="" class="" srcset="">
     </div>
     <div class="text-center">
         <h3>
