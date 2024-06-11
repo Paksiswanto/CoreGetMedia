@@ -9,6 +9,7 @@ use App\Contracts\Interfaces\RegisterInterface;
 use App\Contracts\Interfaces\SubCategoryInterface;
 use App\Contracts\Interfaces\TagInterface;
 use App\Contracts\Interfaces\VoucherInterface;
+use App\Contracts\Interfaces\UserInterface;
 use App\Contracts\Repositories\AuthorRepository;
 use App\Contracts\Repositories\CategoryRepository;
 use App\Contracts\Repositories\FaqRepository;
@@ -16,6 +17,7 @@ use App\Contracts\Repositories\RegisterRepository;
 use App\Contracts\Repositories\SubCategoryRepository;
 use App\Contracts\Repositories\TagRepository;
 use App\Contracts\Repositories\VoucherRepository;
+use App\Contracts\Repositories\UserRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -28,7 +30,8 @@ class AppServiceProvider extends ServiceProvider
         RegisterInterface::class => RegisterRepository::class,
         TagInterface::class => TagRepository::class,
         AuthorInterface::class => AuthorRepository::class,
-        VoucherInterface::class => VoucherRepository::class
+        VoucherInterface::class => VoucherRepository::class,
+        UserInterface::class => UserRepository::class
     ];
 
     /**
