@@ -57,6 +57,8 @@
 
     .img-contact {
         background-image: url("assets/img/contact/bg-contact.png");
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 
 </style>
@@ -79,8 +81,8 @@
 
 <div class="row">
     <div class="col-lg-6">
-        <div class="img-contact" width="300px;">
-            <div class="" style="padding-left: 250px; padding-top: 150px;">
+        <div class="img-contact">
+            <div class="" style="padding-left: 250px;padding-right: 50px; padding-top: 150px;">
                 <h3>Hubungi Kami</h3>
                 <p>Masukan Anda berharga bagi kami. Bantu kami meningkatkan portal berita kami dengan membagikan pemikiran Anda</p>
                 <div class="row mt-4">
@@ -140,11 +142,26 @@
         </div>
     </div>
     <div class="col-lg-6">
-        <div class="" style="padding-top: 150px;">
+        <div style="padding-top: 150px;padding-left: 50px;padding-right: 250px;">
             <h3>Kirimkan Pesan</h3>
             <div class="row">
-                <div class="col-lg-12">
-                    <input id="name" class="form-control" type="text" name="name">
+                <div class="col-lg-12 mb-4">
+                    <input id="name" class="form-control" type="text" placeholder="Name" name="name">
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <input id="email" class="form-control" type="text" placeholder="Email" name="email">
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <input id="no_telp" class="form-control" type="text" placeholder="Nomor Telepon" name="no_telp">
+                </div>
+                <div class="col-lg-12 mb-4">
+                    <textarea name="description" class="form-control" placeholder="Isi Pesan" id="" rows="7"></textarea>
+                </div>
+                <div class="col-md-12">
+                    <button class="btn-two py-3">
+                        Kirim Pesan
+                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24"><path fill="#ffffff" d="M3 20v-6l8-2l-8-2V4l19 8z"/></svg>    
+                    </button>
                 </div>
             </div>
         </div>
