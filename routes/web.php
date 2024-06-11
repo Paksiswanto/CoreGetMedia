@@ -201,6 +201,9 @@ Route::get('privacy-policy', function(){
     return view('pages.user.privacy-policy.index');
 })->name('privacy-policy');
 
+Route::get('list-tag', function(){
+    return view('pages.user.tag.idex');
+})->name('list-tag.user');
 
 // AUTHOR
 
