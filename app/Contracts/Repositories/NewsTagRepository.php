@@ -2,16 +2,14 @@
 
 namespace App\Contracts\Repositories;
 
-use App\Contracts\Interfaces\FaqInterface;
-use App\Contracts\Interfaces\NewsInterface;
-use App\Models\Faq;
-use App\Models\News;
+use App\Contracts\Interfaces\NewsTagInterface;
+use App\Models\NewsTag;
 
-class NewsRepository extends BaseRepository implements NewsInterface
+class NewsTagRepository extends BaseRepository implements NewsTagInterface
 {
-    public function __construct(News $news)
+    public function __construct(NewsTag $newsTag)
     {
-        $this->model = $news;
+        $this->model = $newsTag;
     }
 
     /**
@@ -37,16 +35,7 @@ class NewsRepository extends BaseRepository implements NewsInterface
      */
     public function show(mixed $id): mixed
     {
-        return $this->model->query()
-            ->where('user_id', $id)
-            ->get();
-    }
-
-    public function showWithSLug(string $slug): mixed
-    {
-        return $this->model->query()
-            ->where('slug', $slug)
-            ->firstOrFail();
+        //
     }
 
     /**
@@ -60,10 +49,10 @@ class NewsRepository extends BaseRepository implements NewsInterface
             ->get();
     }
 
-    public function where($newsId): mixed
+    public function where($news): mixed
     {
         return $this->model->query()
-            ->where('id', $newsId)
+            ->where('news_id', $news)
             ->get();
     }
 

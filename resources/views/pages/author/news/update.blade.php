@@ -23,7 +23,7 @@
 
 <head>
     <title>
-        Author | Create News
+        Author | Update News
     </title>
 </head>
 
@@ -68,8 +68,8 @@
         <h5>Baca ketentuan dan persyaratan sembelum mengunggah berita</h5>
     </div> --}}
 
-    <form action="{{ route('store.news') }}" method="post" enctype="multipart/form-data">
-        @method('post')
+    <form action="{{ route('update.news', ['news' => $news->id]) }}" method="post" enctype="multipart/form-data">
+        @method('put')
         @csrf
         <div class="ms-1 mt-5 d-flex justify-content-between">
             <h5>Isi form dibawah ini untuk mengunggah berita</h5>
@@ -82,15 +82,15 @@
                         <h3 for="" class="form-label">Thumbnail</h3>
 
                         <div class="gambar-iklan mb-4 d-flex justify-content-center">
-                            <img id="preview" class="hide" style="object-fit: cover; border: transparent;"
+                            <img id="preview" src="{{ asset('storage/'.$news->image) }}" style="object-fit: cover; border: transparent;"
                                 width="350" height="200" alt="">
                         </div>
                         <div class="d-flex justify-content-center mt-3">
                             <label for="image-upload" class="btn btn-primary">
                                 Unggah
                             </label>
-                            <input type="file" name="image" id="image-upload"
-                                class="hide @error('photo') is-invalid @enderror" onchange="previewImage(event)">
+                            <input type="file" name="image" id="image-upload" class="hide"
+                             value="{{ $news->image }}" onchange="previewImage(event)">
                         </div>
                         <div class="d-flex justify-content-center">
                             <p class="text-muted mt-3">File dengan format Jpg atau Png </p>
@@ -113,8 +113,10 @@
                                 class="select2 form-control category @error('category') is-invalid @enderror"
                                 name="category[]" multiple aria-label="Default select example">
                                 @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                @endforeach
+                                <option value="{{ $category->id }}" {{ $newsCategory->contains('category_id', $category->id) ? 'selected' : '' }}>
+                                    {{ $category->name }}
+                                </option>
+                            @endforeach
                             </select>
                             @error('category')
                                 <span class="invalid-feedback" role="alert" style="color: red">
@@ -128,6 +130,16 @@
                                 <select id="sub_category_id"
                                     class="form-control sub-category select2 @error('sub_category') is-invalid @enderror"
                                     name="sub_category[]" multiple="true" aria-label="Default select example">
+
+                                    @if ($subcategories != null)
+                                        <option >pilih sub kategori</option>
+                                        @foreach ($subcategories as $subcategory)
+                                        <option value="{{ $subcategory->id }}" {{ $newsSubcategory->contains('sub_category_id', $subcategory->id) ? 'selected' : '' }}>
+                                            {{ $subcategory->name }}
+                                        </option>
+                                        @endforeach
+                                    @endif
+
                                 </select>
                                 @error('sub_category')
                                     <span class="invalid-feedback" role="alert" style="color: red">
@@ -139,7 +151,7 @@
                         <div class="col-lg-12 mb-4">
                             <label class="form-label" for="password_confirmation">Tanggal Upload</label>
                             <input type="datetime-local" id="upload_date" name="date" placeholder="date"
-                                value="{{ old('upload_date') }}"
+                                value="{{ $news->date }}"
                                 class="form-control @error('upload_date') is-invalid @enderror">
                             @error('upload_date')
                                 <span class="invalid-feedback" role="alert" style="color: red">
@@ -152,7 +164,9 @@
                             <select class="form-control @error('tag') is-invalid @enderror select2 tags" name="tag[]"
                                 multiple="multiple">
                                 @foreach ($tags as $tag)
-                                    <option value="{{ $tag->name }}">{{ $tag->name }}</option>
+                                    <option value="{{ $tag->name }}" {{ $newsTags->pluck('tag_id')->contains($tag->id) ? 'selected' : '' }}>
+                                    {{ $tag->name }}
+                                    </option>
                                 @endforeach
                             </select>
                             @error('tag')
@@ -172,7 +186,7 @@
                             <div class="col-lg-12 mb-4">
                                 <label class="form-label" for="nomor">Judul Berita</label>
                                 <input type="text" id="name" name="name" placeholder="name"
-                                    value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror">
+                                    value="{{ $news->name }}" class="form-control @error('name') is-invalid @enderror">
                                 @error('name')
                                     <span class="invalid-feedback" role="alert" style="color: red;">
                                         <strong>{{ $message }}</strong>
@@ -181,8 +195,8 @@
                             </div>
                             <div class="col-lg-12 mb-4" style="height: auto;">
                                 <label class="form-label" for="content">Isi Berita</label>
-                                <textarea id="content" name="description" placeholder="content" value="{{ old('content') }}"
-                                    class="form  @error('content') is-invalid @enderror">{{ old('content') }}</textarea>
+                                <textarea id="content" name="description" placeholder="content" value="{{ $news->description }}"
+                                    class="form  @error('content') is-invalid @enderror">{{ $news->description }}</textarea>
                                 @error('content')
                                     <span class="invalid-feedback" role="alert" style="color: red;">
                                         <strong>{{ $message }}</strong>
@@ -198,8 +212,8 @@
             <button type="reset" class="btn btn-danger m-2">
                 Batal
             </button>
-            <button type="submit" class="btn btn-primary m-2" id="submitButton1">
-                Upload
+            <button type="submit" class="btn btn-primary m-2">
+                Update
             </button>
         </div>
         </div>

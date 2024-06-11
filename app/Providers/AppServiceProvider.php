@@ -5,6 +5,10 @@ namespace App\Providers;
 use App\Contracts\Interfaces\AuthorInterface;
 use App\Contracts\Interfaces\CategoryInterface;
 use App\Contracts\Interfaces\FaqInterface;
+use App\Contracts\Interfaces\NewsCategoryInterface;
+use App\Contracts\Interfaces\NewsInterface;
+use App\Contracts\Interfaces\NewsSubCategoryInterface;
+use App\Contracts\Interfaces\NewsTagInterface;
 use App\Contracts\Interfaces\RegisterInterface;
 use App\Contracts\Interfaces\SubCategoryInterface;
 use App\Contracts\Interfaces\TagInterface;
@@ -13,6 +17,10 @@ use App\Contracts\Interfaces\UserInterface;
 use App\Contracts\Repositories\AuthorRepository;
 use App\Contracts\Repositories\CategoryRepository;
 use App\Contracts\Repositories\FaqRepository;
+use App\Contracts\Repositories\NewsCategoryRepository;
+use App\Contracts\Repositories\NewsRepository;
+use App\Contracts\Repositories\NewsSubCategoryRepository;
+use App\Contracts\Repositories\NewsTagRepository;
 use App\Contracts\Repositories\RegisterRepository;
 use App\Contracts\Repositories\SubCategoryRepository;
 use App\Contracts\Repositories\TagRepository;
@@ -31,7 +39,11 @@ class AppServiceProvider extends ServiceProvider
         TagInterface::class => TagRepository::class,
         AuthorInterface::class => AuthorRepository::class,
         VoucherInterface::class => VoucherRepository::class,
-        UserInterface::class => UserRepository::class
+        UserInterface::class => UserRepository::class,
+        NewsInterface::class => NewsRepository::class,
+        NewsCategoryInterface::class => NewsCategoryRepository::class,
+        NewsSubCategoryInterface::class => NewsSubCategoryRepository::class,
+        NewsTagInterface::class => NewsTagRepository::class
     ];
 
     /**

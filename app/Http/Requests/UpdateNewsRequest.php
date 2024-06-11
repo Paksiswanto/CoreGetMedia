@@ -27,6 +27,12 @@ class UpdateNewsRequest extends FormRequest
             'image' => 'required|mimes:png,jpg,jpeg',
             'description'=> 'required|string',
             'date'=> 'required|date',
+            'category' => 'array|required',
+            'category.*' => 'required',
+            'sub_category' => 'array|required',
+            'sub_category.*' => 'required',
+            'tag' => 'array|required',
+            'tag.*' => 'required',
         ];
     }
 }

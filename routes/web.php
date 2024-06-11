@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\TagsController;
 use App\Http\Controllers\VoucherrController;
@@ -146,6 +147,7 @@ Route::get('about-us', function(){
     return view('pages.user.aboutus.aboutus');
 })->name('about.us');
 
+
 Route::get('create-news', function(){
     return view('pages.author.news.create');
 })->name('create.news');
@@ -153,6 +155,15 @@ Route::get('create-news', function(){
 Route::get('list-news', function (){
     return view('pages.author.news.list-news');
 })->name('news.list.author');
+
+//Author
+Route::get('create-news', [NewsController::class, 'create'])->name('create.news');
+Route::post('store-news', [NewsController::class, 'store'])->name('store.news');
+Route::get('get-sub-category', [SubCategoryController::class, 'show'])->name('get.sub.category');
+Route::get('list-news', [NewsController::class, 'index'])->name('news.list.author');
+Route::get('edit-news/{news}', [NewsController::class, 'edit'])->name('edit.news');
+Route::put('update-news/{news}', [NewsController::class, 'update'])->name('update.news');
+
 
 Route::get('news-statistic', function(){
     return view('pages.author.news.statistic');
