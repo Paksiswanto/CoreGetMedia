@@ -8,10 +8,6 @@ use SebastianBergmann\Type\VoidType;
 
 class LoginService
 {
-    public function __construct()
-    {
-    }
-
     /**
      * Handle a login request to the application.
      *
@@ -20,7 +16,6 @@ class LoginService
      *
      * @throws ValidationException
      */
-
 
     public function handleLogin(LoginRequest $request)
     {

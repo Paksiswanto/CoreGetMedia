@@ -98,6 +98,7 @@ class NewsController extends Controller
         $subcategories = $this->subcategories->get();
         $tags = $this->tags->get();
 
+        // dd($news->image);
         return view('pages.author.news.update', compact('news','categories', 'subcategories','tags', 'newsCategory', 'newsSubcategory', 'newsTags'));
     }
 
@@ -118,6 +119,10 @@ class NewsController extends Controller
      */
     public function destroy(News $news)
     {
-        //
+        $this->newscategories->delete($news->id);
+        $this->newssubcategories->delete($news->id);
+        $this->newstags->delete($news->id);
+        $this->news->delete($news->id);
+        return back()->with('success', 'Berhasil menghapus data');
     }
 }

@@ -89,8 +89,8 @@
                             <label for="image-upload" class="btn btn-primary">
                                 Unggah
                             </label>
-                            <input type="file" name="image" id="image-upload" class="hide"
-                             value="{{ $news->image }}" onchange="previewImage(event)">
+                            <input type="file" name="image" id="image-upload" class="hide" value="{{ $news->image }}" 
+                                onchange="previewImage(event)">
                         </div>
                         <div class="d-flex justify-content-center">
                             <p class="text-muted mt-3">File dengan format Jpg atau Png </p>

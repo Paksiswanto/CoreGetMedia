@@ -163,6 +163,7 @@ Route::get('get-sub-category', [SubCategoryController::class, 'show'])->name('ge
 Route::get('list-news', [NewsController::class, 'index'])->name('news.list.author');
 Route::get('edit-news/{news}', [NewsController::class, 'edit'])->name('edit.news');
 Route::put('update-news/{news}', [NewsController::class, 'update'])->name('update.news');
+Route::delete('delete-news/{news}', [NewsController::class, 'destroy'])->name('delete.news');
 
 
 Route::get('news-statistic', function(){
