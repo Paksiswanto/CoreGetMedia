@@ -2,21 +2,44 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Interfaces\CategoryInterface;
+use App\Contracts\Interfaces\NewsCategoryInterface;
 use App\Contracts\Interfaces\NewsInterface;
+use App\Contracts\Interfaces\NewsSubCategoryInterface;
+use App\Contracts\Interfaces\NewsTagInterface;
+use App\Contracts\Interfaces\SubCategoryInterface;
+use App\Contracts\Interfaces\TagInterface;
 use App\Enums\NewsEnum;
 use App\Models\News;
 use App\Http\Requests\StoreNewsRequest;
 use App\Http\Requests\UpdateNewsRequest;
+use App\Models\NewsCategory;
 use App\Services\NewsService;
 
 class NewsController extends Controller
 {
     private NewsInterface $news;
+    private CategoryInterface $categories;
+    private SubCategoryInterface $subcategories;
+    private TagInterface $tags;
+
+    private NewsCategoryInterface $newscategories;
+    private NewsSubCategoryInterface $newssubcategories;
+    private NewsTagInterface $newstags;
+
     private NewsService $service;
 
-    public function __construct(NewsInterface $news, NewsService $service)
+    public function __construct(NewsInterface $news, CategoryInterface $categories, SubCategoryInterface $subcategories, TagInterface $tags, NewsCategoryInterface $newscategories, NewsSubCategoryInterface $newssubcategories, NewsTagInterface $newstags, NewsService $service)
     {
         $this->news = $news;
+        $this->categories = $categories;
+        $this->subcategories = $subcategories;
+        $this->tags = $tags;
+
+        $this->newscategories = $newscategories;
+        $this->newssubcategories = $newssubcategories;
+        $this->newstags = $newstags;
+
         $this->service = $service;
     }
     /**
@@ -24,7 +47,9 @@ class NewsController extends Controller
      */
     public function index()
     {
-        //
+        $user_id = auth()->user()->id;
+        $news = $this->news->show($user_id);
+        return view('pages.author.news.list-news', compact('news'));
     }
 
     /**
@@ -32,7 +57,9 @@ class NewsController extends Controller
      */
     public function create()
     {
-        //
+        $categories = $this->categories->get();
+        $tags = $this->tags->get();
+        return view('pages.author.news.create', compact('categories', 'tags'));
     }
 
     /**
@@ -40,8 +67,10 @@ class NewsController extends Controller
      */
     public function store(StoreNewsRequest $request)
     {
+        // dd($request);
         $data = $this->service->store($request);
-        $this->news->store($data);
+        $newsId = $this->news->store($data)->id;
+        $this->service->storeRelation($newsId, $data['category'], $data['sub_category'], $data['tag']);
         return back()->with('success', 'Berhasil menambahkan data');
     }
 
@@ -56,9 +85,20 @@ class NewsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(News $news)
+    public function edit($news)
     {
-        //
+        $news = $this->news->showWithSLug($news);
+        $news_id = $news->id;
+
+        $newsCategory = $this->newscategories->where($news_id);
+        $newsSubcategory = $this->newssubcategories->where($news_id);
+        $newsTags = $this->newstags->where($news_id);
+
+        $categories = $this->categories->get();
+        $subcategories = $this->subcategories->get();
+        $tags = $this->tags->get();
+
+        return view('pages.author.news.update', compact('news','categories', 'subcategories','tags', 'newsCategory', 'newsSubcategory', 'newsTags'));
     }
 
     /**
@@ -69,6 +109,7 @@ class NewsController extends Controller
         $data = $this->service->update($request, $news);
         $data['status'] = NewsEnum::PENDING->value;
         $this->news->update($news->id, $data);
+        $this->service->updateRelation($news->id, $data['category'], $data['sub_category'], $data['tag']);
         return back()->with('success', 'Berhasil update data');
     }
 

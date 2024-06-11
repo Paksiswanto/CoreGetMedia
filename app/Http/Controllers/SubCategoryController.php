@@ -8,6 +8,7 @@ use App\Http\Requests\StoreSubCategoryRequest;
 use App\Http\Requests\UpdateSubCategoryRequest;
 use App\Models\Category;
 use App\Services\SubCategoryService;
+use Illuminate\Http\Request;
 
 class SubCategoryController extends Controller
 {
@@ -51,9 +52,11 @@ class SubCategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(SubCategory $subCategory)
+    public function show(Request $request)
     {
-        //
+        $categoryIds = $request->input('category_ids');
+        $subCategory = $this->subCategories->where($categoryIds);
+        return response()->json(['data' => $subCategory]);
     }
 
     /**
