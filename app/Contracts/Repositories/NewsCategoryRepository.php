@@ -22,8 +22,8 @@ class NewsCategoryRepository extends BaseRepository implements NewsCategoryInter
     public function delete(mixed $id): mixed
     {
         return $this->model->query()
-        ->findOrFail($id)
-        ->delete();
+            ->where('news_id', $id)
+            ->delete();
     }
 
     /**

@@ -169,7 +169,7 @@ class NewsService
             }
 
             $new_photo = $this->upload(UploadDiskEnum::NEWS->value, $request->image);
-            $news->photo = $new_photo;
+            $news->image = $new_photo;
         }
 
         $domQuestion = new \DOMDocument();
@@ -185,7 +185,7 @@ class NewsService
             'user_id' => auth()->user()->id,
             'name' => $data['name'],
             'slug' => Str::slug($data['name']),
-            'image' => $new_photo ?: $old_photo,
+            'image' => $new_photo ? $new_photo : $old_photo,
             'description' => $data['description'],
             'date' => $data['date'],
             'category' => $data['category'],
