@@ -10,5 +10,5 @@ use App\Contracts\Interfaces\Eloquent\UpdateInterface;
 
 interface TagInterface extends GetInterface, StoreInterface, UpdateInterface, ShowInterface, DeleteInterface
 {
-    //
+    public function showWithCount() : mixed;
 }

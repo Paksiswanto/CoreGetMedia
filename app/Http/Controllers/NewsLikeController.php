@@ -6,11 +6,13 @@ use App\Contracts\Interfaces\NewsLikeInterface;
 use App\Models\NewsLike;
 use App\Http\Requests\StoreNewsLikeRequest;
 use App\Http\Requests\UpdateNewsLikeRequest;
-use Illuminate\Http\Request;
+use App\Models\News;
+use App\Services\NewsLikeService;
 
 class NewsLikeController extends Controller
 {
     private NewsLikeInterface $newsLike;
+    private NewsLikeService $service;
 
     public function __construct(NewsLikeInterface $newsLike)
     {
@@ -36,9 +38,9 @@ class NewsLikeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(News $news)
     {
-        
+        //
     }
 
     /**

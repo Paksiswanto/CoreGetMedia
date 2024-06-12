@@ -15,13 +15,12 @@ class NewsLikeService
      *
      * @return array|bool
      */
-    public function store(StoreCategoryRequest $request)
+    public function store($id, $news, $ip)
     {
-        $data = $request->validated();
-
         return [
-            'name' => $data['name'],
-            'slug' => Str::slug($data['name']),
+            'news_id' => $news,
+            'user_id' => $id,
+            'ip_address' => $ip
         ];
     }
 }

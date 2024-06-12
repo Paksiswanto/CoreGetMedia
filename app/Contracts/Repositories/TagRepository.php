@@ -3,6 +3,7 @@
 namespace App\Contracts\Repositories;
 
 use App\Contracts\Interfaces\TagInterface;
+use App\Enums\NewsEnum;
 use App\Models\Tags;
 
 class TagRepository extends BaseRepository implements TagInterface
@@ -24,6 +25,15 @@ class TagRepository extends BaseRepository implements TagInterface
         return $this->model->query()
         ->findOrFail($id)
         ->delete();
+    }
+
+    public function showWithCount(): mixed
+    {
+        return $this->model->query()
+            ->withCount('newsTags')
+            ->orderByDesc('news_tags_count')
+            ->take(7)
+            ->get();
     }
 
     /**
