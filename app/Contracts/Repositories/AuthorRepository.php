@@ -3,6 +3,7 @@
 namespace App\Contracts\Repositories;
 
 use App\Contracts\Interfaces\AuthorInterface;
+use App\Enums\AuthorEnum;
 use App\Models\Author;
 
 class AuthorRepository extends BaseRepository implements AuthorInterface
@@ -46,6 +47,16 @@ class AuthorRepository extends BaseRepository implements AuthorInterface
     public function get(): mixed
     {
         return $this->model->query()
+            ->where('status', AuthorEnum::PENDING->value)
+            ->get();
+    }
+
+    public function where($data) : mixed
+    {
+        return $this->model->query()
+            ->when($data == 'accepted', function($query){
+                $query->where('status', AuthorEnum::ACCEPTED->value);
+            })
             ->get();
     }
 

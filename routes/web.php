@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\HomeController;
@@ -66,13 +67,12 @@ Route::delete('voucher-delete/{voucherr}', [VoucherrController::class, 'destroy'
 Route::get('confirm-news', [NewsController::class, 'confirm_news'])->name('confirm.news.admin');
 Route::get('detail-news/{news}', [NewsController::class, 'detail_news_admin'])->name('detail-news.admin');
 
+Route::get('confirm-author-list', [AuthorController::class, 'index'])->name('confirm-author.admin');
+Route::get('author-list', [AuthorController::class, 'list_author'])->name('author-list.admin');
+
 Route::get('admin-account-list', function(){
         return view('pages.admin.account.admin');
 })->name('admin-account.list.admin');
-
-Route::get('author-list', function(){
-    return view('pages.admin.author.author-list');
-})->name('author-list.admin');
 
 Route::get('author-banned', function(){
     return view('pages.admin.author.author-banned');
