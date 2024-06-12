@@ -7,6 +7,7 @@ use App\Contracts\Interfaces\FaqInterface;
 use App\Contracts\Interfaces\NewsInterface;
 use App\Contracts\Interfaces\PopularInterface;
 use App\Contracts\Interfaces\SubCategoryInterface;
+use App\Contracts\Interfaces\TagInterface;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -16,27 +17,28 @@ class HomeController extends Controller
     private CategoryInterface $categories;
     private SubCategoryInterface $subCategories;
     private PopularInterface $populars;
+    private TagInterface $tags;
 
-    public function __construct(NewsInterface $news, FaqInterface $faqs, CategoryInterface $categories, SubCategoryInterface $subCategories, PopularInterface $populars)
+    public function __construct(NewsInterface $news, FaqInterface $faqs, CategoryInterface $categories, SubCategoryInterface $subCategories, PopularInterface $populars, TagInterface $tags)
     {
         $this->faqs = $faqs;
         $this->categories = $categories;
         $this->subCategories = $subCategories;
         $this->populars = $populars;
         $this->news = $news;
+        $this->tags = $tags;
     }
 
     public function index(){
-        $categories = $this->categories->get();
-        $subCategories = $this->subCategories->get();
         $populars = $this->populars->getpopular();
-
+        $latests = $this->populars->getlatest();
+        // $tags = $this->tags->showWithCount();
         $category_id_1 = $this->categories->category_id_1();
         $category_id_2 = $this->categories->category_id_2();
-
         $categoryPopulars = $this->populars->getbycategory($category_id_1);
         $category2Populars = $this->populars->getbycategory($category_id_2);
-        return view('pages.index', compact('categories', 'subCategories', 'populars', 'categoryPopulars', 'category2Populars'));
+        
+        return view('pages.index', compact('populars', 'categoryPopulars' ,'latests', 'category2Populars'));
     }
 
     public function navbar(Request $request){

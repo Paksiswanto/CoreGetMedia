@@ -61,7 +61,7 @@
                         </div>
 
                         <div class="news-card-info">
-                            <h3><a data-toggle="tooltip" data-placement="top" title="Apex Legends Season 11 Start Date, Time, & What To Expect" href="#">{{ $item->name }}
+                            <h3><a data-toggle="tooltip" data-placement="top" title="Apex Legends Season 11 Start Date, Time, & What To Expect" href="{{ route('news.singlepost', ['news' => $item->slug]) }}">{{ $item->name }}
                                 </a>
                             </h3>
                             <ul class="news-metainfo list-style">
@@ -88,7 +88,7 @@
                         </a>
                     </div>
 
-                    @forelse ($news as $new)
+                    @forelse ($latests as $new)
                     <div class="news-card-five">
                         <div class="news-card-img">
                             <a href="#"><img src="{{ asset('storage/' . $new->image) }}" alt="Image" height="140" width="100%" /></a>

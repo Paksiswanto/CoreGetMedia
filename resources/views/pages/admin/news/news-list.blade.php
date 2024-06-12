@@ -70,8 +70,8 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $item->user->name }}</td>
                             <td>{{ $item->user->email }}</td>
-                            <td>{{ $item->name }}</td>
-                            <td>{{ $item->description }}</td>
+                            <td>{!! Illuminate\Support\Str::limit(strip_tags($item->description), 50, '...') !!}</td>
+                            <td>{{ \Carbon\Carbon::parse($item->date)->translatedFormat('d F Y') }}</td>
                             <td>
                                 <button data-bs-toggle="tooltip" title="Tolak" type="submit" style="background-color: #EF6E6E"
                                     class="btn btn-sm btn-delete text-white ms-2">
