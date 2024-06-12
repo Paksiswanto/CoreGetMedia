@@ -78,10 +78,6 @@ Route::get('author-banned', function(){
     return view('pages.admin.author.author-banned');
     })->name('author-banned.admin');
 
-    Route::get('confirm-author-list', function(){
-    return view('pages.admin.author.confirm-author');
-})->name('confirm-author.admin');
-
 Route::get('user-account-list', [UserController::class, 'index'])->name('user-account.list.admin');
 // Route::get('user-account-list', function(){
 //     return view('pages.admin.account.user');

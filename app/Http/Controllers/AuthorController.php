@@ -22,7 +22,8 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        //
+        $authors = $this->author->get();
+        return view('pages.admin.author.confirm-author');
     }
 
     /**
