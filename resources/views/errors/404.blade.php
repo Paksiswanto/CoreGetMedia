@@ -1,4 +1,4 @@
-@extends('layouts.user.app', ['showNavbar' => false, 'showFooter' => false])
+@extends('layouts.user.app')
 @section('content')
 <div class="container-fluid mt-5">
     <div class="col-sm-12 text-center">
@@ -11,7 +11,7 @@
     </div>
 </div>
 
-<div class="py-5">
+<div class="p-2">
     <div class="my-5 text-center">
         <h2>Business Article</h2>
         <div class="mx-auto" style="width: 200px; height: 5px; border-radius: 20px; background-color: #175A95;"></div>
