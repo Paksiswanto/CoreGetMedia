@@ -1,3 +1,4 @@
+@extends('layouts.user.app', ['showNavbar' => false, 'showFooter' => false])
 @section('content')
 <div class="container-fluid mt-5">
     <div class="col-sm-12 text-center">
