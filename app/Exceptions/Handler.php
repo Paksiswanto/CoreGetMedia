@@ -4,9 +4,6 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
-use Illuminate\Http\Response;
-use App\Contracts\Interfaces\CategoryInterface;
-use App\Contracts\Interfaces\SubCategoryInterface;
 use App\Enums\NewsEnum;
 use App\Models\Category;
 use App\Models\News;
@@ -37,17 +34,24 @@ class Handler extends ExceptionHandler
         });
     }
 
+    /**
+     * Render an exception into an HTTP response.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Throwable  $exception
+     * @return \Illuminate\Http\Response
+     */
     public function render($request, Throwable $exception)
     {
         if ($exception instanceof ModelNotFoundException || $exception instanceof NotFoundHttpException) {
             $news = News::latest()->take(10)->where('status', NewsEnum::ACCEPTED->value)->get();
             $additionalData = [
-               'categories' => Category::all(),
-               'subCategories'=> SubCategory::all(),
-               'news'=>$news
+                'categories' => Category::all(),
+                'subCategories' => SubCategory::all(),
+                'news' => $news
             ];
 
-            return response()->view('error.404', $additionalData, 404);
+            return response()->view('errors.404', $additionalData, 404);
         }
 
         return parent::render($request, $exception);
