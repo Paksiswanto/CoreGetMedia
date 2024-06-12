@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 @extends('layouts.user.app')
+=======
+@extends('layouts.user.app', ['showNavbar' => false, 'showFooter' => false])
+>>>>>>> Stashed changes
 @section('content')
 <div class="container-fluid mt-5">
     <div class="col-sm-12 text-center">
