@@ -11,6 +11,6 @@ use App\Contracts\Interfaces\Eloquent\UpdateInterface;
 
 interface NewsInterface extends GetInterface, StoreInterface, UpdateInterface, ShowInterface, DeleteInterface, ShowWithSlugInterface
 {
-    public function where($newsId) : mixed;
     // public function searchAll(Request $request) : mixed;
+    public function where($data) : mixed;
 }

@@ -60,10 +60,10 @@ class NewsRepository extends BaseRepository implements NewsInterface
             ->get();
     }
 
-    public function where($newsId): mixed
+    public function where($data): mixed
     {
         return $this->model->query()
-            ->where('id', $newsId)
+            ->where('status', $data)
             ->get();
     }
 

@@ -55,24 +55,27 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Karin</td>
-                    <td>karin@gmail.com</td>
-                    <td>Lorem ipsum dolor sit, amet consectetur adipisicing.</td>
-                    <td>10 Mei 2024</td>
-                    <td>
-                        <a href="{{route('detail-news.admin')}}" data-bs-toggle="tooltip"
-                            title="Detail" class="btn btn-sm btn-primary btn-detail"
-                            style="background-color:#0F4D8A">
-                            <i><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
-                                    viewBox="0 0 24 24">
-                                    <path fill="currentColor"
-                                        d="M12 6.5a9.77 9.77 0 0 1 8.82 5.5c-1.65 3.37-5.02 5.5-8.82 5.5S4.83 15.37 3.18 12A9.77 9.77 0 0 1 12 6.5m0-2C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5m0 5a2.5 2.5 0 0 1 0 5a2.5 2.5 0 0 1 0-5m0-2c-2.48 0-4.5 2.02-4.5 4.5s2.02 4.5 4.5 4.5s4.5-2.02 4.5-4.5s-2.02-4.5-4.5-4.5" />
-                                </svg></i>
-                        </a>
-                    </td>
-                </tr>
+                @forelse ($news as $data)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $data->user->name }}</td>
+                        <td>{{ $data->user->email }}</td>
+                        <td>{!! $data->description !!}</td>
+                        <td>{{ $data->date }}</td>
+                        <td>
+                            <a href="{{route('detail-news.admin', ['news' => $data->slug])}}" data-bs-toggle="tooltip"
+                                title="Detail" class="btn btn-sm btn-primary btn-detail"
+                                style="background-color:#0F4D8A">
+                                <i><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                        viewBox="0 0 24 24">
+                                        <path fill="currentColor"
+                                            d="M12 6.5a9.77 9.77 0 0 1 8.82 5.5c-1.65 3.37-5.02 5.5-8.82 5.5S4.83 15.37 3.18 12A9.77 9.77 0 0 1 12 6.5m0-2C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5m0 5a2.5 2.5 0 0 1 0 5a2.5 2.5 0 0 1 0-5m0-2c-2.48 0-4.5 2.02-4.5 4.5s2.02 4.5 4.5 4.5s4.5-2.02 4.5-4.5s-2.02-4.5-4.5-4.5" />
+                                    </svg></i>
+                            </a>
+                        </td>
+                    </tr>
+                @empty
+                @endforelse
             </tbody>
         </table>
 

@@ -1,7 +1,4 @@
 @extends('layouts.admin.app')
-@php
-$dateParts = date_parse($news->upload_date);
-@endphp
 
 @section('style')
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -78,9 +75,9 @@ $dateParts = date_parse($news->upload_date);
 
         <div class="d-flex gap-2">
             <div class="">
-                <a class="btn btn-danger btn-lg px-3 btn-reject" id="btn-reject-{{ $news->id }}">Tolak</a>
+                <a class="btn btn-danger btn-lg px-3 btn-reject" id="btn-reject">Tolak</a>
             </div>
-            <form action="{{ route('approved.news.admin', ['news' => $news->id]) }}" method="post">
+            <form action="#" method="post">
                 @method('patch')
                 @csrf
                 <button type="submit" class="btn btn-success btn-lg px-3">Terima</button>
@@ -136,25 +133,8 @@ $dateParts = date_parse($news->upload_date);
                         <h3 for="" class="form-label">Thumbnail</h3>
                         <div class="gambar-iklan mb-4 d-flex justify-content-center">
                             <img id="preview" class="hide" style="object-fit: cover; border: transparent;" width="350" height="200" alt="">
-                            <img width="350" height="200" src="{{asset('assets/img/news/news-13.webp')}}" alt="">
+                            <img width="350" height="200" src="{{asset('storage/'.  $news->image )}}" alt="">
                         </div>
-                        <div class="d-flex justify-content-center mt-3">
-                            <label for="image-upload" class="btn btn-primary @error('photo') is-invalid @enderror">
-                                Unggah
-                            </label>
-                            <input type="file" name="photo" id="image-upload" class="hide" onchange="previewImage(event)">
-                        </div>
-                        {{-- @if ($news->user->roles->pluck('name')[0] == "admin")
-                        <div class="d-flex justify-content-center mt-3">
-                            <label for="image-upload" class="btn btn-primary @error('photo') is-invalid @enderror">
-                                Unggah
-                            </label>
-                            <input type="file" name="photo" id="image-upload" class="hide" onchange="previewImage(event)">
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <p class="text-muted mt-3">File dengan format Jpg atau Png </p>
-                        </div>
-                        @endif --}}
 
                         @error('photo')
                         <span class="invalid-feedback" role="alert" style="color: red;">
@@ -169,7 +149,7 @@ $dateParts = date_parse($news->upload_date);
                         <h3 class="mb-3">Detail Lainya</h3>
                         <div class="col-lg-12 mb-4">
                             <label class="form-label" for="password_confirmation">Penulis</label>
-                            <input type="text" class="form-control" value="Karin" readonly>
+                            <input type="text" class="form-control" value="{{ $news->user->name }}" readonly>
                             @error('category')
                             <span class="invalid-feedback" role="alert" style="color: red">
                                 <strong>{{ $message }}</strong>
@@ -217,7 +197,7 @@ $dateParts = date_parse($news->upload_date);
                         </div>
                         <div class="col-lg-12 mb-4">
                             <label class="form-label" for="password_confirmation">Tanggal Upload</label>
-                            <input type="datetime-local" id="upload_date" name="upload_date" placeholder="date" value="01 Juni 2024" class="form-control @error('upload_date') is-invalid @enderror">
+                            <input type="datetime-local" id="upload_date" name="upload_date" placeholder="{{ $news->date }}" value="{{ $news->date }}" class="form-control @error('upload_date') is-invalid @enderror">
                             @error('upload_date')
                             <span class="invalid-feedback" role="alert" style="color: red">
                                 <strong>{{ $message }}</strong>
@@ -226,7 +206,7 @@ $dateParts = date_parse($news->upload_date);
                         </div>
                         <div class="col-lg-12 mb-3">
                             <label class="form-label" for="password_confirmation">Tags</label>
-
+                            
                             <select class="form-control select2 tags" name="tags[]" multiple="multiple">
                                 <option>pilih tags</option>
                                 <option value="">populer</option>
@@ -253,7 +233,7 @@ $dateParts = date_parse($news->upload_date);
                         <div>
                             <div class="col-lg-12 mb-4">
                                 <label class="form-label" for="nomor">Judul Berita</label>
-                                <input type="text" id="name" name="name" placeholder="name" value="Ini adalah judul berita" class="form-control @error('name') is-invalid @enderror">
+                                <input type="text" id="name" name="name" placeholder="name" value="{{ $news->name }}" class="form-control @error('name') is-invalid @enderror">
                                 @error('name')
                                 <span class="invalid-feedback" role="alert" style="color: red;">
                                     <strong>{{ $message }}</strong>
@@ -262,7 +242,7 @@ $dateParts = date_parse($news->upload_date);
                             </div>
                             <div class="col-lg-12 mb-4" style="height: auto;">
                                 <label class="form-label" for="content">Isi Berita</label>
-                                <textarea" name="content" placeholder="content" value="ini adalah isi berita" style="resize: none; height: 400;" class="form-control @error('content') is-invalid @enderror">ini adalah isi berita</textarea>
+                                <textarea" name="content" placeholder="content" value="{!! $news->description !!}" style="resize: none; height: 400;" class="form-control @error('content') is-invalid @enderror">{!! $news->description !!}</textarea>
                                 @error('content')
                                 <span class="invalid-feedback" role="alert" style="color: red;">
                                     <strong>{{ $message }}</strong>
