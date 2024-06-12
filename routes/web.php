@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HomeFaqController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\SubCategoryController;
@@ -25,7 +26,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('pages.index');
 // });
-Route::get('/', [NewsController::class, 'home']);
+Route::get('/', [HomeController::class, 'index']);
 
 Auth::routes();
 
@@ -216,13 +217,7 @@ Route::get('all-category', function(){
     return view('pages.user.category.all-category');
 })->name('all-category.user');
 
-Route::get('all-subcategory', function(){
-    return view('pages.user.subcategory.all-subcategory');
-
-})->name('all-subcategory.user');
-
 // AUTHOR
-
 Route::get('list-author', function(){
     return view('pages.user.author.list-author');
 })->name('user.list.author');

@@ -71,50 +71,21 @@
                 <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
                     <div class="trending-news-slider swiper">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide news-card-one">
-                                <div class="news-card-img">
-                                    <img src="{{asset('assets/img/news/trending-1.webp')}}" alt="Image" />
+                            @forelse ($populars as $popular)
+                                <div class="swiper-slide news-card-one">
+                                    <div class="news-card-img">
+                                        <img src="{{ asset('storage/'. $popular->image) }}" alt="Image" />
+                                    </div>
+                                    <div class="news-card-info">
+                                        <h3><a href="{{route('singlepost.news')}}">{{ $popular->name }}</a></h3>
+                                        <ul class="news-metainfo list-style">
+                                            <li><i class="fi fi-rr-eye"></i>{{ $popular->newsViews()->count() }}x dilihat</li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="news-card-info">
-                                    <h3><a href="{{route('singlepost.news')}}">Climate Change & Your Future Health</a></h3>
-                                    <ul class="news-metainfo list-style">
-                                        <li><i class="fi fi-rr-eye"></i>15x dilihat</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="swiper-slide news-card-one">
-                                <div class="news-card-img">
-                                    <img src="{{asset('assets/img/news/trending-2.webp')}}" alt="Image" />
-                                </div>
-                                <div class="news-card-info">
-                                    <h3><a href="{{route('singlepost.news')}}">Female Hawks Win $10,000 Funding Boost</a></h3>
-                                    <ul class="news-metainfo list-style">
-                                        <li><i class="fi fi-rr-eye"></i>10x dilihat</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="swiper-slide news-card-one">
-                                <div class="news-card-img">
-                                    <img src="{{asset('assets/img/news/trending-3.webp')}}" alt="Image" />
-                                </div>
-                                <div class="news-card-info">
-                                    <h3><a href="{{route('singlepost.news')}}">Goodwin Must Break Clarkson Hold</a></h3>
-                                    <ul class="news-metainfo list-style">
-                                        <li><i class="fi fi-rr-eye"></i>8x dilihat</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="swiper-slide news-card-one">
-                                <div class="news-card-img">
-                                    <img src="assets/img/news/trending-4.webp" alt="Image" />
-                                </div>
-                                <div class="news-card-info">
-                                    <h3><a href="{{route('singlepost.news')}}">Major GWC Collection Is Coming To QVC</a></h3>
-                                    <ul class="news-metainfo list-style">
-                                        <li><i class="fi fi-rr-eye"></i>12x dilihat</li>
-                                    </ul>
-                                </div>
-                            </div>
+                            @empty
+                                
+                            @endforelse
                         </div>
                     </div>
                 </div>
@@ -125,7 +96,46 @@
     <div class="container-fluid pb-75">
         <div class="news-col-wrap">
             <div class="news-col-one">
-                <div class="news-card-two">
+                @forelse ($categoryPopulars as $key => $categoryPopular)
+                    @if (++$key == 1)
+                        <div class="news-card-two">
+                            <div class="news-card-img">
+                                <img src="assets/img/news/news-1.webp" alt="Image" />
+                                {{-- @php
+                                    $newsCategories = App\Models\NewsCategory::where('news_id', $categoryPopular->id)->get();
+                                @endphp
+                                @foreach ($newsCategories as $newsCategory)
+                                <a href="{{route('news.category')}}" class="news-cat">{{ $newsCategories->category }}</a>
+                                @endforeach --}}
+                                <a href="{{route('news.category')}}" class="news-cat">Pendidikan</a>
+                            </div>
+                            <div class="news-card-info">
+                                <h3><a href="{{route('singlepost.news')}}">{{ $categoryPopular->name }}</a></h3>
+                                <ul class="news-metainfo list-style">
+                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 25, 2023</a></li>
+                                    <li><i class="fi fi-rr-eye"></i>{{ $categoryPopular->newsViews()->count() }}x dilihat</li>
+                                </ul>
+                            </div>
+                        </div>
+                    @else
+                        <div class="news-card-three">
+                            <div class="news-card-img">
+                                <img src="{{asset('assets/img/news/news-3.webp')}}" alt="Image" />
+                            </div>
+                            <div class="news-card-info">
+                                <a href="{{route('news.category')}}" class="news-cat">Fashion</a>
+                                <h3><a href="{{route('singlepost.news')}}">How To Recreate The High Pony-tail That Celebrities Love</a></h3>
+                                <ul class="news-metainfo list-style">
+                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 15, 2023</a></li>
+                                    <li><i class="fi fi-rr-eye"></i>11x dilihat</li>
+                                </ul>
+                            </div>
+                        </div>
+                    @endif
+                @empty
+                    
+                @endforelse
+                {{-- <div class="news-card-two">
                     <div class="news-card-img">
                         <img src="assets/img/news/news-1.webp" alt="Image" />
                         <a href="{{route('news.category')}}" class="news-cat">Politics</a>
@@ -176,7 +186,7 @@
                             <li><i class="fi fi-rr-eye"></i>8x dilihat</li>
                         </ul>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <div class="news-col-two">
                 <div class="news-card-four">
