@@ -91,6 +91,14 @@ class NewsRepository extends BaseRepository implements NewsInterface
             ->get();
     }
 
+    public function categoryLatest() : mixed
+    {
+        return $this->model->query()
+        ->latest()
+        ->get();
+    }
+
+
     /**
      * Handle store data event to models.
      *
