@@ -10,4 +10,4 @@ Route::get('news/category', function(){
 
 Route::get('{category}', [NewsCategoryController::class, 'index'])->name('categories.show.user');
 
-Route::get('news/{news}', [NewsController::class, 'show'])->name('news.singlepost');
+Route::get('{news}', [NewsController::class, 'show'])->name('news.singlepost');
