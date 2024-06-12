@@ -223,7 +223,7 @@
                             <div class="kat-container">
                                 @foreach ($newsTags as $newstag)
                                 <p class="tmbl">
-                                    {{$newstag->tag->name}}
+                                    {{$newstag->tags->name}}
                                 </p>
                                 @endforeach
                             </div>

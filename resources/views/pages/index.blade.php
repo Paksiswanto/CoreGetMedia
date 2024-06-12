@@ -11,11 +11,11 @@
     .btn-three {
         color: var(--secondaryColor);
         background-color: #ffffff;
-    } 
+    }
     .theme-dark.btn-three {
         color: var(--secondaryColor);
         background-color: #ffffff;
-    }    
+    }
     .btn-three {
         color: #175A95;
     }
@@ -84,7 +84,7 @@
                                     </div>
                                 </div>
                             @empty
-                                
+
                             @endforelse
                         </div>
                     </div>
@@ -100,93 +100,34 @@
                     @if (++$key == 1)
                         <div class="news-card-two">
                             <div class="news-card-img">
-                                <img src="assets/img/news/news-1.webp" alt="Image" />
-                                {{-- @php
-                                    $newsCategories = App\Models\NewsCategory::where('news_id', $categoryPopular->id)->get();
-                                @endphp
-                                @foreach ($newsCategories as $newsCategory)
-                                <a href="{{route('news.category')}}" class="news-cat">{{ $newsCategories->category }}</a>
-                                @endforeach --}}
-                                <a href="{{route('news.category')}}" class="news-cat">Pendidikan</a>
+                                <img src="{{asset('storage/'. $categoryPopular->image)}}" alt="Image" />
+                                <a href="{{route('news.category')}}" class="news-cat">{{ $categoryPopular->newsCategories[0]->category->name}}</a>
                             </div>
                             <div class="news-card-info">
                                 <h3><a href="{{route('singlepost.news')}}">{{ $categoryPopular->name }}</a></h3>
                                 <ul class="news-metainfo list-style">
-                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 25, 2023</a></li>
-                                    <li><i class="fi fi-rr-eye"></i>{{ $categoryPopular->newsViews()->count() }}x dilihat</li>
+                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">{{ $categoryPopular->date }}</a></li>
+                                    <li><i class="fi fi-rr-eye"></i>{{ $categoryPopular->news_views_count }}x dilihat</li>
                                 </ul>
                             </div>
                         </div>
                     @else
                         <div class="news-card-three">
                             <div class="news-card-img">
-                                <img src="{{asset('assets/img/news/news-3.webp')}}" alt="Image" />
+                                <img src="{{asset('storage/'. $categoryPopular->image )}}" alt="Image" />
                             </div>
                             <div class="news-card-info">
-                                <a href="{{route('news.category')}}" class="news-cat">Fashion</a>
-                                <h3><a href="{{route('singlepost.news')}}">How To Recreate The High Pony-tail That Celebrities Love</a></h3>
+                                <a href="{{route('news.category')}}" class="news-cat">{{ $categoryPopular->newsCategories[0]->category->name}}</a>
+                                <h3><a href="{{route('singlepost.news')}}">{{ $categoryPopular->name }}</a></h3>
                                 <ul class="news-metainfo list-style">
-                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 15, 2023</a></li>
-                                    <li><i class="fi fi-rr-eye"></i>11x dilihat</li>
+                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">{{ $categoryPopular->date }}</a></li>
+                                    <li><i class="fi fi-rr-eye"></i>{{ $categoryPopular->news_views_count }} x dilihat</li>
                                 </ul>
                             </div>
                         </div>
                     @endif
                 @empty
-                    
                 @endforelse
-                {{-- <div class="news-card-two">
-                    <div class="news-card-img">
-                        <img src="assets/img/news/news-1.webp" alt="Image" />
-                        <a href="{{route('news.category')}}" class="news-cat">Politics</a>
-                    </div>
-                    <div class="news-card-info">
-                        <h3><a href="{{route('singlepost.news')}}">What The Federal Infrastructure Package Means For Minnesota</a></h3>
-                        <ul class="news-metainfo list-style">
-                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 25, 2023</a></li>
-                            <li><i class="fi fi-rr-eye"></i>10x dilihat</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="news-card-three">
-                    <div class="news-card-img">
-                        <img src="{{asset('assets/img/news/news-3.webp')}}" alt="Image" />
-                    </div>
-                    <div class="news-card-info">
-                        <a href="{{route('news.category')}}" class="news-cat">Fashion</a>
-                        <h3><a href="{{route('singlepost.news')}}">How To Recreate The High Pony-tail That Celebrities Love</a></h3>
-                        <ul class="news-metainfo list-style">
-                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 15, 2023</a></li>
-                            <li><i class="fi fi-rr-eye"></i>11x dilihat</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="news-card-three">
-                    <div class="news-card-img">
-                        <img src="{{asset('assets/img/news/news-4.webp')}}" alt="Image" />
-                    </div>
-                    <div class="news-card-info">
-                        <a href="{{route('news.category')}}" class="news-cat">Fashion</a>
-                        <h3><a href="{{route('singlepost.news')}}">Tempores Imperdiet Rhoncus Ipsam Lobortis Kolats.</a></h3>
-                        <ul class="news-metainfo list-style">
-                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 14, 2023</a></li>
-                            <li><i class="fi fi-rr-eye"></i>10x dilihat</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="news-card-three">
-                    <div class="news-card-img">
-                        <img src="{{asset('assets/img/news/news-5.webp')}}" alt="Image" />
-                    </div>
-                    <div class="news-card-info">
-                        <a href="{{route('news.category')}}" class="news-cat">Fashion</a>
-                        <h3><a href="{{route('singlepost.news')}}">Beauty Queens Need Beauty Material & Products</a></h3>
-                        <ul class="news-metainfo list-style">
-                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 10, 2023</a></li>
-                            <li><i class="fi fi-rr-eye"></i>8x dilihat</li>
-                        </ul>
-                    </div>
-                </div> --}}
             </div>
             <div class="news-col-two">
                 <div class="news-card-four">
@@ -228,59 +169,40 @@
                     </div>
                 </div>
             </div>
+
             <div class="news-col-three">
-                <div class="news-card-two">
-                    <div class="news-card-img">
-                        <img src="assets/img/news/news-2.webp" alt="Image" />
-                        <a href="{{route('news.category')}}" class="news-cat">Politics</a>
+            @forelse ($category2Populars as $key => $category2Popular)
+                @if (++$key == 1)
+                    <div class="news-card-two">
+                        <div class="news-card-img">
+                            <img src="{{ asset('storage/'. $category2Popular->image) }}" alt="Image" />
+                            <a href="{{route('news.category')}}" class="news-cat">{{ $category2Popular->newsCategories[0]->category->name }}</a>
+                        </div>
+                        <div class="news-card-info">
+                            <h3><a href="{{route('singlepost.news')}}">{{ $category2Popular->name }}</a></h3>
+                            <ul class="news-metainfo list-style">
+                                <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">{{ $category2Popular->date }}</a></li>
+                                <li><i class="fi fi-rr-eye"></i>{{ $category2Popular->news_views_count }}x dilihat</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="news-card-info">
-                        <h3><a href="{{route('singlepost.news')}}">Elijah James: The Nashville Photographer Shares Her Unique Journey</a></h3>
-                        <ul class="news-metainfo list-style">
-                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 03, 2023</a></li>
-                            <li><i class="fi fi-rr-eye"></i>12x dilihat</li>
-                        </ul>
+                @else
+                    <div class="news-card-three">
+                        <div class="news-card-img">
+                            <img src="{{ asset('storage/'. $category2Popular->image) }}" alt="Image" />
+                        </div>
+                        <div class="news-card-info">
+                            <a href="{{route('news.category')}}" class="news-cat">{{ $category2Popular->newsCategories[0]->category->name }}</a>
+                            <h3><a href="{{route('singlepost.news')}}">{{ $category2Popular->name }}</a></h3>
+                            <ul class="news-metainfo list-style">
+                                <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">{{ $category2Popular->date }}</a></li>
+                                <li><i class="fi fi-rr-eye"></i>{{ $category2Popular->news_views_count }}x dilihat</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <div class="news-card-three">
-                    <div class="news-card-img">
-                        <img src="assets/img/news/news-7.webp" alt="Image" />
-                    </div>
-                    <div class="news-card-info">
-                        <a href="{{route('news.category')}}" class="news-cat">Travel</a>
-                        <h3><a href="{{route('singlepost.news')}}">A Complimentary Day At Mandarin The Oriental</a></h3>
-                        <ul class="news-metainfo list-style">
-                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Mar 15, 2023</a></li>
-                            <li><i class="fi fi-rr-eye"></i>10x dilihat</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="news-card-three">
-                    <div class="news-card-img">
-                        <img src="assets/img/news/news-6.webp" alt="Image" />
-                    </div>
-                    <div class="news-card-info">
-                        <a href="{{route('news.category')}}" class="news-cat">Business</a>
-                        <h3><a href="{{route('singlepost.news')}}">First Prototype Flight Using Kinetic Launch System</a></h3>
-                        <ul class="news-metainfo list-style">
-                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 22, 2023</a></li>
-                            <li><i class="fi fi-rr-eye"></i>8x dilihat</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="news-card-three">
-                    <div class="news-card-img">
-                        <img src="assets/img/news/news-8.webp" alt="Image" />
-                    </div>
-                    <div class="news-card-info">
-                        <a href="{{route('news.category')}}" class="news-cat">Health</a>
-                        <h3><a href="{{route('singlepost.news')}}">Life Health Continues To Spread Rapidly, Are Many People</a></h3>
-                        <ul class="news-metainfo list-style">
-                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 15, 2023</a></li>
-                            <li><i class="fi fi-rr-eye"></i>10x dilihat</li>
-                        </ul>
-                    </div>
-                </div>
+                @endif
+            @empty
+            @endforelse
             </div>
         </div>
     </div>
@@ -305,7 +227,7 @@
                         <div class="news-card-info">
                             <h3><a href="{{route('singlepost.news')}}">Good Day To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style</a></h3>
                             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus, harum. Dolore voluptate nisi fugit, expedita ipsum accusamus porro iure placeat asperiores deleniti corrupti voluptatibus, harum earum</p>
-                            
+
                             <ul class="news-metainfo list-style">
                                 <li class="author">
                                     <span class="author-img">
@@ -326,7 +248,7 @@
                         <div class="news-card-info">
                             <h3><a href="{{route('singlepost.news')}}">Good Day To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style</a></h3>
                             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus, harum. Dolore voluptate nisi fugit, expedita ipsum accusamus porro iure placeat asperiores deleniti corrupti voluptatibus, harum earum</p>
-                            
+
                             <ul class="news-metainfo list-style">
                                 <li class="author">
                                     <span class="author-img">
@@ -347,7 +269,7 @@
                         <div class="news-card-info">
                             <h3><a href="{{route('singlepost.news')}}">Good Day To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style</a></h3>
                             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus, harum. Dolore voluptate nisi fugit, expedita ipsum accusamus porro iure placeat asperiores deleniti corrupti voluptatibus, harum earum</p>
-                            
+
                             <ul class="news-metainfo list-style">
                                 <li class="author">
                                     <span class="author-img">
@@ -368,7 +290,7 @@
                         <div class="news-card-info">
                             <h3><a href="{{route('singlepost.news')}}">Good Day To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style</a></h3>
                             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus, harum. Dolore voluptate nisi fugit, expedita ipsum accusamus porro iure placeat asperiores deleniti corrupti voluptatibus, harum earum</p>
-                            
+
                             <ul class="news-metainfo list-style">
                                 <li class="author">
                                     <span class="author-img">
@@ -389,7 +311,7 @@
                         <div class="news-card-info">
                             <h3><a href="{{route('singlepost.news')}}">Good Day To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style To Take A Photo With Your Favorite Style</a></h3>
                             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus, harum. Dolore voluptate nisi fugit, expedita ipsum accusamus porro iure placeat asperiores deleniti corrupti voluptatibus, harum earum</p>
-                            
+
                             <ul class="news-metainfo list-style">
                                 <li class="author">
                                     <span class="author-img">
@@ -508,7 +430,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
 
@@ -576,7 +498,7 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
 
     </div>
