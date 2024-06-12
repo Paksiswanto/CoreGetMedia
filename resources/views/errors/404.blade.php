@@ -1,3 +1,4 @@
+@section('content')
 <div class="container-fluid mt-5">
     <div class="col-sm-12 text-center">
         <img src="{{ asset('assets/img/error/404getMedia.png')}}" alt="404Error" style="width: 30%; height: auto;">
@@ -182,3 +183,4 @@
             </div>
         </div>
     </div>
+    @endsection
