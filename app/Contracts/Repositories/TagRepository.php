@@ -80,7 +80,7 @@ class TagRepository extends BaseRepository implements TagInterface
     public function getByPopular(): mixed
     {
         return $this->model->query()
-            ->whereRelation('newsTags.news', 'status', NewsStatusEnum::ACTIVE->value)
+            ->whereRelation('newsTags.news', 'status', NewsEnum::ACCEPTED->value)
             ->withCount('newsTags')
             ->take(12)
             ->get();

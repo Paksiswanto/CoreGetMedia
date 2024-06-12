@@ -125,4 +125,44 @@ class NewsController extends Controller
         $this->news->delete($news->id);
         return back()->with('success', 'Berhasil menghapus data');
     }
+
+    public function navbar(Request $request){
+        $categories = $this->categories->get();
+        $subCategories = $this->subcategories->get();
+
+        $news = $this->news->get();
+        // $query = $request->input('search');
+        // $newsSearch = $this->news->searchAll($request, $query);
+        return view('layouts.user.navbar-header', compact('categories', 'subCategories','newsSearch'));
+    }
+
+    public function home(){
+        $categories = $this->categories->get();
+        $subCategories = $this->subcategories->get();
+        return view('pages.index', compact('categories', 'subCategories'));
+    }
+    // public function showCategories($slug, Request $request, NewsCategory $newsCategory)
+    // {
+    //     $request->merge([
+    //         'name' => $newsCategory->id,
+    //     ]);
+
+    //     $category = $this->category->showWithSlug($slug);
+    //     $categoryId = $category->id;
+    //     $subCategory = $this->subCategory->where($categoryId);
+
+    //     $categories = $this->category->get();
+    //     $totalCategories = $this->category->showWhithCount();
+    //     $subCategories = $this->subCategory->get();
+    //     $news = $this->news->showWhithCount();
+
+    //     $query = $request->input('search');
+    //     $newsCategories = $this->newsCategory->search($category->id, $query);
+
+    //     $popular = $this->view->newsCategory($categoryId);
+
+    //     $new_news = $this->news->newsCategorySearch($category->id, $query, 'terbaru', '5');
+    //     $trending = $this->news->newsCategorySearch($category->id, $query, 'trending', '5');
+    //     return view('pages.user.news.category', compact('trending','new_news','popular','news', 'totalCategories','subCategories','categories','category', 'subCategory', 'newsCategories'));
+    // }
 }

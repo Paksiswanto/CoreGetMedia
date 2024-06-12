@@ -94,4 +94,18 @@ class NewsRepository extends BaseRepository implements NewsInterface
             ->findOrFail($id)
             ->update($data);
     }
+
+    // public function searchAll(Request $request): mixed
+    // {
+    //     return $this->model->query()
+
+    //         ->where(function ($query) use ($request) {
+    //             $query->where('name', 'LIKE', '%' . $request->search . '%')
+    //                 ->orWhere('content', 'LIKE', '%' . $request->search . '%')
+    //                 ->orWhereHas('user', function ($query) use ($request) {
+    //                     $query->where('name', 'LIKE', '%' . $request->search . '%');
+    //                 });
+    //         })
+    //         ->get();
+    // }
 }

@@ -21,14 +21,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.index');
-});
+// Route::get('/', function () {
+//     return view('pages.index');
+// });
+Route::get('/', [NewsController::class, 'home']);
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::get('navbar-user', [NewsController::class, 'navbar'])->name('navbar');
 
 // ----- ADMIN -----
 Route::get('/dashboard', function () {
@@ -236,3 +237,6 @@ Route::get('list-author', function(){
 Route::get('inbox-user', function(){
     return view('pages.user.inbox.index');
 })->name('inbox-user.user');
+
+
+// Route::get('{category}', [NewsController::class, 'showCategories'])->name('categories.show.user');
