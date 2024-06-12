@@ -204,14 +204,23 @@
                     @auth
                         <div class="option-item">
                             <ul class="navbar-nav">
+                               
                                 <li class="nav-item">
                                     <a href="javascript:void(0)" class="nav-link">
-                                        <img src="{{ asset("admin/dist/images/profile/user-1.jpg") }}" class="mb-2" alt="Image" width="40" height="40" style="min-width: 40px;border-radius: 50%;object-fit:cover;min-height: 40px;"/>
+                                        {{-- @if ((auth()->user()->roles->pluck('name')[0] == "admin") && $totalUnread > 0)
+                                            <div id="notif-admin" class="notification bg-primary rounded-circle"></div>
+                                        @elseif ((auth()->user()->roles->pluck('name')[0] == "user") && $countMessage > 0)
+                                            <div id="notif-admin" class="notification bg-primary rounded-circle"></div>
+                                        @elseif ((auth()->user()->roles->pluck('name')[0] == "author") && $totalAuthor > 0)
+                                            <div id="notif-admin" class="notification bg-primary rounded-circle"></div>
+                                        @endif --}}
+                                        <img src="{{ asset( Auth::user()->photo ? 'storage/'.Auth::user()->photo : "default.png")  }}" class="mb-2" alt="Image" width="40" height="40" style="min-width: 40px;border-radius: 50%;object-fit:cover;min-height: 40px;"/>
+                                    </a>
                                     <ul class="dropdown-menu">
                                         <li class="nav-item">
                                             @role('author')
                                             <div class="news-card-img">
-                                                <a href="{{ route('profile.author') }}" class="nav-link">
+                                                <a href="{{ route('profile.index') }}" class="nav-link">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="currentColor" d="M12 12q-1.65 0-2.825-1.175T8 8q0-1.65 1.175-2.825T12 4q1.65 0 2.825 1.175T16 8q0 1.65-1.175 2.825T12 12m-8 8v-2.8q0-.85.438-1.562T5.6 14.55q1.55-.775 3.15-1.162T12 13q1.65 0 3.25.388t3.15 1.162q.725.375 1.163 1.088T20 17.2V20z"/></svg>
                                                     Profile
                                                 </a>
@@ -260,7 +269,6 @@
                                         </li>
                                     </ul>
                                 </li>
-
                             </ul>
                         </div>
                         @if (Auth::check() && Auth::user()->roles() == "author")
