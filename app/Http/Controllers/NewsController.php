@@ -7,6 +7,7 @@ use App\Contracts\Interfaces\NewsCategoryInterface;
 use App\Contracts\Interfaces\NewsInterface;
 use App\Contracts\Interfaces\NewsSubCategoryInterface;
 use App\Contracts\Interfaces\NewsTagInterface;
+use App\Contracts\Interfaces\NewsViewInterface;
 use App\Contracts\Interfaces\SubCategoryInterface;
 use App\Contracts\Interfaces\TagInterface;
 use App\Enums\NewsEnum;
@@ -15,6 +16,7 @@ use App\Http\Requests\StoreNewsRequest;
 use App\Http\Requests\UpdateNewsRequest;
 use App\Models\NewsCategory;
 use App\Services\NewsService;
+use App\Services\NewsViewService;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
@@ -27,10 +29,22 @@ class NewsController extends Controller
     private NewsCategoryInterface $newscategories;
     private NewsSubCategoryInterface $newssubcategories;
     private NewsTagInterface $newstags;
+    private NewsViewInterface $newsViews;
 
     private NewsService $service;
+    private NewsViewService $viewService;
 
-    public function __construct(NewsInterface $news, CategoryInterface $categories, SubCategoryInterface $subcategories, TagInterface $tags, NewsCategoryInterface $newscategories, NewsSubCategoryInterface $newssubcategories, NewsTagInterface $newstags, NewsService $service)
+    public function __construct(
+        NewsInterface $news, 
+        CategoryInterface $categories, 
+        SubCategoryInterface $subcategories, 
+        TagInterface $tags, 
+        NewsCategoryInterface $newscategories, 
+        NewsSubCategoryInterface $newssubcategories, 
+        NewsTagInterface $newstags,
+        NewsViewInterface $newsViews,
+        NewsViewService $viewService, 
+        NewsService $service)
     {
         $this->news = $news;
         $this->categories = $categories;
@@ -40,7 +54,9 @@ class NewsController extends Controller
         $this->newscategories = $newscategories;
         $this->newssubcategories = $newssubcategories;
         $this->newstags = $newstags;
+        $this->newsViews = $newsViews;
 
+        $this->viewService = $viewService;
         $this->service = $service;
     }
     /**
@@ -111,7 +127,11 @@ class NewsController extends Controller
      */
     public function show(Request $request, $slug)
     {
+        $ipAddress = $request->ip();
         $news = $this->news->showWithSlug($slug);
+        $news_id = $news->id;
+        $data = $this->viewService->store($news_id, $ipAddress);
+        
         $CategoryPopulars = $this->categories->showWithCount();
         return view('pages.user.singlepost.index', compact('news', 'CategoryPopulars'));   
     }
