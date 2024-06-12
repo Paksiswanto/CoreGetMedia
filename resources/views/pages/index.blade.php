@@ -77,7 +77,7 @@
                                         <img src="{{ asset('storage/'. $popular->image) }}" alt="Image" />
                                     </div>
                                     <div class="news-card-info">
-                                        <h3><a href="{{route('singlepost.news')}}">{{ $popular->name }}</a></h3>
+                                        <h3><a href="{{ route('news.singlepost', ['news' => $popular->slug]) }}">{{ $popular->name }}</a></h3>
                                         <ul class="news-metainfo list-style">
                                             <li><i class="fi fi-rr-eye"></i>{{ $popular->newsViews()->count() }}x dilihat</li>
                                         </ul>

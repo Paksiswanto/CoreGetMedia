@@ -194,13 +194,13 @@
                                 <li><i class="fi fi-rr-clock-three"></i>15 Min Read</li> --}}
                             </ul>
                         </div>
-                        <div class="news-para">
+                        <div class="news-para text-justify">
                             
-                            <p>{{ $news->description }}</p>
+                            <p>{!! $news->description !!}</p>
                         </div>
-                        <div class="news-img">
+                        {{-- <div class="news-img">
                             <img src="{{asset('assets/img/news/single-news-6.webp')}}" alt="Image">
-                        </div>
+                        </div> --}}
                         {{-- <blockquote class="wp-block-quote">
                             <i class="fi fi-rr-quote-right"></i>
                             <p>“ People find waiting more tolerable when they can see the work being done on their
