@@ -472,11 +472,11 @@
                     <div class="sidebar-widget bg-transparent shadow-smer">
                         <h3 class="sidebar-widget-title">Tag Populer</h3>
                         <ul class="tag-list list-style">
-                            {{-- @forelse ($tags as $tag)
+                            @forelse ($tags as $tag)
                                 <li><a href="{{route('list-tag.user')}}">{{ $tag->name }}</a></li>
                             @empty
                                 
-                            @endforelse --}}
+                            @endforelse
                         </ul>
                     </div>
                 </div>
