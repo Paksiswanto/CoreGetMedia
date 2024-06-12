@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Contracts\Interfaces\CategoryInterface;
 use App\Contracts\Interfaces\NewsCategoryInterface;
 use App\Contracts\Interfaces\NewsInterface;
+use App\Contracts\Interfaces\NewsSubCategoryInterface;
 use App\Contracts\Interfaces\SubCategoryInterface;
 use App\Models\NewsSubCategory;
 use App\Http\Requests\StoreNewsSubCategoryRequest;
@@ -13,12 +14,14 @@ use App\Http\Requests\UpdateNewsSubCategoryRequest;
 class NewsSubCategoryController extends Controller
 {
     private NewsCategoryInterface $newsCategory;
+    private NewsSubCategoryInterface $newsSubCategory;
     private NewsInterface $news;
     private CategoryInterface $category;
     private SubCategoryInterface $subCategories;
 
-    public function __construct(NewsCategoryInterface $newsCategory, NewsInterface $news, CategoryInterface $category, SubCategoryInterface $subCategories)
+    public function __construct(NewsSubCategoryInterface $newsSubCategory, NewsCategoryInterface $newsCategory, NewsInterface $news, CategoryInterface $category, SubCategoryInterface $subCategories)
     {
+        $this->newsSubCategory = $newsSubCategory;
         $this->newsCategory = $newsCategory;
         $this->category = $category;
         $this->subCategories = $subCategories;
@@ -40,6 +43,16 @@ class NewsSubCategoryController extends Controller
         $news = $this->news->whereSubCategory($subcategory_id, 'notop');
         $popularCategory = $this->category->showWithCount();
         return view('pages.user.subcategory.index', compact('categories', 'subCategories', 'news', 'newsTop', 'popularCategory'));
+    }
+
+    public function all_subcategory()
+    {   
+        $categories = $this->category->get();
+        $subCategories = $this->subCategories->get();
+
+        $news = $this->newsSubCategory->get();
+        $popularCategory = $this->category->showWithCount();
+        return view('pages.user.subcategory.all-subcategory', compact('news','categories', 'subCategories', 'popularCategory'));
     }
 
     /**

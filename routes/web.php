@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HomeFaqController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\SubCategoryController;
@@ -25,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('pages.index');
 // });
-Route::get('/', [NewsController::class, 'home']);
+Route::get('/', [HomeController::class, 'index']);
 
 Auth::routes();
 
@@ -65,21 +67,16 @@ Route::delete('voucher-delete/{voucherr}', [VoucherrController::class, 'destroy'
 Route::get('confirm-news', [NewsController::class, 'confirm_news'])->name('confirm.news.admin');
 Route::get('detail-news/{news}', [NewsController::class, 'detail_news_admin'])->name('detail-news.admin');
 
+Route::get('confirm-author-list', [AuthorController::class, 'index'])->name('confirm-author.admin');
+Route::get('author-list', [AuthorController::class, 'list_author'])->name('author-list.admin');
+
 Route::get('admin-account-list', function(){
         return view('pages.admin.account.admin');
 })->name('admin-account.list.admin');
 
-Route::get('author-list', function(){
-    return view('pages.admin.author.author-list');
-})->name('author-list.admin');
-
 Route::get('author-banned', function(){
     return view('pages.admin.author.author-banned');
     })->name('author-banned.admin');
-
-    Route::get('confirm-author-list', function(){
-    return view('pages.admin.author.confirm-author');
-})->name('confirm-author.admin');
 
 Route::get('user-account-list', [UserController::class, 'index'])->name('user-account.list.admin');
 // Route::get('user-account-list', function(){
@@ -216,13 +213,7 @@ Route::get('all-category', function(){
     return view('pages.user.category.all-category');
 })->name('all-category.user');
 
-Route::get('all-subcategory', function(){
-    return view('pages.user.subcategory.all-subcategory');
-
-})->name('all-subcategory.user');
-
 // AUTHOR
-
 Route::get('list-author', function(){
     return view('pages.user.author.list-author');
 })->name('user.list.author');

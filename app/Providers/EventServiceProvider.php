@@ -5,6 +5,8 @@ namespace App\Providers;
 use App\Models\Author;
 use App\Models\News;
 use App\Models\User;
+use App\Models\Category;
+use App\Models\SubCategory;
 use App\Observers\AuthorObserver;
 use App\Observers\NewsObserver;
 use App\Observers\UserObserver;
@@ -34,6 +36,14 @@ class EventServiceProvider extends ServiceProvider
         User::observe(UserObserver::class);
         Author::observe(AuthorObserver::class);
         News::observe(NewsObserver::class);
+
+        parent::boot();
+
+        $categories = Category::all();
+        $subCategories = SubCategory::all();
+
+        view()->share('categories', $categories);
+        view()->share('subCategories', $subCategories);
     }
 
     /**

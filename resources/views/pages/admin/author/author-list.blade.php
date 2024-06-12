@@ -27,8 +27,8 @@
                 <form class="d-flex gap-2">
                     <div class="position-relative">
                         <div class="">
-                            <input type="text" name="search" class="form-control search-chat py-2 px-5 ps-5" id="search-name"
-                                placeholder="Search">
+                            <input type="text" name="search" class="form-control search-chat py-2 px-5 ps-5"
+                                id="search-name" placeholder="Search">
                             <i class="ti ti-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3"></i>
                         </div>
                     </div>
@@ -71,38 +71,60 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>
-                            <img src="{{asset('admin/dist/images/profile/user-2.jpg')}}" class="rounded-circle me-2 user-profile"
-                            style="object-fit: cover" width="35" height="35" alt="" />
-                            Karina
-                        </td>
-                        <td>karin@gmail.com</td>
-                        <td>
-                            <div class="
-                            fs-3
-                            badge
-                            bg-light-success
-                            text-success
-                            font-weight-medium
-                            ">Aktif</div>
-                        <td>
-                            <div class="d-flex">
-    
-                                <button data-bs-toggle="tooltip" title="Detail" class="btn btn-sm btn-primary me-2" style="background-color:#5D87FF">
-                                    <i><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="currentColor" d="M12 6.5a9.77 9.77 0 0 1 8.82 5.5c-1.65 3.37-5.02 5.5-8.82 5.5S4.83 15.37 3.18 12A9.77 9.77 0 0 1 12 6.5m0-2C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5m0 5a2.5 2.5 0 0 1 0 5a2.5 2.5 0 0 1 0-5m0-2c-2.48 0-4.5 2.02-4.5 4.5s2.02 4.5 4.5 4.5s4.5-2.02 4.5-4.5s-2.02-4.5-4.5-4.5"/></svg></i>
-                                </button>
+                    @forelse ($authors as $author)
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <img src="{{ asset('admin/dist/images/profile/user-2.jpg') }}"
+                                    class="rounded-circle me-2 user-profile" style="object-fit: cover" width="35"
+                                    height="35" alt="" />
+                                {{ $author->user->name }}
+                            </td>
+                            <td>{{ $author->user->email }}</td>
+                            <td>
+                                @if ($author->user->status == 'active')
+                                    <div
+                                        class="
+                                    fs-3
+                                    badge
+                                    bg-light-success
+                                    text-success
+                                    font-weight-medium
+                                    ">
+                                        Aktif</div>
+                                @endif
+                            <td>
+                                <div class="d-flex">
 
-                                <a data-bs-toggle="tooltip" title="Buka Blokir" class="btn unblock btn-sm btn-success me-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="#fff" d="M6.615 9H15V7q0-1.25-.875-2.125T12 4q-1.25 0-2.125.875T9 7H8q0-1.671 1.164-2.836T12 3q1.671 0 2.836 1.164T16 7v2h1.385q.666 0 1.14.475q.475.474.475 1.14v8.77q0 .666-.475 1.14q-.474.475-1.14.475H6.615q-.666 0-1.14-.475Q5 20.051 5 19.385v-8.77q0-.666.475-1.14Q5.949 9 6.615 9M12 16.5q.633 0 1.066-.434q.434-.433.434-1.066t-.434-1.066Q12.633 13.5 12 13.5t-1.066.434Q10.5 14.367 10.5 15t.434 1.066q.433.434 1.066.434"/></svg>
-                                </a>
-                                <a data-bs-toggle="tooltip" title="delete" class="btn delete btn-sm btn-danger">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24"><path fill="#ffffff" d="M7 21q-.825 0-1.412-.587T5 19V6q-.425 0-.712-.288T4 5t.288-.712T5 4h4q0-.425.288-.712T10 3h4q.425 0 .713.288T15 4h4q.425 0 .713.288T20 5t-.288.713T19 6v13q0 .825-.587 1.413T17 21zM17 6H7v13h10zm-7 11q.425 0 .713-.288T11 16V9q0-.425-.288-.712T10 8t-.712.288T9 9v7q0 .425.288.713T10 17m4 0q.425 0 .713-.288T15 16V9q0-.425-.288-.712T14 8t-.712.288T13 9v7q0 .425.288.713T14 17M7 6v13z"/></svg>
-                                </a>
-                            </div>
-                        </td>
-                    </tr>
+                                    <button data-bs-toggle="tooltip" title="Detail" class="btn btn-sm btn-primary me-2"
+                                        style="background-color:#5D87FF">
+                                        <i><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                                                viewBox="0 0 24 24">
+                                                <path fill="currentColor"
+                                                    d="M12 6.5a9.77 9.77 0 0 1 8.82 5.5c-1.65 3.37-5.02 5.5-8.82 5.5S4.83 15.37 3.18 12A9.77 9.77 0 0 1 12 6.5m0-2C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5m0 5a2.5 2.5 0 0 1 0 5a2.5 2.5 0 0 1 0-5m0-2c-2.48 0-4.5 2.02-4.5 4.5s2.02 4.5 4.5 4.5s4.5-2.02 4.5-4.5s-2.02-4.5-4.5-4.5" />
+                                            </svg></i>
+                                    </button>
+
+                                    <a data-bs-toggle="tooltip" title="Buka Blokir"
+                                        class="btn unblock btn-sm btn-success me-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                                            viewBox="0 0 24 24">
+                                            <path fill="#fff"
+                                                d="M6.615 9H15V7q0-1.25-.875-2.125T12 4q-1.25 0-2.125.875T9 7H8q0-1.671 1.164-2.836T12 3q1.671 0 2.836 1.164T16 7v2h1.385q.666 0 1.14.475q.475.474.475 1.14v8.77q0 .666-.475 1.14q-.474.475-1.14.475H6.615q-.666 0-1.14-.475Q5 20.051 5 19.385v-8.77q0-.666.475-1.14Q5.949 9 6.615 9M12 16.5q.633 0 1.066-.434q.434-.433.434-1.066t-.434-1.066Q12.633 13.5 12 13.5t-1.066.434Q10.5 14.367 10.5 15t.434 1.066q.433.434 1.066.434" />
+                                        </svg>
+                                    </a>
+                                    <a data-bs-toggle="tooltip" title="delete" class="btn delete btn-sm btn-danger">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
+                                            viewBox="0 0 24 24">
+                                            <path fill="#ffffff"
+                                                d="M7 21q-.825 0-1.412-.587T5 19V6q-.425 0-.712-.288T4 5t.288-.712T5 4h4q0-.425.288-.712T10 3h4q.425 0 .713.288T15 4h4q.425 0 .713.288T20 5t-.288.713T19 6v13q0 .825-.587 1.413T17 21zM17 6H7v13h10zm-7 11q.425 0 .713-.288T11 16V9q0-.425-.288-.712T10 8t-.712.288T9 9v7q0 .425.288.713T10 17m4 0q.425 0 .713-.288T15 16V9q0-.425-.288-.712T14 8t-.712.288T13 9v7q0 .425.288.713T14 17M7 6v13z" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    @empty
+                    @endforelse
                 </tbody>
             </table>
         </div>
@@ -125,55 +147,59 @@
                                     <label class="form-label" for="nomor">Nama</label>
                                     <input type="text" id="create-name" name="name" placeholder="nama"
                                         value="{{ old('name') }}" class="form-control ">
-                                        @error('phone_number')
+                                    @error('phone_number')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
-                                        @enderror
+                                    @enderror
                                 </div>
 
                                 <div class="col-md-12 col-lg-6 mb-3">
                                     <label class="form-label" for="nomor">Nomor Telepon</label>
                                     <input type="text" id="create-phone_number" name="phone_number"
-                                        placeholder="nomor telepon" value="{{ old('phone_number') }}" class=" @error('phone_number') is-invalid @enderror form-control">
-                                        @error('phone_number')
+                                        placeholder="nomor telepon" value="{{ old('phone_number') }}"
+                                        class=" @error('phone_number') is-invalid @enderror form-control">
+                                    @error('phone_number')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
-                                        @enderror
+                                    @enderror
                                 </div>
 
                                 <div class="col-md-12 col-lg-6 mb-3">
                                     <label class="form-label" for="nomor">Email</label>
                                     <input type="text" id="create-email" name="email" placeholder="email"
-                                        value="{{ old('email') }}"  class=" @error('email') is-invalid @enderror form-control">
-                                        @error('email')
+                                        value="{{ old('email') }}"
+                                        class=" @error('email') is-invalid @enderror form-control">
+                                    @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
-                                        @enderror
+                                    @enderror
                                 </div>
 
                                 <div class="col-md-12 col-lg-6 mb-3">
                                     <label class="form-label" for="nomor">CV</label>
                                     <input type="file" id="create-cv" name="cv" placeholder="name"
-                                        value="{{ old('cv') }}"  class=" @error('cv') is-invalid @enderror form-control">
-                                        @error('cv')
+                                        value="{{ old('cv') }}"
+                                        class=" @error('cv') is-invalid @enderror form-control">
+                                    @error('cv')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
-                                        @enderror
+                                    @enderror
                                 </div>
 
                                 <div class="col-md-12 col-lg-6 mb-3">
                                     <label class="form-label" for="nomor">Password</label>
                                     <input type="password" id="create-password" name="password" placeholder="password"
-                                        value="{{ old('password') }}" class=" @error('password') is-invalid @enderror form-control">
-                                        @error('password')
+                                        value="{{ old('password') }}"
+                                        class=" @error('password') is-invalid @enderror form-control">
+                                    @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
-                                        @enderror
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -181,8 +207,7 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-rounded btn-light-danger text-danger"
                                 data-bs-dismiss="modal">Batal</button>
-                            <button type="submit"
-                                class="btn btn-rounded btn-light-success text-success">Tambah</button>
+                            <button type="submit" class="btn btn-rounded btn-light-success text-success">Tambah</button>
                         </div>
                     </form>
                 </div>
@@ -190,7 +215,8 @@
         </div>
 
 
-        <div class="modal fade" id="modal-delete" tabindex="-1" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal fade" id="modal-delete" tabindex="-1" aria-labelledby="mySmallModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog modal-sm">
                 <form id="form-delete" method="POST" class="modal-content">
                     @csrf
@@ -202,9 +228,9 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-        
+
                         <p>Apakah anda yakin akan menghapus data ini? </p>
-        
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-light-danger text-danger font-medium waves-effect"
@@ -219,8 +245,8 @@
                 </form>
             </div>
         </div>
-        
-        
+
+
         <!-- Detail Modal -->
         <div class="modal fade" id="modal-detail" tabindex="-1" aria-labelledby="modal-detail Label"
             aria-hidden="true">
@@ -360,4 +386,3 @@
         </div>
     </div>
 @endsection
-

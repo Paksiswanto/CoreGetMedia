@@ -22,7 +22,14 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        //
+        $authors = $this->author->get();
+        return view('pages.admin.author.confirm-author', compact('authors'));
+    }
+
+    public function list_author()
+    {
+        $authors = $this->author->where('accepted');
+        return view('pages.admin.author.author-list', compact('authors'));
     }
 
     /**

@@ -5,13 +5,15 @@ namespace App\Contracts\Repositories;
 use App\Contracts\Interfaces\PopularInterface;
 use App\Enums\NewsEnum;
 use App\Models\News;
+use App\Models\NewsCategory;
 use Illuminate\Support\Facades\DB;
 
 class PopularRepository extends BaseRepository implements PopularInterface
 {
-    public function __construct(News $news)
+    public function __construct(News $news , NewsCategory $newsCategory)
     {
         $this->model = $news;
+        $this->newscategori = $newsCategory;
     }
 
     /**
@@ -24,8 +26,8 @@ class PopularRepository extends BaseRepository implements PopularInterface
     public function delete(mixed $id): mixed
     {
         return $this->model->query()
-        ->findOrFail($id)
-        ->delete();
+            ->findOrFail($id)
+            ->delete();
     }
 
     /**
@@ -53,7 +55,7 @@ class PopularRepository extends BaseRepository implements PopularInterface
     {
         return $this->model->query()
             ->where('status', NewsEnum::ACCEPTED->value)
-            ->withCount('views')
+            ->withCount('newsViews')
             ->get();
     }
 
@@ -61,34 +63,35 @@ class PopularRepository extends BaseRepository implements PopularInterface
     {
         return $this->model->query()
             ->where('status', NewsEnum::ACCEPTED->value)
-            ->withCount('views')
+            ->withCount('newsViews')
             ->latest()
             ->get();
     }
 
     public function getbycategory(): mixed
     {
-        $subquery = DB::table('news_categories')
-        ->select('category_id', DB::raw('COUNT(*) as category_count'))
-        ->groupBy('category_id')
-        ->orderByRaw('COUNT(*) DESC')
-        ->skip(1)
-        ->take(1)
-        ->pluck('category_id');
 
-    return $this->model->query()
-        ->where('status', NewsEnum::ACCEPTED->value)
-        ->whereHas('newsCategories', function ($query) use ($subquery) {
-            $query->whereIn('category_id', $subquery);
-        })
-        ->with(['newsCategories' => function ($query) {
-            $query->with('category');
-        }])
-        ->withCount('views')
-        ->orderByDesc('views_count')
-        ->orderBy('created_at')
-        ->take(4)
-        ->get(['id', 'slug', 'photo', 'name', 'created_at', 'upload_date']);
+        $subquery = $this->newscategori->query()
+            ->selectRaw('category_id, COUNT(*) as category_count')
+            ->groupBy('category_id')
+            ->orderByRaw('COUNT(*) DESC')
+            ->skip(1)
+            ->take(1)
+            ->pluck('category_id');
+
+        return $this->model->query()
+            ->where('status', NewsEnum::ACCEPTED->value)
+            ->whereHas('newsCategories', function ($query) use ($subquery) {
+                $query->whereIn('category_id', $subquery);
+            })
+            ->with(['newsCategories' => function ($query) {
+                $query->with('category');
+            }])
+            ->withCount('newsViews')
+            ->orderByDesc('news_views_count')
+            ->orderBy('created_at')
+            ->take(4)
+            ->get(['id', 'slug', 'photo', 'name', 'created_at', 'upload_date']);
     }
 
     /**

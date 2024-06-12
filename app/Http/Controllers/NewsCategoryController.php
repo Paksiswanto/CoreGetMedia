@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Contracts\Interfaces\CategoryInterface;
 use App\Contracts\Interfaces\NewsCategoryInterface;
 use App\Contracts\Interfaces\NewsInterface;
@@ -27,14 +28,17 @@ class NewsCategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index($slug)
+    public function index(Request $request,$slug)
     {
         $category = $this->category->showWithSLug($slug);
         $category_id = $category->id;
 
         $categories = $this->category->get();
         $subCategories = $this->subCategories->get();
-        return view('pages.user.category.index', compact('categories', 'subCategories'));
+        
+        $query = $request->input('search');
+        $trendings = $this->news->whereCategory($category_id, $query, 10);
+        return view('pages.user.category.index', compact('categories', 'subCategories', 'category', 'trendings'));
     }
 
     /**
@@ -60,6 +64,22 @@ class NewsCategoryController extends Controller
     {
         //
     }
+
+    
+    /**
+     * Display the specified resource.
+     */
+    public function showAll($slug)
+    {
+        $category = $this->category->showWithSLug($slug);
+        $category_id = $category->id;
+
+        $categories = $this->category->get();
+        $subCategories = $this->subCategories->get();
+        $populars = $this->news->whereCategory($category_id);
+        return view('pages.user.category.all-category', compact('categories', 'subCategories', 'category', 'populars'));
+    }
+
 
     /**
      * Show the form for editing the specified resource.
