@@ -195,7 +195,7 @@
                         </div>
                         <div class="news-para text-justify">
                             
-                            <p>{!! $news->description !!}</p>
+                            <p>{!! Illuminate\Support\Str::limit($news->description, $limit = 150, $end = '...') !!}</p>
                         </div>
                         {{-- <div class="news-img">
                             <img src="{{asset('assets/img/news/single-news-6.webp')}}" alt="Image">

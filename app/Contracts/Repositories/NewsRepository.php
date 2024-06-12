@@ -5,6 +5,7 @@ namespace App\Contracts\Repositories;
 use App\Contracts\Interfaces\FaqInterface;
 use App\Contracts\Interfaces\NewsInterface;
 use App\Models\Faq;
+use App\Enums\NewsEnum;
 use App\Models\News;
 
 class NewsRepository extends BaseRepository implements NewsInterface
@@ -76,6 +77,8 @@ class NewsRepository extends BaseRepository implements NewsInterface
             ->when($query == 'top', function($q){
                 $q->take(1);
             })
+            ->where('status', NewsEnum::ACCEPTED->value)
+            ->take(7)
             ->get();
     }
 
@@ -88,12 +91,16 @@ class NewsRepository extends BaseRepository implements NewsInterface
             ->when($query == 'top', function($q){
                 $q->take(1);
             })
+            ->where('status', NewsEnum::ACCEPTED->value)
+            ->take(7)
+            ->latest()
             ->get();
     }
 
     public function categoryLatest() : mixed
     {
         return $this->model->query()
+        ->where('status', NewsEnum::ACCEPTED->value)
         ->latest()
         ->get();
     }
