@@ -61,6 +61,21 @@ class NewsCategoryController extends Controller
         //
     }
 
+    
+    /**
+     * Display the specified resource.
+     */
+    public function showAll($slug)
+    {
+        $category = $this->category->showWithSLug($slug);
+        $category_id = $category->id;
+
+        $categories = $this->category->get();
+        $subCategories = $this->subCategories->get();
+        return view('pagesuser.ca', compact('categories', 'subCategories', 'category'));
+    }
+
+
     /**
      * Show the form for editing the specified resource.
      */

@@ -13,5 +13,6 @@ abstract class BaseRepository
      */
 
     public Model $model;
+    public Model $newscategori;
     public Model $user;
 }
