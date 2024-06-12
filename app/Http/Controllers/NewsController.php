@@ -15,6 +15,7 @@ use App\Http\Requests\StoreNewsRequest;
 use App\Http\Requests\UpdateNewsRequest;
 use App\Models\NewsCategory;
 use App\Services\NewsService;
+use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
