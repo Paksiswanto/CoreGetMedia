@@ -40,7 +40,7 @@
 @endsection                        
 
 @section('content')
-    <div class="breadcrumb-wrap">
+    {{-- <div class="breadcrumb-wrap">
         <div class="container">
             <h2 class="breadcrumb-title">{{$news->name}}</h2>
             <ul class="breadcrumb-menu list-style">
@@ -48,7 +48,7 @@
                 <li><a href=""></a></li>
             </ul>
         </div>
-    </div>
+    </div> --}}
 
 
     <div class="news-details-wrap ptb-100">
@@ -62,7 +62,7 @@
                         <div class="news-img">
                             <img src="{{ asset('storage/' . $news->image) }}" width="100%"
                             height="470" style="object-fit: cover" alt="Image">
-                            <a href="#" class="news-cat">{{ $news->newsCategories[0]->category->name }}</a>
+                            <a href="{{ route('categories.show.user', ['category' => $news->slug]) }}" class="news-cat">{{ $news->newsCategories[0]->category->name }}</a>
                         </div>
                         <div>
                             <ul class="news-metainfo list-style">
