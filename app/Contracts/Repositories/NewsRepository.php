@@ -67,6 +67,17 @@ class NewsRepository extends BaseRepository implements NewsInterface
             ->get();
     }
 
+    public function whereSubCategory($id, $query): mixed
+    {
+        return $this->model->query()
+            ->whereRelation('newsSubCategories', 'sub_category_id', $id)
+            ->withCount('newsViews')
+            ->when($query == 'top', function($q){
+                $q->take(1);
+            })
+            ->get();
+    }
+
     /**
      * Handle store data event to models.
      *

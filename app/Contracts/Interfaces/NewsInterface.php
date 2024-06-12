@@ -13,4 +13,5 @@ interface NewsInterface extends GetInterface, StoreInterface, UpdateInterface, S
 {
     // public function searchAll(Request $request) : mixed;
     public function where($data) : mixed;
+    public function whereSubCategory($id, $query) : mixed;
 }

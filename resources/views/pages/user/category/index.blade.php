@@ -314,14 +314,6 @@
                                             <span>( 10 )</span>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a data-toggle="tooltip" data-placement="top" title="Fashion"
-                                            href="#"><img
-                                                src="{{ asset('assets/img/icons/arrow-right.svg') }}"
-                                                alt="Image">Fashion
-                                            <span>( 10 )</span>
-                                        </a>
-                                    </li>
                                 </ul>
                             </div>
 

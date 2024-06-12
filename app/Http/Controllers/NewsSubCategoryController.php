@@ -2,18 +2,44 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Interfaces\CategoryInterface;
+use App\Contracts\Interfaces\NewsCategoryInterface;
+use App\Contracts\Interfaces\NewsInterface;
+use App\Contracts\Interfaces\SubCategoryInterface;
 use App\Models\NewsSubCategory;
 use App\Http\Requests\StoreNewsSubCategoryRequest;
 use App\Http\Requests\UpdateNewsSubCategoryRequest;
 
 class NewsSubCategoryController extends Controller
 {
+    private NewsCategoryInterface $newsCategory;
+    private NewsInterface $news;
+    private CategoryInterface $category;
+    private SubCategoryInterface $subCategories;
+
+    public function __construct(NewsCategoryInterface $newsCategory, NewsInterface $news, CategoryInterface $category, SubCategoryInterface $subCategories)
+    {
+        $this->newsCategory = $newsCategory;
+        $this->category = $category;
+        $this->subCategories = $subCategories;
+        $this->news = $news;
+    }
+
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($slug)
     {
-        //
+        $subcategory = $this->subCategories->showWithSLug($slug);
+        $subcategory_id = $subcategory->id;
+
+        $categories = $this->category->get();
+        $subCategories = $this->subCategories->get();
+
+        $newsTop = $this->news->whereSubCategory($subcategory_id, 'top');
+        $news = $this->news->whereSubCategory($subcategory_id, 'notop');
+        $popularCategory = $this->category->showWithCount();
+        return view('pages.user.subcategory.index', compact('categories', 'subCategories', 'news', 'newsTop', 'popularCategory'));
     }
 
     /**

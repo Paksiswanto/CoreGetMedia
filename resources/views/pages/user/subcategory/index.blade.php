@@ -48,24 +48,27 @@
         <div class="container">
             <div class="row gx-55 gx-5">
                 <div class="col-lg-8">
-                    <div class="">
-                        <div class="news-card-four" style="height: 550px;">
-                            <div class="news-card-img">
-                                <a href="#"> <img src="{{asset('assets/img/news/news-10.webp')}}" alt="Image" width="100%" style="object-fit: cover" height="450" /></a>
-                            </div>
-
-                            <div class="news-card-info">
-                                <h3><a data-toggle="tooltip" data-placement="top" title="Apex Legends Season 11 Start Date, Time, & What To Expect"
-                                        href="#">Apex Legends Season 11 Start Date, Time, & What To Expect
-                                    </a>
-                                </h3>
-                                <ul class="news-metainfo list-style">
-                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 03, 2023</a></li>
-                                    <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">10</a></li>
-                                </ul>
+                    @forelse ($newsTop as $item)
+                        <div class="">
+                            <div class="news-card-four" style="height: 550px;">
+                                <div class="news-card-img">
+                                    <a href="#"> <img src="{{asset('storage'. $item->image)}}" alt="Image" width="100%" style="object-fit: cover" height="450" /></a>
+                                </div>
+        
+                                <div class="news-card-info">
+                                    <h3><a data-toggle="tooltip" data-placement="top" title="Apex Legends Season 11 Start Date, Time, & What To Expect"
+                                            href="#">{{ $item->name }}
+                                        </a>
+                                    </h3>
+                                    <ul class="news-metainfo list-style">
+                                        <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">{{ $item->date }}</a></li>
+                                        <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">{{ $item->newsViews_count }}</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @empty
+                    @endforelse
 
 
                     <div class="mb-5">
@@ -82,96 +85,27 @@
                             </a>
                         </div>
 
-                        <div class="news-card-five">
-                            <div class="news-card-img">
-                                <a href="#"><img src="{{asset('assets/img/news/news-1.webp')}}" alt="Image" height="140" width="100%" /></a>
-                                <a data-toggle="tooltip" data-placement="top" title="Sports"
-                                    href="#" class="news-cat">Sports</a>
+                        @forelse ($news as $data)
+                            <div class="news-card-five">
+                                <div class="news-card-img">
+                                    <a href="#"><img src="{{asset('storage/'. $data->image)}}" alt="Image" height="140" width="100%" /></a>
+                                    <a data-toggle="tooltip" data-placement="top" title="Sports"
+                                        href="#" class="news-cat">{{ $data->newsCategories->subCategory->name }}</a>
+                                </div>
+                                <div class="news-card-info">
+                                    <h3><a data-toggle="tooltip" data-placement="top" title="Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange"
+                                            href="#">{{ $data->name }}
+                                        </a>
+                                    </h3>
+                                    <p>{{ $data->description }}</p>
+                                    <ul class="news-metainfo list-style">
+                                        <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">{{ $data->date }}</a></li>
+                                        <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">{{ $data->newsViews_count }}</a></li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="news-card-info">
-                                <h3><a data-toggle="tooltip" data-placement="top" title="Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange"
-                                        href="#">Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange
-                                    </a>
-                                </h3>
-                                <p>Lorem ipsum or lipsum as it is sometmes known is dum text used in laying print, graphic or web desi…</p>
-                                <ul class="news-metainfo list-style">
-                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 03, 2023</a></li>
-                                    <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">10</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="news-card-five">
-                            <div class="news-card-img">
-                                <a href="#"><img src="{{asset('assets/img/news/news-1.webp')}}" alt="Image" height="140" width="100%" /></a>
-                                <a data-toggle="tooltip" data-placement="top" title="Sports"
-                                    href="#" class="news-cat">Sports</a>
-                            </div>
-                            <div class="news-card-info">
-                                <h3><a data-toggle="tooltip" data-placement="top" title="Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange"
-                                        href="#">Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange
-                                    </a>
-                                </h3>
-                                <p>Lorem ipsum or lipsum as it is sometmes known is dum text used in laying print, graphic or web desi…</p>
-                                <ul class="news-metainfo list-style">
-                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 03, 2023</a></li>
-                                    <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">10</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="news-card-five">
-                            <div class="news-card-img">
-                                <a href="#"><img src="{{asset('assets/img/news/news-1.webp')}}" alt="Image" height="140" width="100%" /></a>
-                                <a data-toggle="tooltip" data-placement="top" title="Sports"
-                                    href="#" class="news-cat">Sports</a>
-                            </div>
-                            <div class="news-card-info">
-                                <h3><a data-toggle="tooltip" data-placement="top" title="Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange"
-                                        href="#">Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange
-                                    </a>
-                                </h3>
-                                <p>Lorem ipsum or lipsum as it is sometmes known is dum text used in laying print, graphic or web desi…</p>
-                                <ul class="news-metainfo list-style">
-                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 03, 2023</a></li>
-                                    <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">10</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="news-card-five">
-                            <div class="news-card-img">
-                                <a href="#"><img src="{{asset('assets/img/news/news-1.webp')}}" alt="Image" height="140" width="100%" /></a>
-                                <a data-toggle="tooltip" data-placement="top" title="Sports"
-                                    href="#" class="news-cat">Sports</a>
-                            </div>
-                            <div class="news-card-info">
-                                <h3><a data-toggle="tooltip" data-placement="top" title="Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange"
-                                        href="#">Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange
-                                    </a>
-                                </h3>
-                                <p>Lorem ipsum or lipsum as it is sometmes known is dum text used in laying print, graphic or web desi…</p>
-                                <ul class="news-metainfo list-style">
-                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 03, 2023</a></li>
-                                    <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">10</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="news-card-five">
-                            <div class="news-card-img">
-                                <a href="#"><img src="{{asset('assets/img/news/news-1.webp')}}" alt="Image" height="140" width="100%" /></a>
-                                <a data-toggle="tooltip" data-placement="top" title="Sports"
-                                    href="#" class="news-cat">Sports</a>
-                            </div>
-                            <div class="news-card-info">
-                                <h3><a data-toggle="tooltip" data-placement="top" title="Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange"
-                                        href="#">Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange
-                                    </a>
-                                </h3>
-                                <p>Lorem ipsum or lipsum as it is sometmes known is dum text used in laying print, graphic or web desi…</p>
-                                <ul class="news-metainfo list-style">
-                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 03, 2023</a></li>
-                                    <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">10</a></li>
-                                </ul>
-                            </div>
-                        </div>
+                        @empty
+                        @endforelse
                     </div>
 
                     {{-- <div class="text-center item-center d-flex justify-content-center" style="background-color:#F6F6F6; width:100%;height:200px;">
@@ -290,38 +224,17 @@
                             <div class="sidebar-widget">
                                 <h3 class="sidebar-widget-title">Kategori Populer</h3>
                                 <ul class="category-widget list-style">
-                                    <li>
-                                        <a data-toggle="tooltip" data-placement="top" title="Fashion"
-                                            href="#"><img
-                                                src="{{ asset('assets/img/icons/arrow-right.svg') }}"
-                                                alt="Image">Fashion
-                                            <span>( 10 )</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a data-toggle="tooltip" data-placement="top" title="Fashion"
-                                            href="#"><img
-                                                src="{{ asset('assets/img/icons/arrow-right.svg') }}"
-                                                alt="Image">Fashion
-                                            <span>( 10 )</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a data-toggle="tooltip" data-placement="top" title="Fashion"
-                                            href="#"><img
-                                                src="{{ asset('assets/img/icons/arrow-right.svg') }}"
-                                                alt="Image">Fashion
-                                            <span>( 10 )</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a data-toggle="tooltip" data-placement="top" title="Fashion"
-                                            href="#"><img
-                                                src="{{ asset('assets/img/icons/arrow-right.svg') }}"
-                                                alt="Image">Fashion
-                                            <span>( 10 )</span>
-                                        </a>
-                                    </li>
+                                    @forelse ($popularCategory as $item)
+                                        <li>
+                                            <a data-toggle="tooltip" data-placement="top" title="Fashion"
+                                                href="#"><img
+                                                    src="{{ asset('assets/img/icons/arrow-right.svg') }}"
+                                                    alt="Image">{{ $item->name }}
+                                                <span>( {{ $item->news_categories_count }} )</span>
+                                            </a>
+                                        </li>
+                                    @empty    
+                                    @endforelse
                                 </ul>
                             </div>
 
