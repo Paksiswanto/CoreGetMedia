@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\NewsCategoryController;
+use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('news/category', function(){
@@ -8,3 +9,5 @@ Route::get('news/category', function(){
 })->name('news.category');
 
 Route::get('{category}', [NewsCategoryController::class, 'index'])->name('categories.show.user');
+
+Route::get('news/{news}', [NewsController::class, 'show'])->name('news.singlepost');

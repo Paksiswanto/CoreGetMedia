@@ -118,13 +118,13 @@
             <a data-toggle="tooltip" data-placement="top" title="Sports" href="#" class="news-cat">Sports</a>
         </div>
         <div class="news-card-info">
-            <h3><a data-toggle="tooltip" data-placement="top" title="Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange" href="#">{!! Illuminate\Support\Str::limit($trending->name, $limit = 45, $end = '...')  !!}
+            <h3><a data-toggle="tooltip" data-placement="top" title="Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange" href="{{ route('news.singlepost', ['news' => $trending->slug]) }}">{!! Illuminate\Support\Str::limit($trending->name, $limit = 45, $end = '...')  !!}
                 </a>
             </h3>
             <p>{!! Illuminate\Support\Str::limit($trending->name, $limit = 110, $end = '...')  !!}</p>
             <ul class="news-metainfo list-style">
-                <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">{{ \Carbon\Carbon::parse($trending->created_at)->translatedFormat('d F Y') }}</a></li>
-                <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">{{ $trending->views_count }}x dilihat</a></li>
+                <li><i class="fi fi-rr-calendar-minus"></i><a href="javascript:void(0)">{{ \Carbon\Carbon::parse($trending->created_at)->translatedFormat('d F Y') }}</a></li>
+                <li><i class="fi fi-rr-eye"></i><a href="javascript:void(0)">{{ $trending->views_count }}x dilihat</a></li>
             </ul>
         </div>
     </div>

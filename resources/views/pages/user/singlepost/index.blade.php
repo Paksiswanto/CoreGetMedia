@@ -1,8 +1,32 @@
 @extends('layouts.user.app')
 
 @section('style')
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
 
+<style>
+        .tag-list li a:hover {
+            background-color: #175A95;
+            color: var(--whiteColor);
+        }
+        .tag-list li a {
+            color: var(--optionalColor);
+            background-color: var(--whiteColor);
+            border-radius: 5px;
+            padding: 7px 15px 3px 17px;
+            font-size: 14px;
+            line-height: 30px;
+            display: inline-block;
+            border: 1px solid #eee;
+        }
+        .theme-dark .tag-list li a:hover {
+            background-color: #175A95;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--whiteColor);
+        }
+
+        .breadcrumb-menu li:after {
+            color: #000;
+        }
+</style>
 @endsection                        
 
 @section('content')
@@ -24,11 +48,12 @@
                 <div class="col-lg-8">
                     <article>
                         <div>
-                            <h1>Jiraiya Banks Wants To Teach You How To Build A House</h1>
+                            <h1>{{ $news->name }}</h1>
                         </div>
                         <div class="news-img">
-                            <img src="{{asset('assets/img/news/single-news-1.webp')}}" alt="Image">
-                            <a href="business.html" class="news-cat">Business</a>
+                            <img src="{{ asset('storage/' . $news->image) }}" width="100%"
+                            height="470" style="object-fit: cover" alt="Image">
+                            <a href="#" class="news-cat">{{ $news->newsCategories[0]->category->name }}</a>
                         </div>
                         <div>
                             <ul class="news-metainfo list-style">
@@ -38,7 +63,7 @@
                                             <div class="col-md-12 col-lg-3 mb-3">
                                                 <li class="author">
                                                     <span class="author-img">
-                                                        <img src="{{asset('admin/dist/images/profile/user-1.jpg')}}"
+                                                        <img src="{{ asset($news->user->photo ? 'storage/' . $news->user->photo : 'default.png') }}"
                                                             alt="Image" width="40px" height="30px"
                                                             style="border-radius: 50%; object-fit:cover;" />
                                                     </span>
@@ -46,7 +71,7 @@
                                                         <a style="display: inline;text-decoration:none"
                                                             data-toggle="tooltip" data-placement="top"
                                                             title="author - Karin"
-                                                            href="#">Karin</a>
+                                                            href="#">{{ $news->user->name }}</a>
                                                         </span>
                                                     </div>
                                                 </li>
@@ -54,11 +79,11 @@
     
                                             <div class="col-md-12 col-sm-12 col-lg-9">
                                                 <li><i class="fi fi-rr-calendar-minus"></i>
-                                                    <span id="formattedDate" class="font-date">09 Mei 2024</span>
+                                                    <span id="formattedDate" class="font-date">{{ \Carbon\Carbon::parse($news->created_at)->translatedFormat('d F Y') }}</span>
                                                 </li>
                                                 <li>
                                                     <i class="fi fi-rr-eye" style="margin-top: 2px;"></i>
-                                                    <span>20x dilihat</span>
+                                                    <span>{{ $news->views_count }}x dilihat</span>
                                                 </li>
                                                 <li>
                                                     <form class="d-flex">
@@ -135,13 +160,7 @@
     
                                     <div class="col-md-1 col-sm-1 col-lg-1">
                                         <li>
-                                            <a class="" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24">
-                                                    <path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="3" d="M12 12h.01v.01H12zm0-7h.01v.01H12zm0 14h.01v.01H12z"/>
-                                                </svg>
-                                            </a>
-                                            
-                                            {{-- <a class="" href="#" role="button" id="dropdownMenuLink"
+                                            <a class="" href="#" role="button" id="dropdownMenuLink"
                                                 data-bs-toggle="dropdown" aria-expanded="false">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
                                                     viewBox="0 0 24 24">
@@ -149,7 +168,7 @@
                                                         stroke-width="3"
                                                         d="M12 12h.01v.01H12zm0-7h.01v.01H12zm0 14h.01v.01H12z" />
                                                 </svg>
-                                            </a> --}}
+                                            </a>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                                 <li>
                                                     <button class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#share">
@@ -162,21 +181,7 @@
                                                     </button>
                                                 </li>
                                             </ul>
-                                            
-                                            {{-- <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                <li>
-                                                    <button class="btn btn-sm" data-bs-toggle="modal"
-                                                        data-bs-target="#share">
-                                                        Bagikan
-                                                    </button>
-                                                </li>
-                                                <li>
-                                                    <button class="btn btn-sm" data-bs-toggle="modal"
-                                                        data-bs-target="#tambahdataLabel">
-                                                        Laporkan
-                                                    </button>
-                                                </li>
-                                            </ul> --}}
+
                                         </li>
                                     </div>
                                 </div>
@@ -192,84 +197,27 @@
                         </div>
                         <div class="news-para">
                             
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's stand dummy text ever since the 1500s, when an unknown printer
-                                took a galley of type and scrambled it to make a type specim book. It has survived not
-                                only five <strong>gravida</strong> but also the leap into electronic typesetting,
-                                remaining essentially unchange was popularised in the 1960s with the release of Letraset
-                                sheets containing Lorem Ipsum <a href="index.html">Ipsum</a> and more recently with
-                                desktop publishing software like Aldus Page maker including versions of Lorem Ipsum.</p>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have
-                                suffered alteration in some form, by injected humour, or randomised words which don't
-                                look even slightly believable. If you are going to use a passage of Lorem Ipsum, you
-                                need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
+                            <p>{{ $news->description }}</p>
                         </div>
                         <div class="news-img">
                             <img src="{{asset('assets/img/news/single-news-6.webp')}}" alt="Image">
                         </div>
-                        <div class="news-para">
-                            <h5>Mastering Digital Transformation: How to Stay Ahead in a Rapidly Changing Business
-                                Landscape</h5>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have
-                                suffered alteration in some form, by injected humour, or randomised words which don't
-                                look even slightly believable. If you are going to use a passage of Lorem Ipsum, you
-                                need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
-                            <h5>Unordered & Ordered Lists</h5>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have
-                                suffered alteration in some form by injected humour, or randomised words which don't
-                                look even slightly believable.</p>
-                            <ul class="content-feature-list list-style mt-15">
-                                <li>
-                                    <span><i class="flaticon-arrow-right"></i></span>
-                                    It is a long established fact that a reader will be distracted by the readable
-                                    content.
-                                </li>
-                                <li>
-                                    <span><i class="flaticon-arrow-right"></i></span>
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting
-                                </li>
-                                <li>
-                                    <span><i class="flaticon-arrow-right"></i></span>
-                                    It was popularised in the 1960s with the release of Letraset sheets
-                                </li>
-                                <li>
-                                    <span><i class="flaticon-arrow-right"></i></span>
-                                    Publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                </li>
-                                <li>
-                                    <span><i class="flaticon-arrow-right"></i></span>
-                                    All the Lorem Ipsum generators on the Internet tend to repeat predefined.
-                                </li>
-                            </ul>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have
-                                suffered alteration in some form, by injected humour, or randomised words which don't
-                                look even slightly believable. If you are going to use a <strong>adipisicing</strong> of
-                                Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle
-                                of text.</p>
-                        </div>
-                        <blockquote class="wp-block-quote">
+                        {{-- <blockquote class="wp-block-quote">
                             <i class="fi fi-rr-quote-right"></i>
                             <p>“ People find waiting more tolerable when they can see the work being done on their
                                 behalf ”</p>
                             <h6>William Benjamin</h6>
-                        </blockquote>
-                        <div class="news-para">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's stand dummy text ever since the 1500s, when an unknown printer
-                                took a galley of type and scrambled it to make a type specim book. It has survived not
-                                only five centuries, but also the leap into electronic typesetting, remaining
-                                essentially unchange was popularised in the 1960s with the release of Letraset sheets
-                                containing Lorem Ipsum passages, and more recently with desktop publishing software like
-                                Aldus PageMaker including versions of Lorem Ipsum.</p>
-                            <ol>
-                                <li>Lacus sed viverra tellus in hac habitasse platea dictumst.</li>
-                                <li>Gravida neque convallis a <strong>cras</strong> semper auctor neque vitae.</li>
-                                <li>Lacus sed turpis tincidunt id aliquet risus feugiat in.</li>
-                                <li>Risus commodo viverra manas accumsan lacus vel facilisis</li>
-                            </ol>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam culpa reprehenderit ad
-                                ipsa porro obcaecati accusantium tempore officiis tenetur est!</p>
-                        </div>
+                        </blockquote> --}}
+
+                        <p> Tag :
+                            {{-- @forelse ($tags as $tag)
+                                <a data-toggle="tooltip" data-placement="top" title="{{ $tag->tag->name }}"
+                                    href="{{ route('tag.show.user', ['tag' => $tag->tag->slug]) }}"
+                                    class="btn btn-rounded btn-outline-primary">{{ $tag->tag->name }}</a>
+                            @empty
+                            @endforelse --}}
+                        </p>
+
                     </article>
                     
                     <div id="cmt-form">
@@ -558,7 +506,14 @@
                         <div class="sidebar-widget">
                             <h3 class="sidebar-widget-title">Kategori Populer</h3>
                             <ul class="category-widget list-style">
-                                <li><a href="business.html"><img src="{{asset('assets/img/icons/arrow-right.svg')}}"
+                                @foreach ($CategoryPopulars as $category)
+                                <li><a data-toggle="tooltip" data-placement="top" title="{{ $category->name }}"
+                                        href="{{ route('categories.show.user', ['category' => $category->slug]) }}"><img
+                                            src="{{ asset('assets/img/icons/arrow-right.svg') }}"
+                                            alt="Image">{{ $category->name }}
+                                        <span>({{ $category->news_categories_count }})</span></a></li>
+                                @endforeach
+                                {{-- <li><a href="business.html"><img src="{{asset('assets/img/icons/arrow-right.svg')}}"
                                             alt="Image">Kategori <span>(6)</span></a></li>
                                 <li><a href="business.html"><img src="{{asset('assets/img/icons/arrow-right.svg')}}"
                                             alt="Image">Kategori<span>(3)</span></a></li>
@@ -571,10 +526,10 @@
                                 <li><a href="business.html"><img src="{{asset('assets/img/icons/arrow-right.svg')}}"
                                             alt="Image">Kategori<span>(2)</span></a></li>
                                 <li><a href="business.html"><img src="{{asset('assets/img/icons/arrow-right.svg')}}"
-                                            alt="Image">Kategori<span>(4)</span></a></li>
+                                            alt="Image">Kategori<span>(4)</span></a></li> --}}
                             </ul>
                         </div>
-                        <div class="sidebar-widget">
+                        <div class="sidebar-widget bg-transparent shadow-smer">
                             <h3 class="sidebar-widget-title">Tag Populer</h3>
                             <ul class="tag-list list-style">
                                 <li><a href="{{route('list-tag.user')}}">BUSINESS</a></li>
@@ -645,8 +600,56 @@
         </div>
     </div>
 
+
+    <div class="modal fade" id="share" tabindex="-1" aria-labelledby="tambahdataLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tambahdataLabel"><span
+                        style="color: #0F4D8A; font-size: 25px;" class="mb-2 me-1"></span>Bagikan
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="container">
+                    <div class="mb-3 form-group">
+                        <label for="message" class="form-label fw-bold">Url</label>
+                        <div class="shareLink">
+                            {{-- <div class="permalink">
+                                <input class="textLink" type="text" name="shortlink"
+                                    value="https://media.mijurnal.com/{{ $dateParts['year'] }}/{{ $dateParts['month'] }}/{{ $dateParts['day'] }}/{{ $news->slug }}"
+                                    id="copy-link" readonly="">
+                                <span class="copyLink" onclick="copyToClipboard()" id="copy"
+                                    tooltip="Salin Link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                        height="20" viewBox="0 0 32 32">
+                                        <path fill="#000000"
+                                            d="M28 10v18H10V10zm0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2" />
+                                        <path fill="#000000" d="M4 18H2V4a2 2 0 0 1 2-2h14v2H4Z" />
+                                    </svg> </span>
+                            </div> --}}
+                        </div>
+                        @error('message')
+                            <span class="invalid-feedback" role="alert" style="color: red;">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="mt-3">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection
 
 @section('script')
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
 @endsection
