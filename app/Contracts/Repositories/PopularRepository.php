@@ -70,28 +70,27 @@ class PopularRepository extends BaseRepository implements PopularInterface
 
     public function getbycategory(): mixed
     {
-
-        $subquery = $this->newscategori->query()
-            ->selectRaw('category_id, COUNT(*) as category_count')
-            ->groupBy('category_id')
-            ->orderByRaw('COUNT(*) DESC')
-            ->skip(1)
-            ->take(1)
-            ->pluck('category_id');
+        // $subquery = $this->newscategori->query()
+        //     ->selectRaw('category_id, COUNT(*) as category_count')
+        //     ->groupBy('category_id')
+        //     ->orderByRaw('COUNT(*) DESC')
+        //     ->skip(1)
+        //     ->take(1)
+        //     ->pluck('category_id');
 
         return $this->model->query()
             ->where('status', NewsEnum::ACCEPTED->value)
-            ->whereHas('newsCategories', function ($query) use ($subquery) {
-                $query->whereIn('category_id', $subquery);
-            })
-            ->with(['newsCategories' => function ($query) {
-                $query->with('category');
-            }])
-            ->withCount('newsViews')
-            ->orderByDesc('news_views_count')
+            // ->whereHas('newsCategories', function ($query) use ($subquery) {
+            //     $query->whereIn('category_id', $subquery);
+            // })
+            // ->with(['newsCategories' => function ($query) {
+            //     $query->with('category');
+            // }])
+            ->withCount('newsCategories')
+            ->orderByDesc('news_categories_count')
             ->orderBy('created_at')
             ->take(4)
-            ->get(['id', 'slug', 'photo', 'name', 'created_at', 'upload_date']);
+            ->get();
     }
 
     /**

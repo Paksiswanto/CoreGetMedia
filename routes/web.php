@@ -66,6 +66,11 @@ Route::delete('voucher-delete/{voucherr}', [VoucherrController::class, 'destroy'
 
 Route::get('confirm-news', [NewsController::class, 'confirm_news'])->name('confirm.news.admin');
 Route::get('detail-news/{news}', [NewsController::class, 'detail_news_admin'])->name('detail-news.admin');
+Route::put('approved-news/{news}', [NewsController::class, 'approved_news'])->name('approved.news.admin');
+
+Route::get('news-list', function(){
+    return view('pages.admin.news.news-list');
+})->name('news-list.admin');
 
 Route::get('confirm-author-list', [AuthorController::class, 'index'])->name('confirm-author.admin');
 Route::get('author-list', [AuthorController::class, 'list_author'])->name('author-list.admin');
@@ -114,13 +119,6 @@ Route::get('inbox-admin', function(){
 Route::get('subscribe-list', function(){
     return view('pages.admin.subscribe.index');
 })->name('subscribe-list.admin');
-
-Route::get('news-list', function(){
-    return view('pages.admin.news.news-list');
-})->name('news-list.admin');
-
-
-
 
 Route::get('news-premium', function(){
     return view('pages.admin.news_premium.index');

@@ -7,14 +7,17 @@
 <link rel="stylesheet" href="{{ asset('admin/dist/libs/summernote/dist/summernote-lite.min.css') }}">
 
 <link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
-{{-- <style>
-        .news-card-a {
-            border: 1px solid #ddd;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            background-color: #fff;
+
+<style>
+     .tmbl {
+            display: inline-block;
+            background-color: #183249;
+            color: white;
+            padding: 5px 10px;
+            margin: 3px;
+            border-radius: 5px;
         }
-    </style> --}}
+</style>
 @endsection
 
 <head>
@@ -75,13 +78,11 @@
 
         <div class="d-flex gap-2">
             <div class="">
-                <a class="btn btn-danger btn-lg px-3 btn-reject" id="btn-reject">Tolak</a>
+                <button clbss="btn btn-danger btn-lg px-3 btn-reject" id="btn-reject">Tolak</button>
             </div>
-            <form action="#" method="post">
-                @method('patch')
-                @csrf
-                <button type="submit" class="btn btn-success btn-lg px-3">Terima</button>
-            </form>
+            <div class="">
+                <button id="btn-approved-{{ $news->id }}" data-id="{{ $news->id }}" type="button" class="btn btn-success btn-approved btn-lg px-3">Terima</button>
+            </div>
 
             {{-- @if ($news->status === "active")
             <div class="">
@@ -158,16 +159,23 @@
                         </div>
                         <div class="col-lg-12 mb-4">
                             <label class="form-label" for="password_confirmation">Kategori</label>
-                            <select id="category_id" class="select2 form-control category @error('category') is-invalid @enderror" name="category[]" multiple="true" aria-label="Default select example">
+                            <div class="kat-container">
+                                @foreach ($newsCategory as $category)
+                                <p class="tmbl">
+                                    {{$category->category->name}}
+                                </p>
+                                @endforeach
+                            </div>
+                            {{-- <select id="category_id" class="select2 form-control category @error('category') is-invalid @enderror" name="category[]" multiple="true" aria-label="Default select example">
                                 <option>pilih kategori</option>
                                 <option value="" selected>Pendidikan</option>
-                                <option value="">Hiburan</option>
+                                <option value="">Hiburan</option> --}}
                                 {{-- @foreach ($categories as $category)
                                 <option value="{{ $category->id }}" {{ $newsCategories->contains('category_id', $category->id) ? 'selected' : '' }}>
                                     {{ $category->name }}
                                 </option>
                                 @endforeach --}}
-                            </select>
+                            {{-- </select> --}}
                             @error('category')
                             <span class="invalid-feedback" role="alert" style="color: red">
                                 <strong>{{ $message }}</strong>
@@ -177,17 +185,23 @@
                         <div class="col-lg-12 mb-4">
                             <div class="mt-2" style="max-width: 100%;">
                                 <label class="form-label" for="password_confirmation">Sub Kategori</label>
-
-                                <select id="sub_category_id" class="form-control sub-category select2 @error('sub_category') is-invalid @enderror" name="sub_category[]" multiple="true" value="" aria-label="Default select example">
+                                <div class="kat-container">
+                                    @foreach ($newsSubcategory as $subCategory)
+                                    <p class="tmbl">
+                                        {{$subCategory->subCategory->name}}
+                                    </p>
+                                    @endforeach
+                                </div>
+                                {{-- <select id="sub_category_id" class="form-control sub-category select2 @error('sub_category') is-invalid @enderror" name="sub_category[]" multiple="true" value="" aria-label="Default select example">
                                     <option>pilih sub kategori</option>
                                     <option value="" selected>Biografi</option>
-                                    <option value="">Music</option>
+                                    <option value="">Music</option> --}}
                                     {{-- @foreach ($subCategories as $subCategory)
                                     <option value="{{ $subCategory->id }}" {{ $newsSubCategories->contains('sub_category_id', $subCategory->id) ? 'selected' : '' }}>
                                         {{ $subCategory->name }}
                                     </option>
                                     @endforeach --}}
-                                </select>
+                                {{-- </select> --}}
                                 @error('sub_category')
                                 <span class="invalid-feedback" role="alert" style="color: red">
                                     <strong>{{ $message }}</strong>
@@ -206,17 +220,23 @@
                         </div>
                         <div class="col-lg-12 mb-3">
                             <label class="form-label" for="password_confirmation">Tags</label>
-                            
-                            <select class="form-control select2 tags" name="tags[]" multiple="multiple">
+                            <div class="kat-container">
+                                @foreach ($newsTags as $newstag)
+                                <p class="tmbl">
+                                    {{$newstag->tag->name}}
+                                </p>
+                                @endforeach
+                            </div>
+                            {{-- <select class="form-control select2 tags" name="tags[]" multiple="multiple">
                                 <option>pilih tags</option>
                                 <option value="">populer</option>
-                                <option value="">news</option>
+                                <option value="">news</option> --}}
                                 {{-- @foreach ($tags as $tag)
                                 <option value="{{ $tag->name }}" {{ $newsTags->contains('tag_id', $tag->id) ? 'selected' : '' }}>
                                     {{ $tag->name }}
                                 </option>
                                 @endforeach --}}
-                            </select>
+                            {{-- </select> --}}
                             @error('tags')
                             <span class="invalid-feedback" role="alert" style="color: red;">
                                 <strong>{{ $message }}</strong>
@@ -259,6 +279,36 @@
 </div>
 </div>
 
+<div class="modal fade" id="modal-approved" tabindex="-1" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <form id="form-approved" method="POST" class="modal-content">
+            @method('put')
+            @csrf
+            <div class="modal-header d-flex align-items-center">
+                <h4 class="modal-title" id="myModalLabel">
+                    Teima Berita
+                </h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <p>Apakah anda yakin akan menerima berita ini?</p>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light-warning text-warning font-medium waves-effect"
+                    data-bs-dismiss="modal">
+                    Batal
+                </button>
+                <button type="submit" class="btn btn-light-success text-success font-medium waves-effect"
+                    data-bs-dismiss="modal">
+                    Terima
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
 
 <div class="modal fade" id="modal-reject" tabindex="-1" aria-labelledby="modal-reject Label">
     <div class="modal-dialog modal-lg">
@@ -295,116 +345,22 @@
         </div>
     </div>
 </div>
+
 @endsection
 
 @section('script')
 
-<!-- <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        @if (session('success'))
-            Swal.fire({
-                title: 'Success!',
-                text: '{{ session('success') }}',
-                icon: 'success',
-                confirmButtonText: 'OK'
-            });
-        @endif
-
-        @if (session('draft'))
-            Swal.fire({
-                title: 'Success Draft!',
-                text: '{{ session('draft') }}',
-                icon: 'warning',
-                confirmButtonText: 'OK'
-            });
-        @endif
-    });
-</script> -->
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="{{ asset('admin/dist/libs/summernote/dist/summernote-lite.min.js') }}"></script>
-
 <script>
-    $(document).ready(function() {
-        $('#content').summernote({
-
-            height: 520,
-            toolbar: [
-                ['style', ['style']],
-                ['font', ['bold', 'italic', 'underline', 'strikethrough', 'clear']],
-                ['fontname', ['fontname']],
-                ['fontsize', ['fontsize']],
-                ['color', ['color']],
-                ['para', ['ul', 'ol', 'paragraph', 'height']],
-                ['table', ['table']],
-                ['link', ['link']],
-                ['picture', ['picture']],
-                ['video', ['video']],
-                ['codeview', ['codeview']],
-                ['help', ['help']],
-                ['insert', ['ul']]
-            ],
-            fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Helvetica', 'Impact',
-                'Lucida Grande', 'Tahoma', 'Times New Roman', 'Verdana'
-            ],
-            fontNamesIgnoreCheck: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Helvetica',
-                'Impact', 'Lucida Grande', 'Tahoma', 'Times New Roman', 'Verdana'
-            ]
-        });
-    });
-</script>
-
-<script src="{{ asset('assets/dist/imageuploadify.min.js') }}"></script>
-
-<script>
-    $(document).ready(function() {
-        $('#image-uploadify').imageuploadify();
+    $('.btn-approved').click(function() {
+        var id = $(this).data('id');
+        $('#form-approved').attr('action', '/approved-news/' + id);
+        $('#modal-approved').modal('show');
     })
 
-    $('.category').change(function() {
-        getSubCategory($(this).val())
-    })
-
-    var today = new Date();
-    var year = today.getFullYear();
-    var month = ('0' + (today.getMonth() + 1)).slice(-2);
-    var day = ('0' + today.getDate()).slice(-2);
-    var hours = ('0' + today.getHours()).slice(-2);
-    var minutes = ('0' + today.getMinutes()).slice(-2);
-
-    var formattedDate = year + '-' + month + '-' + day + 'T' + hours + ':' + minutes;
-
-    function previewImage(event) {
-        var input = event.target;
-        var previewImg = document.getElementById('preview');
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                previewImg.src = e.target.result;
-                previewImg.classList.remove('hide');
-            }
-            reader.readAsDataURL(input.files[0]);
-        } else {
-            previewImg.src = '';
-            previewImg.classList.add('hide');
-        }
-    }
-</script>
-
-<script>
-    $(".tags").select2({
-        tags: true,
-        tokenSeparators: [',', ' ']
-    })
-</script>
-
-<script>
     $('.btn-reject').click(function() {
-        const formData = getDataAttributes($(this).attr('id'))
-        $('#detail-synopsis').html(formData['synopsis'])
-        handleDetail(formData)
-        $('#modal-reject').modal('show')
+        var id = $(this).data('id');
+        $('#form-approved').attr('action', '/approved-news/' + id);
+        $('#modal-approved').modal('show');
     })
 </script>
 @endsection

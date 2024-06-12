@@ -31,6 +31,8 @@ class HomeController extends Controller
         $subCategories = $this->subCategories->get();
         $populars = $this->populars->getpopular();
         $categoryPopulars = $this->populars->getbycategory();
+
+        // dd($categoryPopulars);
         return view('pages.index', compact('categories', 'subCategories', 'populars', 'categoryPopulars'));
     }
 

@@ -69,6 +69,13 @@ class NewsController extends Controller
         return view('pages.admin.news.detail-news', compact('news', 'newsCategory', 'newsSubcategory', 'newsTags'));
     }
 
+    public function approved_news($news)
+    {
+        $data['status'] = NewsEnum::ACCEPTED->value;
+        $this->news->update($news, $data);
+        return back()->with('success', 'Berhasil menerima berita');
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -142,7 +149,7 @@ class NewsController extends Controller
         $this->news->delete($news->id);
         return back()->with('success', 'Berhasil menghapus data');
     }
-    
+
     public function home(){
         $categories = $this->categories->get();
         $subCategories = $this->subcategories->get();

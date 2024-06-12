@@ -60,15 +60,8 @@ class NewsService
         }
 
         $slug = Str::slug($data['name']);
-        $new_photo = $this->upload(UploadDiskEnum::NEWS->value, $request->image);
-
-        $compressedImage = $this->compressImage(
-            basename($new_photo),
-            $request->file('image'),
-            'compressed_images',
-            ['quality' => 70]
-        );
-        // $new_photo = $compressedImage['path'];
+        $compressedImage = $this->compressImage($request->image);
+        $new_photo = $this->upload(UploadDiskEnum::NEWS->value, $compressedImage);
 
         $domQuestion = new \DOMDocument();
         libxml_use_internal_errors(true);
@@ -80,7 +73,7 @@ class NewsService
         return [
             'user_id' => auth()->user()->id,
             'name' => $data['name'],
-            'image' => $compressedImage,
+            'image' => $new_photo,
             'description' => $data['description'],
             'slug' => $slug,
             'date' => $data['date'],
@@ -168,7 +161,7 @@ class NewsService
         }
 
         $old_photo = $news->image;
-        $compressedImage = "";
+        $new_photo = "";
 
         if ($request->hasFile('image')) {
 
@@ -176,16 +169,10 @@ class NewsService
                 unlink(public_path($old_photo));
             }
 
-            $new_photo = $this->upload(UploadDiskEnum::NEWS->value, $request->image);
+            $compressedImage = $this->compressImage($request->image);
+            $new_photo = $this->upload(UploadDiskEnum::NEWS->value, $compressedImage);
 
-            $compressedImage = $this->compressImage(
-                basename($new_photo),
-                $request->file('image'),
-                'compressed_images',
-                ['quality' => 70]
-            );
-
-            $news->image = $compressedImage;
+            $news->image = $new_photo;
         }
 
         $domQuestion = new \DOMDocument();
@@ -201,7 +188,7 @@ class NewsService
             'user_id' => auth()->user()->id,
             'name' => $data['name'],
             'slug' => Str::slug($data['name']),
-            'image' => $compressedImage ? $compressedImage : $old_photo,
+            'image' => $new_photo ? $new_photo : $old_photo,
             'description' => $data['description'],
             'date' => $data['date'],
             'category' => $data['category'],
