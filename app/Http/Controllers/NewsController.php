@@ -142,17 +142,7 @@ class NewsController extends Controller
         $this->news->delete($news->id);
         return back()->with('success', 'Berhasil menghapus data');
     }
-
-    public function navbar(Request $request){
-        $categories = $this->categories->get();
-        $subCategories = $this->subcategories->get();
-
-        $news = $this->news->get();
-        // $query = $request->input('search');
-        // $newsSearch = $this->news->searchAll($request, $query);
-        return view('layouts.user.navbar-header', compact('categories', 'subCategories','newsSearch'));
-    }
-
+    
     public function home(){
         $categories = $this->categories->get();
         $subCategories = $this->subcategories->get();

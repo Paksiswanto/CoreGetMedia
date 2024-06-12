@@ -30,7 +30,7 @@
         <div class="container-fluid">
             <div class="row align-items-center">
                 <div class="col-lg-4 col-md-6 col-5">
-                    <button class="subscribe-btn" data-bs-toggle="modal" data-bs-target="#newsletter-popup">Berlangganan<i class="flaticon-right-arrow"></i></button>
+                    {{-- <button class="subscribe-btn" data-bs-toggle="modal" data-bs-target="#newsletter-popup">Berlangganan<i class="flaticon-right-arrow"></i></button> --}}
                 </div>
                 <div class="col-lg-4 col-md-6 md-none">
                     <a class="navbar-brand" href="index.html">
