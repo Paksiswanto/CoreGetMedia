@@ -216,13 +216,7 @@ Route::get('all-category', function(){
     return view('pages.user.category.all-category');
 })->name('all-category.user');
 
-Route::get('all-subcategory', function(){
-    return view('pages.user.subcategory.all-subcategory');
-
-})->name('all-subcategory.user');
-
 // AUTHOR
-
 Route::get('list-author', function(){
     return view('pages.user.author.list-author');
 })->name('user.list.author');

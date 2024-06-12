@@ -34,7 +34,7 @@ class SubCategory extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function NewsSubCategories(): HasMany
+    public function newsSubCategories(): HasMany
     {
         return $this->hasMany(NewsSubCategory::class);
     }
