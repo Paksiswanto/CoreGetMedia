@@ -11,3 +11,4 @@ Route::get('news/subcategory/{slug}', [NewsSubCategoryController::class, 'index'
 Route::get('all-subcategory', [NewsSubCategoryController::class, 'all_subcategory'])->name('all-subcategory.user');   
 
 Route::get('confirm-author-list', [AuthorController::class, 'index'])->name('confirm-author.admin');
+Route::get('author-list', [AuthorController::class, 'list_author'])->name('author-list.admin');

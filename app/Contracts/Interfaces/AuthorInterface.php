@@ -10,5 +10,5 @@ use App\Contracts\Interfaces\Eloquent\UpdateInterface;
 
 interface AuthorInterface extends GetInterface, StoreInterface, UpdateInterface, ShowInterface, DeleteInterface
 {
-    //
+    public function where($data) :mixed;
 }
