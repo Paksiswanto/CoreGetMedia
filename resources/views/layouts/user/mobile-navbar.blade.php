@@ -195,91 +195,29 @@
     </div> --}}
     <div class="offcanvas-body">
         <div class="accordion" id="navbarAccordion">
-            
-                    <div class="accordion-item">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapse" aria-expanded="false" aria-controls="collapse">Pendidikan</button>
-                        <div id="collapse" class="accordion-collapse collapse" data-bs-parent="#navbarAccordion">
-                            <div class="accordion-body">
-                                <div class="accordion" id="navbarAccordion">
-                                    
-                                        <div class="accordion-item">
-                                            <a href="#" class="accordion-link">
-                                               Psikologi</a>
-                                        </div>
-                                        <div class="accordion-item">
-                                            <a href="#" class="accordion-link">
-                                               Biografi</a>
-                                        </div>
-                                   
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="accordion-item">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapse" aria-expanded="false" aria-controls="collapse">Kategori</button>
-                        <div id="collapse" class="accordion-collapse collapse" data-bs-parent="#navbarAccordion">
-                            <div class="accordion-body">
-                                <div class="accordion" id="navbarAccordion">
-                                    
-                                        <div class="accordion-item">
-                                            <a href="#" class="accordion-link">
-                                               Sub kategori 1</a>
-                                        </div>
-                                        <div class="accordion-item">
-                                            <a href="#" class="accordion-link">
-                                               Sub kategori 2</a>
-                                        </div>
-                                   
-                                </div>
+            @foreach ($categories as $category)
+            <div class="accordion-item">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$loop->index}}" aria-expanded="false" aria-controls="collapse{{$loop->index}}">{{$categories[$loop->index]->name}}</button>
+                <div id="collapse{{$loop->index}}" class="accordion-collapse collapse" data-bs-parent="#navbarAccordion{{$loop->index}}">
+                    <div class="accordion-body">
+                        <div class="accordion" id="navbarAccordion{{$loop->index}}">
+                            @forelse ($categories[$loop->index]->subCategories as $subCategory)
+                            <div class="accordion-item">
+                                <a href="#" class="accordion-link">
+                                    {{ $subCategory->name }}</a>
                             </div>
+                            @empty
+                            <div class="accordion-item">
+                                Data Kosong.
+                            </div>
+                            @endforelse
                         </div>
                     </div>
+                </div>
+            </div>
+            @endforeach
 
-                    <div class="accordion-item">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapse" aria-expanded="false" aria-controls="collapse">Kategori</button>
-                        <div id="collapse" class="accordion-collapse collapse" data-bs-parent="#navbarAccordion">
-                            <div class="accordion-body">
-                                <div class="accordion" id="navbarAccordion">
-                                    
-                                        <div class="accordion-item">
-                                            <a href="#" class="accordion-link">
-                                               Sub kategori 1</a>
-                                        </div>
-                                        <div class="accordion-item">
-                                            <a href="#" class="accordion-link">
-                                               Sub kategori 2</a>
-                                        </div>
-                                   
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapse" aria-expanded="false" aria-controls="collapse">Kategori</button>
-                        <div id="collapse" class="accordion-collapse collapse" data-bs-parent="#navbarAccordion">
-                            <div class="accordion-body">
-                                <div class="accordion" id="navbarAccordion">
-                                    
-                                        <div class="accordion-item">
-                                            <a href="#" class="accordion-link">
-                                               Sub kategori 1</a>
-                                        </div>
-                                        <div class="accordion-item">
-                                            <a href="#" class="accordion-link">
-                                               Sub kategori 2</a>
-                                        </div>
-                                   
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-          
         </div>
 
         <div class="offcanvas-contact-info">
@@ -304,52 +242,82 @@
 
         <div class="offcanvas-contact-info">
 
-                <div class="row">
-                    <div class="col-lg-3 col-md-12">
-                        <div class="">
-                            <ul class="navbar-nav mx-auto">
-                                <div class="news-card-img mb-2 ms-2" style="padding-right: 0px;">
-                                    <a href="/profile-user">
-                                        <img src="{{asset('admin/dist/images/profile/user-2.jpg')}}" alt="Image" width="55px" height="55px" style="border-radius: 50%; object-fit:cover;"/>
-                                    </a>
-                                </div>
+            @auth
+            <div class="row">
+                <div class="col-lg-3 col-md-12">
+                    <div class="">
+                        <ul class="navbar-nav mx-auto">
+                            <div class="news-card-img mb-2 ms-2" style="padding-right: 0px;">
+                                @role('author')
+                                <a href="{{ route('profile.author') }}">
+                                    <img src="{{ asset( Auth::user()->photo ? 'storage/'.Auth::user()->photo : "default.png")  }}" alt="Image" width="55px" height="55px" style="border-radius: 50%; object-fit:cover;" />
+                                </a>
+                                @endrole
+                                @role('user')
+                                <a href="{{ route('profile-user.user') }}">
+                                    <img src="{{ asset( Auth::user()->photo ? 'storage/'.Auth::user()->photo : "default.png")  }}" alt="Image" width="55px" height="55px" style="border-radius: 50%; object-fit:cover;" />
+                                </a>
+                                @endrole
+                                @role('admin')
+                                <a href="{{route('dashboard.admin')}}">
+                                    <img src="{{ asset( Auth::user()->photo ? 'storage/'.Auth::user()->photo : "default.png")  }}" alt="Image" width="55px" height="55px" style="border-radius: 50%; object-fit:cover;" />
+                                </a>
+                                @endrole
+                            </div>
 
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-8 col-md-12">
-                        <div class=""><p style="line-height: 0px;" class="mt-3"><b>Karina</b></p></div>
-                        <div class=""><p class="d-inline-block text-truncate" style="font-size: 14px;max-width: 150px;">karin@gmail.com</p></div>
-                    </div>
-                    <div class="col-lg-1 col-md-12">
-                        <div class="d-flex justify-content-end">
-                            
-                                    <a href="#" class="btn btn-sm" style="background-color: #175A95">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="23"
-                                            viewBox="0 0 512 512">
-                                            <path fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="32"
-                                                d="M255.66 112c-77.94 0-157.89 45.11-220.83 135.33a16 16 0 0 0-.27 17.77C82.92 340.8 161.8 400 255.66 400c92.84 0 173.34-59.38 221.79-135.25a16.14 16.14 0 0 0 0-17.47C428.89 172.28 347.8 112 255.66 112" />
-                                            <circle cx="256" cy="256" r="80" fill="none" stroke="#ffffff"
-                                                stroke-miterlimit="10" stroke-width="32" />
-                                        </svg>
-                                    </a>
-                            
-                        </div>
+                        </ul>
                     </div>
                 </div>
-                
-{{-- 
+                <div class="col-lg-8 col-md-12">
+                    <div class="">
+                        <p style="line-height: 0px;" class="mt-3"><b>{{ auth()->user()->name }}</b></p>
+                    </div>
+                    <div class="">
+                        <p class="d-inline-block text-truncate" style="font-size: 14px;max-width: 150px;">{{ auth()->user()->email }}</p>
+                    </div>
+                </div>
+                <div class="col-lg-1 col-md-12">
+                    <div class="d-flex justify-content-end">
+                        @role('user')
+                        <a href="{{route('profile-user.user')}}" class="btn btn-sm" style="background-color: #175A95">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="23" viewBox="0 0 512 512">
+                                <path fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M255.66 112c-77.94 0-157.89 45.11-220.83 135.33a16 16 0 0 0-.27 17.77C82.92 340.8 161.8 400 255.66 400c92.84 0 173.34-59.38 221.79-135.25a16.14 16.14 0 0 0 0-17.47C428.89 172.28 347.8 112 255.66 112" />
+                                <circle cx="256" cy="256" r="80" fill="none" stroke="#ffffff" stroke-miterlimit="10" stroke-width="32" />
+                            </svg>
+                        </a>
+                        @endrole
+                        @role('author')
+                        <a href="{{route('profile.author')}}" class="btn btn-sm" style="background-color: #175A95">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="23" viewBox="0 0 512 512">
+                                <path fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M255.66 112c-77.94 0-157.89 45.11-220.83 135.33a16 16 0 0 0-.27 17.77C82.92 340.8 161.8 400 255.66 400c92.84 0 173.34-59.38 221.79-135.25a16.14 16.14 0 0 0 0-17.47C428.89 172.28 347.8 112 255.66 112" />
+                                <circle cx="256" cy="256" r="80" fill="none" stroke="#ffffff" stroke-miterlimit="10" stroke-width="32" />
+                            </svg>
+                        </a>
+                        @endrole
+                        @role('admin')
+                        <a href="{{route('dashboard.admin')}}" class="btn btn-sm" style="background-color: #175A95">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="23" viewBox="0 0 512 512">
+                                <path fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M255.66 112c-77.94 0-157.89 45.11-220.83 135.33a16 16 0 0 0-.27 17.77C82.92 340.8 161.8 400 255.66 400c92.84 0 173.34-59.38 221.79-135.25a16.14 16.14 0 0 0 0-17.47C428.89 172.28 347.8 112 255.66 112" />
+                                <circle cx="256" cy="256" r="80" fill="none" stroke="#ffffff" stroke-miterlimit="10" stroke-width="32" />
+                            </svg>
+                        </a>
+                        @endrole
+                    </div>
+                </div>
+            </div>
+
+            
                 @if (Auth::check() && Auth::user()->roles() == "author")
                 @endif
                 @else
 
                 <div class="">
                     <div class="option-item">
-                        <a href="/login" class="btn-two" id="signInBtn">Login</a>
+                        <a href="{{route('login')}}" class="btn-two py-3" id="signInBtn">Masuk</a>
                     </div>
                 </div>
-            @endauth --}}
+            @endauth
+            
         </div>
     </div>
 </div>
