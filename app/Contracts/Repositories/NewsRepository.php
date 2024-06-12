@@ -82,9 +82,9 @@ class NewsRepository extends BaseRepository implements NewsInterface
     public function whereCategory($id, $query): mixed
     {
         return $this->model->query()
-            ->whereRelation('newsSubCategories', 'category_id', $id)
+            ->whereRelation('newsCategories', 'category_id', $id)
             ->withCount('newsViews')
-            ->orderByDesc('newsViews_count')
+            ->orderByDesc('news_views_count')
             ->when($query == 'top', function($q){
                 $q->take(1);
             })

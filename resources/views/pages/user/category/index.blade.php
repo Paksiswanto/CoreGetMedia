@@ -62,142 +62,90 @@
                     <div class="news-card-four">
                         <div class="news-card-img">
                             <a href="{{ route('news.user', ['news' => $news_popular->news->slug,'year'=> $dateParts['year'],'month'=>$dateParts['month'],'day'=> $dateParts['day']]) }}">
-                                <img src="{{ asset('storage/' . $news_popular->news->photo) }}" alt="Image" width="100%" style="object-fit: cover" height="450" />
-                            </a>
-                        </div>
+                    <img src="{{ asset('storage/' . $news_popular->news->photo) }}" alt="Image" width="100%" style="object-fit: cover" height="450" />
+                    </a>
+                </div>
 
-                        <div class="news-card-info">
-                            <h3><a data-toggle="tooltip" data-placement="top" title="{{ $news_popular->news->name }}" href="{{ route('news.user', ['news' => $news_popular->news->slug,'year'=> $dateParts['year'],'month'=>$dateParts['month'],'day'=> $dateParts['day'] ]) }}">
-                                    {!! ($news_popular->news->name) !!}
-                                </a>
-                                <ul class="news-metainfo list-style">
-                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="javascript:void(0)">
-                                            <p>{{ \Carbon\Carbon::parse($news_popular->news->created_at)->translatedFormat('d F Y') }}</p>
-                                        </a></li>
-                                    <li><i class="fi fi-rr-eye icon-eye"></i>{{ $news_popular->total }}</li>
-                                </ul>
-                        </div>
-                    </div>
-                    @empty
-                    @endforelse --}}
+                <div class="news-card-info">
+                    <h3><a data-toggle="tooltip" data-placement="top" title="{{ $news_popular->news->name }}" href="{{ route('news.user', ['news' => $news_popular->news->slug,'year'=> $dateParts['year'],'month'=>$dateParts['month'],'day'=> $dateParts['day'] ]) }}">
+                            {!! ($news_popular->news->name) !!}
+                        </a>
+                        <ul class="news-metainfo list-style">
+                            <li><i class="fi fi-rr-calendar-minus"></i><a href="javascript:void(0)">
+                                    <p>{{ \Carbon\Carbon::parse($news_popular->news->created_at)->translatedFormat('d F Y') }}</p>
+                                </a></li>
+                            <li><i class="fi fi-rr-eye icon-eye"></i>{{ $news_popular->total }}</li>
+                        </ul>
+                </div>
+            </div>
+            @empty
+            @endforelse --}}
 
-                    {{-- <div class="news-card-four" style="height: 550px;">
+            {{-- <div class="news-card-four" style="height: 550px;">
                             <div class="news-card-img">
                                 <a href="#"> <img src="{{asset('assets/img/news/news-10.webp')}}" alt="Image" width="100%" style="object-fit: cover" height="450" /></a>
-                </div>
-
-                <div class="news-card-info">
-                    <h3><a data-toggle="tooltip" data-placement="top" title="Apex Legends Season 11 Start Date, Time, & What To Expect" href="#">Apex Legends Season 11 Start Date, Time, & What To Expect
-                        </a>
-                    </h3>
-                    <ul class="news-metainfo list-style">
-                        <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 03, 2023</a></li>
-                        <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">10</a></li>
-                    </ul>
-                </div>
-            </div> --}}
         </div>
 
-
-        <div class="mb-5">
-            <div class="d-flex justify-content-between mb-3 mt-3">
-                <h3>Trending</h3>
-                <a href="{{route('all-category.user')}}">
-                    <p>Lihat lainnya
-                        <i><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24">
-                                <path fill="currentColor" d="m13.292 12l-4.6-4.6l.708-.708L14.708 12L9.4 17.308l-.708-.708z" />
-                            </svg></i>
-                    </p>
+        <div class="news-card-info">
+            <h3><a data-toggle="tooltip" data-placement="top" title="Apex Legends Season 11 Start Date, Time, & What To Expect" href="#">Apex Legends Season 11 Start Date, Time, & What To Expect
                 </a>
-            </div>
-
-            <div class="news-card-five">
-                <div class="news-card-img">
-                    <a href="#"><img src="{{asset('assets/img/news/news-1.webp')}}" alt="Image" height="140" width="100%" /></a>
-                    <a data-toggle="tooltip" data-placement="top" title="Sports" href="#" class="news-cat">Sports</a>
-                </div>
-                <div class="news-card-info">
-                    <h3><a data-toggle="tooltip" data-placement="top" title="Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange" href="#">Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange
-                        </a>
-                    </h3>
-                    <p>Lorem ipsum or lipsum as it is sometmes known is dum text used in laying print, graphic or web desi…</p>
-                    <ul class="news-metainfo list-style">
-                        <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 03, 2023</a></li>
-                        <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">10</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="news-card-five">
-                <div class="news-card-img">
-                    <a href="#"><img src="{{asset('assets/img/news/news-1.webp')}}" alt="Image" height="140" width="100%" /></a>
-                    <a data-toggle="tooltip" data-placement="top" title="Sports" href="#" class="news-cat">Sports</a>
-                </div>
-                <div class="news-card-info">
-                    <h3><a data-toggle="tooltip" data-placement="top" title="Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange" href="#">Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange
-                        </a>
-                    </h3>
-                    <p>Lorem ipsum or lipsum as it is sometmes known is dum text used in laying print, graphic or web desi…</p>
-                    <ul class="news-metainfo list-style">
-                        <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 03, 2023</a></li>
-                        <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">10</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="news-card-five">
-                <div class="news-card-img">
-                    <a href="#"><img src="{{asset('assets/img/news/news-1.webp')}}" alt="Image" height="140" width="100%" /></a>
-                    <a data-toggle="tooltip" data-placement="top" title="Sports" href="#" class="news-cat">Sports</a>
-                </div>
-                <div class="news-card-info">
-                    <h3><a data-toggle="tooltip" data-placement="top" title="Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange" href="#">Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange
-                        </a>
-                    </h3>
-                    <p>Lorem ipsum or lipsum as it is sometmes known is dum text used in laying print, graphic or web desi…</p>
-                    <ul class="news-metainfo list-style">
-                        <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 03, 2023</a></li>
-                        <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">10</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="news-card-five">
-                <div class="news-card-img">
-                    <a href="#"><img src="{{asset('assets/img/news/news-1.webp')}}" alt="Image" height="140" width="100%" /></a>
-                    <a data-toggle="tooltip" data-placement="top" title="Sports" href="#" class="news-cat">Sports</a>
-                </div>
-                <div class="news-card-info">
-                    <h3><a data-toggle="tooltip" data-placement="top" title="Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange" href="#">Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange
-                        </a>
-                    </h3>
-                    <p>Lorem ipsum or lipsum as it is sometmes known is dum text used in laying print, graphic or web desi…</p>
-                    <ul class="news-metainfo list-style">
-                        <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 03, 2023</a></li>
-                        <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">10</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="news-card-five">
-                <div class="news-card-img">
-                    <a href="#"><img src="{{asset('assets/img/news/news-1.webp')}}" alt="Image" height="140" width="100%" /></a>
-                    <a data-toggle="tooltip" data-placement="top" title="Sports" href="#" class="news-cat">Sports</a>
-                </div>
-                <div class="news-card-info">
-                    <h3><a data-toggle="tooltip" data-placement="top" title="Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange" href="#">Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange
-                        </a>
-                    </h3>
-                    <p>Lorem ipsum or lipsum as it is sometmes known is dum text used in laying print, graphic or web desi…</p>
-                    <ul class="news-metainfo list-style">
-                        <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 03, 2023</a></li>
-                        <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">10</a></li>
-                    </ul>
-                </div>
-            </div>
+            </h3>
+            <ul class="news-metainfo list-style">
+                <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 03, 2023</a></li>
+                <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">10</a></li>
+            </ul>
         </div>
+    </div> --}}
+</div>
 
-        {{-- <div class="text-center item-center d-flex justify-content-center" style="background-color:#F6F6F6; width:100%;height:200px;">
+
+<div class="mb-5">
+    <div class="d-flex justify-content-between mb-3 mt-3">
+        <h3>Trending</h3>
+        <a href="{{ route('categories.show.user', ['category' => $category->slug]) }}">
+            <p>Lihat lainnya
+                <i><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="m13.292 12l-4.6-4.6l.708-.708L14.708 12L9.4 17.308l-.708-.708z" />
+                    </svg></i>
+            </p>
+        </a>
+    </div>
+
+    @forelse ($trendings as $trending)
+    <div class="news-card-five">
+        <div class="news-card-img">
+            <a href="#"><img src="{{asset('assets/img/news/news-1.webp')}}" alt="Image" height="140" width="100%" /></a>
+            <a data-toggle="tooltip" data-placement="top" title="Sports" href="#" class="news-cat">Sports</a>
+        </div>
+        <div class="news-card-info">
+            <h3><a data-toggle="tooltip" data-placement="top" title="Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange" href="#">{!! Illuminate\Support\Str::limit($trending->name, $limit = 45, $end = '...')  !!}
+                </a>
+            </h3>
+            <p>{!! Illuminate\Support\Str::limit($trending->name, $limit = 110, $end = '...')  !!}</p>
+            <ul class="news-metainfo list-style">
+                <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">{{ \Carbon\Carbon::parse($trending->created_at)->translatedFormat('d F Y') }}</a></li>
+                <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">{{ $trending->views_count }}x dilihat</a></li>
+            </ul>
+        </div>
+    </div>
+    @empty
+    <div class="d-flex justify-content-center">
+        <div class="my-auto ">
+            <img src="{{ asset('assets/img/no-data.svg') }}" />
+            <h4 class="text-center">Tidak ada data!!</h4>
+        </div>
+    </div>
+    @endforelse
+
+
+
+</div>
+
+{{-- <div class="text-center item-center d-flex justify-content-center" style="background-color:#F6F6F6; width:100%;height:200px;">
                     <h5 class="mt-5">Iklan</h5>
                 </div> --}}
 
-        {{-- <div class="mb-5 mt-5">
+{{-- <div class="mb-5 mt-5">
                         <div class="d-flex justify-content-between mb-3">
                             <h3>Terbaru</h3>
                             <a href="#">
@@ -213,18 +161,18 @@
                         <div class="news-card-five">
                             <div class="news-card-img">
                                 <a href="#"><img src="{{asset('assets/img/news/news-38.webp')}}" alt="Image" height="140" width="100%" /></a>
-        <a data-toggle="tooltip" data-placement="top" title="Sports" href="#" class="news-cat">Sports</a>
-    </div>
-    <div class="news-card-info">
-        <h3><a data-toggle="tooltip" data-placement="top" title="Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange" href="#">Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange
-            </a>
-        </h3>
-        <p>Lorem ipsum or lipsum as it is sometmes known is dum text used in laying print, graphic or web desi…</p>
-        <ul class="news-metainfo list-style">
-            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 03, 2023</a></li>
-            <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">10</a></li>
-        </ul>
-    </div>
+<a data-toggle="tooltip" data-placement="top" title="Sports" href="#" class="news-cat">Sports</a>
+</div>
+<div class="news-card-info">
+    <h3><a data-toggle="tooltip" data-placement="top" title="Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange" href="#">Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange
+        </a>
+    </h3>
+    <p>Lorem ipsum or lipsum as it is sometmes known is dum text used in laying print, graphic or web desi…</p>
+    <ul class="news-metainfo list-style">
+        <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 03, 2023</a></li>
+        <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">10</a></li>
+    </ul>
+</div>
 </div>
 <div class="news-card-five">
     <div class="news-card-img">
@@ -321,66 +269,29 @@
                 <h3 class="sidebar-widget-title">
                     Berita Popular
                 </h3>
-                <div class="news-card-three">
-                    <div class="news-card-img" style="height: 100px; width: 100px">
-                        <img src="{{asset('assets/img/news/news-3.webp')}}" alt="Image" />
+
+                @forelse ($trendings as $trending)
+                    <div class="news-card-three">
+                        <div class="news-card-img" style="height: 100px; width: 100px">
+                            <img src="{{asset('assets/img/news/news-3.webp')}}" alt="Image" />
+                        </div>
+                        <div class="news-card-info">
+                            <h3><a href="business-details.html">{{$trending->name}}</a></h3>
+                            <ul class="news-metainfo list-style d-flex">
+                                <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html" style="font-size: 15px;">15 Apr 2023</a></li>
+                                <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus" style="font-size: 15px;">10</a></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="news-card-info">
-                        <h3><a href="business-details.html">Man Wearing Black Pullover Hoodie To</a></h3>
-                        <ul class="news-metainfo list-style d-flex">
-                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html" style="font-size: 15px;">15 Apr 2023</a></li>
-                            <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus" style="font-size: 15px;">10</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="news-card-three">
-                    <div class="news-card-img" style="height: 100px; width: 100px">
-                        <img src="{{asset('assets/img/news/news-3.webp')}}" alt="Image" />
-                    </div>
-                    <div class="news-card-info">
-                        <h3><a href="business-details.html">Man Wearing Black Pullover Hoodie To</a></h3>
-                        <ul class="news-metainfo list-style d-flex">
-                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html" style="font-size: 15px;">15 Apr 2023</a></li>
-                            <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus" style="font-size: 15px;">10</a></li>
-                        </ul>
+                @empty
+                <div class="d-flex justify-content-center">
+                    <div class="my-auto ">
+                        <img src="{{ asset('assets/img/no-data.svg') }}" width="200"/>
+                        <h4 class="text-center">Tidak ada data!!</h4>
                     </div>
                 </div>
-                <div class="news-card-three">
-                    <div class="news-card-img" style="height: 100px; width: 100px">
-                        <img src="{{asset('assets/img/news/news-3.webp')}}" alt="Image" />
-                    </div>
-                    <div class="news-card-info">
-                        <h3><a href="business-details.html">Man Wearing Black Pullover Hoodie To</a></h3>
-                        <ul class="news-metainfo list-style d-flex">
-                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html" style="font-size: 15px;">15 Apr 2023</a></li>
-                            <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus" style="font-size: 15px;">10</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="news-card-three">
-                    <div class="news-card-img" style="height: 100px; width: 100px">
-                        <img src="{{asset('assets/img/news/news-3.webp')}}" alt="Image" />
-                    </div>
-                    <div class="news-card-info">
-                        <h3><a href="business-details.html">Man Wearing Black Pullover Hoodie To</a></h3>
-                        <ul class="news-metainfo list-style d-flex">
-                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html" style="font-size: 15px;">15 Apr 2023</a></li>
-                            <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus" style="font-size: 15px;">10</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="news-card-three">
-                    <div class="news-card-img" style="height: 100px; width: 100px">
-                        <img src="{{asset('assets/img/news/news-3.webp')}}" alt="Image" />
-                    </div>
-                    <div class="news-card-info">
-                        <h3><a href="business-details.html">Man Wearing Black Pullover Hoodie To</a></h3>
-                        <ul class="news-metainfo list-style d-flex">
-                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html" style="font-size: 15px;">15 Apr 2023</a></li>
-                            <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus" style="font-size: 15px;">10</a></li>
-                        </ul>
-                    </div>
-                </div>
+                @endforelse
+
             </div>
 
             <div class="sidebar-widget bg-transparent shadow-sm">

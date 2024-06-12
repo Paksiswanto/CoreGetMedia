@@ -49,8 +49,7 @@
             <div class="row gx-55 gx-5">
                 <div class="col-lg-8">
 
-                    <div class="mb-5">
-
+                    <div>
                         <div class="news-card-five">
                             <div class="news-card-img">
                                 <a href="#"><img src="{{asset('assets/img/news/news-1.webp')}}" alt="Image" height="140" width="100%" /></a>
