@@ -134,10 +134,6 @@ Route::get('news/category', function(){
     return view('pages.user.category.index');
 })->name('news.category');
 
-Route::get('news/subcategory', function () {
-    return view('pages.user.subcategory.index');
-})->name('news.subcategory');
-
 Route::get('all-news', function(){
     return view('pages.user.all-news.index');
 })->name('news.all-news');

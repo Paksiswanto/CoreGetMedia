@@ -26,6 +26,22 @@ class CategoryRepository extends BaseRepository implements CategoryInterface
         ->delete();
     }
 
+    public function showWithSLug(string $slug): mixed
+    {
+        return $this->model->query()
+            ->where('slug', $slug)
+            ->firstOrFail();
+    }
+
+    public function showWithCount(): mixed
+    {
+        return $this->model->query()
+            ->withCount('newsCategories')
+            ->orderByDesc('news_categories_count')
+            ->take(7)
+            ->get();
+    }
+
     /**
      * Handle get the specified data by id from models.
      *

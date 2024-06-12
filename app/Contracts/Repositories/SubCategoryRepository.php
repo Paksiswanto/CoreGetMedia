@@ -38,6 +38,13 @@ class SubCategoryRepository extends BaseRepository implements SubCategoryInterfa
             ->get();
     }
 
+    public function showWithSLug(string $slug): mixed
+    {
+        return $this->model->query()
+            ->where('slug', $slug)
+            ->firstOrFail();
+    }
+
     /**
      * Handle get the specified data by id from models.
      *

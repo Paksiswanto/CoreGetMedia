@@ -89,7 +89,7 @@
                                 <div class="d-flex">
                                     <li class="nav-item">
                                         @forelse ($subCategories->where('category_id', $category->id) as $subCategory)
-                                            <a href="#" class="nav-link">{{ $subCategory->name }}</a>
+                                            <a href="{{ route('news.subcategory', ['slug' => $subCategory->slug]) }}" class="nav-link">{{ $subCategory->name }}</a>
 
                                             @if(($loop->iteration % 5) == 0)
                                             </li>
