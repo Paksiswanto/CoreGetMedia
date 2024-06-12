@@ -84,7 +84,7 @@
                         <tr>
                             <td>{{$loop->iteration                                                                                                                                                                                          }}</td>
                             <td>{{ $category->name }}</td>
-                            <td>{{ $category->newsCategories->count() }}</td>
+                            <td>{{ $category->newsCategories->count() }} Kali</td>
                             <td>{{ $category->subCategories->count() }}</td>
                             <td>
                                 <button id="btn-edit-{{ $category->id }}" data-name="{{ $category->name }}" data-id="{{ $category->id }}" style="background-color: #FFD643;" class="btn btn-sm btn-edit text-white me-2"
