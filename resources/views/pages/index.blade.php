@@ -2,9 +2,30 @@
 
 @section('style')
     <style>
-        .link-one {
-            color: #175A95;
-        }
+    .link-one {
+        color: #175A95;
+    }
+    .news-tablist .nav-item .nav-link.active {
+        color: #175A95;
+    }
+    .btn-three {
+        color: var(--secondaryColor);
+        background-color: #ffffff;
+    }
+    .theme-dark.btn-three {
+        color: var(--secondaryColor);
+        background-color: #ffffff;
+    }
+    .btn-three {
+        color: #175A95;
+    }
+    .theme-dark .btn-three {
+        background-color: #222222;
+        color: #ffffff;
+    }
+    .btn-three i{
+        color: #175A95;
+    }
 
         .news-tablist .nav-item .nav-link.active {
             color: #175A95;
@@ -210,62 +231,40 @@
                     </div>
                 </div>
             </div>
+
             <div class="news-col-three">
-                <div class="news-card-two">
-                    <div class="news-card-img">
-                        <img src="assets/img/news/news-2.webp" alt="Image" />
-                        <a href="{{ route('news.category') }}" class="news-cat">Politics</a>
+            @forelse ($category2Populars as $key => $category2Popular)
+                @if (++$key == 1)
+                    <div class="news-card-two">
+                        <div class="news-card-img">
+                            <img src="{{ asset('storage/'. $category2Popular->image) }}" alt="Image" />
+                            <a href="{{route('news.category')}}" class="news-cat">{{ $category2Popular->newsCategories[0]->category->name }}</a>
+                        </div>
+                        <div class="news-card-info">
+                            <h3><a href="{{route('singlepost.news')}}">{{ $category2Popular->name }}</a></h3>
+                            <ul class="news-metainfo list-style">
+                                <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">{{ $category2Popular->date }}</a></li>
+                                <li><i class="fi fi-rr-eye"></i>{{ $category2Popular->news_views_count }}x dilihat</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="news-card-info">
-                        <h3><a href="{{ route('singlepost.news') }}">Elijah James: The Nashville Photographer Shares Her
-                                Unique Journey</a></h3>
-                        <ul class="news-metainfo list-style">
-                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 03, 2023</a></li>
-                            <li><i class="fi fi-rr-eye"></i>12x dilihat</li>
-                        </ul>
+                @else
+                    <div class="news-card-three">
+                        <div class="news-card-img">
+                            <img src="{{ asset('storage/'. $category2Popular->image) }}" alt="Image" />
+                        </div>
+                        <div class="news-card-info">
+                            <a href="{{route('news.category')}}" class="news-cat">{{ $category2Popular->newsCategories[0]->category->name }}</a>
+                            <h3><a href="{{route('singlepost.news')}}">{{ $category2Popular->name }}</a></h3>
+                            <ul class="news-metainfo list-style">
+                                <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">{{ $category2Popular->date }}</a></li>
+                                <li><i class="fi fi-rr-eye"></i>{{ $category2Popular->news_views_count }}x dilihat</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <div class="news-card-three">
-                    <div class="news-card-img">
-                        <img src="assets/img/news/news-7.webp" alt="Image" />
-                    </div>
-                    <div class="news-card-info">
-                        <a href="{{ route('news.category') }}" class="news-cat">Travel</a>
-                        <h3><a href="{{ route('singlepost.news') }}">A Complimentary Day At Mandarin The Oriental</a></h3>
-                        <ul class="news-metainfo list-style">
-                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Mar 15, 2023</a></li>
-                            <li><i class="fi fi-rr-eye"></i>10x dilihat</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="news-card-three">
-                    <div class="news-card-img">
-                        <img src="assets/img/news/news-6.webp" alt="Image" />
-                    </div>
-                    <div class="news-card-info">
-                        <a href="{{ route('news.category') }}" class="news-cat">Business</a>
-                        <h3><a href="{{ route('singlepost.news') }}">First Prototype Flight Using Kinetic Launch
-                                System</a></h3>
-                        <ul class="news-metainfo list-style">
-                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 22, 2023</a></li>
-                            <li><i class="fi fi-rr-eye"></i>8x dilihat</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="news-card-three">
-                    <div class="news-card-img">
-                        <img src="assets/img/news/news-8.webp" alt="Image" />
-                    </div>
-                    <div class="news-card-info">
-                        <a href="{{ route('news.category') }}" class="news-cat">Health</a>
-                        <h3><a href="{{ route('singlepost.news') }}">Life Health Continues To Spread Rapidly, Are Many
-                                People</a></h3>
-                        <ul class="news-metainfo list-style">
-                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 15, 2023</a></li>
-                            <li><i class="fi fi-rr-eye"></i>10x dilihat</li>
-                        </ul>
-                    </div>
-                </div>
+                @endif
+            @empty
+            @endforelse
             </div>
         </div>
     </div>

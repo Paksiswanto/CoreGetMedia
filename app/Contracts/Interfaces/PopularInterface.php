@@ -13,5 +13,5 @@ interface PopularInterface extends GetInterface, StoreInterface, UpdateInterface
 {
     public function getpopular() : mixed;
     public function getlatest(): mixed;
-    public function getbycategory() :mixed;
+    public function getbycategory($category_id) :mixed;
 }

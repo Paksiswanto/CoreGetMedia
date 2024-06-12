@@ -164,7 +164,7 @@
                             <select class="form-control @error('tag') is-invalid @enderror select2 tags" name="tag[]"
                                 multiple="multiple">
                                 @foreach ($tags as $tag)
-                                    <option value="{{ $tag->name }}" {{ $newsTags->pluck('tag_id')->contains($tag->id) ? 'selected' : '' }}>
+                                    <option value="{{ $tag->name }}" {{ $newsTags->pluck('tags_id')->contains($tag->id) ? 'selected' : '' }}>
                                     {{ $tag->name }}
                                     </option>
                                 @endforeach

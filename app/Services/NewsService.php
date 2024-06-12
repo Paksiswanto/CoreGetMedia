@@ -102,7 +102,7 @@ class NewsService
         foreach ($tags as $data) {
             NewsTag::create([
                 'news_id' => $newsId,
-                'tag_id' => $data,
+                'tags_id' => $data,
             ]);
         }
     }
@@ -129,7 +129,7 @@ class NewsService
         foreach ($tags as $data) {
             NewsTag::create([
                 'news_id' => $newsId,
-                'tag_id' => $data,
+                'tags_id' => $data,
             ]);
         }
     }

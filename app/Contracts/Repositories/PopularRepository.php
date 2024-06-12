@@ -68,28 +68,13 @@ class PopularRepository extends BaseRepository implements PopularInterface
             ->get();
     }
 
-    public function getbycategory(): mixed
+    public function getbycategory($category_id): mixed
     {
-        // $subquery = $this->newscategori->query()
-        //     ->selectRaw('category_id, COUNT(*) as category_count')
-        //     ->groupBy('category_id')
-        //     ->orderByRaw('COUNT(*) DESC')
-        //     ->skip(1)
-        //     ->take(1)
-        //     ->pluck('category_id');
-
         return $this->model->query()
             ->where('status', NewsEnum::ACCEPTED->value)
-            // ->whereHas('newsCategories', function ($query) use ($subquery) {
-            //     $query->whereIn('category_id', $subquery);
-            // })
-            // ->with(['newsCategories' => function ($query) {
-            //     $query->with('category');
-            // }])
-            ->withCount('newsCategories')
-            ->orderByDesc('news_categories_count')
-            ->orderBy('created_at')
-            ->take(4)
+            ->whereRelation('newsCategories', 'category_id', $category_id->id)
+            ->withCount('newsViews')
+            ->orderByDesc('news_views_count')
             ->get();
     }
 

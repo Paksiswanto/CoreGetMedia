@@ -12,4 +12,6 @@ use App\Contracts\Interfaces\Eloquent\UpdateInterface;
 interface CategoryInterface extends GetInterface, StoreInterface, UpdateInterface, ShowInterface, DeleteInterface, ShowWithSlugInterface
 {
     public function showWithCount() : mixed;
+    public function category_id_1() : mixed;
+    public function category_id_2() : mixed;
 }

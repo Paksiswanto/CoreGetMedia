@@ -31,11 +31,14 @@ class HomeController extends Controller
 
     public function index(){
         $populars = $this->populars->getpopular();
-        $categoryPopulars = $this->categories->showWithCount();
         $latests = $this->populars->getlatest();
         // $tags = $this->tags->showWithCount();
+        $category_id_1 = $this->categories->category_id_1();
+        $category_id_2 = $this->categories->category_id_2();
+        $categoryPopulars = $this->populars->getbycategory($category_id_1);
+        $category2Populars = $this->populars->getbycategory($category_id_2);
         
-        return view('pages.index', compact('populars', 'categoryPopulars' ,'latests'));
+        return view('pages.index', compact('populars', 'categoryPopulars' ,'latests', 'category2Populars'));
     }
 
     public function navbar(Request $request){
