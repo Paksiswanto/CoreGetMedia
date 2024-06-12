@@ -44,14 +44,7 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $exception)
     {
         if ($exception instanceof ModelNotFoundException || $exception instanceof NotFoundHttpException) {
-            $news = News::latest()->take(10)->where('status', NewsEnum::ACCEPTED->value)->get();
-            $additionalData = [
-                'categories' => Category::all(),
-                'subCategories' => SubCategory::all(),
-                'news' => $news
-            ];
-
-            return response()->view('errors.404', $additionalData, 404);
+            return response()->view('errors.404', [], 404);
         }
 
         return parent::render($request, $exception);
