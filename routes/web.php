@@ -37,7 +37,7 @@ Route::get('navbar-user', [NewsController::class, 'navbar'])->name('navbar');
 // ----- ADMIN -----
 Route::get('/dashboard', function () {
     return view('pages.admin.home.index');
-    })->name('dashboard.admin');
+})->name('dashboard.admin');
 
 Route::get('category-list', [CategoryController::class, 'index'])->name('category.list.admin');
 Route::put('category-update/{category}', [CategoryController::class, 'update'])->name('category.update.admin');
@@ -59,7 +59,7 @@ Route::post('tag-list', [TagsController::class, 'store'])->name('tag.store.admin
 Route::put('tag-list/{tags}', [TagsController::class, 'update'])->name('tag.update.admin');
 Route::delete('tag-list/{tags}', [TagsController::class, 'destroy'])->name('tag.destroy.admin');
 
-Route::get('voucher-list', [VoucherrController::class, 'index'] )->name('voucher.list.admin');
+Route::get('voucher-list', [VoucherrController::class, 'index'])->name('voucher.list.admin');
 Route::post('voucher-create', [VoucherrController::class, 'store'])->name('voucher.store.admin');
 Route::put('voucher-update/{voucherr}', [VoucherrController::class, 'update'])->name('voucher.update.admin');
 Route::delete('voucher-delete/{voucherr}', [VoucherrController::class, 'destroy'])->name('voucher.delete.admin');
@@ -75,75 +75,86 @@ Route::get('news-list', function(){
 Route::get('confirm-author-list', [AuthorController::class, 'index'])->name('confirm-author.admin');
 Route::get('author-list', [AuthorController::class, 'list_author'])->name('author-list.admin');
 
-Route::get('admin-account-list', function(){
-        return view('pages.admin.account.admin');
+Route::get('admin-account-list', function () {
+    return view('pages.admin.account.admin');
 })->name('admin-account.list.admin');
 
-Route::get('author-banned', function(){
+Route::get('author-banned', function () {
     return view('pages.admin.author.author-banned');
-    })->name('author-banned.admin');
+})->name('author-banned.admin');
 
 Route::get('user-account-list', [UserController::class, 'index'])->name('user-account.list.admin');
 // Route::get('user-account-list', function(){
 //     return view('pages.admin.account.user');
 // })->name('user-account.list.admin');
 
-Route::get('admin-account-list', function(){
+Route::get('admin-account-list', function () {
     return view('pages.admin.account.admin');
 })->name('admin-account.list.admin');
 
-Route::get('singlepost/news', function(){
+Route::get('singlepost/news', function () {
     return view('pages.user.singlepost.index');
 })->name('singlepost.news');
 
-Route::get('advertisement-list', function(){
+Route::get('advertisement-list', function () {
     return view('pages.admin.advertisement.advertisement-list');
 })->name(('advertisement-list.admin'));
 
-Route::get('confirm-advertisement', function(){
+Route::get('confirm-advertisement', function () {
     return view('pages.admin.advertisement.confirm-advertisement');
 })->name('confirm-advertisement.admin');
 
-Route::get('detail-advertisement', function(){
+Route::get('detail-advertisement', function () {
     return view('pages.admin.advertisement.detail-advertisement');
 })->name('detail-advertisement.admin');
 
-Route::get('about-getmedia', function(){
+Route::get('about-getmedia', function () {
     return view('pages.admin.about.index');
 })->name('about-getmedia.admin');
 
-Route::get('inbox-admin', function(){
+Route::get('inbox-admin', function () {
     return view('pages.admin.inbox.index');
 })->name('inbox-list.admin');
 
-Route::get('subscribe-list', function(){
+Route::get('subscribe-list', function () {
     return view('pages.admin.subscribe.index');
 })->name('subscribe-list.admin');
 
+<<<<<<< Updated upstream
 Route::get('news-premium', function(){
+=======
+Route::get('news-list', function () {
+    return view('pages.admin.news.news-list');
+})->name('news-list.admin');
+
+
+
+
+Route::get('news-premium', function () {
+>>>>>>> Stashed changes
     return view('pages.admin.news_premium.index');
 })->name('news-premium.admin');
 
 
 // ----- USER -----
-Route::get('news/category', function(){
+Route::get('news/category', function () {
     return view('pages.user.category.index');
 })->name('news.category');
 
-Route::get('all-news', function(){
+Route::get('all-news', function () {
     return view('pages.user.all-news.index');
 })->name('news.all-news');
 
-Route::get('about-us', function(){
+Route::get('about-us', function () {
     return view('pages.user.aboutus.aboutus');
 })->name('about.us');
 
 
-Route::get('create-news', function(){
+Route::get('create-news', function () {
     return view('pages.author.news.create');
 })->name('create.news');
 
-Route::get('list-news', function (){
+Route::get('list-news', function () {
     return view('pages.author.news.list-news');
 })->name('news.list.author');
 
@@ -157,7 +168,7 @@ Route::put('update-news/{news}', [NewsController::class, 'update'])->name('updat
 Route::delete('delete-news/{news}', [NewsController::class, 'destroy'])->name('delete.news');
 
 
-Route::get('news-statistic', function(){
+Route::get('news-statistic', function () {
     return view('pages.author.news.statistic');
 })->name('news.author.statistic');
 
@@ -165,58 +176,58 @@ Route::get('list-delete-news', function () {
     return view('pages.author.news.list-delete');
 })->name('news.delete.list.author');
 
-Route::get('profile-author', function(){
+Route::get('profile-author', function () {
     return view('pages.author.profile');
 })->name('profile.author');
 
 Route::get('faq', [HomeFaqController::class, 'index'])->name('faq-list.user');
 
-Route::get('profile-user', function(){
+Route::get('profile-user', function () {
     return view('pages.user.profile.index');
 })->name('profile-user.user');
 
-Route::get('profile-update', function(){
+Route::get('profile-update', function () {
     return view('pages.user.profile.update');
 })->name('profile-update.user');
 
-Route::get('coin', function(){
+Route::get('coin', function () {
     return view('pages.user.coin.index');
 })->name('coin.user');
 
-Route::get('exchange-coin', function(){
+Route::get('exchange-coin', function () {
     return view('pages.user.coin.exchange-coin');
 })->name('exchange-coin.user');
 
-Route::get('history-coin', function(){
+Route::get('history-coin', function () {
     return view('pages.user.coin.history');
 })->name('history-coin.user');
 
-Route::get('news-liked', function(){
+Route::get('news-liked', function () {
     return view('pages.user.news-liked.index');
 })->name('news-liked.user');
 
-Route::get('contact-us', function(){
+Route::get('contact-us', function () {
     return view('pages.user.contact-us.index');
 })->name('contact-us.index');
 
-Route::get('privacy-policy', function(){
+Route::get('privacy-policy', function () {
     return view('pages.user.privacy-policy.index');
 })->name('privacy-policy');
 
-Route::get('list-tag', function(){
+Route::get('list-tag', function () {
     return view('pages.user.tag.index');
 })->name('list-tag.user');
 
-Route::get('all-category', function(){
+Route::get('all-category', function () {
     return view('pages.user.category.all-category');
 })->name('all-category.user');
 
 // AUTHOR
-Route::get('list-author', function(){
+Route::get('list-author', function () {
     return view('pages.user.author.list-author');
 })->name('user.list.author');
 
-Route::get('inbox-user', function(){
+Route::get('inbox-user', function () {
     return view('pages.user.inbox.index');
 })->name('inbox-user.user');
 
