@@ -208,6 +208,9 @@ Route::get('list-tag', function () {
 Route::get('all-category', function () {
     return view('pages.user.category.all-category');
 })->name('all-category.user');
+// Route::get('all-category', function(){
+//     return view('pages.user.category.all-category');
+// })->name('all-category.user');
 
 // AUTHOR
 Route::get('list-author', function () {
