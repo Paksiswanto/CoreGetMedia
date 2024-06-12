@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Contracts\Interfaces\UserInterface;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -70,5 +71,11 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function banned(User $user)
+    {
+        $this->users->update($user->id , ['status' , '1']);
+        return redirect()->back()->with(['success' => 'Siswa Berhasil Dibanned']);
     }
 }

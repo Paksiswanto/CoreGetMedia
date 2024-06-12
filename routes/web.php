@@ -240,3 +240,8 @@ Route::get('inbox-user', function(){
 
 
 // Route::get('{category}', [NewsController::class, 'showCategories'])->name('categories.show.user');
+
+require_once __DIR__ . '/jovita.php';
+require_once __DIR__ . '/ardi.php';
+require_once __DIR__ . '/farah.php';
+require_once __DIR__ . '/kader.php';
