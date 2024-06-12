@@ -79,7 +79,7 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                        <a href="/" class="nav-link active"> Beranda </a>
+                        <a href="/" class="nav-link" style="{{ request()->routeIs('home') ? 'color: #E93314;' : '' }}"> Beranda </a>
                     </li>
                     @foreach ($categories as $category)
                     <li class="nav-item">

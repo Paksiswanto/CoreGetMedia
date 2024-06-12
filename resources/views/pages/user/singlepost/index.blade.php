@@ -32,11 +32,10 @@
 @section('content')
     <div class="breadcrumb-wrap">
         <div class="container">
-            <h2 class="breadcrumb-title">Business Article Details</h2>
+            <h2 class="breadcrumb-title">{{$news->name}}</h2>
             <ul class="breadcrumb-menu list-style">
                 <li><a href="/">Home</a></li>
-                <li><a href="">Business</a></li>
-                <li>Business Article Details</li>
+                <li><a href=""></a></li>
             </ul>
         </div>
     </div>

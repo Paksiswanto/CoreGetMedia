@@ -87,9 +87,9 @@ Route::get('admin-account-list', function(){
     return view('pages.admin.account.admin');
 })->name('admin-account.list.admin');
 
-// Route::get('singlepost/news', function(){
-//     return view('pages.user.singlepost.index');
-// })->name('singlepost.news');
+Route::get('singlepost/news', function(){
+    return view('pages.user.singlepost.index');
+})->name('singlepost.news');
 
 Route::get('advertisement-list', function(){
     return view('pages.admin.advertisement.advertisement-list');
