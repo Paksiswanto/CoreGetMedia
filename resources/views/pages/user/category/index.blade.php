@@ -61,7 +61,7 @@
                         </div>
 
                         <div class="news-card-info">
-                            <h3><a data-toggle="tooltip" data-placement="top" title="Apex Legends Season 11 Start Date, Time, & What To Expect" href="#">{{ $item->name }}
+                            <h3><a data-toggle="tooltip" data-placement="top" title="Apex Legends Season 11 Start Date, Time, & What To Expect" href="{{ route('news.singlepost', ['news' => $item->slug]) }}">{{ $item->name }}
                                 </a>
                             </h3>
                             <ul class="news-metainfo list-style">

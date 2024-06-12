@@ -26,6 +26,16 @@
         .breadcrumb-menu li:after {
             color: #000;
         }
+
+        /* .hidden-content {
+            display: none;
+        } */
+        .read-more {
+            color: blue;
+            cursor: pointer;
+            display: inline-block;
+            margin-top: 10px;
+        }
 </style>
 @endsection                        
 
@@ -195,7 +205,10 @@
                         </div>
                         <div class="news-para text-justify">
                             
-                            <p>{!! Illuminate\Support\Str::limit($news->description, $limit = 150, $end = '...') !!}</p>
+                            <p id="news-description">
+                                {!! Illuminate\Support\Str::limit(strip_tags($news->description), 300, '...') !!}
+                            </p> 
+                            <span id="read-more" class="read-more">Baca Selengkapnya</span>
                         </div>
                         {{-- <div class="news-img">
                             <img src="{{asset('assets/img/news/single-news-6.webp')}}" alt="Image">
@@ -649,5 +662,25 @@
 @endsection
 
 @section('script')
+<script>
+        document.addEventListener("DOMContentLoaded", function() {
+        const newsDescription = {!! json_encode($news->description) !!};
+        const initialLimit = 600;
+        const additionalLimit = 3000;
+        let currentLimit = initialLimit;
 
+        const descriptionElement = document.getElementById('news-description');
+        const readMoreElement = document.getElementById('read-more');
+
+        readMoreElement.addEventListener('click', function() {
+            currentLimit += additionalLimit;
+            if (currentLimit >= newsDescription.length) {
+                descriptionElement.innerHTML = newsDescription;
+                readMoreElement.style.display = 'none';
+            } else {
+                descriptionElement.innerHTML = newsDescription.substring(0, currentLimit) + '...';
+            }
+        });
+    });
+</script>
 @endsection
