@@ -136,7 +136,6 @@ Route::get('about-us', function () {
     return view('pages.user.aboutus.aboutus');
 })->name('about.us');
 
-
 Route::get('create-news', function () {
     return view('pages.author.news.create');
 })->name('create.news');

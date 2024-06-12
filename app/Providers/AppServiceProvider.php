@@ -10,6 +10,7 @@ use App\Contracts\Interfaces\NewsInterface;
 use App\Contracts\Interfaces\NewsLikeInterface;
 use App\Contracts\Interfaces\NewsSubCategoryInterface;
 use App\Contracts\Interfaces\NewsTagInterface;
+use App\Contracts\Interfaces\NewsViewInterface;
 use App\Contracts\Interfaces\PopularInterface;
 use App\Contracts\Interfaces\RegisterInterface;
 use App\Contracts\Interfaces\SubCategoryInterface;
@@ -24,6 +25,7 @@ use App\Contracts\Repositories\NewsLikeRepository;
 use App\Contracts\Repositories\NewsRepository;
 use App\Contracts\Repositories\NewsSubCategoryRepository;
 use App\Contracts\Repositories\NewsTagRepository;
+use App\Contracts\Repositories\NewsViewRepository;
 use App\Contracts\Repositories\PopularRepository;
 use App\Contracts\Repositories\RegisterRepository;
 use App\Contracts\Repositories\SubCategoryRepository;
@@ -49,7 +51,8 @@ class AppServiceProvider extends ServiceProvider
         NewsSubCategoryInterface::class => NewsSubCategoryRepository::class,
         NewsTagInterface::class => NewsTagRepository::class,
         PopularInterface::class => PopularRepository::class,
-        NewsLikeInterface::class => NewsLikeRepository::class
+        NewsLikeInterface::class => NewsLikeRepository::class,
+        NewsViewInterface::class => NewsViewRepository::class
     ];
 
     /**
