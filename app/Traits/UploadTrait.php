@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use App\Helpers\CompressingImage;
 use App\Helpers\ImageCompressing;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
@@ -95,9 +96,10 @@ trait UploadTrait
       * @see https://image.intervention.io/v3/introduction/index
       * @see https://image.intervention.io/v3/modifying/resizing
       */
-     public function compressImage($fileName, $imagePath, $storePath, array $options = []): mixed
-     {
-         $storedImage = ImageCompressing::process($fileName, $imagePath, $storePath, $options)->toArray();
-         return $storedImage['files'];
-     }
+    public function compressImage($fileName, $imagePath, $storePath, array $options = []): mixed
+    {
+        $storedImage = CompressingImage::process($fileName, $imagePath, $storePath, $options);
+        return $storedImage['files'];
+    }
+
 }

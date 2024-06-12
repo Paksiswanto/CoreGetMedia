@@ -56,4 +56,14 @@ class News extends Model
     {
         return $this->hasMany(NewsReport::class);
     }
+
+    /**
+     * Get all of the views for the News
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function views(): HasMany
+    {
+        return $this->hasMany(NewsView::class);
+    }
 }

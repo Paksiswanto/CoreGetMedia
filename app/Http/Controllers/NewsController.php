@@ -15,6 +15,7 @@ use App\Http\Requests\StoreNewsRequest;
 use App\Http\Requests\UpdateNewsRequest;
 use App\Models\NewsCategory;
 use App\Services\NewsService;
+use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
@@ -50,6 +51,22 @@ class NewsController extends Controller
         $user_id = auth()->user()->id;
         $news = $this->news->show($user_id);
         return view('pages.author.news.list-news', compact('news'));
+    }
+
+    public function confirm_news()
+    {
+        $news = $this->news->where(NewsEnum::PENDING->value);
+        return view('pages.admin.news.confirm-news', compact('news'));
+    }
+
+    public function detail_news_admin($news)
+    {
+        $news = $this->news->showWithSLug($news);
+        $news_id = $news->id;
+        $newsCategory = $this->newscategories->where($news_id);
+        $newsSubcategory = $this->newssubcategories->where($news_id);
+        $newsTags = $this->newstags->where($news_id);
+        return view('pages.admin.news.detail-news', compact('news', 'newsCategory', 'newsSubcategory', 'newsTags'));
     }
 
     /**

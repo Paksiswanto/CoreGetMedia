@@ -9,8 +9,9 @@ use App\Contracts\Interfaces\Eloquent\ShowWithSlugInterface;
 use App\Contracts\Interfaces\Eloquent\StoreInterface;
 use App\Contracts\Interfaces\Eloquent\UpdateInterface;
 
-interface NewsInterface extends GetInterface, StoreInterface, UpdateInterface, ShowInterface, DeleteInterface, ShowWithSlugInterface
+interface PopularInterface extends GetInterface, StoreInterface, UpdateInterface, ShowInterface, DeleteInterface, ShowWithSlugInterface
 {
-    // public function searchAll(Request $request) : mixed;
-    public function where($data) : mixed;
+    public function getpopular() : mixed;
+    public function getlatest(): mixed;
+    public function getbycategory() :mixed;
 }

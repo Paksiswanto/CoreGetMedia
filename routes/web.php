@@ -61,6 +61,9 @@ Route::post('voucher-create', [VoucherrController::class, 'store'])->name('vouch
 Route::put('voucher-update/{voucherr}', [VoucherrController::class, 'update'])->name('voucher.update.admin');
 Route::delete('voucher-delete/{voucherr}', [VoucherrController::class, 'destroy'])->name('voucher.delete.admin');
 
+Route::get('confirm-news', [NewsController::class, 'confirm_news'])->name('confirm.news.admin');
+Route::get('detail-news/{news}', [NewsController::class, 'detail_news_admin'])->name('detail-news.admin');
+
 Route::get('admin-account-list', function(){
         return view('pages.admin.account.admin');
 })->name('admin-account.list.admin');
@@ -118,13 +121,8 @@ Route::get('news-list', function(){
     return view('pages.admin.news.news-list');
 })->name('news-list.admin');
 
-Route::get('confirm-news', function(){
-    return view('pages.admin.news.confirm-news');
-})->name('confirm-news.admin');
 
-Route::get('detail-nes', function(){
-    return view('pages.admin.news.detail-news');
-})->name('detail-news.admin');
+
 
 Route::get('news-premium', function(){
     return view('pages.admin.news_premium.index');

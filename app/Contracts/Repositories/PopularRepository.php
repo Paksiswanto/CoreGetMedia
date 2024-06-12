@@ -2,12 +2,12 @@
 
 namespace App\Contracts\Repositories;
 
-use App\Contracts\Interfaces\FaqInterface;
-use App\Contracts\Interfaces\NewsInterface;
-use App\Models\Faq;
+use App\Contracts\Interfaces\PopularInterface;
+use App\Enums\NewsEnum;
 use App\Models\News;
+use Illuminate\Support\Facades\DB;
 
-class NewsRepository extends BaseRepository implements NewsInterface
+class PopularRepository extends BaseRepository implements PopularInterface
 {
     public function __construct(News $news)
     {
@@ -47,6 +47,48 @@ class NewsRepository extends BaseRepository implements NewsInterface
         return $this->model->query()
             ->where('slug', $slug)
             ->firstOrFail();
+    }
+
+    public function getpopular(): mixed
+    {
+        return $this->model->query()
+            ->where('status', NewsEnum::ACCEPTED->value)
+            ->withCount('views')
+            ->get();
+    }
+
+    public function getlatest(): mixed
+    {
+        return $this->model->query()
+            ->where('status', NewsEnum::ACCEPTED->value)
+            ->withCount('views')
+            ->latest()
+            ->get();
+    }
+
+    public function getbycategory(): mixed
+    {
+        $subquery = DB::table('news_categories')
+        ->select('category_id', DB::raw('COUNT(*) as category_count'))
+        ->groupBy('category_id')
+        ->orderByRaw('COUNT(*) DESC')
+        ->skip(1)
+        ->take(1)
+        ->pluck('category_id');
+
+    return $this->model->query()
+        ->where('status', NewsEnum::ACCEPTED->value)
+        ->whereHas('newsCategories', function ($query) use ($subquery) {
+            $query->whereIn('category_id', $subquery);
+        })
+        ->with(['newsCategories' => function ($query) {
+            $query->with('category');
+        }])
+        ->withCount('views')
+        ->orderByDesc('views_count')
+        ->orderBy('created_at')
+        ->take(4)
+        ->get(['id', 'slug', 'photo', 'name', 'created_at', 'upload_date']);
     }
 
     /**
@@ -94,18 +136,4 @@ class NewsRepository extends BaseRepository implements NewsInterface
             ->findOrFail($id)
             ->update($data);
     }
-
-    // public function searchAll(Request $request): mixed
-    // {
-    //     return $this->model->query()
-
-    //         ->where(function ($query) use ($request) {
-    //             $query->where('name', 'LIKE', '%' . $request->search . '%')
-    //                 ->orWhere('content', 'LIKE', '%' . $request->search . '%')
-    //                 ->orWhereHas('user', function ($query) use ($request) {
-    //                     $query->where('name', 'LIKE', '%' . $request->search . '%');
-    //                 });
-    //         })
-    //         ->get();
-    // }
 }

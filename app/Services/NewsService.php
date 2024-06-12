@@ -62,6 +62,14 @@ class NewsService
         $slug = Str::slug($data['name']);
         $new_photo = $this->upload(UploadDiskEnum::NEWS->value, $request->image);
 
+        $compressedImage = $this->compressImage(
+            basename($new_photo),
+            $request->file('image'),
+            'compressed_images',
+            ['quality' => 70]
+        );
+        // $new_photo = $compressedImage['path'];
+
         $domQuestion = new \DOMDocument();
         libxml_use_internal_errors(true);
         $domQuestion->loadHTML($data['description'], LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NOIMPLIED);
@@ -72,7 +80,7 @@ class NewsService
         return [
             'user_id' => auth()->user()->id,
             'name' => $data['name'],
-            'image' => $new_photo,
+            'image' => $compressedImage,
             'description' => $data['description'],
             'slug' => $slug,
             'date' => $data['date'],
@@ -160,7 +168,7 @@ class NewsService
         }
 
         $old_photo = $news->image;
-        $new_photo = "";
+        $compressedImage = "";
 
         if ($request->hasFile('image')) {
 
@@ -169,7 +177,15 @@ class NewsService
             }
 
             $new_photo = $this->upload(UploadDiskEnum::NEWS->value, $request->image);
-            $news->image = $new_photo;
+
+            $compressedImage = $this->compressImage(
+                basename($new_photo),
+                $request->file('image'),
+                'compressed_images',
+                ['quality' => 70]
+            );
+
+            $news->image = $compressedImage;
         }
 
         $domQuestion = new \DOMDocument();
@@ -185,7 +201,7 @@ class NewsService
             'user_id' => auth()->user()->id,
             'name' => $data['name'],
             'slug' => Str::slug($data['name']),
-            'image' => $new_photo ? $new_photo : $old_photo,
+            'image' => $compressedImage ? $compressedImage : $old_photo,
             'description' => $data['description'],
             'date' => $data['date'],
             'category' => $data['category'],
@@ -234,26 +250,26 @@ class NewsService
      *
      * @return UploadedFile
      */
-    public function compressImage($file): UploadedFile
-    {
-        $imageInfo = getimagesize($file);
-        $imageType = $imageInfo[2];
+    // public function compressImage($file): UploadedFile
+    // {
+    //     $imageInfo = getimagesize($file);
+    //     $imageType = $imageInfo[2];
 
-        switch ($imageType) {
-            case IMAGETYPE_JPEG:
-                $sourceImage = imagecreatefromjpeg($file);
-                break;
-            case IMAGETYPE_PNG:
-                $sourceImage = imagecreatefrompng($file);
-                break;
-            default:
-                throw new Exception('Unsupported image type');
-        }
+    //     switch ($imageType) {
+    //         case IMAGETYPE_JPEG:
+    //             $sourceImage = imagecreatefromjpeg($file);
+    //             break;
+    //         case IMAGETYPE_PNG:
+    //             $sourceImage = imagecreatefrompng($file);
+    //             break;
+    //         default:
+    //             throw new Exception('Unsupported image type');
+    //     }
 
-        $compressedImagePath = tempnam(sys_get_temp_dir(), 'compressed_image') . '.webp';
-        imagewebp($sourceImage, $compressedImagePath, 80);
-        imagedestroy($sourceImage);
+    //     $compressedImagePath = tempnam(sys_get_temp_dir(), 'compressed_image') . '.webp';
+    //     imagewebp($sourceImage, $compressedImagePath, 80);
+    //     imagedestroy($sourceImage);
 
-        return new UploadedFile($compressedImagePath, basename($compressedImagePath), 'image/webp', null, true);
-    }
+    //     return new UploadedFile($compressedImagePath, basename($compressedImagePath), 'image/webp', null, true);
+    // }
 }
