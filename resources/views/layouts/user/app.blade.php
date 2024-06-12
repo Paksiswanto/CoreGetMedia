@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <meta name="description" content="Sebuah portal berita untuk membaca berita yang saedang trending dan hot">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     @include('layouts.user.css')
     <title>@yield('title', 'Halaman') - {{ config('app.name') }} </title>
 
@@ -62,8 +63,10 @@
 </head>
 
 <body>
-    @include('layouts.user.navbar-header')
-    @include('layouts.user.mobile-navbar')
+    @if(!isset($showNavbar) || $showNavbar !== false)
+        @include('layouts.user.navbar-header')
+        @include('layouts.user.mobile-navbar')
+    @endif
     <div class="loader-wrapper">
         <div class="loader"></div>
         <div class="loader-section section-left"></div>
@@ -83,16 +86,21 @@
     <script src="{{ asset('assets/js/swiper.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/aos.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+        </script>
 
 
 
 
-    @include('layouts.user.footer')
+    @if(!isset($showFooter) || $showFooter !== false)
+        @include('layouts.user.footer')
+    @endif
     @yield('script')
 
-    {{-- <script>
-        document.addEventListener("DOMContentLoaded", function() {
+    {{--
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
             var input = document.getElementById('search-input');
             var errorText = document.getElementById('error-text-input');
 
@@ -104,27 +112,27 @@
                         errorText.classList.add('text-danger');
                         errorText.textContent = 'Input harus diisi';
                     }
-                    return false; 
+                    return false;
                 } else {
                     input.classList.remove('error');
                     if (errorText) {
                         errorText.classList.remove('text-danger');
                         errorText.textContent = '';
                     }
-                    return true; 
+                    return true;
                 }
             }
 
-            document.getElementById('save-btn').addEventListener('click', function(event) {
+            document.getElementById('save-btn').addEventListener('click', function (event) {
                 if (!checkInput()) {
-                    event.preventDefault(); 
+                    event.preventDefault();
                 }
             });
 
             var searchBtns = document.querySelectorAll('#search-btn');
 
-            searchBtns.forEach(function(searchBtn) {
-                searchBtn.addEventListener('click', function() {
+            searchBtns.forEach(function (searchBtn) {
+                searchBtn.addEventListener('click', function () {
                     window.scrollTo({
                         top: 0,
                         behavior: 'smooth'
