@@ -68,7 +68,7 @@ Route::get('confirm-news', [NewsController::class, 'confirm_news'])->name('confi
 Route::get('detail-news/{news}', [NewsController::class, 'detail_news_admin'])->name('detail-news.admin');
 Route::put('approved-news/{news}', [NewsController::class, 'approved_news'])->name('approved.news.admin');
 
-Route::get('news-list', function(){
+Route::get('news-list', function () {
     return view('pages.admin.news.news-list');
 })->name('news-list.admin');
 
@@ -120,18 +120,7 @@ Route::get('subscribe-list', function () {
     return view('pages.admin.subscribe.index');
 })->name('subscribe-list.admin');
 
-<<<<<<< Updated upstream
-Route::get('news-premium', function(){
-=======
-Route::get('news-list', function () {
-    return view('pages.admin.news.news-list');
-})->name('news-list.admin');
-
-
-
-
 Route::get('news-premium', function () {
->>>>>>> Stashed changes
     return view('pages.admin.news_premium.index');
 })->name('news-premium.admin');
 
