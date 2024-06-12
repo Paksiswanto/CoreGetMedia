@@ -94,9 +94,11 @@ class NewsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(News $news)
+    public function show(Request $request, $slug)
     {
-        //
+        $news = $this->news->showWithSlug($slug);
+        $CategoryPopulars = $this->categories->showWithCount();
+        return view('pages.user.singlepost.index', compact('news', 'CategoryPopulars'));   
     }
 
     /**
