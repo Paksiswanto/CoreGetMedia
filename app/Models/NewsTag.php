@@ -12,7 +12,7 @@ class NewsTag extends Model
 
     protected $fillable = [
         'news_id',
-        'tag_id',
+        'tags_id',
     ];
 
     protected $table = 'news_tags';
@@ -32,7 +32,7 @@ class NewsTag extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function tag(): BelongsTo
+    public function tags(): BelongsTo
     {
         return $this->belongsTo(Tags::class);
     }
