@@ -48,9 +48,10 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Category $category)
+    public function show()
     {
-        //
+        $categories = $this->categories->get();
+        return view('pages.user.category.index' , compact('categories'));
     }
 
     /**

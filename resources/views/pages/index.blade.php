@@ -27,6 +27,26 @@
         color: #175A95;
     }
 
+    .tag-list li a:hover {
+            background-color: #175A95;
+            color: var(--whiteColor);
+        }
+        .tag-list li a {
+            color: var(--optionalColor);
+            background-color: var(--whiteColor);
+            border-radius: 5px;
+            padding: 7px 15px 3px 17px;
+            font-size: 14px;
+            line-height: 30px;
+            display: inline-block;
+            border: 1px solid #eee;
+        }
+        .theme-dark .tag-list li a:hover {
+            background-color: #175A95;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--whiteColor);
+        }
+
     </style>
 @endsection
 
@@ -486,7 +506,7 @@
             <div class="col-xl-3">
                 <div class="sidebar">
                     <div class="sidebar-widget">
-                        <h3 class="sidebar-widget-title">Kategori</h3>
+                        <h3 class="sidebar-widget-title">Kategori Populer</h3>
                         <ul class="category-widget list-style">
                             <li><a href="{{route('news.category')}}"><img src="assets/img/icons/arrow-right.svg"
                                         alt="Image">Kategori <span>(6)</span></a></li>
@@ -508,8 +528,8 @@
                         <div class="contact-widget">
                             <img src="assets/img/contact-bg.svg" alt="Image" class="contact-shape" />
                             <a href="index.html" class="logo">
-                                <img class="logo-light" src="assets/img/logo.webp" alt="Image" />
-                                <img class="logo-dark" src="assets/img/logo-white.webp" alt="Image" />
+                                <img class="logo-light" src="{{asset('assets/img/logo/get-media-dark.svg')}}" alt="Image" />
+                                <img class="logo-dark" src="{{asset('assets/img/logo/get-media-light.svg')}}" alt="Image" />
                             </a>
                             <p>Mauris mattis auctor cursus. Phasellus iso tellus tellus, imperdiet ut imperdiet eu, noiaculis a sem Donec vehicula luctus nunc in laoreet Aliquam</p>
                             <ul class="social-profile list-style">
@@ -528,20 +548,20 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="sidebar-widget">
-                        <h3 class="sidebar-widget-title">Popular Tags</h3>
+                    <div class="sidebar-widget bg-transparent shadow-smer">
+                        <h3 class="sidebar-widget-title">Tag Populer</h3>
                         <ul class="tag-list list-style">
-                            <li><a href="news-by-tags.html">BUSINESS</a></li>
-                            <li><a href="news-by-tags.html">FOOD</a></li>
-                            <li><a href="news-by-tags.html">SCIENCE</a></li>
-                            <li><a href="news-by-tags.html">LIFESTYLE</a></li>
-                            <li><a href="news-by-tags.html">SPORTS</a></li>
-                            <li><a href="news-by-tags.html">PHOTO</a></li>
-                            <li><a href="news-by-tags.html">TECHNOLOGY</a></li>
-                            <li><a href="news-by-tags.html">CONTENT</a></li>
-                            <li><a href="news-by-tags.html">FEATURED</a></li>
-                            <li><a href="news-by-tags.html">AUDIO</a></li>
-                            <li><a href="news-by-tags.html">FASHION</a></li>
+                            <li><a href="{{route('list-tag.user')}}">BUSINESS</a></li>
+                            <li><a href="{{route('list-tag.user')}}">FOOD</a></li>
+                            <li><a href="{{route('list-tag.user')}}">SCIENCE</a></li>
+                            <li><a href="{{route('list-tag.user')}}">LIFESTYLE</a></li>
+                            <li><a href="{{route('list-tag.user')}}">SPORTS</a></li>
+                            <li><a href="{{route('list-tag.user')}}">PHOTO</a></li>
+                            <li><a href="{{route('list-tag.user')}}">TECHNOLOGY</a></li>
+                            <li><a href="{{route('list-tag.user')}}">CONTENT</a></li>
+                            <li><a href="{{route('list-tag.user')}}">FEATURED</a></li>
+                            <li><a href="{{route('list-tag.user')}}">AUDIO</a></li>
+                            <li><a href="{{route('list-tag.user')}}">FASHION</a></li>
                         </ul>
                     </div>
                 </div>
@@ -624,6 +644,50 @@
                                     <div class="col-md-4">
                                         <div class="news-card-six">
                                             <div class="news-card-img">
+                                                <img src="assets/img/news/news-39.webp" alt="Image" />
+                                                <a href="{{route('news.category')}}" class="news-cat">Politics</a>
+                                            </div>
+                                            <div class="news-card-info">
+                                                <div class="news-author">
+                                                    <div class="news-author-img">
+                                                        <img src="assets/img/author/author-thumb-2.webp" alt="Image" />
+                                                    </div>
+                                                    <h5>By <a href="author.html">ELIJAH JAMES</a></h5>
+                                                </div>
+                                                <h3><a href="{{route('singlepost.news')}}">Will Humans be able to live in Mars in the future?</a></h3>
+                                                <ul class="news-metainfo list-style">
+                                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Mar 22, 2023</a></li>
+                                                    <li><i class="fi fi-rr-comment"></i>03</li>
+                                                    <li><i class="fi fi-rr-eye"></i>10x dilihat</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="news-card-six">
+                                            <div class="news-card-img">
+                                                <img src="assets/img/news/news-39.webp" alt="Image" />
+                                                <a href="{{route('news.category')}}" class="news-cat">Politics</a>
+                                            </div>
+                                            <div class="news-card-info">
+                                                <div class="news-author">
+                                                    <div class="news-author-img">
+                                                        <img src="assets/img/author/author-thumb-2.webp" alt="Image" />
+                                                    </div>
+                                                    <h5>By <a href="author.html">ELIJAH JAMES</a></h5>
+                                                </div>
+                                                <h3><a href="{{route('singlepost.news')}}">Will Humans be able to live in Mars in the future?</a></h3>
+                                                <ul class="news-metainfo list-style">
+                                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Mar 22, 2023</a></li>
+                                                    <li><i class="fi fi-rr-comment"></i>03</li>
+                                                    <li><i class="fi fi-rr-eye"></i>10x dilihat</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="news-card-six">
+                                            <div class="news-card-img">
                                                 <img src="assets/img/news/news-40.webp" alt="Image" />
                                                 <a href="{{route('news.category')}}" class="news-cat">Politics</a>
                                             </div>
@@ -669,7 +733,7 @@
                             </div>
                             <div class="tab-pane fade" id="tab_2" role="tabpanel">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="news-card-six">
                                             <div class="news-card-img">
                                                 <img src="assets/img/news/news-42.webp" alt="Image" />
@@ -691,7 +755,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="news-card-six">
                                             <div class="news-card-img">
                                                 <img src="assets/img/news/news-43.webp" alt="Image" />
@@ -713,7 +777,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="news-card-six">
                                             <div class="news-card-img">
                                                 <img src="assets/img/news/news-44.webp" alt="Image" />
@@ -735,7 +799,51 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
+                                        <div class="news-card-six">
+                                            <div class="news-card-img">
+                                                <img src="assets/img/news/news-45.webp" alt="Image" />
+                                                <a href="{{route('news.category')}}" class="news-cat">Sports</a>
+                                            </div>
+                                            <div class="news-card-info">
+                                                <div class="news-author">
+                                                    <div class="news-author-img">
+                                                        <img src="assets/img/author/author-thumb-4.webp" alt="Image" />
+                                                    </div>
+                                                    <h5>By <a href="author.html">HARPAR LUNA</a></h5>
+                                                </div>
+                                                <h3><a href="{{route('singlepost.news')}}">Unleashing Your Inner Athlete: The Power of Sports</a></h3>
+                                                <ul class="news-metainfo list-style">
+                                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 03, 2023</a></li>
+                                                    <li><i class="fi fi-rr-comment"></i>03</li>
+                                                    <li><i class="fi fi-rr-eye"></i>14x dilihat</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="news-card-six">
+                                            <div class="news-card-img">
+                                                <img src="assets/img/news/news-44.webp" alt="Image" />
+                                                <a href="{{route('news.category')}}" class="news-cat">Sports</a>
+                                            </div>
+                                            <div class="news-card-info">
+                                                <div class="news-author">
+                                                    <div class="news-author-img">
+                                                        <img src="assets/img/author/author-thumb-3.webp" alt="Image" />
+                                                    </div>
+                                                    <h5>By<a href="author.html">BANKS GAIN</a></h5>
+                                                </div>
+                                                <h3><a href="{{route('singlepost.news')}}">Breaking Barriers: Inspiring Stories in Sports</a></h3>
+                                                <ul class="news-metainfo list-style">
+                                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 03, 2023</a></li>
+                                                    <li><i class="fi fi-rr-comment"></i>03</li>
+                                                    <li><i class="fi fi-rr-eye"></i>12x dilihat</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
                                         <div class="news-card-six">
                                             <div class="news-card-img">
                                                 <img src="assets/img/news/news-45.webp" alt="Image" />
@@ -761,7 +869,7 @@
                             </div>
                             <div class="tab-pane fade" id="tab_3" role="tabpanel">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="news-card-six">
                                             <div class="news-card-img">
                                                 <img src="assets/img/news/news-46.webp" alt="Image" />
@@ -783,7 +891,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="news-card-six">
                                             <div class="news-card-img">
                                                 <img src="assets/img/news/news-47.webp" alt="Image" />
@@ -805,7 +913,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="news-card-six">
                                             <div class="news-card-img">
                                                 <img src="assets/img/news/news-48.webp" alt="Image" />
@@ -827,7 +935,73 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
+                                        <div class="news-card-six">
+                                            <div class="news-card-img">
+                                                <img src="assets/img/news/news-49.webp" alt="Image" />
+                                                <a href="{{route('news.category')}}" class="news-cat">Business</a>
+                                            </div>
+                                            <div class="news-card-info">
+                                                <div class="news-author">
+                                                    <div class="news-author-img">
+                                                        <img src="assets/img/author/author-thumb-4.webp" alt="Image" />
+                                                    </div>
+                                                    <h5>By <a href="author.html">HARPAR LUNA</a></h5>
+                                                </div>
+                                                <h3><a href="{{route('singlepost.news')}}">Building a Thriving Business: Strategies for Success</a></h3>
+                                                <ul class="news-metainfo list-style">
+                                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 05, 2023</a></li>
+                                                    <li><i class="fi fi-rr-comment"></i>03</li>
+                                                    <li><i class="fi fi-rr-eye"></i>15x dilihat</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="news-card-six">
+                                            <div class="news-card-img">
+                                                <img src="assets/img/news/news-47.webp" alt="Image" />
+                                                <a href="{{route('news.category')}}" class="news-cat">Business</a>
+                                            </div>
+                                            <div class="news-card-info">
+                                                <div class="news-author">
+                                                    <div class="news-author-img">
+                                                        <img src="assets/img/author/author-thumb-2.webp" alt="Image" />
+                                                    </div>
+                                                    <h5>By <a href="author.html">ELIJAH JAMES</a></h5>
+                                                </div>
+                                                <h3><a href="{{route('singlepost.news')}}">Revolutionizing Business: The Power of Innovation</a></h3>
+                                                <ul class="news-metainfo list-style">
+                                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Mar 03, 2023</a></li>
+                                                    <li><i class="fi fi-rr-comment"></i>03</li>
+                                                    <li><i class="fi fi-rr-eye"></i>10x dilihat</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="news-card-six">
+                                            <div class="news-card-img">
+                                                <img src="assets/img/news/news-48.webp" alt="Image" />
+                                                <a href="{{route('news.category')}}" class="news-cat">Business</a>
+                                            </div>
+                                            <div class="news-card-info">
+                                                <div class="news-author">
+                                                    <div class="news-author-img">
+                                                        <img src="assets/img/author/author-thumb-3.webp" alt="Image" />
+                                                    </div>
+                                                    <h5>By<a href="author.html">BANKS GAIN</a></h5>
+                                                </div>
+                                                <h3><a href="{{route('singlepost.news')}}">From Start-Up to Scale-Up: Growing Your Business</a></h3>
+                                                <ul class="news-metainfo list-style">
+                                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Feb 22, 2023</a></li>
+                                                    <li><i class="fi fi-rr-comment"></i>03</li>
+                                                    <li><i class="fi fi-rr-eye"></i>15x dilihat</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
                                         <div class="news-card-six">
                                             <div class="news-card-img">
                                                 <img src="assets/img/news/news-49.webp" alt="Image" />
@@ -862,7 +1036,7 @@
         </div>
     </div>
 
-    <div class="container-fluid pb-75 pt-100">
+    {{-- <div class="container-fluid pb-75 pt-100">
         <div>
             <h2 class="section-title">Artikel Premium</h2>
         </div>
@@ -904,7 +1078,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <button type="button" id="backtotop" class="position-fixed text-center border-0 p-0">
         <i class="ri-arrow-up-line"></i>

@@ -327,17 +327,17 @@
                 <div class="sidebar-widget bg-transparent shadow-sm">
                     <h3 class="sidebar-widget-title">Tag Populer</h3>
                     <ul class="tag-list list-style">
-                    <li><a href="news-by-tags.html">BUSINESS</a></li>
-                    <li><a href="news-by-tags.html">FOOD</a></li>
-                    <li><a href="news-by-tags.html">SCIENCE</a></li>
-                    <li><a href="news-by-tags.html">LIFESTYLE</a></li>
-                    <li><a href="news-by-tags.html">SPORTS</a></li>
-                    <li><a href="news-by-tags.html">PHOTO</a></li>
-                    <li><a href="news-by-tags.html">TECHNOLOGY</a></li>
-                    <li><a href="news-by-tags.html">CONTENT</a></li>
-                    <li><a href="news-by-tags.html">FEATURED</a></li>
-                    <li><a href="news-by-tags.html">AUDIO</a></li>
-                    <li><a href="news-by-tags.html">FASHION</a></li>
+                    <li><a href="{{route('list-tag.user')}}">BUSINESS</a></li>
+                    <li><a href="{{route('list-tag.user')}}">FOOD</a></li>
+                    <li><a href="{{route('list-tag.user')}}">SCIENCE</a></li>
+                    <li><a href="{{route('list-tag.user')}}">LIFESTYLE</a></li>
+                    <li><a href="{{route('list-tag.user')}}">SPORTS</a></li>
+                    <li><a href="{{route('list-tag.user')}}">PHOTO</a></li>
+                    <li><a href="{{route('list-tag.user')}}">TECHNOLOGY</a></li>
+                    <li><a href="{{route('list-tag.user')}}">CONTENT</a></li>
+                    <li><a href="{{route('list-tag.user')}}">FEATURED</a></li>
+                    <li><a href="{{route('list-tag.user')}}">AUDIO</a></li>
+                    <li><a href="{{route('list-tag.user')}}">FASHION</a></li>
                     </ul>
                     </div>
             </div>

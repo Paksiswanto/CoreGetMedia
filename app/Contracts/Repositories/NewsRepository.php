@@ -37,7 +37,16 @@ class NewsRepository extends BaseRepository implements NewsInterface
      */
     public function show(mixed $id): mixed
     {
-        //
+        return $this->model->query()
+            ->where('user_id', $id)
+            ->get();
+    }
+
+    public function showWithSLug(string $slug): mixed
+    {
+        return $this->model->query()
+            ->where('slug', $slug)
+            ->firstOrFail();
     }
 
     /**
@@ -48,6 +57,24 @@ class NewsRepository extends BaseRepository implements NewsInterface
     public function get(): mixed
     {
         return $this->model->query()
+            ->get();
+    }
+
+    public function where($data): mixed
+    {
+        return $this->model->query()
+            ->where('status', $data)
+            ->get();
+    }
+
+    public function whereSubCategory($id, $query): mixed
+    {
+        return $this->model->query()
+            ->whereRelation('newsSubCategories', 'sub_category_id', $id)
+            ->withCount('newsViews')
+            ->when($query == 'top', function($q){
+                $q->take(1);
+            })
             ->get();
     }
 
@@ -78,4 +105,18 @@ class NewsRepository extends BaseRepository implements NewsInterface
             ->findOrFail($id)
             ->update($data);
     }
+
+    // public function searchAll(Request $request): mixed
+    // {
+    //     return $this->model->query()
+
+    //         ->where(function ($query) use ($request) {
+    //             $query->where('name', 'LIKE', '%' . $request->search . '%')
+    //                 ->orWhere('content', 'LIKE', '%' . $request->search . '%')
+    //                 ->orWhereHas('user', function ($query) use ($request) {
+    //                     $query->where('name', 'LIKE', '%' . $request->search . '%');
+    //                 });
+    //         })
+    //         ->get();
+    // }
 }

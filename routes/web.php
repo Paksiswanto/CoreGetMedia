@@ -2,9 +2,12 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\HomeFaqController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\TagsController;
 use App\Http\Controllers\VoucherrController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,14 +22,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.index');
-});
+// Route::get('/', function () {
+//     return view('pages.index');
+// });
+Route::get('/', [NewsController::class, 'home']);
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::get('navbar-user', [NewsController::class, 'navbar'])->name('navbar');
 
 // ----- ADMIN -----
 Route::get('/dashboard', function () {
@@ -58,6 +62,9 @@ Route::post('voucher-create', [VoucherrController::class, 'store'])->name('vouch
 Route::put('voucher-update/{voucherr}', [VoucherrController::class, 'update'])->name('voucher.update.admin');
 Route::delete('voucher-delete/{voucherr}', [VoucherrController::class, 'destroy'])->name('voucher.delete.admin');
 
+Route::get('confirm-news', [NewsController::class, 'confirm_news'])->name('confirm.news.admin');
+Route::get('detail-news/{news}', [NewsController::class, 'detail_news_admin'])->name('detail-news.admin');
+
 Route::get('admin-account-list', function(){
         return view('pages.admin.account.admin');
 })->name('admin-account.list.admin');
@@ -74,9 +81,10 @@ Route::get('author-banned', function(){
     return view('pages.admin.author.confirm-author');
 })->name('confirm-author.admin');
 
-Route::get('user-account-list', function(){
-    return view('pages.admin.account.user');
-})->name('user-account.list.admin');
+Route::get('user-account-list', [UserController::class, 'index'])->name('user-account.list.admin');
+// Route::get('user-account-list', function(){
+//     return view('pages.admin.account.user');
+// })->name('user-account.list.admin');
 
 Route::get('admin-account-list', function(){
     return view('pages.admin.account.admin');
@@ -114,13 +122,8 @@ Route::get('news-list', function(){
     return view('pages.admin.news.news-list');
 })->name('news-list.admin');
 
-Route::get('confirm-news', function(){
-    return view('pages.admin.news.confirm-news');
-})->name('confirm-news.admin');
 
-Route::get('detail-nes', function(){
-    return view('pages.admin.news.detail-news');
-})->name('detail-news.admin');
+
 
 Route::get('news-premium', function(){
     return view('pages.admin.news_premium.index');
@@ -132,10 +135,6 @@ Route::get('news/category', function(){
     return view('pages.user.category.index');
 })->name('news.category');
 
-Route::get('news/subcategory', function () {
-    return view('pages.user.subcategory.index');
-})->name('news.subcategory');
-
 Route::get('all-news', function(){
     return view('pages.user.all-news.index');
 })->name('news.all-news');
@@ -144,7 +143,7 @@ Route::get('about-us', function(){
     return view('pages.user.aboutus.aboutus');
 })->name('about.us');
 
-//Author
+
 Route::get('create-news', function(){
     return view('pages.author.news.create');
 })->name('create.news');
@@ -152,6 +151,16 @@ Route::get('create-news', function(){
 Route::get('list-news', function (){
     return view('pages.author.news.list-news');
 })->name('news.list.author');
+
+//Author
+Route::get('create-news', [NewsController::class, 'create'])->name('create.news');
+Route::post('store-news', [NewsController::class, 'store'])->name('store.news');
+Route::get('get-sub-category', [SubCategoryController::class, 'show'])->name('get.sub.category');
+Route::get('list-news', [NewsController::class, 'index'])->name('news.list.author');
+Route::get('edit-news/{news}', [NewsController::class, 'edit'])->name('edit.news');
+Route::put('update-news/{news}', [NewsController::class, 'update'])->name('update.news');
+Route::delete('delete-news/{news}', [NewsController::class, 'destroy'])->name('delete.news');
+
 
 Route::get('news-statistic', function(){
     return view('pages.author.news.statistic');
@@ -165,9 +174,7 @@ Route::get('profile-author', function(){
     return view('pages.author.profile');
 })->name('profile.author');
 
-Route::get('faq', function(){
-    return view('pages.user.faq.index');
-})->name('faq-list.user');
+Route::get('faq', [HomeFaqController::class, 'index'])->name('faq-list.user');
 
 Route::get('profile-user', function(){
     return view('pages.user.profile.index');
@@ -202,8 +209,17 @@ Route::get('privacy-policy', function(){
 })->name('privacy-policy');
 
 Route::get('list-tag', function(){
-    return view('pages.user.tag.idex');
+    return view('pages.user.tag.index');
 })->name('list-tag.user');
+
+Route::get('all-category', function(){
+    return view('pages.user.category.all-category');
+})->name('all-category.user');
+
+Route::get('all-subcategory', function(){
+    return view('pages.user.subcategory.all-subcategory');
+
+})->name('all-subcategory.user');
 
 // AUTHOR
 
@@ -214,3 +230,11 @@ Route::get('list-author', function(){
 Route::get('inbox-user', function(){
     return view('pages.user.inbox.index');
 })->name('inbox-user.user');
+
+
+// Route::get('{category}', [NewsController::class, 'showCategories'])->name('categories.show.user');
+
+require_once __DIR__ . '/jovita.php';
+require_once __DIR__ . '/ardi.php';
+require_once __DIR__ . '/farah.php';
+require_once __DIR__ . '/kader.php';

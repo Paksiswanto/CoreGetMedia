@@ -27,6 +27,9 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             color: var(--whiteColor);
         }
+        .breadcrumb-menu li:after {
+            color: #000;
+        }
     </style>
 @endsection
 
@@ -68,7 +71,7 @@
                     <div class="mb-5">
                         <div class="d-flex justify-content-between mb-3 mt-3">
                             <h3>Trending</h3>
-                            <a href="#">
+                            <a href="{{route('all-category.user')}}">
                                 <p>Lihat lainnya
                                     <i><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
                                             viewBox="0 0 24 24">
@@ -175,7 +178,7 @@
                     <h5 class="mt-5">Iklan</h5>
                 </div> --}}
 
-                    <div class="mb-5 mt-5">
+                    {{-- <div class="mb-5 mt-5">
                         <div class="d-flex justify-content-between mb-3">
                             <h3>Terbaru</h3>
                             <a href="#">
@@ -278,7 +281,7 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <div class="col-lg-4">
@@ -287,14 +290,6 @@
                             <div class="sidebar-widget">
                                 <h3 class="sidebar-widget-title">Kategori Populer</h3>
                                 <ul class="category-widget list-style">
-                                    <li>
-                                        <a data-toggle="tooltip" data-placement="top" title="Fashion"
-                                            href="#"><img
-                                                src="{{ asset('assets/img/icons/arrow-right.svg') }}"
-                                                alt="Image">Fashion
-                                            <span>( 10 )</span>
-                                        </a>
-                                    </li>
                                     <li>
                                         <a data-toggle="tooltip" data-placement="top" title="Fashion"
                                             href="#"><img
@@ -331,10 +326,10 @@
                                         <img src="{{asset('assets/img/news/news-3.webp')}}" alt="Image" />
                                     </div>
                                     <div class="news-card-info">
-                                        <h3><a href="business-details.html">Man Wearing Black Pullover Hoodie To Smoke Light In</a></h3>
+                                        <h3><a href="business-details.html">Man Wearing Black Pullover Hoodie To</a></h3>
                                         <ul class="news-metainfo list-style d-flex">
-                                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 15, 2023</a></li>
-                                            <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">10</a></li>
+                                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html" style="font-size: 15px;">15 Apr 2023</a></li>
+                                            <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus" style="font-size: 15px;">10</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -343,10 +338,10 @@
                                         <img src="{{asset('assets/img/news/news-3.webp')}}" alt="Image" />
                                     </div>
                                     <div class="news-card-info">
-                                        <h3><a href="business-details.html">Man Wearing Black Pullover Hoodie To Smoke Light In</a></h3>
+                                        <h3><a href="business-details.html">Man Wearing Black Pullover Hoodie To</a></h3>
                                         <ul class="news-metainfo list-style d-flex">
-                                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 15, 2023</a></li>
-                                            <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">10</a></li>
+                                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html" style="font-size: 15px;">15 Apr 2023</a></li>
+                                            <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus" style="font-size: 15px;">10</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -355,10 +350,10 @@
                                         <img src="{{asset('assets/img/news/news-3.webp')}}" alt="Image" />
                                     </div>
                                     <div class="news-card-info">
-                                        <h3><a href="business-details.html">Man Wearing Black Pullover Hoodie To Smoke Light In</a></h3>
+                                        <h3><a href="business-details.html">Man Wearing Black Pullover Hoodie To</a></h3>
                                         <ul class="news-metainfo list-style d-flex">
-                                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 15, 2023</a></li>
-                                            <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">10</a></li>
+                                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html" style="font-size: 15px;">15 Apr 2023</a></li>
+                                            <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus" style="font-size: 15px;">10</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -367,10 +362,22 @@
                                         <img src="{{asset('assets/img/news/news-3.webp')}}" alt="Image" />
                                     </div>
                                     <div class="news-card-info">
-                                        <h3><a href="business-details.html">Man Wearing Black Pullover Hoodie To Smoke Light In</a></h3>
+                                        <h3><a href="business-details.html">Man Wearing Black Pullover Hoodie To</a></h3>
                                         <ul class="news-metainfo list-style d-flex">
-                                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 15, 2023</a></li>
-                                            <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">10</a></li>
+                                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html" style="font-size: 15px;">15 Apr 2023</a></li>
+                                            <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus" style="font-size: 15px;">10</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="news-card-three">
+                                    <div class="news-card-img" style="height: 100px; width: 100px">
+                                        <img src="{{asset('assets/img/news/news-3.webp')}}" alt="Image" />
+                                    </div>
+                                    <div class="news-card-info">
+                                        <h3><a href="business-details.html">Man Wearing Black Pullover Hoodie To</a></h3>
+                                        <ul class="news-metainfo list-style d-flex">
+                                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html" style="font-size: 15px;">15 Apr 2023</a></li>
+                                            <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus" style="font-size: 15px;">10</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -379,17 +386,17 @@
                             <div class="sidebar-widget bg-transparent shadow-sm">
                                 <h3 class="sidebar-widget-title">Tag Populer</h3>
                                 <ul class="tag-list list-style">
-                                <li><a href="news-by-tags.html">BUSINESS</a></li>
-                                <li><a href="news-by-tags.html">FOOD</a></li>
-                                <li><a href="news-by-tags.html">SCIENCE</a></li>
-                                <li><a href="news-by-tags.html">LIFESTYLE</a></li>
-                                <li><a href="news-by-tags.html">SPORTS</a></li>
-                                <li><a href="news-by-tags.html">PHOTO</a></li>
-                                <li><a href="news-by-tags.html">TECHNOLOGY</a></li>
-                                <li><a href="news-by-tags.html">CONTENT</a></li>
-                                <li><a href="news-by-tags.html">FEATURED</a></li>
-                                <li><a href="news-by-tags.html">AUDIO</a></li>
-                                <li><a href="news-by-tags.html">FASHION</a></li>
+                                <li><a href="{{route('list-tag.user')}}">BUSINESS</a></li>
+                                <li><a href="{{route('list-tag.user')}}">FOOD</a></li>
+                                <li><a href="{{route('list-tag.user')}}">SCIENCE</a></li>
+                                <li><a href="{{route('list-tag.user')}}">LIFESTYLE</a></li>
+                                <li><a href="{{route('list-tag.user')}}">SPORTS</a></li>
+                                <li><a href="{{route('list-tag.user')}}">PHOTO</a></li>
+                                <li><a href="{{route('list-tag.user')}}">TECHNOLOGY</a></li>
+                                <li><a href="{{route('list-tag.user')}}">CONTENT</a></li>
+                                <li><a href="{{route('list-tag.user')}}">FEATURED</a></li>
+                                <li><a href="{{route('list-tag.user')}}">AUDIO</a></li>
+                                <li><a href="{{route('list-tag.user')}}">FASHION</a></li>
                                 </ul>
                                 </div>
                         </div>

@@ -68,7 +68,8 @@
         <h5>Baca ketentuan dan persyaratan sembelum mengunggah berita</h5>
     </div> --}}
 
-    <form id="myForm" method="post" enctype="multipart/form-data">
+    <form action="{{ route('store.news') }}" method="post" enctype="multipart/form-data">
+        @method('post')
         @csrf
         <div class="ms-1 mt-5 d-flex justify-content-between">
             <h5>Isi form dibawah ini untuk mengunggah berita</h5>
@@ -88,7 +89,7 @@
                             <label for="image-upload" class="btn btn-primary">
                                 Unggah
                             </label>
-                            <input type="file" name="photo" id="image-upload"
+                            <input type="file" name="image" id="image-upload"
                                 class="hide @error('photo') is-invalid @enderror" onchange="previewImage(event)">
                         </div>
                         <div class="d-flex justify-content-center">
@@ -111,6 +112,9 @@
                             <select id="category_id"
                                 class="select2 form-control category @error('category') is-invalid @enderror"
                                 name="category[]" multiple aria-label="Default select example">
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
                             </select>
                             @error('category')
                                 <span class="invalid-feedback" role="alert" style="color: red">
@@ -134,7 +138,7 @@
                         </div>
                         <div class="col-lg-12 mb-4">
                             <label class="form-label" for="password_confirmation">Tanggal Upload</label>
-                            <input type="datetime-local" id="upload_date" name="upload_date" placeholder="date"
+                            <input type="datetime-local" id="upload_date" name="date" placeholder="date"
                                 value="{{ old('upload_date') }}"
                                 class="form-control @error('upload_date') is-invalid @enderror">
                             @error('upload_date')
@@ -147,7 +151,9 @@
                             <label class="form-label" for="password_confirmation">Tags</label>
                             <select class="form-control @error('tag') is-invalid @enderror select2 tags" name="tag[]"
                                 multiple="multiple">
-                                <option disabled>pilih tags</option>
+                                @foreach ($tags as $tag)
+                                    <option value="{{ $tag->name }}">{{ $tag->name }}</option>
+                                @endforeach
                             </select>
                             @error('tag')
                                 <span class="invalid-feedback" role="alert" style="color: red;">
@@ -175,7 +181,7 @@
                             </div>
                             <div class="col-lg-12 mb-4" style="height: auto;">
                                 <label class="form-label" for="content">Isi Berita</label>
-                                <textarea id="content" name="content" placeholder="content" value="{{ old('content') }}"
+                                <textarea id="content" name="description" placeholder="content" value="{{ old('content') }}"
                                     class="form  @error('content') is-invalid @enderror">{{ old('content') }}</textarea>
                                 @error('content')
                                     <span class="invalid-feedback" role="alert" style="color: red;">
@@ -188,7 +194,7 @@
                 </div>
             </div>
         </div>
-        <div class="d-flex">
+        <div class="d-flex justify-content-end">
             <button type="reset" class="btn btn-danger m-2">
                 Batal
             </button>
@@ -252,15 +258,6 @@
 @endsection
 
 @section('script')
-    <script>
-        var errorAlert = document.getElementById('error-alert');
-        if (errorAlert) {
-            setTimeout(function() {
-                errorAlert.remove();
-            }, 5000);
-        }
-    </script>
-
     <script src="{{ asset('admin/dist/libs/summernote/dist/summernote-lite.min.js') }}"></script>
 
     <script>
@@ -295,6 +292,34 @@
 
             });
         });
+    </script>
+
+    <script>
+        $('.category').change(function() {
+            // getSubCategory($(this).val())
+            var selectedCategories = $(this).val();
+            getSubCategory(selectedCategories);
+        })
+
+        function getSubCategory(ids) {
+            $.ajax({
+                url: "get-sub-category",
+                method: "GET",
+                data: {
+                    category_ids: ids
+                },
+                dataType: "JSON",
+                beforeSend: function() {
+                    $('.sub-category').html('')
+                },
+                success: function(response) {
+                    $.each(response.data, function(index, data) {
+                        $('.sub-category').append('<option value="' + data.id + '">' + data.name +
+                            '</option>');
+                    });
+                }
+            })
+        }
     </script>
 
     <script>

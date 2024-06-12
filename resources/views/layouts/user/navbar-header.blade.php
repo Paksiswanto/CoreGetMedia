@@ -30,7 +30,7 @@
         <div class="container-fluid">
             <div class="row align-items-center">
                 <div class="col-lg-4 col-md-6 col-5">
-                    <button class="subscribe-btn" data-bs-toggle="modal" data-bs-target="#newsletter-popup">Subscribe<i class="flaticon-right-arrow"></i></button>
+                    {{-- <button class="subscribe-btn" data-bs-toggle="modal" data-bs-target="#newsletter-popup">Berlangganan<i class="flaticon-right-arrow"></i></button> --}}
                 </div>
                 <div class="col-lg-4 col-md-6 md-none">
                     <a class="navbar-brand" href="index.html">
@@ -81,7 +81,45 @@
                     <li class="nav-item">
                         <a href="/" class="nav-link active"> Beranda </a>
                     </li>
+                    @foreach ($categories as $category)
                     <li class="nav-item">
+                        <a  href="#" class="dropdown-toggle nav-link" style="{{ request()->routeIs('categories.show.user') && request()->route('category') == $category->slug || (request()->routeIs('subcategories.show.user') && request()->route('category') == $category->slug) ? 'color: #E93314;' : '' }}">{{ $category->name }}</a>
+                        @if (count($subCategories->where('category_id', $category->id)) > 0)
+                            <ul class="dropdown-menu">
+                                <div class="d-flex">
+                                    <li class="nav-item">
+                                        @forelse ($subCategories->where('category_id', $category->id) as $subCategory)
+                                            <a href="{{ route('news.subcategory', ['slug' => $subCategory->slug]) }}" class="nav-link">{{ $subCategory->name }}</a>
+
+                                            @if(($loop->iteration % 5) == 0)
+                                            </li>
+                                            <li class="nav-item">
+                                            @endif
+
+                                            @empty
+                                            <div class="nav-link">
+                                                Data Kosong
+                                            </div>
+                                        @endforelse
+                                    </li>
+                                </div>
+                            </ul>
+                        @else
+                            <ul class="dropdown-menu">
+                                <div class="d-flex">
+                                    <div class="nav-item">
+                                        <p class="nav-link">
+                                           Data Kosong
+                                        </p>
+                                    </div>
+                                </div>
+                            </ul>
+                        @endif
+
+                    </li>
+                @endforeach
+
+                    {{-- <li class="nav-item">
                         <a href="{{route('news.category')}}" class="dropdown-toggle nav-link"> Pendidikan </a>
                         <ul class="dropdown-menu">
                             <li class="nav-item">
@@ -151,7 +189,7 @@
                             </li>
 
                         </ul>
-                    </li>
+                    </li> --}}
                 </ul>
                 <div class="others-option d-flex align-items-center">
                     {{-- <div class="option-item">
@@ -231,7 +269,7 @@
 
                         <div class="">
                             <div class="option-item">
-                                <a href="/login" class="btn-two" id="signInBtn">Login</a>
+                                <a href="/login" class="btn-two" id="signInBtn">Masuk</a>
                             </div>
                         </div>
                     @endauth

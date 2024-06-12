@@ -3,20 +3,19 @@
 namespace App\Services;
 
 use Exception;
-use App\Models\Tag;
 use App\Models\News;
 use App\Traits\UploadTrait;
 use Illuminate\Support\Str;
 use App\Enums\UploadDiskEnum;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
-use App\Http\Requests\NewsUpdateRequest;
-use Intervention\Image\Laravel\Facades\Image;
 use App\Http\Requests\Dashboard\Article\UpdateRequest;
-use App\Base\Interfaces\uploads\CustomUploadValidation;
-use App\Base\Interfaces\uploads\ShouldHandleFileUpload;
 use App\Http\Requests\StoreNewsRequest;
 use App\Http\Requests\UpdateNewsRequest;
+use App\Models\NewsCategory;
+use App\Models\NewsSubCategory;
+use App\Models\NewsTag;
+use App\Models\Tags;
 
 class NewsService
 {
@@ -47,9 +46,29 @@ class NewsService
     public function store(StoreNewsRequest $request)
     {
         $data = $request->validated();
-        $img = $this->compressImage($request->photo);
 
-        $new_photo = $this->upload(UploadDiskEnum::NEWS->value, $img);
+        if ($request->has('tag')) {
+            $newTags = [];
+            foreach ($request->input('tag') as $tagName) {
+                $tag = Tags::updateOrCreate(
+                    ['name' => $tagName],
+                    ['slug' => Str::slug($tagName)]
+                );
+                $newTags[] = $tag->id;
+            }
+            $data['tag'] = $newTags;
+        }
+
+        $slug = Str::slug($data['name']);
+        $new_photo = $this->upload(UploadDiskEnum::NEWS->value, $request->image);
+
+        $compressedImage = $this->compressImage(
+            basename($new_photo),
+            $request->file('image'),
+            'compressed_images',
+            ['quality' => 70]
+        );
+        // $new_photo = $compressedImage['path'];
 
         $domQuestion = new \DOMDocument();
         libxml_use_internal_errors(true);
@@ -61,12 +80,67 @@ class NewsService
         return [
             'user_id' => auth()->user()->id,
             'name' => $data['name'],
-            'image' => $new_photo,
-            'description' => $domQuestion->saveHTML(),
-            'slug' => Str::slug($data['name']),
-            'date' => $data['date']
+            'image' => $compressedImage,
+            'description' => $data['description'],
+            'slug' => $slug,
+            'date' => $data['date'],
+            'category' => $data['category'],
+            'sub_category' => $data['sub_category'],
+            'tag' => $data['tag']
         ];
     }
+
+    public function storeRelation($newsId, array $categories, array $subcategories, array $tags)
+    {
+        foreach ($categories as $data) {
+            NewsCategory::create([
+                'news_id' => $newsId,
+                'category_id' => $data,
+            ]);
+        }
+
+        foreach ($subcategories as $data) {
+            NewsSubCategory::create([
+                'news_id' => $newsId,
+                'sub_category_id' => $data,
+            ]);
+        }
+
+        foreach ($tags as $data) {
+            NewsTag::create([
+                'news_id' => $newsId,
+                'tag_id' => $data,
+            ]);
+        }
+    }
+
+    public function updateRelation($newsId, array $categories, array $subcategories, array $tags)
+    {
+        NewsCategory::where('news_id', $newsId)->delete();
+        foreach ($categories as $data) {
+            NewsCategory::create([
+                'news_id' => $newsId,
+                'category_id' => $data,
+            ]);
+        }
+
+        NewsSubCategory::where('news_id', $newsId)->delete();
+        foreach ($subcategories as $data) {
+            NewsSubCategory::create([
+                'news_id' => $newsId,
+                'sub_category_id' => $data,
+            ]);
+        }
+
+        NewsTag::where('news_id', $newsId)->delete();
+        foreach ($tags as $data) {
+            NewsTag::create([
+                'news_id' => $newsId,
+                'tag_id' => $data,
+            ]);
+        }
+    }
+
 
         /**
      * Handle update data event to models.
@@ -80,23 +154,43 @@ class NewsService
     {
         $data = $request->validated();
 
-        $old_photo = $news->photo;
-        $new_photo = "";
+        if ($request->has('tag')) {
+            $newTags = [];
+            foreach ($request->input('tag') as $tagName) {
+                $tag = Tags::updateOrCreate(
+                    ['name' => $tagName],
+                    ['slug' => Str::slug($tagName)]
+                );
+                $newTags[] = $tag->id;
+            }
 
-        if ($request->hasFile('photo')) {
+            $data['tag'] = $newTags;
+        }
+
+        $old_photo = $news->image;
+        $compressedImage = "";
+
+        if ($request->hasFile('image')) {
 
             if (file_exists(public_path($old_photo))) {
                 unlink(public_path($old_photo));
             }
 
-            $img = $this->compressImage($request->photo);
-            $new_photo = $this->upload(UploadDiskEnum::NEWS->value, $img);
-            $news->photo = $new_photo;
+            $new_photo = $this->upload(UploadDiskEnum::NEWS->value, $request->image);
+
+            $compressedImage = $this->compressImage(
+                basename($new_photo),
+                $request->file('image'),
+                'compressed_images',
+                ['quality' => 70]
+            );
+
+            $news->image = $compressedImage;
         }
 
         $domQuestion = new \DOMDocument();
         libxml_use_internal_errors(true);
-        $content = $data['content'] ?? '-';
+        $content = $data['description'] ?? '-';
         if (!$content) {
             $domQuestion->loadHTML($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NOIMPLIED);
             $this->processImages($domQuestion);
@@ -107,9 +201,12 @@ class NewsService
             'user_id' => auth()->user()->id,
             'name' => $data['name'],
             'slug' => Str::slug($data['name']),
-            'image' => $new_photo ? $new_photo : $old_photo,
+            'image' => $compressedImage ? $compressedImage : $old_photo,
             'description' => $data['description'],
-            'date' => $data['date']
+            'date' => $data['date'],
+            'category' => $data['category'],
+            'sub_category' => $data['sub_category'],
+            'tag' => $data['tag']
         ];
     }
 
@@ -153,26 +250,26 @@ class NewsService
      *
      * @return UploadedFile
      */
-    public function compressImage($file): UploadedFile
-    {
-        $imageInfo = getimagesize($file);
-        $imageType = $imageInfo[2];
+    // public function compressImage($file): UploadedFile
+    // {
+    //     $imageInfo = getimagesize($file);
+    //     $imageType = $imageInfo[2];
 
-        switch ($imageType) {
-            case IMAGETYPE_JPEG:
-                $sourceImage = imagecreatefromjpeg($file);
-                break;
-            case IMAGETYPE_PNG:
-                $sourceImage = imagecreatefrompng($file);
-                break;
-            default:
-                throw new Exception('Unsupported image type');
-        }
+    //     switch ($imageType) {
+    //         case IMAGETYPE_JPEG:
+    //             $sourceImage = imagecreatefromjpeg($file);
+    //             break;
+    //         case IMAGETYPE_PNG:
+    //             $sourceImage = imagecreatefrompng($file);
+    //             break;
+    //         default:
+    //             throw new Exception('Unsupported image type');
+    //     }
 
-        $compressedImagePath = tempnam(sys_get_temp_dir(), 'compressed_image') . '.webp';
-        imagewebp($sourceImage, $compressedImagePath, 80);
-        imagedestroy($sourceImage);
+    //     $compressedImagePath = tempnam(sys_get_temp_dir(), 'compressed_image') . '.webp';
+    //     imagewebp($sourceImage, $compressedImagePath, 80);
+    //     imagedestroy($sourceImage);
 
-        return new UploadedFile($compressedImagePath, basename($compressedImagePath), 'image/webp', null, true);
-    }
+    //     return new UploadedFile($compressedImagePath, basename($compressedImagePath), 'image/webp', null, true);
+    // }
 }

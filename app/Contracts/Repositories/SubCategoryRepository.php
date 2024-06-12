@@ -29,8 +29,20 @@ class SubCategoryRepository extends BaseRepository implements SubCategoryInterfa
     public function where($category): mixed
     {
         return $this->model->query()
-            ->where('category_id', $category)
+            ->when(is_array($category), function($query) use ($category){
+                $query->whereIn('category_id', $category);
+            })
+            ->when(!is_array($category), function($query) use ($category){
+                $query->where('category_id', $category);
+            })
             ->get();
+    }
+
+    public function showWithSLug(string $slug): mixed
+    {
+        return $this->model->query()
+            ->where('slug', $slug)
+            ->firstOrFail();
     }
 
     /**

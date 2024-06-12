@@ -56,4 +56,24 @@ class News extends Model
     {
         return $this->hasMany(NewsReport::class);
     }
+
+    /**
+     * Get all of the newsCategories for the News
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function newsCategories(): HasMany
+    {
+        return $this->hasMany(NewsCategory::class);
+    }
+
+    /**
+     * Get all of the newsSubCategories for the News
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function newsSubCategories(): HasMany
+    {
+        return $this->hasMany(NewsSubCategory::class);
+    }
 }
