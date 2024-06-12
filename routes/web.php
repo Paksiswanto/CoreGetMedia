@@ -6,6 +6,7 @@ use App\Http\Controllers\FaqController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HomeFaqController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\NewsSubCategoryController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\TagsController;
 use App\Http\Controllers\VoucherrController;
@@ -124,6 +125,8 @@ Route::get('news-premium', function () {
 
 
 // ----- USER -----
+Route::get('all-subcategory', [NewsSubCategoryController::class, 'all_subcategory'])->name('all-subcategory.user'); 
+
 Route::get('news/category', function () {
     return view('pages.user.category.index');
 })->name('news.category');
