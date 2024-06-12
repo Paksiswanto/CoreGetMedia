@@ -88,7 +88,7 @@
                         </a>
                     </div>
 
-                    @forelse ($news as $new)
+                    @forelse ($latests as $new)
                     <div class="news-card-five">
                         <div class="news-card-img">
                             <a href="#"><img src="{{ asset('storage/' . $new->image) }}" alt="Image" height="140" width="100%" /></a>
