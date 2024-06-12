@@ -38,7 +38,9 @@ class NewsCategoryController extends Controller
         
         $query = $request->input('search');
         $trendings = $this->news->whereCategory($category_id, $query, 10);
-        return view('pages.user.category.index', compact('categories', 'subCategories', 'category', 'trendings'));
+        $latests = $this->news->categoryLatest();
+        $CategoryPopulars = $this->category->showWithCount();
+        return view('pages.user.category.index', compact('categories', 'subCategories', 'category', 'trendings', 'latests', 'CategoryPopulars'));
     }
 
     /**

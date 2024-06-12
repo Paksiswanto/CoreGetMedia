@@ -101,7 +101,7 @@
 
 <div class="mb-5">
     <div class="d-flex justify-content-between mb-3 mt-3">
-        <h3>Trending</h3>
+        <h3>Terbaru</h3>
         <a href="{{ route('categories.show.user', ['category' => $category->slug]) }}">
             <p>Lihat lainnya
                 <i><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24">
@@ -111,20 +111,20 @@
         </a>
     </div>
 
-    @forelse ($trendings as $trending)
+    @forelse ($latests as $latest)
     <div class="news-card-five">
         <div class="news-card-img">
-            <a href="#"><img src="{{asset('assets/img/news/news-1.webp')}}" alt="Image" height="140" width="100%" /></a>
+            <a href="#"><img src="{{ asset('storage/' . $latest->image) }}" alt="Image" height="140" width="100%" /></a>
             <a data-toggle="tooltip" data-placement="top" title="Sports" href="#" class="news-cat">Sports</a>
         </div>
         <div class="news-card-info">
-            <h3><a data-toggle="tooltip" data-placement="top" title="Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange" href="{{ route('news.singlepost', ['news' => $trending->slug]) }}">{!! Illuminate\Support\Str::limit($trending->name, $limit = 45, $end = '...')  !!}
+            <h3><a data-toggle="tooltip" data-placement="top" title="Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange" href="{{ route('news.singlepost', ['news' => $latest->slug]) }}">{!! Illuminate\Support\Str::limit($latest->name, $limit = 45, $end = '...')  !!}
                 </a>
             </h3>
-            <p>{!! Illuminate\Support\Str::limit($trending->name, $limit = 110, $end = '...')  !!}</p>
+            <p>{!! Illuminate\Support\Str::limit($latest->name, $limit = 110, $end = '...')  !!}</p>
             <ul class="news-metainfo list-style">
-                <li><i class="fi fi-rr-calendar-minus"></i><a href="javascript:void(0)">{{ \Carbon\Carbon::parse($trending->created_at)->translatedFormat('d F Y') }}</a></li>
-                <li><i class="fi fi-rr-eye"></i><a href="javascript:void(0)">{{ $trending->views_count }}x dilihat</a></li>
+                <li><i class="fi fi-rr-calendar-minus"></i><a href="javascript:void(0)">{{ \Carbon\Carbon::parse($latest->created_at)->translatedFormat('d F Y') }}</a></li>
+                <li><i class="fi fi-rr-eye"></i><a href="javascript:void(0)">{{ $latest->views_count }}x dilihat</a></li>
             </ul>
         </div>
     </div>
@@ -247,21 +247,27 @@
             <div class="sidebar-widget">
                 <h3 class="sidebar-widget-title">Kategori Populer</h3>
                 <ul class="category-widget list-style">
-                    <li>
-                        <a data-toggle="tooltip" data-placement="top" title="Fashion" href="#"><img src="{{ asset('assets/img/icons/arrow-right.svg') }}" alt="Image">Fashion
-                            <span>( 10 )</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a data-toggle="tooltip" data-placement="top" title="Fashion" href="#"><img src="{{ asset('assets/img/icons/arrow-right.svg') }}" alt="Image">Fashion
-                            <span>( 10 )</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a data-toggle="tooltip" data-placement="top" title="Fashion" href="#"><img src="{{ asset('assets/img/icons/arrow-right.svg') }}" alt="Image">Fashion
-                            <span>( 10 )</span>
-                        </a>
-                    </li>
+                    @foreach ($CategoryPopulars as $category)
+                    <li><a data-toggle="tooltip" data-placement="top" title="{{ $category->name }}"
+                            href="{{ route('categories.show.user', ['category' => $category->slug]) }}"><img
+                                src="{{ asset('assets/img/icons/arrow-right.svg') }}"
+                                alt="Image">{{ $category->name }}
+                            <span>({{ $category->news_categories_count }})</span></a></li>
+                    @endforeach
+                    {{-- <li><a href="business.html"><img src="{{asset('assets/img/icons/arrow-right.svg')}}"
+                                alt="Image">Kategori <span>(6)</span></a></li>
+                    <li><a href="business.html"><img src="{{asset('assets/img/icons/arrow-right.svg')}}"
+                                alt="Image">Kategori<span>(3)</span></a></li>
+                    <li><a href="business.html"><img src="{{asset('assets/img/icons/arrow-right.svg')}}"
+                                alt="Image">Kategori<span>(2)</span></a></li>
+                    <li><a href="business.html"><img src="{{asset('assets/img/icons/arrow-right.svg')}}"
+                                alt="Image">Kategori<span>(8)</span></a></li>
+                    <li><a href="business.html"><img src="{{asset('assets/img/icons/arrow-right.svg')}}"
+                                alt="Image">Kategori<span>(6)</span></a></li>
+                    <li><a href="business.html"><img src="{{asset('assets/img/icons/arrow-right.svg')}}"
+                                alt="Image">Kategori<span>(2)</span></a></li>
+                    <li><a href="business.html"><img src="{{asset('assets/img/icons/arrow-right.svg')}}"
+                                alt="Image">Kategori<span>(4)</span></a></li> --}}
                 </ul>
             </div>
 
