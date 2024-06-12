@@ -53,7 +53,7 @@ class PopularRepository extends BaseRepository implements PopularInterface
     {
         return $this->model->query()
             ->where('status', NewsEnum::ACCEPTED->value)
-            ->withCount('views')
+            ->withCount('newsViews')
             ->get();
     }
 
@@ -61,7 +61,7 @@ class PopularRepository extends BaseRepository implements PopularInterface
     {
         return $this->model->query()
             ->where('status', NewsEnum::ACCEPTED->value)
-            ->withCount('views')
+            ->withCount('newsViews')
             ->latest()
             ->get();
     }
@@ -84,7 +84,7 @@ class PopularRepository extends BaseRepository implements PopularInterface
         ->with(['newsCategories' => function ($query) {
             $query->with('category');
         }])
-        ->withCount('views')
+        ->withCount('newsViews')
         ->orderByDesc('views_count')
         ->orderBy('created_at')
         ->take(4)

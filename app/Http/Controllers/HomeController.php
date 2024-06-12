@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\CategoryInterface;
 use App\Contracts\Interfaces\FaqInterface;
+use App\Contracts\Interfaces\NewsInterface;
 use App\Contracts\Interfaces\PopularInterface;
 use App\Contracts\Interfaces\SubCategoryInterface;
 use Illuminate\Http\Request;
@@ -11,28 +12,31 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     private FaqInterface $faqs;
+    private NewsInterface $news;
     private CategoryInterface $categories;
     private SubCategoryInterface $subCategories;
     private PopularInterface $populars;
 
-    public function __construct(FaqInterface $faqs, CategoryInterface $categories, SubCategoryInterface $subCategories, PopularInterface $populars)
+    public function __construct(NewsInterface $news, FaqInterface $faqs, CategoryInterface $categories, SubCategoryInterface $subCategories, PopularInterface $populars)
     {
         $this->faqs = $faqs;
         $this->categories = $categories;
         $this->subCategories = $subCategories;
         $this->populars = $populars;
+        $this->news = $news;
     }
 
     public function index(){
         $categories = $this->categories->get();
         $subCategories = $this->subCategories->get();
         $populars = $this->populars->getpopular();
-        return view('pages.index', compact('categories', 'subCategories', 'populars'));
+        $categoryPopulars = $this->populars->getbycategory();
+        return view('pages.index', compact('categories', 'subCategories', 'populars', 'categoryPopulars'));
     }
 
     public function navbar(Request $request){
         $categories = $this->categories->get();
-        $subCategories = $this->subcategories->get();
+        $subCategories = $this->subCategories->get();
 
         $news = $this->news->get();
         // $query = $request->input('search');
@@ -41,8 +45,8 @@ class HomeController extends Controller
     }
 
     public function mobileHeader(){
-        $categories = $this->category->get();
-        $subCategories = $this->subCategory->get();
+        $categories = $this->categories->get();
+        $subCategories = $this->subCategories->get();
         return view('layouts.user.mobile-navbar', compact('categories', 'subCategories'));
     }
 }
