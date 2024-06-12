@@ -33,62 +33,39 @@
 @endsection
 
 @section('content')
-    <div class="d-flex justify-content-center">
-        <img src="{{ asset('assets/img/faq-icon.png') }}"  alt="" class="" srcset="">
-    </div>
-    <div class="text-center">
-        <h3>
-            Pertanyaan yang sering diajukan
-        </h3>
-        <p>
-            Temukan pertanyaanmu
-        </p>
-    </div>
-    <div class="accordion" id="accordionExample">
-      <div class="container">
-        <div class="card m-5">
+  <div class="d-flex justify-content-center">
+      <img src="{{ asset('assets/img/faq-icon.png') }}"  alt="" class="" srcset="">
+  </div>
+  <div class="text-center">
+      <h3>
+          Pertanyaan yang sering diajukan
+      </h3>
+      <p>
+          Temukan pertanyaanmu
+      </p>
+  </div>
+  <div class="accordion" id="accordionExample">
+    <div class="container">
+      <div class="card m-5">
 
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="headingOne">
-                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-1" aria-expanded="true" aria-controls="collapseOne">
-                    Bagaimana cara mendaftar menjadi penulis
-                  </button>
-                </h2>
-                <div id="collapse-1" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                  <div class="accordion-body">
-                      klilk profil setelah itu klik button daftar menjadi penulis
-                  </div>
-                </div>
-            </div>
-          
+        @forelse ($faqs as $key => $faq)
           <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-2" aria-expanded="true" aria-controls="collapseOne">
-                Pertanyaan 1
+            <h2 class="accordion-header" id="heading{{ ++$key }}">
+              <button class="accordion-button {{ $key != 1 ? 'collapsed' : '' }}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ $key }}" aria-expanded="true" aria-controls="collapseOne">
+                {{ $faq->question }}
               </button>
             </h2>
-            <div id="collapse-2" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div id="collapse{{ $key }}" class="accordion-collapse collapse {{ $key == 1 ? 'show' : '' }}" aria-labelledby="heading{{ $key }}" data-bs-parent="#accordionExample">
               <div class="accordion-body">
-                  Jawaban 1
+                  {{ $faq->answer }}
               </div>
             </div>
           </div>
-
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-3" aria-expanded="true" aria-controls="collapseOne">
-                Pertanyaan 2
-              </button>
-            </h2>
-            <div id="collapse-3" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-              <div class="accordion-body">
-                  Jawaban 2
-              </div>
-            </div>
-          </div>
-          
-        </div>
+        @empty
+            
+        @endforelse
+        
       </div>
     </div>
-    
+  </div>
 @endsection

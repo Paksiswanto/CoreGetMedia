@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\HomeFaqController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\TagsController;
@@ -177,9 +178,7 @@ Route::get('profile-author', function(){
     return view('pages.author.profile');
 })->name('profile.author');
 
-Route::get('faq', function(){
-    return view('pages.user.faq.index');
-})->name('faq-list.user');
+Route::get('faq', [HomeFaqController::class, 'index'])->name('faq-list.user');
 
 Route::get('profile-user', function(){
     return view('pages.user.profile.index');
