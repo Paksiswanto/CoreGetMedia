@@ -83,7 +83,7 @@
                     </li>
                     @foreach ($categories as $category)
                     <li class="nav-item">
-                        <a  href="#" class="dropdown-toggle nav-link" style="{{ request()->routeIs('categories.show.user') && request()->route('category') == $category->slug || (request()->routeIs('subcategories.show.user') && request()->route('category') == $category->slug) ? 'color: #E93314;' : '' }}">{{ $category->name }}</a>
+                        <a href="{{ route('categories.show.user', ['category' => $category->slug]) }}" class="dropdown-toggle nav-link" style="{{ request()->routeIs('categories.show.user') && request()->route('category') == $category->slug || (request()->routeIs('subcategories.show.user') && request()->route('category') == $category->slug) ? 'color: #E93314;' : '' }}">{{ $category->name }}</a>
                         @if (count($subCategories->where('category_id', $category->id)) > 0)
                             <ul class="dropdown-menu">
                                 <div class="d-flex">
