@@ -76,7 +76,7 @@ class NewsCategoryController extends Controller
 
         $categories = $this->category->get();
         $subCategories = $this->subCategories->get();
-        $populars = $this->news->whereCategory($category_id);
+        $populars = $this->news->whereCategory($category_id, '');
         return view('pages.user.category.all-category', compact('categories', 'subCategories', 'category', 'populars'));
     }
 

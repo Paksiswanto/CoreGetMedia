@@ -228,35 +228,4 @@ class NewsService
             }
         }
     }
-
-
-    /**
-     * Method compressImage
-     *
-     * @param $file as string
-     *
-     * @return UploadedFile
-     */
-    // public function compressImage($file): UploadedFile
-    // {
-    //     $imageInfo = getimagesize($file);
-    //     $imageType = $imageInfo[2];
-
-    //     switch ($imageType) {
-    //         case IMAGETYPE_JPEG:
-    //             $sourceImage = imagecreatefromjpeg($file);
-    //             break;
-    //         case IMAGETYPE_PNG:
-    //             $sourceImage = imagecreatefrompng($file);
-    //             break;
-    //         default:
-    //             throw new Exception('Unsupported image type');
-    //     }
-
-    //     $compressedImagePath = tempnam(sys_get_temp_dir(), 'compressed_image') . '.webp';
-    //     imagewebp($sourceImage, $compressedImagePath, 80);
-    //     imagedestroy($sourceImage);
-
-    //     return new UploadedFile($compressedImagePath, basename($compressedImagePath), 'image/webp', null, true);
-    // }
 }

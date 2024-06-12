@@ -78,8 +78,8 @@
 
         <div class="d-flex gap-2">
             <div class="">
-                <button clbss="btn btn-danger btn-lg px-3 btn-reject" id="btn-reject">Tolak</button>
-            </div>
+                <button id="btn-reject-{{ $news->id }}" data-id="{{ $news->id }}" type="button" class="btn btn-danger btn-reject btn-lg px-3">Tolak</button>
+            </div> 
             <div class="">
                 <button id="btn-approved-{{ $news->id }}" data-id="{{ $news->id }}" type="button" class="btn btn-success btn-approved btn-lg px-3">Terima</button>
             </div>

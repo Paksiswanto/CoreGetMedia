@@ -108,7 +108,6 @@
                                                                     </svg>
                                                                 </button>
                                                             @endif
-    
                                                         </form>
     
                                                         <form id="form-liked" style="display: none;">

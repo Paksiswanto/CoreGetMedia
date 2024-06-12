@@ -59,6 +59,12 @@ class NewsController extends Controller
         return view('pages.admin.news.confirm-news', compact('news'));
     }
 
+    public function news_list()
+    {
+        $news = $this->news->where(NewsEnum::ACCEPTED->value);
+        return view('pages.admin.news.news-list', compact('news'));
+    }
+
     public function detail_news_admin($news)
     {
         $news = $this->news->showWithSLug($news);
@@ -91,8 +97,10 @@ class NewsController extends Controller
      */
     public function store(StoreNewsRequest $request)
     {
-        // dd($request);
         $data = $this->service->store($request);
+        if (auth()->user()->roles->pluck('name')[0] == "admin") {
+            $data['status'] = NewsEnum::ACCEPTED->value;
+        }
         $newsId = $this->news->store($data)->id;
         $this->service->storeRelation($newsId, $data['category'], $data['sub_category'], $data['tag']);
         return back()->with('success', 'Berhasil menambahkan data');

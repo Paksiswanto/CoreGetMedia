@@ -27,6 +27,7 @@ class News extends Model
 
     public $incrementing = false;
     public $keyType = 'char';
+
     /**
      * Get the user that owns the News
      *
@@ -35,6 +36,16 @@ class News extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Get all of the newsLikes for the News
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function newsLikes(): HasMany
+    {
+        return $this->hasMany(NewsLike::class);
     }
 
     /**

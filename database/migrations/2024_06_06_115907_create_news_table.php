@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignUuid('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->longText('description');
             $table->date('date');
+            $table->boolean('pin')->default('0');
             $table->enum('status', [NewsEnum::ACCEPTED->value, NewsEnum::REJECT->value, NewsEnum::PENDING->value])->default(NewsEnum::PENDING->value);
             $table->timestamps();
         });
