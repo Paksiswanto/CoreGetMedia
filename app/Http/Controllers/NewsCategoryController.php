@@ -34,7 +34,7 @@ class NewsCategoryController extends Controller
 
         $categories = $this->category->get();
         $subCategories = $this->subCategories->get();
-        return view('pages.user.category.index', compact('categories', 'subCategories'));
+        return view('pages.user.category.index', compact('categories', 'subCategories', 'category'));
     }
 
     /**
