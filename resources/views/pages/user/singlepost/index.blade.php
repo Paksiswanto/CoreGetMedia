@@ -477,8 +477,8 @@
                             @empty
                             @endforelse
                         </div>
-
-                        {{-- <div class="comment-item reply">
+                    </div>
+                        <div class="comment-item reply">
                             <div class="comment-author-img">
                                 <img src="{{ asset('assets/img/author/author-thumb-4.webp') }}" alt="Image">
                             </div>
@@ -492,6 +492,8 @@
                                             </div>
                                         </div>
                                         <div class="col-md-3 col-sm-3 col-3 text-md-end order-md-1 order-sm-1 order-1">
+                                            {{-- <a href="#cmt-form">Reply</a> --}}
+
                                             <a class="" href="javascript:void(0)" role="button"
                                                 id="dropdownMenuLink2" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
@@ -532,7 +534,65 @@
                                     </div>
                                 </div>
                             </div>
-                        </div> --}}
+                        </div>
+
+                        <div class="comment-item">
+                            <div class="comment-author-img">
+                                <img src="{{ asset('assets/img/author/author-thumb-4.webp') }}" alt="Image">
+                            </div>
+                            <div class="comment-author-wrap">
+                                <div class="comment-author-info">
+                                    <div class="row align-items-start">
+                                        <div class="col-md-9 col-sm-12 col-12 order-md-1 order-sm-1 order-1">
+                                            <div class="comment-author-name">
+                                                <h5>Michel Ohio</h5>
+                                                <span class="comment-date">2 minggu yang lalu</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-3 col-3 text-md-end order-md-1 order-sm-1 order-1">
+                                            {{-- <a href="#cmt-form">Reply</a> --}}
+
+                                            <a class="" href="javascript:void(0)" role="button"
+                                                id="dropdownMenuLink1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
+                                                    viewBox="0 0 24 24">
+                                                    <path fill="none" stroke="currentColor" stroke-linejoin="round"
+                                                        stroke-width="3"
+                                                        d="M12 12h.01v.01H12zm0-7h.01v.01H12zm0 14h.01v.01H12z" />
+                                                </svg>
+                                            </a>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
+                                                <li>
+                                                    <button class="btn btn-sm" data-bs-toggle="modal"
+                                                        data-bs-target="#edit-replay">
+                                                        Edit
+                                                    </button>
+                                                </li>
+                                                <li>
+                                                    <button class="btn btn-sm" data-bs-toggle="modal"
+                                                        data-bs-target="#report">
+                                                        Laporkan
+                                                    </button>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 col-12 order-md-3 order-sm-3 order-3">
+                                            <div class="comment-text">
+                                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+                                                    sed diam nonumy eirmod tempor invidunt ut labore et dolore
+                                                    magna aliquyam.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="col-md-12 col-sm-12 col-12 text-md-start order-md-3 order-sm-3 order-3">
+                                            <a href="#cmt-form" class="reply-btn">Balas</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -542,14 +602,26 @@
                             <h3 class="sidebar-widget-title">Kategori Populer</h3>
                             <ul class="category-widget list-style">
                                 @foreach ($CategoryPopulars as $category)
-                                    @if ($category->news_categories_count > 0)
-                                        <li><a data-toggle="tooltip" data-placement="top" title="{{ $category->name }}"
-                                                href="{{ route('categories.show.user', ['category' => $category->slug]) }}"><img
-                                                    src="{{ asset('assets/img/icons/arrow-right.svg') }}"
-                                                    alt="Image">{{ $category->name }}
-                                        <span>({{ $category->news_categories_count }})</span></a></li>
-                                    @endif
+                                    <li><a data-toggle="tooltip" data-placement="top" title="{{ $category->name }}"
+                                            href="{{ route('categories.show.user', ['category' => $category->slug]) }}"><img
+                                                src="{{ asset('assets/img/icons/arrow-right.svg') }}"
+                                                alt="Image">{{ $category->name }}
+                                            <span>({{ $category->news_categories_count }})</span></a></li>
                                 @endforeach
+                                {{-- <li><a href="business.html"><img src="{{asset('assets/img/icons/arrow-right.svg')}}"
+                                            alt="Image">Kategori <span>(6)</span></a></li>
+                                <li><a href="business.html"><img src="{{asset('assets/img/icons/arrow-right.svg')}}"
+                                            alt="Image">Kategori<span>(3)</span></a></li>
+                                <li><a href="business.html"><img src="{{asset('assets/img/icons/arrow-right.svg')}}"
+                                            alt="Image">Kategori<span>(2)</span></a></li>
+                                <li><a href="business.html"><img src="{{asset('assets/img/icons/arrow-right.svg')}}"
+                                            alt="Image">Kategori<span>(8)</span></a></li>
+                                <li><a href="business.html"><img src="{{asset('assets/img/icons/arrow-right.svg')}}"
+                                            alt="Image">Kategori<span>(6)</span></a></li>
+                                <li><a href="business.html"><img src="{{asset('assets/img/icons/arrow-right.svg')}}"
+                                            alt="Image">Kategori<span>(2)</span></a></li>
+                                <li><a href="business.html"><img src="{{asset('assets/img/icons/arrow-right.svg')}}"
+                                            alt="Image">Kategori<span>(4)</span></a></li> --}}
                             </ul>
                         </div>
                         <div class="sidebar-widget bg-transparent shadow-smer">

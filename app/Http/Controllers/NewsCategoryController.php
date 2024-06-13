@@ -88,7 +88,8 @@ class NewsCategoryController extends Controller
         $query = $request->input('search');
         $news = $this->news->whereCategory($category_id, $query);
         $popularCategory = $this->category->showWithCount();
-        return view('pages.user.category.all-category', compact('category', 'news','categories', 'subCategories', 'popularCategory'));
+        $popularTags = $this->tags->showWithCount();
+        return view('pages.user.category.all-category', compact('category', 'news','categories', 'subCategories', 'popularCategory','popularTags'));
     }
 
 

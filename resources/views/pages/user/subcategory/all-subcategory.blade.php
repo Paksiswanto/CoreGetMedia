@@ -52,9 +52,9 @@
                         @forelse ($news as $data)
                             <div class="news-card-five">
                                 <div class="news-card-img">
-                                    <a href="#"><img src="{{asset('storage/'. $data->image )}}" alt="Image" height="140" width="100%" /></a>
+                                    <a href="javascript:void(0)"><img src="{{asset('storage/'. $data->image )}}" alt="Image" height="140" width="100%" /></a>
                                     <a data-toggle="tooltip" data-placement="top" title="{{ $data->newsCategories[0]->category->name }}"
-                                        href="#" class="news-cat">{{ $data->newsCategories[0]->category->name }}</a>
+                                        href="{{ route('categories.show.user', ['category' => $data->slug]) }}" class="news-cat">{{ $data->newsCategories[0]->category->name }}</a>
                                 </div>
                                 <div class="news-card-info">
                                     <h3><a data-toggle="tooltip" data-placement="top" title="Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange"
