@@ -180,6 +180,10 @@ Route::get('profile-update', function () {
     return view('pages.user.profile.update');
 })->name('profile-update.user');
 
+Route::get('profile-author-registration', function () {
+    return view('pages.user.profile.author-registration');
+})->name('profile-author-registration.user');
+
 Route::get('coin', function () {
     return view('pages.user.coin.index');
 })->name('coin.user');
