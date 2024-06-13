@@ -28,6 +28,14 @@ class NewsLikeRepository extends BaseRepository implements NewsLikeInterface
             ->delete();
     }
 
+    public function where($user_id, $ip): mixed
+    {
+        return $this->model->query()
+            ->where('user_id', $user_id)
+            ->where('ip_address', $ip)
+            ->get();
+    }
+
     /**
      * Handle get the specified data by id from models.
      *
@@ -40,13 +48,6 @@ class NewsLikeRepository extends BaseRepository implements NewsLikeInterface
         //
     }
 
-    public function where($news): mixed
-    {
-        return $this->model->query()
-            ->where('news_id', $news)
-            ->get();
-    }
-
     /**
      * Handle the Get all data event from models.
      *
@@ -55,7 +56,8 @@ class NewsLikeRepository extends BaseRepository implements NewsLikeInterface
     public function get($news_id): mixed
     {
         return $this->model->query()
-            ->get();
+            ->where('news_id', $news_id)
+            ->count();
     }
 
     /**

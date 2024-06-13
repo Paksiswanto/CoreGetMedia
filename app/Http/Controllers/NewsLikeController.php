@@ -4,21 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\NewsLikeInterface;
 use App\Models\NewsLike;
-use App\Http\Requests\StoreNewsLikeRequest;
 use App\Http\Requests\UpdateNewsLikeRequest;
 use App\Models\News;
 use App\Services\NewsLikeService;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class NewsLikeController extends Controller
 {
-    private NewsLikeInterface $newsLikes;
+    private NewsLikeInterface $like;
     private NewsLikeService $service;
 
     public function __construct(NewsLikeInterface $like, NewsLikeService $service)
     {
-        $this->newsLikes = $like;
+        $this->like = $like;
         $this->service = $service;
     }
 
@@ -44,9 +44,16 @@ class NewsLikeController extends Controller
     public function store(Request $request, News $news)
     {
         $ipAddress = $request->ip();
-        $data =$this->service->store($news, $ipAddress);
-        $this->newsLikes->store($data);
-        return back()->with('success', 'Berhasil like berita');
+        $user_id = null;
+        if (Auth::check()) {
+            $user_id = auth()->user()->id;
+        }
+        $data['user_id'] = $user_id;
+
+        $data = $this->service->store($user_id, $news->id, $ipAddress);
+        $this->like->store($data);
+
+        return Response::success(null);
     }
 
     /**
@@ -83,7 +90,7 @@ class NewsLikeController extends Controller
         if (Auth::check()) {
             $user_id = auth()->user()->id;
         }
-        $this->newsLikes->delete($user_id, $ipAddress, $news->id);
-        return back()->with('success', 'Berhasil unlike berita');
+        $this->like->delete($user_id, $ipAddress, $news->id);
+        return response()->json();
     }
 }

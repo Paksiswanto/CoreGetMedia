@@ -16,17 +16,11 @@ class NewsLikeService
      *
      * @return array|bool
      */
-    public function store($news, $ip)
+    public function store($id, $news, $ip)
     {
-        $user_id = "";
-
-        if (Auth::check()) {
-            $user_id = auth()->user()->id;
-        }
-
         return [
+            'user_id' => $id,
             'news_id' => $news,
-            'user_id' => $user_id,
             'ip_address' => $ip
         ];
     }

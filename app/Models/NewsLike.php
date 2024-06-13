@@ -11,12 +11,12 @@ class NewsLike extends Model
     use HasFactory;
 
     protected $fillable = [
-        'news_id',
         'user_id',
+        'news_id',
         'ip_address'
     ];
 
-    protected $table = 'news';
+    protected $table = 'news_likes';
 
     /**
      * Get the user that owns the NewsLike
