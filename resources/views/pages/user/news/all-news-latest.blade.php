@@ -72,7 +72,7 @@
                                     </div>
                                     <div class="news-card-info">
 
-                                        <h3><a href="#">{{$news->name}}</a>
+                                        <h3><a href="{{ route('news.singlepost', $news->slug) }}">{{$news->name}}</a>
                                         </h3>
                                         <ul class="news-metainfo list-style">
                                             <li><i class="fi fi-rr-calendar-minus"></i><a href="javascript:void(0)">{{ \Carbon\Carbon::parse($news->date)->translatedFormat('d F Y') }}</a>
@@ -92,7 +92,7 @@
                             </div>
 
                         @empty
-                            
+
                         @endforelse
                         {{-- @empty
                     <div class="d-flex justify-content-center">

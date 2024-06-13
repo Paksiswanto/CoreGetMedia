@@ -87,4 +87,11 @@ class AuthorRepository extends BaseRepository implements AuthorInterface
             ->findOrFail($id)
             ->update($data);
     }
+
+    public function accepted()
+    {
+        return $this->model->query()
+        ->where('status', AuthorEnum::ACCEPTED->value)
+        ->get();
+    }
 }
