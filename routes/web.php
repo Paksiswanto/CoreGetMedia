@@ -180,6 +180,10 @@ Route::get('profile-update', function () {
     return view('pages.user.profile.update');
 })->name('profile-update.user');
 
+Route::get('profile-author-registration', function () {
+    return view('pages.user.profile.author-registration');
+})->name('profile-author-registration.user');
+
 Route::get('coin', function () {
     return view('pages.user.coin.index');
 })->name('coin.user');
@@ -220,6 +224,8 @@ Route::get('inbox-user', function () {
 
 Route::get('jksaj', [NewsCategoryController::class, 'showAll'])->name('allcategory.user');
 // Route::get('{category}', [NewsController::class, 'showCategories'])->name('categories.show.user');
+
+Route::get('news/latest-news', [NewsController::class, 'latestNews'])->name('latest.news');
 
 require_once __DIR__ . '/jovita.php';
 require_once __DIR__ . '/ardi.php';

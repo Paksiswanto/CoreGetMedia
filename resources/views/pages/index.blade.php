@@ -247,7 +247,7 @@
                 <div class="mb-4 col-3" style="border: 1px solid #E93314; width 200px"></div>
             </div>
             <div class="col-md-5 text-md-end">
-                <a href="#" class="link-one">Lihat Semua<i
+                <a href="{{ route('latest.news') }}" class="link-one">Lihat Semua<i
                         class="flaticon-right-arrow"></i></a>
             </div>
         </div>
@@ -508,7 +508,7 @@
                                     </div>
                                 </div>
                             @empty
-                                
+
                             @endforelse
                         </div>
                     </div>
@@ -569,7 +569,7 @@
     <button type="button" id="backtotop" class="position-fixed text-center border-0 p-0">
         <i class="ri-arrow-up-line"></i>
     </button>
-{{-- 
+{{--
     <div class="modal fade" id="newsletter-popup" tabindex="-1" aria-labelledby="newsletter-popup" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl">
             <div class="modal-content">
