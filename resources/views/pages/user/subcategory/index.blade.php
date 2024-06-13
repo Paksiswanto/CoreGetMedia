@@ -55,7 +55,6 @@
                                     <div class="news-card-img">
                                         <a href="#"> <img src="{{asset('storage/'. $item->image)}}" alt="Image" width="100%" style="object-fit: cover" height="450" /></a>
                                     </div>
-
                                     <div class="news-card-info">
                                         <h3><a data-toggle="tooltip" data-placement="top" title="Apex Legends Season 11 Start Date, Time, & What To Expect"
                                                 href="{{ route('news.singlepost', ['news' => $item->slug]) }}">{!! Illuminate\Support\Str::limit(strip_tags($item->name), 300, '...') !!}
@@ -66,7 +65,6 @@
                                             <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">{{ $item->news_views_count ? $item->news_views_count : '0' }}x dilihat</a></li>
                                         </ul>
                                     </div>
-                                </div>
                             </div>
                         @endif
                     @empty

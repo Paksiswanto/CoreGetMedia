@@ -136,13 +136,13 @@
                     @if (++$key == 1)
                         <div class="news-card-two">
                             <div class="news-card-img">
-                                <img src="{{ asset('storage/'. $categoryPopular->image) }}" alt="Image" />
+                                <img src="{{ asset('storage/'. $categoryPopular->image) }}" class="w-100" style="height: 250px; object-fit: cover;" alt="Image" />
                                 <a href="{{ route('categories.show.user', $categoryPopular->newsCategories[0]->category->slug) }}" class="news-cat">{{ $categoryPopular->newsCategories[0]->category->name }}</a>
                             </div>
                             <div class="news-card-info">
                                 <h3><a href="{{ route('news.singlepost', ['news' => $categoryPopular->slug]) }}">{{ $categoryPopular->name }}</a></h3>
                                 <ul class="news-metainfo list-style">
-                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="javascript:void(0)">{{ $categoryPopular->date }}</a></li>
+                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="javascript:void(0)">{{ \Carbon\Carbon::parse($categoryPopular->date )->locale('id_ID')->isoFormat('D MMMM Y') }}</a></li>
                                     <li><i class="fi fi-rr-eye"></i>{{ $categoryPopular->news_views_count }}x dilihat</li>
                                 </ul>
                             </div>
@@ -150,13 +150,13 @@
                     @else
                         <div class="news-card-three">
                             <div class="news-card-img">
-                                <img src="{{ asset('storage/'. $categoryPopular->image) }}" alt="Image" />
+                                <img src="{{ asset('storage/'. $categoryPopular->image) }}" class="w-100" style="height: 120px; object-fit: cover;" alt="Image" />
                             </div>
                             <div class="news-card-info">
                                 <a href="{{ route('categories.show.user', $categoryPopular->newsCategories[0]->category->slug) }}" class="news-cat">{{ $categoryPopular->newsCategories[0]->category->name }}</a>
                                 <h3><a href="{{ route('news.singlepost', ['news' => $categoryPopular->slug]) }}">{{ $categoryPopular->name }}</a></h3>
                                 <ul class="news-metainfo list-style">
-                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="javascript:void(0)">{{ $categoryPopular->date }}</a></li>
+                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="javascript:void(0)">{{ \Carbon\Carbon::parse($categoryPopular->date )->locale('id_ID')->isoFormat('D MMMM Y') }}</a></li>
                                     <li><i class="fi fi-rr-eye"></i>{{ $categoryPopular->news_views_count }}x dilihat</li>
                                 </ul>
                             </div>
@@ -170,11 +170,11 @@
                 @forelse ($newsPins->take(3) as $key => $newsPin)
                 @if (++$key == 1)
                     <div class="news-card-four">
-                        <img src="{{ asset('storage/'. $newsPin->image) }}" alt="Image" />
+                        <img src="{{ asset('storage/'. $newsPin->image) }}" class="w-100" style="height: 600px; object-fit: cover;" alt="Image" />
                         <div class="news-card-info">
                             <h3><a href="{{ route('news.singlepost', ['news' => $newsPin->slug]) }}">{{ $newsPin->name }}</a></h3>
                             <ul class="news-metainfo">
-                                <li><i class="fi fi-rr-calendar-minus"></i><a href="javascript:void(0)">{{ $newsPin->date }}</a></li>
+                                <li><i class="fi fi-rr-calendar-minus"></i><a href="javascript:void(0)">{{ \Carbon\Carbon::parse($newsPin->date )->locale('id_ID')->isoFormat('D MMMM Y') }}</a></li>
                                 <li><i class="fi fi-rr-eye"></i>{{ $newsPin->news_views_count }}x dilihat</li>
                             </ul>
                         </div>
@@ -182,14 +182,14 @@
                 @else
                     <div class="news-card-five">
                         <div class="news-card-img">
-                            <img src="{{ asset('storage/'. $newsPin->image) }}" alt="Image" />
+                            <img src="{{ asset('storage/'. $newsPin->image) }}" class="w-100" style="height: 200px; object-fit: cover;" alt="Image" />
                             <a href="{{ route('categories.show.user', $newsPin->newsCategories[0]->category->slug) }}" class="news-cat">{{ $newsPin->newsCategories[0]->category->name }}</a>
                         </div>
                         <div class="news-card-info">
                             <h3><a href="{{ route('news.singlepost', ['news' => $newsPin->slug]) }}">{{ Illuminate\Support\Str::limit($newsPin->name, $limit = 60, $end = '...') }}</a></h3>
                             <p>{!! Illuminate\Support\Str::limit($newsPin->description, $limit = 60, $end = '...') !!}</p>
                             <ul class="news-metainfo">
-                                <li><i class="fi fi-rr-calendar-minus"></i><a href="javascript:void(0)">{{ $newsPin->date }}</a></li>
+                                <li><i class="fi fi-rr-calendar-minus"></i><a href="javascript:void(0)">{{ \Carbon\Carbon::parse($newsPin->date )->locale('id_ID')->isoFormat('D MMMM Y') }}</a></li>
                                 <li><i class="fi fi-rr-eye"></i>{{ $newsPin->news_views_count }} x dilihat</li>
                             </ul>
                         </div>
@@ -204,13 +204,13 @@
                 @if (++$key == 1)
                     <div class="news-card-two">
                         <div class="news-card-img">
-                            <img src="{{ asset('storage/'. $category2Popular->image) }}" alt="Image" />
+                            <img src="{{ asset('storage/'. $category2Popular->image) }}" class="w-100" style="height: 250px; object-fit: cover;" alt="Image" />
                             <a href="{{ route('categories.show.user', $category2Popular->newsCategories[0]->category->slug) }}" class="news-cat">{{ $category2Popular->newsCategories[0]->category->name }}</a>
                         </div>
                         <div class="news-card-info">
                             <h3><a href="{{ route('news.singlepost', ['news' => $category2Popular->slug]) }}">{{ $category2Popular->name }}</a></h3>
                             <ul class="news-metainfo list-style">
-                                <li><i class="fi fi-rr-calendar-minus"></i><a href="javascript:void(0)">{{ $category2Popular->date }}</a></li>
+                                <li><i class="fi fi-rr-calendar-minus"></i><a href="javascript:void(0)">{{ \Carbon\Carbon::parse($category2Popular->date )->locale('id_ID')->isoFormat('D MMMM Y') }}</a></li>
                                 <li><i class="fi fi-rr-eye"></i>{{ $category2Popular->news_views_count }}x dilihat</li>
                             </ul>
                         </div>
@@ -218,13 +218,13 @@
                 @else
                     <div class="news-card-three">
                         <div class="news-card-img">
-                            <img src="{{ asset('storage/'. $category2Popular->image) }}" alt="Image" />
+                            <img src="{{ asset('storage/'. $category2Popular->image) }}" class="w-100" style="height: 120px; object-fit: cover;" alt="Image" />
                         </div>
                         <div class="news-card-info">
                             <a href="{{ route('categories.show.user', $category2Popular->newsCategories[0]->category->slug) }}" class="news-cat">{{ $category2Popular->newsCategories[0]->category->name }}</a>
                             <h3><a href="{{ route('news.singlepost', ['news' => $category2Popular->slug]) }}">{{ $category2Popular->name }}</a></h3>
                             <ul class="news-metainfo list-style">
-                                <li><i class="fi fi-rr-calendar-minus"></i><a href="javascript:void(0)">{{ $category2Popular->date }}</a></li>
+                                <li><i class="fi fi-rr-calendar-minus"></i><a href="javascript:void(0)">{{ \Carbon\Carbon::parse($category2Popular->date )->locale('id_ID')->isoFormat('D MMMM Y') }}</a></li>
                                 <li><i class="fi fi-rr-eye"></i>{{ $category2Popular->news_views_count }}x dilihat</li>
                             </ul>
                         </div>
@@ -251,12 +251,9 @@
                     @forelse ($latests as $latest)
                         <div class="news-card-five pb-3">
                             <div class="news-card-img">
-                                <img src="{{ asset('storage/' . $latest->image) }}" alt="{{ $latest->image }}" />
+                                <img src="{{ asset('storage/' . $latest->image) }}" class="w-100" style="height: 150px; object-fit: cover;" alt="{{ $latest->image }}" />
                                 <a href="{{ route('categories.show.user', $latest->newsCategories[0]->category->slug) }}"
                                     class="news-cat">{{ $latest->newsCategories[0]->category->name }}</a>
-                                {{-- @foreach ($latest->newsCategories() as $item)
-                                    <a href="{{route('news.category')}}" class="news-cat">hfgdg</a>
-                                @endforeach --}}
                             </div>
                             <div class="news-card-info">
                                 <h3><a
@@ -301,7 +298,7 @@
                             @forelse ($populars->take(15) as $key => $popular)
                                 @if ($key == 11)
                                     <div class="news-card-four">
-                                        <img src="{{ asset('storage/'. $popular->image) }}" alt="Image" />
+                                        <img src="{{ asset('storage/'. $popular->image) }}" class="w-100" style="height: 500px; object-fit: cover;" alt="Image" />
                                         <div class="news-card-info">
                                             <h3><a
                                                     href="{{ route('news.singlepost', $popular->slug) }}">{{ Str::limit($popular->name, 50, '...') }}</a>
@@ -318,7 +315,7 @@
                                 @elseif ($key >= 13)
                                     <div class="news-card-five">
                                         <div class="news-card-img">
-                                            <img src="{{ asset('storage/' . $popular->image) }}" alt="Image" />
+                                            <img src="{{ asset('storage/' . $popular->image) }}" class="w-100" style="height: 150px; object-fit: cover;" alt="Image" />
                                             <a href="{{ route('categories.show.user', $popular->newsCategories[0]->category->slug) }}"
                                                 class="news-cat">{{ $popular->newsCategories[0]->category->name }}</a>
                                         </div>
@@ -342,11 +339,11 @@
                             @endforelse
                         </div>
                         <div class="col-xl-5">
-                            @forelse ($populars->take(17) as $key => $popular)
+                            @forelse ($populars->take(18) as $key => $popular)
                             @if ($key == 12)
                                 <div class="news-card-two">
                                     <div class="news-card-img">
-                                        <img src="{{ asset('storage/' . $popular->image) }}" alt="Image" />
+                                        <img src="{{ asset('storage/' . $popular->image) }}" class="w-100" style="height: 300px; object-fit: cover;" alt="Image" />
                                         <a href="{{ route('categories.show.user', $popular->newsCategories[0]->category->slug) }}"
                                             class="news-cat">{{ $popular->newsCategories[0]->category->name }}</a>
                                     </div>
@@ -362,10 +359,10 @@
                                         </ul>
                                     </div>
                                 </div>
-                            @elseif ($key >= 14)
+                            @elseif ($key >= 15)
                                 <div class="news-card-three">
                                     <div class="news-card-img">
-                                        <img src="{{ asset('storage/' . $popular->image) }}" alt="Image" />
+                                        <img src="{{ asset('storage/' . $popular->image) }}" class="w-100" style="height: 100px; object-fit: cover;" alt="Image" />
                                     </div>
                                     <div class="news-card-info">
                                         <a href="{{ route('categories.show.user', $popular->newsCategories[0]->category->slug) }}"
@@ -477,7 +474,7 @@
                                             <div class="col-md-4">
                                                 <div class="news-card-six">
                                                     <div class="news-card-img">
-                                                        <img src="{{ asset('storage/'. $newsPin->image) }}" alt="Image" />
+                                                        <img src="{{ asset('storage/'. $newsPin->image) }}" class="w-100" style="height: 240px; object-fit: cover;" alt="Image" />
                                                         <a href="{{ route('categories.show.user', $newsPin->newsCategories[0]->category->slug) }}" class="news-cat">{{ $newsPin->newsCategories[0]->category->name }}</a>
                                                     </div>
                                                     <div class="news-card-info">
