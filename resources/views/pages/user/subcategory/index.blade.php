@@ -54,7 +54,7 @@
                                 <div class="news-card-img">
                                     <a href="#"> <img src="{{asset('storage/'. $item->image)}}" alt="Image" width="100%" style="object-fit: cover" height="450" /></a>
                                 </div>
-        
+
                                 <div class="news-card-info">
                                     <h3><a data-toggle="tooltip" data-placement="top" title="Apex Legends Season 11 Start Date, Time, & What To Expect"
                                             href="#">{{ $item->name }}
@@ -124,7 +124,7 @@
                                                 <span>( {{ $item->news_categories_count }} )</span>
                                             </a>
                                         </li>
-                                    @empty    
+                                    @empty
                                     @endforelse
                                 </ul>
                             </div>
@@ -133,66 +133,28 @@
                                 <h3 class="sidebar-widget-title">
                                     Berita Popular
                                 </h3>
+
+                                @forelse ($newsPopulars as $trending)
                                 <div class="news-card-three">
                                     <div class="news-card-img" style="height: 100px; width: 100px">
-                                        <img src="{{asset('assets/img/news/news-3.webp')}}" alt="Image" />
+                                        <img src="{{ asset('storage/' . $trending->image) }}" alt="Image" />
                                     </div>
                                     <div class="news-card-info">
-                                        <h3><a href="business-details.html">Man Wearing Black Pullover Hoodie To</a></h3>
+                                        <h3><a href="business-details.html">{{$trending->name}}</a></h3>
                                         <ul class="news-metainfo list-style d-flex">
                                             <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html" style="font-size: 15px;">15 Apr 2023</a></li>
                                             <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus" style="font-size: 15px;">10</a></li>
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="news-card-three">
-                                    <div class="news-card-img" style="height: 100px; width: 100px">
-                                        <img src="{{asset('assets/img/news/news-3.webp')}}" alt="Image" />
-                                    </div>
-                                    <div class="news-card-info">
-                                        <h3><a href="business-details.html">Man Wearing Black Pullover Hoodie To</a></h3>
-                                        <ul class="news-metainfo list-style d-flex">
-                                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html" style="font-size: 15px;">15 Apr 2023</a></li>
-                                            <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus" style="font-size: 15px;">10</a></li>
-                                        </ul>
+                                @empty
+                                <div class="d-flex justify-content-center">
+                                    <div class="my-auto ">
+                                        <img src="{{ asset('assets/img/no-data.svg') }}" width="200" />
+                                        <h4 class="text-center">Tidak ada data!!</h4>
                                     </div>
                                 </div>
-                                <div class="news-card-three">
-                                    <div class="news-card-img" style="height: 100px; width: 100px">
-                                        <img src="{{asset('assets/img/news/news-3.webp')}}" alt="Image" />
-                                    </div>
-                                    <div class="news-card-info">
-                                        <h3><a href="business-details.html">Man Wearing Black Pullover Hoodie To</a></h3>
-                                        <ul class="news-metainfo list-style d-flex">
-                                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html" style="font-size: 15px;">15 Apr 2023</a></li>
-                                            <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus" style="font-size: 15px;">10</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="news-card-three">
-                                    <div class="news-card-img" style="height: 100px; width: 100px">
-                                        <img src="{{asset('assets/img/news/news-3.webp')}}" alt="Image" />
-                                    </div>
-                                    <div class="news-card-info">
-                                        <h3><a href="business-details.html">Man Wearing Black Pullover Hoodie To</a></h3>
-                                        <ul class="news-metainfo list-style d-flex">
-                                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html" style="font-size: 15px;">15 Apr 2023</a></li>
-                                            <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus" style="font-size: 15px;">10</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="news-card-three">
-                                    <div class="news-card-img" style="height: 100px; width: 100px">
-                                        <img src="{{asset('assets/img/news/news-3.webp')}}" alt="Image" />
-                                    </div>
-                                    <div class="news-card-info">
-                                        <h3><a href="business-details.html">Man Wearing Black Pullover Hoodie To</a></h3>
-                                        <ul class="news-metainfo list-style d-flex">
-                                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html" style="font-size: 15px;">15 Apr 2023</a></li>
-                                            <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus" style="font-size: 15px;">10</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                @endforelse
                             </div>
 
                             <div class="sidebar-widget bg-transparent shadow-sm">

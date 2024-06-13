@@ -35,7 +35,7 @@ class NewsCategoryController extends Controller
 
         $categories = $this->category->get();
         $subCategories = $this->subCategories->get();
-        
+
         $query = $request->input('search');
         $trendings = $this->news->whereCategory($category_id, $query, 10);
         $newsTop = $this->news->whereCategory($category_id, 'top');
@@ -69,25 +69,14 @@ class NewsCategoryController extends Controller
         //
     }
 
-    
+
     /**
      * Display the specified resource.
      */
     public function showAll()
     {
-        // $category = $this->category->showWithSLug($slug);
-        // $category_id = $category->id;
-
-        // $categories = $this->category->get();
-        // $subCategories = $this->subCategories->get();
-        // // $populars = $this->news->whereCategory($category_id);
-        // $popularCategory = $this->category->showWithCount();
-        // return view('pages.user.category.all-category', compact('categories', 'subCategories', 'category', 'popularCategory'));
-
         $categories = $this->category->get();
         $subCategories = $this->subCategories->get();
-        // $populars = $this->news->whereCategory($category_id, '');
-        $news = $this->news->whereCategory();
         $popularCategory = $this->category->showWithCount();
         return view('pages.user.category.all-category', compact('news','categories', 'subCategories', 'popularCategory'));
     }

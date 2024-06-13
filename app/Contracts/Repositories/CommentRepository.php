@@ -2,14 +2,14 @@
 
 namespace App\Contracts\Repositories;
 
-use App\Contracts\Interfaces\NewsLikeInterface;
-use App\Models\NewsLike;
+use App\Contracts\Interfaces\CommentInterface;
+use App\Models\Comment;
 
-class NewsLikeRepository extends BaseRepository implements NewsLikeInterface
+class CommentRepository extends BaseRepository implements CommentInterface
 {
-    public function __construct(NewsLike $newsLike)
+    public function __construct(Comment $comment)
     {
-        $this->model = $newsLike;
+        $this->model = $comment;
     }
 
     /**
@@ -19,13 +19,11 @@ class NewsLikeRepository extends BaseRepository implements NewsLikeInterface
      *
      * @return mixed
      */
-    public function delete($user_id, $ip, $news): mixed
+    public function delete(mixed $id): mixed
     {
         return $this->model->query()
-            ->where('user_id', $user_id)
-            ->where('ip_address', $ip)
-            ->where('news_id', $news)
-            ->delete();
+        ->findOrFail($id)
+        ->delete();
     }
 
     /**
@@ -38,13 +36,6 @@ class NewsLikeRepository extends BaseRepository implements NewsLikeInterface
     public function show(mixed $id): mixed
     {
         //
-    }
-
-    public function where($news): mixed
-    {
-        return $this->model->query()
-            ->where('news_id', $news)
-            ->get();
     }
 
     /**

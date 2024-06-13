@@ -131,34 +131,40 @@
     <div class="container-fluid pb-75">
         <div class="news-col-wrap">
             <div class="news-col-one">
-                <div class="news-card-two">
-                    <div class="news-card-img">
-                        <img src="assets/img/news/news-1.webp" alt="Image" />
-                        <a href="{{ route('news.category') }}" class="news-cat">Politics</a>
-                    </div>
-                    <div class="news-card-info">
-                        <h3><a href="{{ route('singlepost.news') }}">What The Federal Infrastructure Package Means For
-                                Minnesota</a></h3>
-                        <ul class="news-metainfo list-style">
-                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 25, 2023</a></li>
-                            <li><i class="fi fi-rr-eye"></i>10x dilihat</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="news-card-three">
-                    <div class="news-card-img">
-                        <img src="{{ asset('assets/img/news/news-3.webp') }}" alt="Image" />
-                    </div>
-                    <div class="news-card-info">
-                        <a href="{{ route('news.category') }}" class="news-cat">Fashion</a>
-                        <h3><a href="{{ route('singlepost.news') }}">How To Recreate The High Pony-tail That Celebrities
-                                Love</a></h3>
-                        <ul class="news-metainfo list-style">
-                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 15, 2023</a></li>
-                            <li><i class="fi fi-rr-eye"></i>11x dilihat</li>
-                        </ul>
-                    </div>
-                </div>
+                @forelse ($categoryPopulars as $key => $categoryPopular)
+                    @if (++$key == 1)
+                        <div class="news-card-two">
+                            <div class="news-card-img">
+                                <img src="{{ asset('storage/'. ) }}" alt="Image" />
+                                <a href="{{ route('news.category') }}" class="news-cat">Politics</a>
+                            </div>
+                            <div class="news-card-info">
+                                <h3><a href="{{ route('singlepost.news') }}">What The Federal Infrastructure Package Means For
+                                        Minnesota</a></h3>
+                                <ul class="news-metainfo list-style">
+                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 25, 2023</a></li>
+                                    <li><i class="fi fi-rr-eye"></i>10x dilihat</li>
+                                </ul>
+                            </div>
+                        </div>
+                    @else
+                        <div class="news-card-three">
+                            <div class="news-card-img">
+                                <img src="{{ asset('assets/img/news/news-3.webp') }}" alt="Image" />
+                            </div>
+                            <div class="news-card-info">
+                                <a href="{{ route('news.category') }}" class="news-cat">Fashion</a>
+                                <h3><a href="{{ route('singlepost.news') }}">How To Recreate The High Pony-tail That Celebrities
+                                        Love</a></h3>
+                                <ul class="news-metainfo list-style">
+                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 15, 2023</a></li>
+                                    <li><i class="fi fi-rr-eye"></i>11x dilihat</li>
+                                </ul>
+                            </div>
+                        </div>
+                    @endif
+                @empty
+                @endforelse
                 <div class="news-card-three">
                     <div class="news-card-img">
                         <img src="{{ asset('assets/img/news/news-4.webp') }}" alt="Image" />
@@ -187,6 +193,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="news-col-two">
                 <div class="news-card-four">
                     <img src="assets/img/news/news-58.webp" alt="Image" />
@@ -416,7 +423,7 @@
                                 </div>
                             @endif
                             @empty
-                                
+
                             @endforelse
                         </div>
                     </div>
@@ -475,7 +482,7 @@
                             {{-- @forelse ($tags as $tag)
                                 <li><a href="{{route('list-tag.user')}}">{{ $tag->name }}</a></li>
                             @empty
-                                
+
                             @endforelse --}}
                         </ul>
                     </div>

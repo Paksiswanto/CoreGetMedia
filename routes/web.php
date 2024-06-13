@@ -125,7 +125,7 @@ Route::get('news-premium', function () {
 
 
 // ----- USER -----
-Route::get('all-subcategory', [NewsSubCategoryController::class, 'all_subcategory'])->name('all-subcategory.user'); 
+Route::get('all-subcategory', [NewsSubCategoryController::class, 'all_subcategory'])->name('all-subcategory.user');
 
 Route::get('news/category', function () {
     return view('pages.user.category.index');
@@ -210,6 +210,7 @@ Route::get('list-tag', function () {
 Route::get('all-category', function () {
     return view('pages.user.category.all-category');
 })->name('all-category.user');
+
 // Route::get('all-category', function(){
 //     return view('pages.user.category.all-category');
 // })->name('all-category.user');

@@ -3,10 +3,11 @@
 namespace App\Services;
 
 use App\Http\Requests\StoreCategoryRequest;
+use App\Http\Requests\StoreCommentRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
-class NewsLikeService
+class CommentService
 {
 
     /**
@@ -16,18 +17,20 @@ class NewsLikeService
      *
      * @return array|bool
      */
-    public function store($news, $ip)
+    public function store(StoreCommentRequest $request, $news_id, $ipAddress)
     {
-        $user_id = "";
+        $data = $request->validated();
 
+        $user_id = "";
         if (Auth::check()) {
             $user_id = auth()->user()->id;
         }
 
         return [
-            'news_id' => $news,
+            'news_id' => $news_id,
             'user_id' => $user_id,
-            'ip_address' => $ip
+            'ip_address' => $ipAddress,
+            'description' => $data['description'],
         ];
     }
 }
