@@ -12,4 +12,12 @@ Route::get('{category}', [NewsCategoryController::class, 'index'])->name('catego
 
 Route::get('news/{news}', [NewsController::class, 'show'])->name('news.singlepost');
 
-Route::get('allcategory', [NewsCategoryController::class, 'showAll'])->name('allcategory.user');
+Route::get('detail-author', function(){
+    return view('pages.user.author.detail-author');
+})->name('detail-author.user');
+
+// Route::get('allcategory', [NewsCategoryController::class, 'showAll'])->name('allcategory.user');
+
+// Route::get('jksaj', [NewsCategoryController::class, 'showAll'])->name('allcategory.user');
+
+// Route::get('allcategory', [NewsCategoryController::class, 'showAll'])->name('allcategory.user');

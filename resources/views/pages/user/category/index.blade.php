@@ -250,7 +250,7 @@
                         <img src="{{ asset('storage/' . $trending->image) }}" alt="Image" />
                     </div>
                     <div class="news-card-info">
-                        <h3><a href="business-details.html">{{$trending->name}}</a></h3>
+                        <h3><a href="{{ route('news.singlepost', ['news' => $trending->slug]) }}">{{$trending->name}}</a></h3>
                         <ul class="news-metainfo list-style d-flex">
                             <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html" style="font-size: 15px;">15 Apr 2023</a></li>
                             <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus" style="font-size: 15px;">10</a></li>
@@ -271,18 +271,13 @@
             <div class="sidebar-widget bg-transparent shadow-sm">
                 <h3 class="sidebar-widget-title">Tag Populer</h3>
                 <ul class="tag-list list-style">
-                    <li><a href="{{route('list-tag.user')}}">BUSINESS</a></li>
-                    <li><a href="{{route('list-tag.user')}}">FOOD</a></li>
-                    <li><a href="{{route('list-tag.user')}}">SCIENCE</a></li>
-                    <li><a href="{{route('list-tag.user')}}">LIFESTYLE</a></li>
-                    <li><a href="{{route('list-tag.user')}}">SPORTS</a></li>
-                    <li><a href="{{route('list-tag.user')}}">PHOTO</a></li>
-                    <li><a href="{{route('list-tag.user')}}">TECHNOLOGY</a></li>
-                    <li><a href="{{route('list-tag.user')}}">CONTENT</a></li>
-                    <li><a href="{{route('list-tag.user')}}">FEATURED</a></li>
-                    <li><a href="{{route('list-tag.user')}}">AUDIO</a></li>
-                    <li><a href="{{route('list-tag.user')}}">FASHION</a></li>
+                    @forelse ($popularTags as $popularTag)
+                        <li><a href="{{route('list-tag.user')}}">{{ $popularTag->name }}</a></li>
+                    @empty
+                        
+                    @endforelse
                 </ul>
+               
             </div>
         </div>
     </div>
