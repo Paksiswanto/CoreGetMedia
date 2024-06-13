@@ -94,6 +94,10 @@
             @endphp
             <p>{{ $today }}</p>
         </div>
+
+        @php
+            $displayedPopulars = $populars->take(10)->where('news_views_count', '>', 0)->pluck('id');
+        @endphp
         {{-- <p>Senin, 10 Juni 2024</p> --}}
         <div class="trending-news-box">
             <div class="row gx-5">
@@ -106,20 +110,22 @@
                     <div class="trending-news-slider swiper">
                         <div class="swiper-wrapper">
                             @forelse ($populars->take(10) as $popular)
-                                <div class="swiper-slide news-card-one">
-                                    <div class="news-card-img">
-                                        <img src="{{ asset('storage/' . $popular->image) }}" alt="Image" style="object-fit: cover;"/>
+                                @if ($popular->news_views_count > 0)
+                                    <div class="swiper-slide news-card-one">
+                                        <div class="news-card-img">
+                                            <img src="{{ asset('storage/' . $popular->image) }}" alt="Image" style="object-fit: cover;"/>
+                                        </div>
+                                        <div class="news-card-info">
+                                            <h3><a
+                                                    href="{{ route('news.singlepost', ['news' => $popular->slug]) }}">{{ Str::limit($popular->name, 50, '...') }}</a>
+                                            </h3>
+                                            <ul class="news-metainfo list-style">
+                                                <li><i class="fi fi-rr-eye"></i>{{ $popular->news_views_count }}x dilihat
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
-                                    <div class="news-card-info">
-                                        <h3><a
-                                                href="{{ route('news.singlepost', ['news' => $popular->slug]) }}">{{ Str::limit($popular->name, 50, '...') }}</a>
-                                        </h3>
-                                        <ul class="news-metainfo list-style">
-                                            <li><i class="fi fi-rr-eye"></i>{{ $popular->newsViews()->count() }}x dilihat
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                @endif
                             @empty
                             @endforelse
                         </div>
@@ -129,10 +135,26 @@
         </div>
     </div>
 
+
+    @php
+        $filteredPin = $newsPins->take(3);
+        $pin_id = $filteredPin->pluck('id');
+        $excludedId = $displayedPopulars->merge($pin_id);
+
+        $filteredCategoryPopulars = $categoryPopulars->take(5)->whereNotIn('id', $excludedId);
+    @endphp
+    
+    @php
+        $pin_id = $filteredPin->pluck('id');
+        $includeid = $displayedPopulars->merge($pin_id);
+        $popular_down = $populars->take(15)->whereNotIn('id', $includeid);
+        $popular_down_id = $popular_down->pluck('id');
+    @endphp
+
     <div class="container-fluid pb-75">
         <div class="news-col-wrap">
             <div class="news-col-one">
-                @forelse ($categoryPopulars->take(5) as $key => $categoryPopular)
+                @forelse ($filteredCategoryPopulars as $key => $categoryPopular)
                     @if (++$key == 1)
                         <div class="news-card-two">
                             <div class="news-card-img">
@@ -199,8 +221,18 @@
                 @endforelse
             </div>
 
+            @php
+                $categoryRight_id = $filteredCategoryPopulars->pluck('id');
+                $pin_id = $filteredPin->pluck('id');
+
+                $includeid = $displayedPopulars->merge($categoryRight_id);
+                $excludedIds = $includeid->merge($pin_id);
+
+                $filteredCategory2Populars = $category2Populars->take(5)->whereNotIn('id', $excludedIds);
+            @endphp
+
             <div class="news-col-three">
-            @forelse ($category2Populars->take(5) as $key => $category2Popular)
+            @forelse ($filteredCategory2Populars as $key => $category2Popular)
                 @if (++$key == 1)
                     <div class="news-card-two">
                         <div class="news-card-img">
@@ -254,7 +286,20 @@
         <div class="row gx-45">
             <div class="col-xl-9">
                 <div class="news-col-wrap">
-                    @forelse ($latests as $latest)
+                    
+                    @php
+                        $categoryRight_id = $filteredCategoryPopulars->pluck('id');
+                        $pin_id = $filteredPin->pluck('id');
+                        $categoryLeft_id = $filteredCategory2Populars->pluck('id');
+        
+                        $includeid = $displayedPopulars->merge($categoryRight_id);
+                        $excludedIds = $includeid->merge($pin_id);
+                        $latestid = $excludedIds->merge($categoryLeft_id);
+        
+                        $latests_news = $latests->whereNotIn('id', $latestid);
+                    @endphp
+
+                    @forelse ($latests_news as $latest)
                         <div class="news-card-five pb-3">
                             <div class="news-card-img">
                                 <img src="{{ asset('storage/' . $latest->image) }}" class="w-100" style="height: 150px; object-fit: cover;" alt="{{ $latest->image }}" />
@@ -299,9 +344,10 @@
                                     class="flaticon-right-arrow"></i></a>
                         </div>
                     </div>
+                    
                     <div class="row gx-45">
                         <div class="col-xl-7">
-                            @forelse ($populars->take(15) as $key => $popular)
+                            @forelse ($popular_down as $key => $popular)
                                 @if ($key == 11)
                                     <div class="news-card-four">
                                         <img src="{{ asset('storage/'. $popular->image) }}" class="w-100" style="height: 500px; object-fit: cover;" alt="Image" />
@@ -508,7 +554,7 @@
                                     </div>
                                 </div>
                             @empty
-                                
+
                             @endforelse
                         </div>
                     </div>
@@ -569,7 +615,7 @@
     <button type="button" id="backtotop" class="position-fixed text-center border-0 p-0">
         <i class="ri-arrow-up-line"></i>
     </button>
-{{-- 
+{{--
     <div class="modal fade" id="newsletter-popup" tabindex="-1" aria-labelledby="newsletter-popup" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl">
             <div class="modal-content">

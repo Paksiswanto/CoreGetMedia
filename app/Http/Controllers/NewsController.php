@@ -110,7 +110,7 @@ class NewsController extends Controller
         $news_id = $news->id;
         $newsCategory = $this->newscategories->where($news_id);
         $newsSubcategory = $this->newssubcategories->where($news_id);
-        $newsTags = $this->newstags->where($news_id);
+        $newsTags = $this->newstags->where($news_id, 'notop');
         return view('pages.admin.news.detail-news', compact('news', 'newsCategory', 'newsSubcategory', 'newsTags'));
     }
 
