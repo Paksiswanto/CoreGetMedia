@@ -45,7 +45,7 @@
         </div>
         <div class="author-info">
             <div class="d-flex">
-                <h4 class="me-3">Name</h4>
+                <h4 class="me-3">{{ $author->user->name }}</h4>
                 {{-- @auth
                     @if (auth()->user()->id != $author->user_id)
                         @php
@@ -83,15 +83,15 @@
             @else
                 Tidak ada deskripsi.
             @endif --}}
-            Deskripsi
+           {{ $author->description }}
           </p>
           <div class="author-profile d-flex justify-content-end">
 
             <div class="author-stat">
                {{-- <span>{{$newsCount}} Berita</span>
               <span>{{ $followers }} Pengikut</span> --}}
-              <span>1 Berita</span>
-              <span>2 Pengikut</span>
+              <span>{{ $author->user->newses()->count() }} Berita</span>
+              <span>{{ $author->followers()->count() }} Pengikut</span>
 
 
             </div>
