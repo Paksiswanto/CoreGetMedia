@@ -295,7 +295,7 @@
                             <h2 class="section-title">Artikel Paling Populer</h2>
                         </div>
                         <div class="col-md-5 text-md-end">
-                            <a href="#" class="link-one">Lihat Semua<i
+                            <a href="{{ route('popular.news') }}" class="link-one">Lihat Semua<i
                                     class="flaticon-right-arrow"></i></a>
                         </div>
                     </div>

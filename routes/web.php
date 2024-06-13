@@ -219,9 +219,11 @@ Route::get('inbox-user', function () {
 })->name('inbox-user.user');
 
 Route::get('jksaj', [NewsCategoryController::class, 'showAll'])->name('allcategory.user');
-// Route::get('{category}', [NewsController::class, 'showCategories'])->name('categories.show.user');
+// Route::get('{category}', [NewsController::class, 'showCategories'])->name('categories.show.user'
 
 Route::get('author', [AuthorController::class, 'landing'])->name('user.list.author');
+Route::get('news/latest-news', [NewsController::class, 'latestNews'])->name('latest.news');
+Route::get('news/popular-news', [NewsController::class, 'popularNews'])->name('popular.news');
 require_once __DIR__ . '/jovita.php';
 require_once __DIR__ . '/ardi.php';
 require_once __DIR__ . '/farah.php';
