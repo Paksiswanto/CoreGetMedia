@@ -339,7 +339,7 @@
                             @endforelse
                         </div>
                         <div class="col-xl-5">
-                            @forelse ($populars->take(17) as $key => $popular)
+                            @forelse ($populars->take(18) as $key => $popular)
                             @if ($key == 12)
                                 <div class="news-card-two">
                                     <div class="news-card-img">
@@ -359,7 +359,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                            @elseif ($key >= 14)
+                            @elseif ($key >= 15)
                                 <div class="news-card-three">
                                     <div class="news-card-img">
                                         <img src="{{ asset('storage/' . $popular->image) }}" class="w-100" style="height: 100px; object-fit: cover;" alt="Image" />
