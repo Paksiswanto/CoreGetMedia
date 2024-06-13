@@ -18,4 +18,7 @@ interface NewsInterface extends GetInterface, StoreInterface, UpdateInterface, S
     public function news_pin() : mixed;
     public function news_pin_categories() : mixed;
     public function news_by_category($category) : mixed;
+    public function latest() : mixed;
+    public function allPin() : mixed;
+
 }

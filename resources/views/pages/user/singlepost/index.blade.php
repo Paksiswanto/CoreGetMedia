@@ -538,7 +538,7 @@
         <i class="ri-arrow-up-line"></i>
     </button> --}}
 
-    <div class="modal fade" id="newsletter-popup" tabindex="-1" aria-labelledby="newsletter-popup" aria-hidden="true">
+    {{-- <div class="modal fade" id="newsletter-popup" tabindex="-1" aria-labelledby="newsletter-popup" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl">
             <div class="modal-content">
                 <button type="button" class="btn_close" data-bs-dismiss="modal" aria-label="Close">
@@ -563,7 +563,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <div class="modal fade" id="quickview-modal" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="quickview-modal" aria-hidden="true">

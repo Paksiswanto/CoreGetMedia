@@ -121,6 +121,13 @@ class NewsRepository extends BaseRepository implements NewsInterface
         ->get();
     }
 
+    public function latest() : mixed
+    {
+        return $this->model->query()
+        ->latest()
+        ->get();
+    }
+
 
     /**
      * Handle store data event to models.
@@ -187,4 +194,14 @@ class NewsRepository extends BaseRepository implements NewsInterface
             ->select('news.*')
             ->get();
     }
+
+    public function allPin() : mixed
+    {
+        return $this->model->query()
+            ->where('news.status', NewsEnum::ACCEPTED->value)
+            ->where('news.pin', '1')
+            ->latest()
+            ->get();
+    }
+    
 }

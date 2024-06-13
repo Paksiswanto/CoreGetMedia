@@ -279,7 +279,7 @@
                 <div class="mb-4 col-3" style="border: 1px solid #E93314; width 200px"></div>
             </div>
             <div class="col-md-5 text-md-end">
-                <a href="#" class="link-one">Lihat Semua<i
+                <a href="{{ route('latest.news') }}" class="link-one">Lihat Semua<i
                         class="flaticon-right-arrow"></i></a>
             </div>
         </div>
@@ -340,7 +340,7 @@
                             <h2 class="section-title">Artikel Paling Populer</h2>
                         </div>
                         <div class="col-md-5 text-md-end">
-                            <a href="#" class="link-one">Lihat Semua<i
+                            <a href="{{ route('popular.news') }}" class="link-one">Lihat Semua<i
                                     class="flaticon-right-arrow"></i></a>
                         </div>
                     </div>
@@ -561,7 +561,7 @@
                 </div>
             </div>
             <div class="">
-                <a href="{{ route('news.category') }}" class="btn-three d-block w-100 mt-20">Lihat Lainnya<i
+                <a href="{{ route('all-pinned-list.user') }}" class="btn-three d-block w-100 mt-20">Lihat Lainnya<i
                         class="flaticon-arrow-right "></i></a>
 
             </div>
