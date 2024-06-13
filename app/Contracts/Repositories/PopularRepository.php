@@ -64,7 +64,7 @@ class PopularRepository extends BaseRepository implements PopularInterface
         return $this->model->query()
             ->where('status', NewsEnum::ACCEPTED->value)
             ->withCount('newsViews')
-            ->latest()
+            ->latest()->take(5)
             ->get();
     }
 
