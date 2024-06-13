@@ -298,8 +298,8 @@
                     </div>
                     <div class="row gx-45">
                         <div class="col-xl-7">
-                            @forelse ($populars->skip(10)->take(3) as $key => $popular)
-                                @if ($key == 0)
+                            @forelse ($populars->take(15) as $key => $popular)
+                                @if ($key == 11)
                                     <div class="news-card-four">
                                         <img src="{{ asset('storage/'. $popular->image) }}" alt="Image" />
                                         <div class="news-card-info">
@@ -315,7 +315,7 @@
                                             </ul>
                                         </div>
                                     </div>
-                                @elseif ($key == 2 || $key == 3)
+                                @elseif ($key >= 13)
                                     <div class="news-card-five">
                                         <div class="news-card-img">
                                             <img src="{{ asset('storage/' . $popular->image) }}" alt="Image" />
@@ -342,8 +342,8 @@
                             @endforelse
                         </div>
                         <div class="col-xl-5">
-                            @forelse ($populars->skip(10)->take(4) as $key => $popular)
-                            @if ($key == 1)
+                            @forelse ($populars->take(17) as $key => $popular)
+                            @if ($key == 12)
                                 <div class="news-card-two">
                                     <div class="news-card-img">
                                         <img src="{{ asset('storage/' . $popular->image) }}" alt="Image" />
@@ -362,7 +362,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                            @elseif ($key > 3)
+                            @elseif ($key >= 14)
                                 <div class="news-card-three">
                                     <div class="news-card-img">
                                         <img src="{{ asset('storage/' . $popular->image) }}" alt="Image" />
