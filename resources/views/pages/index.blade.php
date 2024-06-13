@@ -178,41 +178,24 @@
                             </ul>
                         </div>
                     </div>
+                @else
+                    <div class="news-card-five">
+                        <div class="news-card-img">
+                            <img src="{{ asset('storage/'. $newsPin->image) }}" alt="Image" />
+                            <a href="{{ route('news.category') }}" class="news-cat">{{ $newsPin->newsCategories[0]->category->name }}</a>
+                        </div>
+                        <div class="news-card-info">
+                            <h3><a href="{{ route('singlepost.news') }}">{{ Illuminate\Support\Str::limit($newsPin->name, $limit = 60, $end = '...') }}</a></h3>
+                            <p>{!! Illuminate\Support\Str::limit($newsPin->description, $limit = 60, $end = '...') !!}</p>
+                            <ul class="news-metainfo list-style">
+                                <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">{{ $newsPin->date }}</a></li>
+                                <li><i class="fi fi-rr-eye"></i>{{ $newsPin->news_views_count }} x dilihat</li>
+                            </ul>
+                        </div>
+                    </div>
                 @endif
                 @empty
                 @endforelse
-                <div class="news-card-five">
-                    <div class="news-card-img">
-                        <img src="assets/img/news/news-59.webp" alt="Image" />
-                        <a href="{{ route('news.category') }}" class="news-cat">Fashion</a>
-                    </div>
-                    <div class="news-card-info">
-                        <h3><a href="{{ route('singlepost.news') }}">Man Wearing Black Pullover Hoodie To Smoke Light
-                                In</a></h3>
-                        <p>Lorem ipsum or lipsum as it is sometmes known is dum text used in laying print, graphic or web
-                            desi…</p>
-                        <ul class="news-metainfo list-style">
-                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 08, 2023</a></li>
-                            <li><i class="fi fi-rr-eye"></i>10x dilihat</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="news-card-five">
-                    <div class="news-card-img">
-                        <img src="assets/img/news/news-60.webp" alt="Image" />
-                        <a href="{{ route('news.category') }}" class="news-cat">Travel</a>
-                    </div>
-                    <div class="news-card-info">
-                        <h3><a href="{{ route('singlepost.news') }}">Selective Focus Photography Of Orange Fox Life</a>
-                        </h3>
-                        <p>Lorem ipsum or lipsum as it is sometmes known is dum text used in laying print, graphic or web
-                            desi…</p>
-                        <ul class="news-metainfo list-style">
-                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 03, 2023</a></li>
-                            <li><i class="fi fi-rr-eye"></i>11x dilihat</li>
-                        </ul>
-                    </div>
-                </div>
             </div>
 
             <div class="news-col-three">
