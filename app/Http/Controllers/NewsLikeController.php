@@ -8,15 +8,18 @@ use App\Http\Requests\StoreNewsLikeRequest;
 use App\Http\Requests\UpdateNewsLikeRequest;
 use App\Models\News;
 use App\Services\NewsLikeService;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class NewsLikeController extends Controller
 {
-    private NewsLikeInterface $newsLike;
+    private NewsLikeInterface $newsLikes;
     private NewsLikeService $service;
 
-    public function __construct(NewsLikeInterface $newsLike)
+    public function __construct(NewsLikeInterface $like, NewsLikeService $service)
     {
-        $this->newsLike = $newsLike;
+        $this->newsLikes = $like;
+        $this->service = $service;
     }
 
     /**
@@ -38,9 +41,12 @@ class NewsLikeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(News $news)
+    public function store(Request $request, News $news)
     {
-        //
+        $ipAddress = $request->ip();
+        $data =$this->service->store($news, $ipAddress);
+        $this->newsLikes->store($data);
+        return back()->with('success', 'Berhasil like berita');
     }
 
     /**
@@ -70,8 +76,14 @@ class NewsLikeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(NewsLike $newsLike)
+    public function destroy(Request $request, NewsLike $newsLike, News $news)
     {
-        //
+        $ipAddress = $request->ip();
+        $user_id = "";
+        if (Auth::check()) {
+            $user_id = auth()->user()->id;
+        }
+        $this->newsLikes->delete($user_id, $ipAddress, $news->id);
+        return back()->with('success', 'Berhasil unlike berita');
     }
 }

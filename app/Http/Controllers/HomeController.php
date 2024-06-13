@@ -37,8 +37,9 @@ class HomeController extends Controller
         $category_id_2 = $this->categories->category_id_2();
         $categoryPopulars = $this->populars->getbycategory($category_id_1);
         $category2Populars = $this->populars->getbycategory($category_id_2);
-        
-        return view('pages.index', compact('populars', 'categoryPopulars' ,'latests', 'category2Populars', 'tags'));
+        $newsPins = $this->news->news_pin();
+
+        return view('pages.index', compact('populars', 'categoryPopulars' ,'latests', 'category2Populars', 'tags', 'newsPins'));
     }
 
     public function navbar(Request $request){

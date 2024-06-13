@@ -131,105 +131,71 @@
     <div class="container-fluid pb-75">
         <div class="news-col-wrap">
             <div class="news-col-one">
-                <div class="news-card-two">
-                    <div class="news-card-img">
-                        <img src="assets/img/news/news-1.webp" alt="Image" />
-                        <a href="{{ route('news.category') }}" class="news-cat">Politics</a>
-                    </div>
-                    <div class="news-card-info">
-                        <h3><a href="{{ route('singlepost.news') }}">What The Federal Infrastructure Package Means For
-                                Minnesota</a></h3>
-                        <ul class="news-metainfo list-style">
-                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 25, 2023</a></li>
-                            <li><i class="fi fi-rr-eye"></i>10x dilihat</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="news-card-three">
-                    <div class="news-card-img">
-                        <img src="{{ asset('assets/img/news/news-3.webp') }}" alt="Image" />
-                    </div>
-                    <div class="news-card-info">
-                        <a href="{{ route('news.category') }}" class="news-cat">Fashion</a>
-                        <h3><a href="{{ route('singlepost.news') }}">How To Recreate The High Pony-tail That Celebrities
-                                Love</a></h3>
-                        <ul class="news-metainfo list-style">
-                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 15, 2023</a></li>
-                            <li><i class="fi fi-rr-eye"></i>11x dilihat</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="news-card-three">
-                    <div class="news-card-img">
-                        <img src="{{ asset('assets/img/news/news-4.webp') }}" alt="Image" />
-                    </div>
-                    <div class="news-card-info">
-                        <a href="{{ route('news.category') }}" class="news-cat">Fashion</a>
-                        <h3><a href="{{ route('singlepost.news') }}">Tempores Imperdiet Rhoncus Ipsam Lobortis Kolats.</a>
-                        </h3>
-                        <ul class="news-metainfo list-style">
-                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 14, 2023</a></li>
-                            <li><i class="fi fi-rr-eye"></i>10x dilihat</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="news-card-three">
-                    <div class="news-card-img">
-                        <img src="{{ asset('assets/img/news/news-5.webp') }}" alt="Image" />
-                    </div>
-                    <div class="news-card-info">
-                        <a href="{{ route('news.category') }}" class="news-cat">Fashion</a>
-                        <h3><a href="{{ route('singlepost.news') }}">Beauty Queens Need Beauty Material & Products</a></h3>
-                        <ul class="news-metainfo list-style">
-                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 10, 2023</a></li>
-                            <li><i class="fi fi-rr-eye"></i>8x dilihat</li>
-                        </ul>
-                    </div>
-                </div>
+                @forelse ($categoryPopulars as $key => $categoryPopular)
+                    @if (++$key == 1)
+                        <div class="news-card-two">
+                            <div class="news-card-img">
+                                <img src="{{ asset('storage/'. $categoryPopular->image) }}" alt="Image" />
+                                <a href="{{ route('news.category') }}" class="news-cat">{{ $categoryPopular->newsCategories[0]->category->name }}</a>
+                            </div>
+                            <div class="news-card-info">
+                                <h3><a href="{{ route('singlepost.news') }}">{{ $categoryPopular->name }}</a></h3>
+                                <ul class="news-metainfo list-style">
+                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">{{ $categoryPopular->date }}</a></li>
+                                    <li><i class="fi fi-rr-eye"></i>{{ $categoryPopular->news_views_count }}x dilihat</li>
+                                </ul>
+                            </div>
+                        </div>
+                    @else
+                        <div class="news-card-three">
+                            <div class="news-card-img">
+                                <img src="{{ asset('storage/'. $categoryPopular->image) }}" alt="Image" />
+                            </div>
+                            <div class="news-card-info">
+                                <a href="{{ route('news.category') }}" class="news-cat">{{ $categoryPopular->newsCategories[0]->category->name }}</a>
+                                <h3><a href="{{ route('singlepost.news') }}">{{ $categoryPopular->name }}</a></h3>
+                                <ul class="news-metainfo list-style">
+                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">{{ $categoryPopular->date }}</a></li>
+                                    <li><i class="fi fi-rr-eye"></i>{{ $categoryPopular->news_views_count }}x dilihat</li>
+                                </ul>
+                            </div>
+                        </div>
+                    @endif
+                @empty
+                @endforelse
             </div>
+
             <div class="news-col-two">
-                <div class="news-card-four">
-                    <img src="assets/img/news/news-58.webp" alt="Image" />
-                    <div class="news-card-info">
-                        <h3><a href="{{ route('singlepost.news') }}">Best VR Headsets For PC And Gaming This Year</a></h3>
-                        <ul class="news-metainfo list-style">
-                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 08, 2023</a></li>
-                            <li><i class="fi fi-rr-eye"></i>14x dilihat</li>
-                        </ul>
+                @forelse ($newsPins as $key => $newsPin)
+                @if (++$key == 1)
+                    <div class="news-card-four">
+                        <img src="{{ asset('storage/'. $newsPin->image) }}" alt="Image" />
+                        <div class="news-card-info">
+                            <h3><a href="{{ route('singlepost.news') }}">{{ $newsPin->name }}</a></h3>
+                            <ul class="news-metainfo list-style">
+                                <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">{{ $newsPin->date }}</a></li>
+                                <li><i class="fi fi-rr-eye"></i>{{ $newsPin->news_views_count }}x dilihat</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <div class="news-card-five">
-                    <div class="news-card-img">
-                        <img src="assets/img/news/news-59.webp" alt="Image" />
-                        <a href="{{ route('news.category') }}" class="news-cat">Fashion</a>
+                @else
+                    <div class="news-card-five">
+                        <div class="news-card-img">
+                            <img src="{{ asset('storage/'. $newsPin->image) }}" alt="Image" />
+                            <a href="{{ route('news.category') }}" class="news-cat">{{ $newsPin->newsCategories[0]->category->name }}</a>
+                        </div>
+                        <div class="news-card-info">
+                            <h3><a href="{{ route('singlepost.news') }}">{{ Illuminate\Support\Str::limit($newsPin->name, $limit = 60, $end = '...') }}</a></h3>
+                            <p>{!! Illuminate\Support\Str::limit($newsPin->description, $limit = 60, $end = '...') !!}</p>
+                            <ul class="news-metainfo list-style">
+                                <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">{{ $newsPin->date }}</a></li>
+                                <li><i class="fi fi-rr-eye"></i>{{ $newsPin->news_views_count }} x dilihat</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="news-card-info">
-                        <h3><a href="{{ route('singlepost.news') }}">Man Wearing Black Pullover Hoodie To Smoke Light
-                                In</a></h3>
-                        <p>Lorem ipsum or lipsum as it is sometmes known is dum text used in laying print, graphic or web
-                            desi…</p>
-                        <ul class="news-metainfo list-style">
-                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 08, 2023</a></li>
-                            <li><i class="fi fi-rr-eye"></i>10x dilihat</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="news-card-five">
-                    <div class="news-card-img">
-                        <img src="assets/img/news/news-60.webp" alt="Image" />
-                        <a href="{{ route('news.category') }}" class="news-cat">Travel</a>
-                    </div>
-                    <div class="news-card-info">
-                        <h3><a href="{{ route('singlepost.news') }}">Selective Focus Photography Of Orange Fox Life</a>
-                        </h3>
-                        <p>Lorem ipsum or lipsum as it is sometmes known is dum text used in laying print, graphic or web
-                            desi…</p>
-                        <ul class="news-metainfo list-style">
-                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 03, 2023</a></li>
-                            <li><i class="fi fi-rr-eye"></i>11x dilihat</li>
-                        </ul>
-                    </div>
-                </div>
+                @endif
+                @empty
+                @endforelse
             </div>
 
             <div class="news-col-three">
@@ -416,7 +382,7 @@
                                 </div>
                             @endif
                             @empty
-                                
+
                             @endforelse
                         </div>
                     </div>
@@ -475,15 +441,12 @@
                             @forelse ($tags as $tag)
                                 <li><a href="{{route('list-tag.user')}}">{{ $tag->name }}</a></li>
                             @empty
-                                
                             @endforelse
                         </ul>
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
 
     <div class="bg_gray editor-news pt-100 pb-75">

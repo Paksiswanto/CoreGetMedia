@@ -126,7 +126,7 @@ Route::get('news-premium', function () {
 
 
 // ----- USER -----
-Route::get('all-subcategory', [NewsSubCategoryController::class, 'all_subcategory'])->name('all-subcategory.user'); 
+Route::get('all-subcategory', [NewsSubCategoryController::class, 'all_subcategory'])->name('all-subcategory.user');
 
 Route::get('news/category', function () {
     return view('pages.user.category.index');
@@ -207,7 +207,6 @@ Route::get('privacy-policy', function () {
 Route::get('list-tag', function () {
     return view('pages.user.tag.index');
 })->name('list-tag.user');
-
 
 
 // AUTHOR

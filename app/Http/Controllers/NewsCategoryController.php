@@ -38,7 +38,7 @@ class NewsCategoryController extends Controller
 
         $categories = $this->category->get();
         $subCategories = $this->subCategories->get();
-        
+
         $query = $request->input('search');
         $trendings = $this->news->whereCategory($category_id, $query, 10);
         $newsTop = $this->news->whereCategory($category_id, 'top');
@@ -73,7 +73,7 @@ class NewsCategoryController extends Controller
         //
     }
 
-    
+
     /**
      * Display the specified resource.
      */
