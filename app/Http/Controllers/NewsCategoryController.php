@@ -73,7 +73,7 @@ class NewsCategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function showAll()
+    public function showAll($slug)
     {
         $categories = $this->category->get();
         $subCategories = $this->subCategories->get();

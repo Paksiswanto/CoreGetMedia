@@ -131,9 +131,11 @@ class NewsController extends Controller
         $news = $this->news->showWithSlug($slug);
         $news_id = $news->id;
         $data = $this->viewService->store($news_id, $ipAddress);
+        $tags = $this->newstags->where($news_id);
         
         $CategoryPopulars = $this->categories->showWithCount();
-        return view('pages.user.singlepost.index', compact('news', 'CategoryPopulars'));   
+        $popularTags = $this->tags->showWithCount();
+        return view('pages.user.singlepost.index', compact('news', 'CategoryPopulars', 'tags', 'popularTags'));   
     }
 
     /**

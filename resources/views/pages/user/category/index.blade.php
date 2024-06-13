@@ -79,7 +79,7 @@
                 <div class="mb-5">
                     <div class="d-flex justify-content-between mb-3 mt-3">
                         <h3>Terbaru</h3>
-                        <a href="{{ route('allcategory.user') }}">
+                        <a href="{{ route('allcategory.user')}}">
                             <p>Lihat lainnya
                                 <i><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24">
                                         <path fill="currentColor" d="m13.292 12l-4.6-4.6l.708-.708L14.708 12L9.4 17.308l-.708-.708z" />
