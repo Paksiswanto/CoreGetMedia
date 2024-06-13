@@ -240,4 +240,13 @@ class NewsController extends Controller
     //     $trending = $this->news->newsCategorySearch($category->id, $query, 'trending', '5');
     //     return view('pages.user.news.category', compact('trending','new_news','popular','news', 'totalCategories','subCategories','categories','category', 'subCategory', 'newsCategories'));
     // }
+
+    public function latestNews(){
+        $news = $this->news->latest();
+        $CategoryPopulars = $this->categories->showWithCount();
+        $popularTags = $this->tags->showWithCount();
+        $subCategories = $this->subcategories->get();
+
+        return view('pages.user.news.all-news-latest', compact('news', 'CategoryPopulars', 'popularTags', 'subCategories'));
+    }
 }
