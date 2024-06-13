@@ -36,10 +36,10 @@
 @section('content')
     <div class="col-lg-12">
         <div class="breadcrumb-wrap">
-            <h2 class="breadcrumb-title">All SubCategory</h2>
+            <h2 class="breadcrumb-title">{{ $subCategory->name }} - Terbaru</h2>
             <ul class="breadcrumb-menu list-style">
-                <li><a href="/">Home</a></li>
-                <li>Sub Category</li>
+                <li><a href="/">Beranda</a></li>
+                <li>{{ $subCategory->name }}</li>
             </ul>
         </div>
     </div>
@@ -52,19 +52,19 @@
                         @forelse ($news as $data)
                             <div class="news-card-five">
                                 <div class="news-card-img">
-                                    <a href="#"><img src="{{asset('storage/'. $data->news->image )}}" alt="Image" height="140" width="100%" /></a>
-                                    <a data-toggle="tooltip" data-placement="top" title="Sports"
-                                        href="#" class="news-cat">Sports</a>
+                                    <a href="#"><img src="{{asset('storage/'. $data->image )}}" alt="Image" height="140" width="100%" /></a>
+                                    <a data-toggle="tooltip" data-placement="top" title="{{ $data->newsCategories[0]->category->name }}"
+                                        href="#" class="news-cat">{{ $data->newsCategories[0]->category->name }}</a>
                                 </div>
                                 <div class="news-card-info">
                                     <h3><a data-toggle="tooltip" data-placement="top" title="Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange"
-                                            href="#"{{ $data->news->name }}
+                                            href="{{ route('news.singlepost', ['news' => $data->slug]) }}">{!! Illuminate\Support\Str::limit(strip_tags($data->name), 200, '...') !!}
                                         </a>
                                     </h3>
-                                    <p>{{ $data->news->description }}</p>
+                                    <p>{!! Illuminate\Support\Str::limit(strip_tags($data->description), 200, '...') !!}</p>
                                     <ul class="news-metainfo list-style">
-                                        <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">{{ $data->news->date }}</a></li>
-                                        <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">{{ $data->news->newsViews->count() }}</a></li>
+                                        <li><i class="fi fi-rr-calendar-minus"></i><a href="javascript:void(0)">{{ $data->date }}</a></li>
+                                        <li><i class="fi fi-rr-eye"></i><a href="javascript:void(0)">{{ $data->newsViews_count ? $data->newsViews_count : '0' }}x dilihat</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -86,8 +86,7 @@
                                 <ul class="category-widget list-style">
                                     @forelse ($popularCategory as $item)
                                         <li>
-                                            <a data-toggle="tooltip" data-placement="top" title="Fashion"
-                                                href="#"><img
+                                            <a data-toggle="tooltip" data-placement="top" title="{{ $item->name }}" href="{{ route('categories.show.user', ['category' => $item->slug]) }}"><img
                                                     src="{{ asset('assets/img/icons/arrow-right.svg') }}"
                                                     alt="Image">{{ $item->name }}
                                                 <span>( {{ $item->news_categories_count }} )</span>

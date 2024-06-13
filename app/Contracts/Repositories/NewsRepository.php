@@ -93,6 +93,7 @@ class NewsRepository extends BaseRepository implements NewsInterface
             })
             ->where('status', NewsEnum::ACCEPTED->value)
             ->take(7)
+            ->latest()
             ->get();
     }
 

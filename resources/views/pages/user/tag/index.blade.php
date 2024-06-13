@@ -35,7 +35,7 @@
         <div class="breadcrumb-wrap">
             <h2 class="breadcrumb-title">Tag</h2>
             <ul class="breadcrumb-menu list-style">
-                <li><a href="/">Home</a></li>
+                <li><a href="/">Beranda</a></li>
                 <li>Tag</li>
             </ul>
         </div>
