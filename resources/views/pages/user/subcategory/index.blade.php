@@ -36,10 +36,10 @@
 @section('content')
     <div class="col-lg-12">
         <div class="breadcrumb-wrap">
-            <h2 class="breadcrumb-title">Sub Category</h2>
+            <h2 class="breadcrumb-title">{{ $subcategory->name }}</h2>
             <ul class="breadcrumb-menu list-style">
-                <li><a href="/">Home</a></li>
-                <li>Category</li>
+                <li><a href="/">Beranda</a></li>
+                <li>{{ $subcategory->name }}</li>
             </ul>
         </div>
     </div>
@@ -57,12 +57,12 @@
 
                                 <div class="news-card-info">
                                     <h3><a data-toggle="tooltip" data-placement="top" title="Apex Legends Season 11 Start Date, Time, & What To Expect"
-                                            href="#">{{ $item->name }}
+                                            href="{{ route('news.singlepost', ['news' => $item->slug]) }}">{!! Illuminate\Support\Str::limit(strip_tags($item->name), 300, '...') !!}
                                         </a>
                                     </h3>
                                     <ul class="news-metainfo list-style">
                                         <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">{{ $item->date }}</a></li>
-                                        <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">{{ $item->newsViews_count }}</a></li>
+                                        <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">{{ $item->newsViews_count ? $item->newsViews_count : '0' }}x dilihat</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -73,8 +73,8 @@
 
                     <div class="mb-5">
                         <div class="d-flex justify-content-between mb-3 mt-3">
-                            <h3>Trending</h3>
-                            <a href="{{route('all-subcategory.user')}}">
+                            <h3>Terbaru</h3>
+                            <a href="{{route('all-subcategory-list.user', ['subcategory' => $subcategory->slug])}}">
                                 <p>Lihat lainnya
                                     <i><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
                                             viewBox="0 0 24 24">
@@ -90,17 +90,17 @@
                                 <div class="news-card-img">
                                     <a href="#"><img src="{{asset('storage/'. $data->image)}}" alt="Image" height="140" width="100%" /></a>
                                     <a data-toggle="tooltip" data-placement="top" title="Sports"
-                                        href="#" class="news-cat"></a>
+                                        href="#" class="news-cat">{{ $data->newsCategories[0]->category->name }}</a>
                                 </div>
                                 <div class="news-card-info">
                                     <h3><a data-toggle="tooltip" data-placement="top" title="Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange"
-                                            href="#">{{ $data->name }}
+                                            href="#">{!! Illuminate\Support\Str::limit(strip_tags($data->name), 200, '...') !!}
                                         </a>
                                     </h3>
-                                    <p>{{ $data->description }}</p>
+                                    <p>{!! Illuminate\Support\Str::limit(strip_tags($data->description), 200, '...') !!}</p>
                                     <ul class="news-metainfo list-style">
-                                        <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">{{ $data->date }}</a></li>
-                                        <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">{{ $data->newsViews_count }}</a></li>
+                                        <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">{{ \Carbon\Carbon::parse($data->date)->translatedFormat('d F Y') }}</a></li>
+                                        <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">{{ $data->newsViews_count ? $item->newsViews_count : '0' }}x dilihat</a></li>
                                     </ul>
                                 </div>
                             </div>

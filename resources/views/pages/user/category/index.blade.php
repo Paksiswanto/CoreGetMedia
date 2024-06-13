@@ -43,7 +43,7 @@
     <div class="breadcrumb-wrap">
         <h2 class="breadcrumb-title">{{ $category->name }}</h2>
         <ul class="breadcrumb-menu list-style">
-            <li><a href="/">Home</a></li>
+            <li><a href="/">Beranda</a></li>
             <li>{{ $category->name }}</li>
         </ul>
     </div>
@@ -61,7 +61,7 @@
                         </div>
 
                         <div class="news-card-info">
-                            <h3><a data-toggle="tooltip" data-placement="top" title="Apex Legends Season 11 Start Date, Time, & What To Expect" href="{{ route('news.singlepost', ['news' => $item->slug]) }}">{{ $item->name }}
+                            <h3><a data-toggle="tooltip" data-placement="top" title="Apex Legends Season 11 Start Date, Time, & What To Expect" href="{{ route('news.singlepost', ['news' => $item->slug]) }}">{!! Illuminate\Support\Str::limit(strip_tags($item->name), 300, '...') !!}
                                 </a>
                             </h3>
                             <ul class="news-metainfo list-style">
@@ -79,7 +79,7 @@
                 <div class="mb-5">
                     <div class="d-flex justify-content-between mb-3 mt-3">
                         <h3>Terbaru</h3>
-                        <a href="{{ route('allcategory.user')}}">
+                        <a href="{{ route('all-category-list.user', ['category' => $category->slug])}}">
                             <p>Lihat lainnya
                                 <i><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24">
                                         <path fill="currentColor" d="m13.292 12l-4.6-4.6l.708-.708L14.708 12L9.4 17.308l-.708-.708z" />
