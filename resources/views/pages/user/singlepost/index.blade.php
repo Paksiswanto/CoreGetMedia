@@ -10,6 +10,7 @@
     <meta property="og:url" content="{{ url('/') }}" />
     <meta property="og:type" content="article" />
     <link rel="canonical" href="{{ url('/') }}" />
+    
 @endsection
 
 @section('style')
