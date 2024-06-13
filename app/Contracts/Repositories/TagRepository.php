@@ -36,6 +36,13 @@ class TagRepository extends BaseRepository implements TagInterface
             ->get();
     }
 
+    public function showWithSLug(string $slug): mixed
+    {
+        return $this->model->query()
+            ->where('slug', $slug)
+            ->firstOrFail();
+    }
+
     /**
      * Handle get the specified data by id from models.
      *

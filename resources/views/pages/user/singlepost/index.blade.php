@@ -196,43 +196,31 @@
                                                     <span>{{ $news->news_views_count }}x dilihat</span>
                                                 </li>
                                                 <li>
-                                                    <form id="form-like">
-                                                        @csrf
-                                                        <button type="submit"
-                                                            style="background: transparent;border:transparent"
-                                                            class="like">
-                                                            <svg class="last mb-1" xmlns="http://www.w3.org/2000/svg"
+                                                        <form id="form-like">
+                                                            @csrf
+                                                            <button type="submit"
+                                                                style="background: transparent;border:transparent"
+                                                                class="like">
+                                                                <svg class="last mb-1" xmlns="http://www.w3.org/2000/svg"
                                                                 width="18" height="18" viewBox="0 0 24 24">
                                                                 <path fill="#E93314"
                                                                     d="M18 21H7V8l7-7l1.25 1.25q.175.175.288.475t.112.575v.35L14.55 8H21q.8 0 1.4.6T23 10v2q0 .175-.05.375t-.1.375l-3 7.05q-.225.5-.75.85T18 21m-9-2h9l3-7v-2h-9l1.35-5.5L9 8.85zM9 8.85V19zM7 8v2H4v9h3v2H2V8z" />
-                                                            </svg>
-                                                        </button>
-                                                    </form>
+                                                                </svg>
+                                                            </button>
+                                                        </form>
 
-                                                    <form id="form-liked" style="display: none;">
-                                                        @csrf
-                                                        <button type="submit"
-                                                            style="background: transparent;border:transparent"
-                                                            class="liked">
-                                                            <svg class="last mb-1" xmlns="http://www.w3.org/2000/svg"
+                                                        <form id="form-liked" style="display: none;">
+                                                            @csrf
+                                                            <button type="submit"
+                                                                style="background: transparent;border:transparent"
+                                                                class="liked">
+                                                                <svg class="last mb-1" xmlns="http://www.w3.org/2000/svg"
                                                                 width="18" height="18" viewBox="0 0 24 24">
                                                                 <path fill="red"
                                                                     d="M18 21H8V8l7-7l1.25 1.25q.175.175.288.475t.112.575v.35L15.55 8H21q.8 0 1.4.6T23 10v2q0 .175-.037.375t-.113.375l-3 7.05q-.225.5-.75.85T18 21M6 8v13H2V8z" />
-                                                            </svg>
-                                                        </button>
-                                                    </form>
-
-                                                    {{-- <form class="d-flex">
-                                                        <i><button type="submit"
-                                                                style="background: transparent;border:transparent"
-                                                                class="liked">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="15"
-                                                                    height="15" viewBox="0 0 24 24">
-                                                                    <path fill="#434343"
-                                                                        d="M14.17 1L7 8.18V21h12.31L23 12.4V8h-8.31l1.12-5.38zM1 9h4v12H1z" />
                                                                 </svg>
-                                                        </button></i>
-                                                    </form> --}}
+                                                            </button>
+                                                        </form>
 
                                                     <span id="like" data-like="{{ $likes }}">{{ $likes }}</span>
                                                 </li>
@@ -352,238 +340,156 @@
                     <h3 class="comment-box-title mt-5">{{ $news->comments_count }} Komentar</h3>
                     <div class="comment-item-wrap">
                         <div class="comment-item">
+
+                            @php
+                                $groupedReplies = [];
+                                    foreach ($comments as $comment) {
+                                        if ($comment->parent_id) {
+                                            $parentId = $comment->parent_id;
+                                            if (!isset($groupedReplies[$parentId])) {
+                                                $groupedReplies[$parentId] = [];
+                                            }
+                                            $groupedReplies[$parentId][] = $comment;
+                                        }
+                                    }
+                            @endphp
+
                             @forelse ($comments as $comment)
-                                <div class="comment-author-img">
-                                    <img src="{{ asset('admin/dist/images/profile/user-6.jpg') }}" alt="Image">
-                                </div>
-                                <div class="comment-author-wrap">
-                                    <div class="comment-author-info">
-                                        <div class="row align-items-start">
-                                            <div class="col-md-9 col-sm-12 col-12 order-md-1 order-sm-1 order-1">
-                                                <div class="comment-author-name">
-                                                    @if ($comment->user != null)
-                                                        <h5>{{ $comment->user->name }}</h5>
-                                                    @else
-                                                        <h5>Guest</h5>
-                                                    @endif
-                                                    <span class="comment-date">{{ $comment->created_at->diffInMinutes() }} Menit yang lalu</span>
+                                @if ($comment->parent_id === null)
+                                    <div class="comment-author-img">
+                                        <img src=" 
+                                            @if ($comment->user_id != null)
+                                                {{ asset( $comment->user->image ? 'storage/'. $comment->user->image : "default.png")  }}
+                                            @else
+                                                {{ asset('default.png')  }}
+                                            @endif
+                                        " alt="Image">
+                                    </div>
+                                    <div class="comment-author-wrap">
+                                        <div class="comment-author-info">
+                                            <div class="row align-items-start">
+                                                <div class="col-md-9 col-sm-12 col-12 order-md-1 order-sm-1 order-1">
+                                                    <div class="comment-author-name">
+                                                        @if ($comment->user != null)
+                                                            <h5>{{ $comment->user->name }}</h5>
+                                                        @else
+                                                            <h5>Guest</h5>
+                                                        @endif
+                                                        <span class="comment-date">{{ $comment->created_at->diffInMinutes() }} Menit yang lalu</span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-3 col-sm-3 col-3 text-md-end order-md-1 order-sm-1 order-1">
-    
-                                                <a class="" href="javascript:void(0)" role="button"
-                                                    id="dropdownMenuLink1" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
-                                                        viewBox="0 0 24 24">
-                                                        <path fill="none" stroke="currentColor" stroke-linejoin="round"
-                                                            stroke-width="3"
-                                                            d="M12 12h.01v.01H12zm0-7h.01v.01H12zm0 14h.01v.01H12z" />
-                                                    </svg>
-                                                </a>
-                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
-                                                    <li>
-                                                        <button class="btn btn-sm" data-bs-toggle="modal"
-                                                            data-bs-target="#edit-replay">
-                                                            Edit
-                                                        </button>
-                                                    </li>
-                                                    <li>
-                                                        <button class="btn btn-sm" data-bs-toggle="modal"
-                                                            data-bs-target="#report">
-                                                            Laporkan
-                                                        </button>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-md-12 col-sm-12 col-12 order-md-3 order-sm-3 order-3">
-                                                <div class="comment-text">
-                                                    <p>{{$comment->description}}</p>
+                                                <div class="col-md-3 col-sm-3 col-3 text-md-end order-md-1 order-sm-1 order-1">
+
+                                                    <a class="" href="javascript:void(0)" role="button"
+                                                        id="dropdownMenuLink1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
+                                                            viewBox="0 0 24 24">
+                                                            <path fill="none" stroke="currentColor" stroke-linejoin="round"
+                                                                stroke-width="3"
+                                                                d="M12 12h.01v.01H12zm0-7h.01v.01H12zm0 14h.01v.01H12z" />
+                                                        </svg>
+                                                    </a>
+                                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
+                                                        <li>
+                                                            <button class="btn btn-sm" data-bs-toggle="modal"
+                                                                data-bs-target="#edit-replay">
+                                                                Edit
+                                                            </button>
+                                                        </li>
+                                                        <li>
+                                                            <button class="btn btn-sm" data-bs-toggle="modal"
+                                                                data-bs-target="#report">
+                                                                Laporkan
+                                                            </button>
+                                                        </li>
+                                                    </ul>
                                                 </div>
-                                            </div>
-                                            <div
-                                                class="col-md-12 col-sm-12 col-12 text-md-start order-md-3 order-sm-3 order-3">
-                                                <a href="#cmt-form" class="reply-btn">Balas</a>
+                                                <div class="col-md-12 col-sm-12 col-12 order-md-3 order-sm-3 order-3">
+                                                    <div class="comment-text">
+                                                        <p>{{$comment->description}}</p>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="col-md-12 col-sm-12 col-12 text-md-start order-md-3 order-sm-3 order-3">
+                                                    <a href="avascript:void(0)" class="reply-btn"  onclick="showReplyForm({{ $comment->id }})">Balas</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                    <div id="reply-form-{{ $comment->id }}" class="reply-form mt-3" style="display: none;">
+                                        <form action="{{ route('reply.create', ['news' => $news->id, 'comment' => $comment->id]) }}" method="post">
+                                            @method('post')
+                                            @csrf
+                                            <textarea name="description" class="form-control mb-2" cols="100" rows="2" placeholder="Balas Komentar"></textarea>
+                                            <div>
+                                                <button type="submit" class="btn-two w-100 btn" style="background-color: #0F4D8A;padding:10px !important">Kirim Balasan</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                @endif
+
+                                @foreach ($groupedReplies[$comment->id] ?? [] as $index => $reply)
+                                    <div class="comment-author-img">
+                                        <img src="
+                                            @if ($reply->user_id != null)
+                                                {{ asset( $reply->user->image ? 'storage/'. $reply->user->image : "default.png")  }}
+                                            @else
+                                                {{ asset('default.png')  }}
+                                            @endif
+                                        " alt="Image" class="ms-4">
+                                    </div>
+                                    <div class="comment-author-wrap">
+                                        <div class="comment-author-info">
+                                            <div class="row align-items-start">
+                                                <div class="col-md-9 col-sm-12 col-12 order-md-1 order-sm-1 order-1">
+                                                    <div class="comment-author-name ms-4">
+                                                        @if ($reply->user != null)
+                                                            <h5>{{ $reply->user->name }}</h5>
+                                                        @else
+                                                            <h5>Guest</h5>
+                                                        @endif
+                                                        <span class="comment-date">{{ $reply->created_at->diffInMinutes() }} Menit yang lalu</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-sm-3 col-3 text-md-end order-md-1 order-sm-1 order-1">
+
+                                                    <a class="" href="javascript:void(0)" role="button"
+                                                        id="dropdownMenuLink1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
+                                                            viewBox="0 0 24 24">
+                                                            <path fill="none" stroke="currentColor" stroke-linejoin="round"
+                                                                stroke-width="3"
+                                                                d="M12 12h.01v.01H12zm0-7h.01v.01H12zm0 14h.01v.01H12z" />
+                                                        </svg>
+                                                    </a>
+                                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
+                                                        <li>
+                                                            <button class="btn btn-sm" data-bs-toggle="modal"
+                                                                data-bs-target="#edit-replay">
+                                                                Edit
+                                                            </button>
+                                                        </li>
+                                                        <li>
+                                                            <button class="btn btn-sm" data-bs-toggle="modal"
+                                                                data-bs-target="#report">
+                                                                Laporkan
+                                                            </button>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-md-12 col-sm-12 col-12 order-md-3 order-sm-3 order-3">
+                                                    <div class="comment-text ms-4">
+                                                        <p>{{$reply->description}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
                             @empty
                             @endforelse
                         </div>
-                        <div class="comment-item reply">
-                            <div class="comment-author-img">
-                                <img src="{{ asset('assets/img/author/author-thumb-4.webp') }}" alt="Image">
-                            </div>
-                            <div class="comment-author-wrap">
-                                <div class="comment-author-info">
-                                    <div class="row align-items-start">
-                                        <div class="col-md-9 col-sm-12 col-12 order-md-1 order-sm-1 order-1">
-                                            <div class="comment-author-name">
-                                                <h5>Everly Leah </h5>
-                                                <span class="comment-date">1 hari yang lalu</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 col-sm-3 col-3 text-md-end order-md-1 order-sm-1 order-1">
-                                            {{-- <a href="#cmt-form">Reply</a> --}}
-
-                                            <a class="" href="javascript:void(0)" role="button"
-                                                id="dropdownMenuLink2" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
-                                                    viewBox="0 0 24 24">
-                                                    <path fill="none" stroke="currentColor" stroke-linejoin="round"
-                                                        stroke-width="3"
-                                                        d="M12 12h.01v.01H12zm0-7h.01v.01H12zm0 14h.01v.01H12z" />
-                                                </svg>
-                                            </a>
-                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink2">
-                                                <li>
-                                                    <button class="btn btn-sm" data-bs-toggle="modal"
-                                                        data-bs-target="#edit-replay">
-                                                        Edit
-                                                    </button>
-                                                </li>
-                                                <li>
-                                                    <button class="btn btn-sm" data-bs-toggle="modal"
-                                                        data-bs-target="#report">
-                                                        Laporkan
-                                                    </button>
-                                                </li>
-                                            </ul>
-
-                                        </div>
-                                        <div class="col-md-12 col-sm-12 col-12 order-md-3 order-sm-3 order-3">
-                                            <div class="comment-text">
-                                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                                                    sed diam nonumy eirmod tempor invidunt ut labore et dolore
-                                                    magna aliquyam.
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div
-                                            class="col-md-12 col-sm-12 col-12 text-md-start order-md-3 order-sm-3 order-3">
-                                            <a href="#cmt-form" class="reply-btn">Balas</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="comment-item reply">
-                            <div class="comment-author-img">
-                                <img src="{{ asset('assets/img/author/author-thumb-4.webp') }}" alt="Image">
-                            </div>
-                            <div class="comment-author-wrap">
-                                <div class="comment-author-info">
-                                    <div class="row align-items-start">
-                                        <div class="col-md-9 col-sm-12 col-12 order-md-1 order-sm-1 order-1">
-                                            <div class="comment-author-name">
-                                                <h5>Everly Leah </h5>
-                                                <span class="comment-date">1 hari yang lalu</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 col-sm-3 col-3 text-md-end order-md-1 order-sm-1 order-1">
-                                            {{-- <a href="#cmt-form">Reply</a> --}}
-
-                                            <a class="" href="javascript:void(0)" role="button"
-                                                id="dropdownMenuLink2" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
-                                                    viewBox="0 0 24 24">
-                                                    <path fill="none" stroke="currentColor" stroke-linejoin="round"
-                                                        stroke-width="3"
-                                                        d="M12 12h.01v.01H12zm0-7h.01v.01H12zm0 14h.01v.01H12z" />
-                                                </svg>
-                                            </a>
-                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink2">
-                                                <li>
-                                                    <button class="btn btn-sm" data-bs-toggle="modal"
-                                                        data-bs-target="#edit-replay">
-                                                        Edit
-                                                    </button>
-                                                </li>
-                                                <li>
-                                                    <button class="btn btn-sm" data-bs-toggle="modal"
-                                                        data-bs-target="#report">
-                                                        Laporkan
-                                                    </button>
-                                                </li>
-                                            </ul>
-
-                                        </div>
-                                        <div class="col-md-12 col-sm-12 col-12 order-md-3 order-sm-3 order-3">
-                                            <div class="comment-text">
-                                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                                                    sed diam nonumy eirmod tempor invidunt ut labore et dolore
-                                                    magna aliquyam.
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div
-                                            class="col-md-12 col-sm-12 col-12 text-md-start order-md-3 order-sm-3 order-3">
-                                            <a href="#cmt-form" class="reply-btn">Balas</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="comment-item">
-                            <div class="comment-author-img">
-                                <img src="{{ asset('assets/img/author/author-thumb-4.webp') }}" alt="Image">
-                            </div>
-                            <div class="comment-author-wrap">
-                                <div class="comment-author-info">
-                                    <div class="row align-items-start">
-                                        <div class="col-md-9 col-sm-12 col-12 order-md-1 order-sm-1 order-1">
-                                            <div class="comment-author-name">
-                                                <h5>Michel Ohio</h5>
-                                                <span class="comment-date">2 minggu yang lalu</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 col-sm-3 col-3 text-md-end order-md-1 order-sm-1 order-1">
-                                            {{-- <a href="#cmt-form">Reply</a> --}}
-
-                                            <a class="" href="javascript:void(0)" role="button"
-                                                id="dropdownMenuLink1" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
-                                                    viewBox="0 0 24 24">
-                                                    <path fill="none" stroke="currentColor" stroke-linejoin="round"
-                                                        stroke-width="3"
-                                                        d="M12 12h.01v.01H12zm0-7h.01v.01H12zm0 14h.01v.01H12z" />
-                                                </svg>
-                                            </a>
-                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
-                                                <li>
-                                                    <button class="btn btn-sm" data-bs-toggle="modal"
-                                                        data-bs-target="#edit-replay">
-                                                        Edit
-                                                    </button>
-                                                </li>
-                                                <li>
-                                                    <button class="btn btn-sm" data-bs-toggle="modal"
-                                                        data-bs-target="#report">
-                                                        Laporkan
-                                                    </button>
-                                                </li>
-                                            </ul>
-
-                                        </div>
-                                        <div class="col-md-12 col-sm-12 col-12 order-md-3 order-sm-3 order-3">
-                                            <div class="comment-text">
-                                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                                                    sed diam nonumy eirmod tempor invidunt ut labore et dolore
-                                                    magna aliquyam.
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div
-                                            class="col-md-12 col-sm-12 col-12 text-md-start order-md-3 order-sm-3 order-3">
-                                            <a href="#cmt-form" class="reply-btn">Balas</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-
                 </div>
                 <div class="col-lg-4">
                     <div class="sidebar">
@@ -816,8 +722,13 @@
                 .catch(function(error) {
                     console.error(error);
                 });
-
         });
+    </script>
 
+    <script>
+        function showReplyForm(commentId) {
+            var replyForm = document.getElementById('reply-form-' + commentId);
+            replyForm.style.display = replyForm.style.display === 'none' ? 'flex' : 'none';
+        }
     </script>
 @endsection

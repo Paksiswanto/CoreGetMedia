@@ -36,10 +36,10 @@
 @section('content')
     <div class="col-lg-12">
         <div class="breadcrumb-wrap">
-            <h2 class="breadcrumb-title">{{ $category->name }} - Terbaru</h2>
+            <h2 class="breadcrumb-title">{{ $news->name }} - Terbaru</h2>
             <ul class="breadcrumb-menu list-style">
                 <li><a href="/">Beranda</a></li>
-                <li>{{ $category->name }}</li>
+                <li>{{ $news->name }}</li>
             </ul>
         </div>
     </div>
@@ -50,22 +50,22 @@
                 <div class="col-lg-8">
 
                     <div>
-                        @forelse ($news as $item)
+                        @forelse ($newsTags as $item)
                             <div class="news-card-five">
                                 <div class="news-card-img">
-                                    <a href="javascript:void(0)"><img src="{{asset('storage/'. $item->image)}}" alt="Image" height="140" width="100%" /></a>
-                                    <a data-toggle="tooltip" data-placement="top" title="{{ $item->newsCategories[0]->category->name }}"
-                                        href="{{ route('categories.show.user', ['category' => $new->slug]) }}" class="news-cat">{{ $item->newsCategories[0]->category->name }}</a>
+                                    <a href="#"><img src="{{asset('storage/'. $item->news->image)}}" alt="Image" height="140" width="100%" /></a>
+                                    <a data-toggle="tooltip" data-placement="top" title="{{ $item->news->newsCategories[0]->category->name }}"
+                                        href="#" class="news-cat">{{ $item->news->newsCategories[0]->category->name }}</a>
                                 </div>
                                 <div class="news-card-info">
-                                    <h3><a data-toggle="tooltip" data-placement="top" title="{{ $item->name }}"
-                                            href="{{ route('news.singlepost', ['news' => $item->slug]) }}">{!! Illuminate\Support\Str::limit(strip_tags($item->name), 200, '...') !!}
+                                    <h3><a data-toggle="tooltip" data-placement="top" title="Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange"
+                                            href="{{ route('news.singlepost', ['news' => $item->news->slug]) }}">{!! Illuminate\Support\Str::limit(strip_tags($item->news->name), 200, '...') !!}
                                         </a>
                                     </h3>
-                                    <p>{!! Illuminate\Support\Str::limit(strip_tags($item->name), 200, '...') !!}</p>
+                                    <p>{!! Illuminate\Support\Str::limit(strip_tags($item->news->name), 200, '...') !!}</p>
                                     <ul class="news-metainfo list-style">
                                         <li><i class="fi fi-rr-calendar-minus"></i><a href="javascript:void(0)">{{ \Carbon\Carbon::parse($item->date)->translatedFormat('d F Y') }}</a></li>
-                                        <li><i class="fi fi-rr-eye"></i><a href="javascript:void(0)">{{ $item->newsViews_count ? $item->newsViews_count : '0' }}x dilihat</a></li>
+                                        <li><i class="fi fi-rr-eye"></i><a href="javascript:void(0)">{{ $item->news->newsViews_count ? $item->newsViews_count : '0' }}x dilihat</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -88,7 +88,7 @@
                             <div class="sidebar-widget">
                                 <h3 class="sidebar-widget-title">Kategori Populer</h3>
                                 <ul class="category-widget list-style">
-                                    @foreach ($popularCategory as $category)
+                                    @foreach ($CategoryPopulars as $category)
                                     <li><a data-toggle="tooltip" data-placement="top" title="{{ $category->name }}" href="{{ route('categories.show.user', ['category' => $category->slug]) }}"><img src="{{ asset('assets/img/icons/arrow-right.svg') }}" alt="Image">{{ $category->name }}
                                             <span>({{ $category->news_categories_count }})</span></a></li>
                                     @endforeach
@@ -101,7 +101,7 @@
                                     @forelse ($popularTags as $popularTag)
                                     <li><a href="{{route('news-tag-list.user', ['tag' => $popularTag->slug])}}">{{ $popularTag->name }}</a></li>
                                     @empty
-    
+                
                                     @endforelse
                                 </ul>
                                 </div>

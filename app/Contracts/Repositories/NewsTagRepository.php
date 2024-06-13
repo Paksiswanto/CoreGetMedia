@@ -4,6 +4,7 @@ namespace App\Contracts\Repositories;
 
 use App\Contracts\Interfaces\NewsTagInterface;
 use App\Models\NewsTag;
+use App\Enums\NewsEnum; 
 
 class NewsTagRepository extends BaseRepository implements NewsTagInterface
 {
@@ -49,13 +50,25 @@ class NewsTagRepository extends BaseRepository implements NewsTagInterface
             ->get();
     }
 
-    public function where($news): mixed
+    public function where($news, $query): mixed
     {
         return $this->model->query()
             ->where('news_id', $news)
+            // ->whereRelation('news_tags.news', 'status',  NewsEnum::ACCEPTED->value)
+            ->when($query == 'top', function($q){
+                $q->take(1);
+            })
             ->get();
     }
 
+    public function latest($news, $query) : mixed
+    {
+        return $this->model->query()
+        // ->whereRelation('newsTags.news', 'status',  NewsEnum::ACCEPTED->value)
+        ->latest()  
+        ->get();
+    }
+    
     /**
      * Handle store data event to models.
      *

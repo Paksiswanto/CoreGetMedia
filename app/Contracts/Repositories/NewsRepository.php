@@ -91,8 +91,10 @@ class NewsRepository extends BaseRepository implements NewsInterface
             ->when($query == 'top', function($q){
                 $q->take(1);
             })
+            ->when($query == 'notop', function($q){
+                $q->take(7);
+            })
             ->where('status', NewsEnum::ACCEPTED->value)
-            ->take(7)
             ->latest()
             ->get();
     }
@@ -115,6 +117,13 @@ class NewsRepository extends BaseRepository implements NewsInterface
     {
         return $this->model->query()
         ->where('status', NewsEnum::ACCEPTED->value)
+        ->latest()
+        ->get();
+    }
+
+    public function latest() : mixed
+    {
+        return $this->model->query()
         ->latest()
         ->get();
     }

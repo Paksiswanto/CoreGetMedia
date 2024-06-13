@@ -10,5 +10,6 @@ use App\Contracts\Interfaces\Eloquent\UpdateInterface;
 
 interface NewsTagInterface extends GetInterface, StoreInterface, UpdateInterface, ShowInterface, DeleteInterface
 {
-    public function where($news) : mixed;
+    public function where($news, $query) : mixed;
+    public function latest($news, $query) : mixed;
 }

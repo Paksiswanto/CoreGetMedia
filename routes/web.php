@@ -172,9 +172,9 @@ Route::get('profile-author', function () {
 
 Route::get('faq', [HomeFaqController::class, 'index'])->name('faq-list.user');
 
-Route::get('profile-user', function () {
-    return view('pages.user.profile.index');
-})->name('profile-user.user');
+// Route::get('profile-user', function () {
+//     return view('pages.user.profile.index');
+// })->name('profile-user.user');
 
 Route::get('profile-update', function () {
     return view('pages.user.profile.update');
@@ -224,6 +224,8 @@ Route::get('inbox-user', function () {
 
 Route::get('jksaj', [NewsCategoryController::class, 'showAll'])->name('allcategory.user');
 // Route::get('{category}', [NewsController::class, 'showCategories'])->name('categories.show.user');
+
+Route::get('news/latest-news', [NewsController::class, 'latestNews'])->name('latest.news');
 
 require_once __DIR__ . '/jovita.php';
 require_once __DIR__ . '/ardi.php';

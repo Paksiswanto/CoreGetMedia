@@ -151,17 +151,16 @@ class NewsController extends Controller
     public function show(Request $request, $slug)
     {
         $ipAddress = $request->ip();
+
         $news = $this->news->showWithSlug($slug);
         $news_id = $news->id;
         $data = $this->viewService->store($news_id, $ipAddress);
-        $tags = $this->newstags->where($news_id);
+        $tags = $this->newstags->where($news_id, 'notop');
         $comments = $this->comments->get($news_id);
         $likes = $this->newsLikes->get($news_id);
-        $user_id = "";
-        if (Auth::check()) {
-            $user_id = auth()->user()->id;
-        }
-        $likedByUser = $this->newsLikes->where($user_id, $ipAddress);
+
+        $userLike = $this->newsLikes->where($news_id);
+        $likedByUser = $userLike->contains($ipAddress);
 
         $CategoryPopulars = $this->categories->showWithCount();
         $popularTags = $this->tags->showWithCount();
@@ -178,7 +177,7 @@ class NewsController extends Controller
 
         $newsCategory = $this->newscategories->where($news_id);
         $newsSubcategory = $this->newssubcategories->where($news_id);
-        $newsTags = $this->newstags->where($news_id);
+        $newsTags = $this->newstags->where($news_id, 'notop');
 
         $categories = $this->categories->get();
         $subcategories = $this->subcategories->get();
@@ -241,4 +240,13 @@ class NewsController extends Controller
     //     $trending = $this->news->newsCategorySearch($category->id, $query, 'trending', '5');
     //     return view('pages.user.news.category', compact('trending','new_news','popular','news', 'totalCategories','subCategories','categories','category', 'subCategory', 'newsCategories'));
     // }
+
+    public function latestNews(){
+        $news = $this->news->latest();
+        $CategoryPopulars = $this->categories->showWithCount();
+        $popularTags = $this->tags->showWithCount();
+        $subCategories = $this->subcategories->get();
+
+        return view('pages.user.news.all-news-latest', compact('news', 'CategoryPopulars', 'popularTags', 'subCategories'));
+    }
 }

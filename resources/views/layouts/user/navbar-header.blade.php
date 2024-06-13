@@ -89,7 +89,7 @@
                                 <div class="d-flex">
                                     <li class="nav-item">
                                         @forelse ($subCategories->where('category_id', $category->id) as $subCategory)
-                                            <a href="{{ route('news.subcategory', ['slug' => $subCategory->slug]) }}" class="nav-link"  style="{{ request()->routeIs('news.subcategory', ) && request()->route('category') == $subCategory->category->slug && request()->route('subCategory') == $subCategory->slug  ? 'color: #E93314;' : '' }}">{{ $subCategory->name }}</a>
+                                            <a href="{{ route('news.subcategory', ['slug' => $subCategory->slug]) }}" class="nav-link"  style="{{ request()->routeIs('news.subcategory', ['subcategory' => $subCategory->slug]) && request()->route('category') == $subCategory->category->slug && request()->route('subCategory') == $subCategory->slug  ? 'color: #E93314;' : '' }}">{{ $subCategory->name }}</a>
 
                                             @if(($loop->iteration % 5) == 0)
                                             </li>
@@ -132,7 +132,7 @@
                                
                                 <li class="nav-item">
                                     <a href="javascript:void(0)" class="nav-link">
-                                        <img src="{{ asset( Auth::user()->photo ? 'storage/'.Auth::user()->photo : "default.png")  }}" class="mb-2" alt="Image" width="40" height="40" style="min-width: 40px;border-radius: 50%;object-fit:cover;min-height: 40px;"/>
+                                        <img src="{{ asset( Auth::user()->image ? 'storage/'.Auth::user()->image : "default.png")  }}" class="mb-2" alt="Image" width="40" height="40" style="min-width: 40px;border-radius: 50%;object-fit:cover;min-height: 40px;"/>
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li class="nav-item">
