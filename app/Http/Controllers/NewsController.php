@@ -116,7 +116,7 @@ class NewsController extends Controller
         $news_id = $news->id;
         $newsCategory = $this->newscategories->where($news_id);
         $newsSubcategory = $this->newssubcategories->where($news_id);
-        $newsTags = $this->newstags->where($news_id);
+        $newsTags = $this->newstags->where($news_id, 'notop');
         return view('pages.admin.news.detail-news', compact('news', 'newsCategory', 'newsSubcategory', 'newsTags'));
     }
 
@@ -171,6 +171,16 @@ class NewsController extends Controller
         $CategoryPopulars = $this->categories->showWithCount();
         $popularTags = $this->tags->showWithCount();
         return view('pages.user.singlepost.index', compact('likedByUser', 'news', 'news_id', 'CategoryPopulars', 'tags', 'popularTags', 'comments', 'likes'));
+    }
+
+    public function showPinned()
+    {
+        $newsPin = $this->news->allPin();
+        $subCategories = $this->subcategories->get();
+
+        $CategoryPopulars = $this->categories->showWithCount();
+        $popularTags = $this->tags->showWithCount();
+        return view('pages.user.news.all-news-pinned', compact('newsPin', 'subCategories', 'CategoryPopulars', 'popularTags'));
     }
 
     /**
