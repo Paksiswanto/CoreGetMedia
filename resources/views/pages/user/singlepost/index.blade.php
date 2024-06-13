@@ -357,7 +357,13 @@
                             @forelse ($comments as $comment)
                                 @if ($comment->parent_id === null)
                                     <div class="comment-author-img">
-                                        <img src="{{ asset( $comment->user->image ? 'storage/'.$comment->user->image : "default.png")  }}" alt="Image">
+                                        <img src=" 
+                                            @if ($comment->user_id != null)
+                                                {{ asset( $comment->user->image ? 'storage/'. $comment->user->image : "default.png")  }}
+                                            @else
+                                                {{ asset('default.png')  }}
+                                            @endif
+                                        " alt="Image">
                                     </div>
                                     <div class="comment-author-wrap">
                                         <div class="comment-author-info">
@@ -424,7 +430,13 @@
 
                                 @foreach ($groupedReplies[$comment->id] ?? [] as $index => $reply)
                                     <div class="comment-author-img">
-                                        <img src="{{ asset( $comment->user->image ? 'storage/'.$comment->user->image : "default.png")  }}" alt="Image" class="ms-4">
+                                        <img src="
+                                            @if ($reply->user_id != null)
+                                                {{ asset( $reply->user->image ? 'storage/'. $reply->user->image : "default.png")  }}
+                                            @else
+                                                {{ asset('default.png')  }}
+                                            @endif
+                                        " alt="Image" class="ms-4">
                                     </div>
                                     <div class="comment-author-wrap">
                                         <div class="comment-author-info">
