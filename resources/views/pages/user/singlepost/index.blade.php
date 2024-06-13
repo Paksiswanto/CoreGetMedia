@@ -196,45 +196,33 @@
                                                     <span>{{ $news->news_views_count }}x dilihat</span>
                                                 </li>
                                                 <li>
-                                                    {{-- <form id="form-like">
-                                                        @csrf
-                                                        <button type="submit"
-                                                            style="background: transparent;border:transparent"
-                                                            class="like">
-                                                            <svg class="last mb-1" xmlns="http://www.w3.org/2000/svg"
+                                                        <form id="form-like">
+                                                            @csrf
+                                                            <button type="submit"
+                                                                style="background: transparent;border:transparent"
+                                                                class="like">
+                                                                <svg class="last mb-1" xmlns="http://www.w3.org/2000/svg"
                                                                 width="18" height="18" viewBox="0 0 24 24">
                                                                 <path fill="#E93314"
                                                                     d="M18 21H7V8l7-7l1.25 1.25q.175.175.288.475t.112.575v.35L14.55 8H21q.8 0 1.4.6T23 10v2q0 .175-.05.375t-.1.375l-3 7.05q-.225.5-.75.85T18 21m-9-2h9l3-7v-2h-9l1.35-5.5L9 8.85zM9 8.85V19zM7 8v2H4v9h3v2H2V8z" />
-                                                            </svg>
-                                                        </button>
-                                                    </form>
+                                                                </svg>
+                                                            </button>
+                                                        </form>
 
-                                                    <form id="form-liked" style="display: none;">
-                                                        @csrf
-                                                        <button type="submit"
-                                                            style="background: transparent;border:transparent"
-                                                            class="liked">
-                                                            <svg class="last mb-1" xmlns="http://www.w3.org/2000/svg"
+                                                        <form id="form-liked" style="display: none;">
+                                                            @csrf
+                                                            <button type="submit"
+                                                                style="background: transparent;border:transparent"
+                                                                class="liked">
+                                                                <svg class="last mb-1" xmlns="http://www.w3.org/2000/svg"
                                                                 width="18" height="18" viewBox="0 0 24 24">
                                                                 <path fill="red"
                                                                     d="M18 21H8V8l7-7l1.25 1.25q.175.175.288.475t.112.575v.35L15.55 8H21q.8 0 1.4.6T23 10v2q0 .175-.037.375t-.113.375l-3 7.05q-.225.5-.75.85T18 21M6 8v13H2V8z" />
-                                                            </svg>
-                                                        </button>
-                                                    </form> --}}
-
-                                                    <form class="d-flex">
-                                                        <i><button type="submit"
-                                                                style="background: transparent;border:transparent"
-                                                                class="liked">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="15"
-                                                                    height="15" viewBox="0 0 24 24">
-                                                                    <path fill="#434343"
-                                                                        d="M14.17 1L7 8.18V21h12.31L23 12.4V8h-8.31l1.12-5.38zM1 9h4v12H1z" />
                                                                 </svg>
-                                                        </button></i>
-                                                    </form>
+                                                            </button>
+                                                        </form>
 
-                                                    <span id="like">12</span>
+                                                    <span id="like" data-like="{{ $likes }}">{{ $likes }}</span>
                                                 </li>
                                             </div>
                                         </div>
@@ -688,26 +676,11 @@
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-
                 <div class="modal-body">
-
                     <div class="container">
                         <div class="mb-3 form-group">
                             <label for="message" class="form-label fw-bold">Url</label>
                             <div class="shareLink">
-                                {{-- <div class="permalink">
-                                <input class="textLink" type="text" name="shortlink"
-                                    value="https://media.mijurnal.com/{{ $dateParts['year'] }}/{{ $dateParts['month'] }}/{{ $dateParts['day'] }}/{{ $news->slug }}"
-                                    id="copy-link" readonly="">
-                                <span class="copyLink" onclick="copyToClipboard()" id="copy"
-                                    tooltip="Salin Link">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20"
-                                        height="20" viewBox="0 0 32 32">
-                                        <path fill="#000000"
-                                            d="M28 10v18H10V10zm0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2" />
-                                        <path fill="#000000" d="M4 18H2V4a2 2 0 0 1 2-2h14v2H4Z" />
-                                    </svg> </span>
-                            </div> --}}
                             </div>
                             @error('message')
                                 <span class="invalid-feedback" role="alert" style="color: red;">
@@ -716,7 +689,6 @@
                             @enderror
                         </div>
                         <div class="mt-3">
-
                         </div>
                     </div>
                 </div>
@@ -746,5 +718,94 @@
                 }
             });
         });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+        var formLike = document.getElementById('form-like');
+        var formLiked = document.getElementById('form-liked');
+        var likeCount = document.getElementById('like');
+        var likedByUser = {{ $likedByUser ? 'true' : 'false' }};
+        var likeData = parseInt(likeCount.getAttribute('data-like'));
+
+        if (likedByUser) {
+            formLike.style.display = 'none';
+            formLiked.style.display = 'inline-block';
+        } else {
+            formLike.style.display = 'inline-block';
+            formLiked.style.display = 'none';
+        }
+
+        formLike.addEventListener('submit', function(event) {
+            event.preventDefault();
+            formLike.style.display = 'none';
+            formLiked.style.display = 'inline-block';
+            likeData++;
+            likeCount.innerHTML = likeData;
+            likeCount.setAttribute('data-like', likeData);
+        });
+
+        formLiked.addEventListener('submit', function(event) {
+                event.preventDefault();
+                formLike.style.display = 'inline-block';
+                formLiked.style.display = 'none';
+                likeData--;
+                likeCount.innerHTML = likeData;
+                likeCount.setAttribute('data-like', likeData);
+            });
+        });
+
+        document.getElementById('form-like').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var form = event.target;
+            var csrfToken = form.querySelector('input[name="_token"]').value;
+
+            fetch('/like-news/{{ $news_id }}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken
+                    },
+                })
+                .then(function(response) {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error('Error: ' + response.status);
+                    }
+                })
+                .then(function(data) {})
+                .catch(function(error) {
+                    console.error(error);
+                });
+        });
+
+        document.getElementById('form-liked').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var form = event.target;
+            var csrfToken = form.querySelector('input[name="_token"]').value;
+
+            fetch('/unlike-news/{{ $news_id }}', {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken
+                    },
+                })
+                .then(function(response) {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error('Error: ' + response.status);
+                    }
+                })
+                .then(function(data) {})
+                .catch(function(error) {
+                    console.error(error);
+                });
+
+        });
+
     </script>
 @endsection

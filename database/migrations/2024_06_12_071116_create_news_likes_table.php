@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignUuid('news_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignUuid('user_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->string('ip_address')->unique();
+            $table->string('ip_address');
             $table->timestamps();
         });
     }

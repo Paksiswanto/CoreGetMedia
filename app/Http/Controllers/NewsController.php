@@ -20,6 +20,7 @@ use App\Models\NewsCategory;
 use App\Services\NewsService;
 use App\Services\NewsViewService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class NewsController extends Controller
 {
@@ -150,16 +151,19 @@ class NewsController extends Controller
     public function show(Request $request, $slug)
     {
         $ipAddress = $request->ip();
+
         $news = $this->news->showWithSlug($slug);
         $news_id = $news->id;
         $data = $this->viewService->store($news_id, $ipAddress);
         $tags = $this->newstags->where($news_id);
         $comments = $this->comments->get($news_id);
-        $newsLikes = $this->newsLikes->get($news_id);
+        $likes = $this->newsLikes->get($news_id);
 
+        $likedByUser = $this->newsLikes->where($news_id, $ipAddress);
+        
         $CategoryPopulars = $this->categories->showWithCount();
         $popularTags = $this->tags->showWithCount();
-        return view('pages.user.singlepost.index', compact('news', 'CategoryPopulars', 'tags', 'popularTags', 'comments', 'newsLikes'));
+        return view('pages.user.singlepost.index', compact('likedByUser', 'news', 'news_id', 'CategoryPopulars', 'tags', 'popularTags', 'comments', 'likes'));
     }
 
     /**

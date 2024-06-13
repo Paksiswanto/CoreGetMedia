@@ -105,7 +105,7 @@
                 <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
                     <div class="trending-news-slider swiper">
                         <div class="swiper-wrapper">
-                            @forelse ($populars as $popular)
+                            @forelse ($populars->take(10) as $popular)
                                 <div class="swiper-slide news-card-one">
                                     <div class="news-card-img">
                                         <img src="{{ asset('storage/' . $popular->image) }}" alt="Image" style="object-fit: cover;"/>
@@ -132,7 +132,7 @@
     <div class="container-fluid pb-75">
         <div class="news-col-wrap">
             <div class="news-col-one">
-                @forelse ($categoryPopulars as $key => $categoryPopular)
+                @forelse ($categoryPopulars->take(5) as $key => $categoryPopular)
                     @if (++$key == 1)
                         <div class="news-card-two">
                             <div class="news-card-img">
@@ -167,13 +167,13 @@
             </div>
 
             <div class="news-col-two">
-                @forelse ($newsPins as $key => $newsPin)
+                @forelse ($newsPins->take(3) as $key => $newsPin)
                 @if (++$key == 1)
                     <div class="news-card-four">
                         <img src="{{ asset('storage/'. $newsPin->image) }}" alt="Image" />
                         <div class="news-card-info">
                             <h3><a href="{{ route('news.singlepost', ['news' => $newsPin->slug]) }}">{{ $newsPin->name }}</a></h3>
-                            <ul class="news-metainfo list-style">
+                            <ul class="news-metainfo">
                                 <li><i class="fi fi-rr-calendar-minus"></i><a href="javascript:void(0)">{{ $newsPin->date }}</a></li>
                                 <li><i class="fi fi-rr-eye"></i>{{ $newsPin->news_views_count }}x dilihat</li>
                             </ul>
@@ -188,7 +188,7 @@
                         <div class="news-card-info">
                             <h3><a href="{{ route('news.singlepost', ['news' => $newsPin->slug]) }}">{{ Illuminate\Support\Str::limit($newsPin->name, $limit = 60, $end = '...') }}</a></h3>
                             <p>{!! Illuminate\Support\Str::limit($newsPin->description, $limit = 60, $end = '...') !!}</p>
-                            <ul class="news-metainfo list-style">
+                            <ul class="news-metainfo">
                                 <li><i class="fi fi-rr-calendar-minus"></i><a href="javascript:void(0)">{{ $newsPin->date }}</a></li>
                                 <li><i class="fi fi-rr-eye"></i>{{ $newsPin->news_views_count }} x dilihat</li>
                             </ul>
@@ -200,7 +200,7 @@
             </div>
 
             <div class="news-col-three">
-            @forelse ($category2Populars as $key => $category2Popular)
+            @forelse ($category2Populars->take(5) as $key => $category2Popular)
                 @if (++$key == 1)
                     <div class="news-card-two">
                         <div class="news-card-img">
@@ -298,8 +298,8 @@
                     </div>
                     <div class="row gx-45">
                         <div class="col-xl-7">
-                            @forelse ($populars as $key => $popular)
-                                @if ($key == 0)
+                            @forelse ($populars->take(15) as $key => $popular)
+                                @if ($key == 11)
                                     <div class="news-card-four">
                                         <img src="{{ asset('storage/'. $popular->image) }}" alt="Image" />
                                         <div class="news-card-info">
@@ -315,7 +315,7 @@
                                             </ul>
                                         </div>
                                     </div>
-                                @elseif ($key == 2 || $key == 3)
+                                @elseif ($key >= 13)
                                     <div class="news-card-five">
                                         <div class="news-card-img">
                                             <img src="{{ asset('storage/' . $popular->image) }}" alt="Image" />
@@ -342,8 +342,8 @@
                             @endforelse
                         </div>
                         <div class="col-xl-5">
-                            @forelse ($populars as $key => $popular)
-                            @if ($key == 1)
+                            @forelse ($populars->take(17) as $key => $popular)
+                            @if ($key == 12)
                                 <div class="news-card-two">
                                     <div class="news-card-img">
                                         <img src="{{ asset('storage/' . $popular->image) }}" alt="Image" />
@@ -362,7 +362,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                            @elseif ($key > 3)
+                            @elseif ($key >= 14)
                                 <div class="news-card-three">
                                     <div class="news-card-img">
                                         <img src="{{ asset('storage/' . $popular->image) }}" alt="Image" />
@@ -473,7 +473,7 @@
                             @forelse ($categoriesPin as $key => $category)
                                 <div class="tab-pane fade show {{ $loop->first ? 'active' : '' }}" id="hu{{ ++$key }}" role="tabpanel">
                                     <div class="row">
-                                        @foreach ($newsByCategory[$category->name] as $newsPin)
+                                        @foreach ($newsByCategory[$category->name]->take(6) as $newsPin)
                                             <div class="col-md-4">
                                                 <div class="news-card-six">
                                                     <div class="news-card-img">
