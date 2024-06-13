@@ -11,6 +11,7 @@ use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\TagsController;
 use App\Http\Controllers\VoucherrController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\NewsCategoryController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -207,13 +208,6 @@ Route::get('list-tag', function () {
     return view('pages.user.tag.index');
 })->name('list-tag.user');
 
-Route::get('all-category', function () {
-    return view('pages.user.category.all-category');
-})->name('all-category.user');
-
-// Route::get('all-category', function(){
-//     return view('pages.user.category.all-category');
-// })->name('all-category.user');
 
 // AUTHOR
 Route::get('list-author', function () {
@@ -224,7 +218,7 @@ Route::get('inbox-user', function () {
     return view('pages.user.inbox.index');
 })->name('inbox-user.user');
 
-
+Route::get('jksaj', [NewsCategoryController::class, 'showAll'])->name('allcategory.user');
 // Route::get('{category}', [NewsController::class, 'showCategories'])->name('categories.show.user');
 
 require_once __DIR__ . '/jovita.php';

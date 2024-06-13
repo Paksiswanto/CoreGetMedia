@@ -308,9 +308,9 @@
 
                         <p> Tag :
                             @forelse ($tags as $tag)
-                                <a data-toggle="tooltip" data-placement="top" title="{{ $tag->name }}"
+                                <a data-toggle="tooltip" data-placement="top" title="{{ $tag->tags->name }}"
                                     href="{{route('list-tag.user')}}"
-                                    class="btn btn-rounded btn-outline-primary">{{ $tag->name }}</a>
+                                    class="btn btn-rounded btn-outline-primary">{{ $tag->tags->name }}</a>
                             @empty
                             @endforelse
                         </p>

@@ -7,6 +7,7 @@ use App\Contracts\Interfaces\CategoryInterface;
 use App\Contracts\Interfaces\NewsCategoryInterface;
 use App\Contracts\Interfaces\NewsInterface;
 use App\Contracts\Interfaces\SubCategoryInterface;
+use App\Contracts\Interfaces\TagInterface;
 use App\Models\NewsCategory;
 use App\Http\Requests\StoreNewsCategoryRequest;
 use App\Http\Requests\UpdateNewsCategoryRequest;
@@ -17,13 +18,15 @@ class NewsCategoryController extends Controller
     private NewsInterface $news;
     private CategoryInterface $category;
     private SubCategoryInterface $subCategories;
+    private TagInterface $tags;
 
-    public function __construct(NewsCategoryInterface $newsCategory, NewsInterface $news, CategoryInterface $category, SubCategoryInterface $subCategories)
+    public function __construct(NewsCategoryInterface $newsCategory, NewsInterface $news, CategoryInterface $category, SubCategoryInterface $subCategories, TagInterface $tags)
     {
         $this->newsCategory = $newsCategory;
         $this->category = $category;
         $this->subCategories = $subCategories;
         $this->news = $news;
+        $this->tags = $tags;
     }
     /**
      * Display a listing of the resource.
@@ -42,7 +45,8 @@ class NewsCategoryController extends Controller
         // $news = $this->news->whereCategory($category_id, 'notop');
         $latests = $this->news->categoryLatest();
         $CategoryPopulars = $this->category->showWithCount();
-        return view('pages.user.category.index', compact('categories', 'subCategories', 'category', 'trendings','newsTop', 'latests', 'CategoryPopulars'));
+        $popularTags = $this->tags->showWithCount();
+        return view('pages.user.category.index', compact('categories', 'subCategories', 'category', 'trendings','newsTop', 'latests', 'CategoryPopulars', 'popularTags'));
     }
 
     /**
@@ -73,10 +77,11 @@ class NewsCategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function showAll($slug)
+    public function showAll()
     {
         $categories = $this->category->get();
         $subCategories = $this->subCategories->get();
+        $news = $this->newsCategory->get();
         $popularCategory = $this->category->showWithCount();
         return view('pages.user.category.all-category', compact('news','categories', 'subCategories', 'popularCategory'));
     }
