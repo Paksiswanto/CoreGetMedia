@@ -117,8 +117,7 @@
                                 <ul class="category-widget list-style">
                                     @forelse ($popularCategory as $item)
                                         <li>
-                                            <a data-toggle="tooltip" data-placement="top" title="Fashion"
-                                                href="#"><img
+                                            <a data-toggle="tooltip" data-placement="top" title="{{ $item->name }}" href="{{ route('categories.show.user', ['category' => $item->slug]) }}"><img
                                                     src="{{ asset('assets/img/icons/arrow-right.svg') }}"
                                                     alt="Image">{{ $item->name }}
                                                 <span>( {{ $item->news_categories_count }} )</span>

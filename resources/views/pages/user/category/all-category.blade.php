@@ -36,7 +36,7 @@
 @section('content')
     <div class="col-lg-12">
         <div class="breadcrumb-wrap">
-            <h2 class="breadcrumb-title">{{ $category->name }} - Terpopuler</h2>
+            <h2 class="breadcrumb-title">{{ $category->name }} - Terbaru</h2>
             <ul class="breadcrumb-menu list-style">
                 <li><a href="/">Beranda</a></li>
                 <li>{{ $category->name }}</li>

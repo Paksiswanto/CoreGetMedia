@@ -36,7 +36,7 @@
 @section('content')
     <div class="col-lg-12">
         <div class="breadcrumb-wrap">
-            <h2 class="breadcrumb-title">{{ $subCategory->name }} - Terpopuler</h2>
+            <h2 class="breadcrumb-title">{{ $subCategory->name }} - Terbaru</h2>
             <ul class="breadcrumb-menu list-style">
                 <li><a href="/">Beranda</a></li>
                 <li>{{ $subCategory->name }}</li>
@@ -86,8 +86,7 @@
                                 <ul class="category-widget list-style">
                                     @forelse ($popularCategory as $item)
                                         <li>
-                                            <a data-toggle="tooltip" data-placement="top" title="Fashion"
-                                                href="#"><img
+                                            <a data-toggle="tooltip" data-placement="top" title="{{ $item->name }}" href="{{ route('categories.show.user', ['category' => $item->slug]) }}"><img
                                                     src="{{ asset('assets/img/icons/arrow-right.svg') }}"
                                                     alt="Image">{{ $item->name }}
                                                 <span>( {{ $item->news_categories_count }} )</span>
