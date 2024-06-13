@@ -135,30 +135,28 @@
                     @if (++$key == 1)
                         <div class="news-card-two">
                             <div class="news-card-img">
-                                <img src="{{ asset('storage/'. ) }}" alt="Image" />
-                                <a href="{{ route('news.category') }}" class="news-cat">Politics</a>
+                                <img src="{{ asset('storage/'. $categoryPopular->image) }}" alt="Image" />
+                                <a href="{{ route('news.category') }}" class="news-cat">{{ $categoryPopular->newsCategories[0]->category->name }}</a>
                             </div>
                             <div class="news-card-info">
-                                <h3><a href="{{ route('singlepost.news') }}">What The Federal Infrastructure Package Means For
-                                        Minnesota</a></h3>
+                                <h3><a href="{{ route('singlepost.news') }}">{{ $categoryPopular->name }}</a></h3>
                                 <ul class="news-metainfo list-style">
-                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 25, 2023</a></li>
-                                    <li><i class="fi fi-rr-eye"></i>10x dilihat</li>
+                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">{{ $categoryPopular->date }}</a></li>
+                                    <li><i class="fi fi-rr-eye"></i>{{ $categorypopular->news_views_count }}x dilihat</li>
                                 </ul>
                             </div>
                         </div>
                     @else
                         <div class="news-card-three">
                             <div class="news-card-img">
-                                <img src="{{ asset('assets/img/news/news-3.webp') }}" alt="Image" />
+                                <img src="{{ asset('storage/'. $categoryPopular->image) }}" alt="Image" />
                             </div>
                             <div class="news-card-info">
-                                <a href="{{ route('news.category') }}" class="news-cat">Fashion</a>
-                                <h3><a href="{{ route('singlepost.news') }}">How To Recreate The High Pony-tail That Celebrities
-                                        Love</a></h3>
+                                <a href="{{ route('news.category') }}" class="news-cat">{{ $categoryPopular->newsCategories[0]->category->name }}</a>
+                                <h3><a href="{{ route('singlepost.news') }}">{{ $categoryPopular->name }}</a></h3>
                                 <ul class="news-metainfo list-style">
-                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">Apr 15, 2023</a></li>
-                                    <li><i class="fi fi-rr-eye"></i>11x dilihat</li>
+                                    <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">{{ $categoryPopular->date }}</a></li>
+                                    <li><i class="fi fi-rr-eye"></i>{{ $categorypopular->news_views_count }}x dilihat</li>
                                 </ul>
                             </div>
                         </div>
@@ -487,9 +485,7 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
 
     <div class="bg_gray editor-news pt-100 pb-75">
