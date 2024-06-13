@@ -2,6 +2,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\NewsCategoryController;
 use App\Http\Controllers\NewsSubCategoryController;
+use App\Http\Controllers\NewsTagController;
 use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,7 @@ Route::get('detail-author', function(){
 Route::get('all-category/{category}', [NewsCategoryController::class, 'showAll'])->name('all-category-list.user');
 
 Route::get('all-subcategory/{subcategory}', [NewsSubCategoryController::class, 'showAll'])->name('all-subcategory-list.user');
+
+Route::get('news-tag-lis/{tag}', [NewsTagController::class, 'index'])->name('news-tag-list.user');
+
+Route::get('all-tag/{tag}', [NewsTagController::class, 'showAll'])->name('all-tag-list.user');

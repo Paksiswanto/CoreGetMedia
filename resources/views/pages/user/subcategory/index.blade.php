@@ -61,7 +61,7 @@
                                         </a>
                                     </h3>
                                     <ul class="news-metainfo list-style">
-                                        <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">{{ $item->date }}</a></li>
+                                        <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">{{ \Carbon\Carbon::parse($item->date)->translatedFormat('d F Y') }}</a></li>
                                         <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">{{ $item->newsViews_count ? $item->newsViews_count : '0' }}x dilihat</a></li>
                                     </ul>
                                 </div>

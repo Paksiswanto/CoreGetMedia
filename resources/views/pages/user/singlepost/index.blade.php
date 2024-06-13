@@ -196,43 +196,31 @@
                                                     <span>{{ $news->news_views_count }}x dilihat</span>
                                                 </li>
                                                 <li>
-                                                    <form id="form-like">
-                                                        @csrf
-                                                        <button type="submit"
-                                                            style="background: transparent;border:transparent"
-                                                            class="like">
-                                                            <svg class="last mb-1" xmlns="http://www.w3.org/2000/svg"
+                                                        <form id="form-like">
+                                                            @csrf
+                                                            <button type="submit"
+                                                                style="background: transparent;border:transparent"
+                                                                class="like">
+                                                                <svg class="last mb-1" xmlns="http://www.w3.org/2000/svg"
                                                                 width="18" height="18" viewBox="0 0 24 24">
                                                                 <path fill="#E93314"
                                                                     d="M18 21H7V8l7-7l1.25 1.25q.175.175.288.475t.112.575v.35L14.55 8H21q.8 0 1.4.6T23 10v2q0 .175-.05.375t-.1.375l-3 7.05q-.225.5-.75.85T18 21m-9-2h9l3-7v-2h-9l1.35-5.5L9 8.85zM9 8.85V19zM7 8v2H4v9h3v2H2V8z" />
-                                                            </svg>
-                                                        </button>
-                                                    </form>
+                                                                </svg>
+                                                            </button>
+                                                        </form>
 
-                                                    <form id="form-liked" style="display: none;">
-                                                        @csrf
-                                                        <button type="submit"
-                                                            style="background: transparent;border:transparent"
-                                                            class="liked">
-                                                            <svg class="last mb-1" xmlns="http://www.w3.org/2000/svg"
+                                                        <form id="form-liked" style="display: none;">
+                                                            @csrf
+                                                            <button type="submit"
+                                                                style="background: transparent;border:transparent"
+                                                                class="liked">
+                                                                <svg class="last mb-1" xmlns="http://www.w3.org/2000/svg"
                                                                 width="18" height="18" viewBox="0 0 24 24">
                                                                 <path fill="red"
                                                                     d="M18 21H8V8l7-7l1.25 1.25q.175.175.288.475t.112.575v.35L15.55 8H21q.8 0 1.4.6T23 10v2q0 .175-.037.375t-.113.375l-3 7.05q-.225.5-.75.85T18 21M6 8v13H2V8z" />
-                                                            </svg>
-                                                        </button>
-                                                    </form>
-
-                                                    {{-- <form class="d-flex">
-                                                        <i><button type="submit"
-                                                                style="background: transparent;border:transparent"
-                                                                class="liked">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="15"
-                                                                    height="15" viewBox="0 0 24 24">
-                                                                    <path fill="#434343"
-                                                                        d="M14.17 1L7 8.18V21h12.31L23 12.4V8h-8.31l1.12-5.38zM1 9h4v12H1z" />
                                                                 </svg>
-                                                        </button></i>
-                                                    </form> --}}
+                                                            </button>
+                                                        </form>
 
                                                     <span id="like" data-like="{{ $likes }}">{{ $likes }}</span>
                                                 </li>
