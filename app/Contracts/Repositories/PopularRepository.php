@@ -5,15 +5,12 @@ namespace App\Contracts\Repositories;
 use App\Contracts\Interfaces\PopularInterface;
 use App\Enums\NewsEnum;
 use App\Models\News;
-use App\Models\NewsCategory;
-use Illuminate\Support\Facades\DB;
 
 class PopularRepository extends BaseRepository implements PopularInterface
 {
-    public function __construct(News $news , NewsCategory $newsCategory)
+    public function __construct(News $news)
     {
         $this->model = $news;
-        $this->newscategori = $newsCategory;
     }
 
     /**
@@ -56,6 +53,7 @@ class PopularRepository extends BaseRepository implements PopularInterface
         return $this->model->query()
             ->where('status', NewsEnum::ACCEPTED->value)
             ->withCount('newsViews')
+            ->orderByDesc('news_views_count')
             ->get();
     }
 
@@ -69,12 +67,12 @@ class PopularRepository extends BaseRepository implements PopularInterface
     }
 
     public function getbycategory($category_id): mixed
-    {
+    {   
         return $this->model->query()
             ->where('status', NewsEnum::ACCEPTED->value)
             ->whereRelation('newsCategories', 'category_id', $category_id->id)
             ->withCount('newsViews')
-            ->orderByDesc('news_views_count')
+            // ->orderByDesc('news_views_count')
             ->get();
     }
 

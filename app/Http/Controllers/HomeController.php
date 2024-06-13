@@ -31,18 +31,21 @@ class HomeController extends Controller
 
     public function index(){
         $populars = $this->populars->getpopular();
+        $popular_id = $populars->pluck('id');
         $latests = $this->populars->getlatest();
         $tags = $this->tags->showWithCount();
         $category_id_1 = $this->categories->category_id_1();
         $category_id_2 = $this->categories->category_id_2();
+
+        $newsPins = $this->news->news_pin();
+        $newsPin_id = $newsPins->pluck('id');
         $categoryPopulars = $this->populars->getbycategory($category_id_1);
         $category2Populars = $this->populars->getbycategory($category_id_2);
-        $newsPins = $this->news->news_pin();
         $popularCategories = $this->categories->showWithCount();
 
         $categoriesPin = $this->news->news_pin_categories();
         $newsByCategory = [];
-        
+
         foreach ($categoriesPin as $category) {
             $newsByCategory[$category->name] = $this->news->news_by_category($category->name);
         }

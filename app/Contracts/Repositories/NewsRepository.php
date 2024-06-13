@@ -194,4 +194,14 @@ class NewsRepository extends BaseRepository implements NewsInterface
             ->select('news.*')
             ->get();
     }
+
+    public function allPin() : mixed
+    {
+        return $this->model->query()
+            ->where('news.status', NewsEnum::ACCEPTED->value)
+            ->where('news.pin', '1')
+            ->latest()
+            ->get();
+    }
+    
 }
