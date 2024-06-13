@@ -89,7 +89,7 @@
                                 <div class="d-flex">
                                     <li class="nav-item">
                                         @forelse ($subCategories->where('category_id', $category->id) as $subCategory)
-                                            <a href="{{ route('news.subcategory', ['slug' => $subCategory->slug]) }}" class="nav-link"  style="{{ request()->routeIs('news.subcategory', ) && request()->route('category') == $subCategory->category->slug && request()->route('subCategory') == $subCategory->slug  ? 'color: #E93314;' : '' }}">{{ $subCategory->name }}</a>
+                                            <a href="{{ route('news.subcategory', ['slug' => $subCategory->slug]) }}" class="nav-link"  style="{{ request()->routeIs('news.subcategory', ['subcategory' => $subCategory->slug]) && request()->route('category') == $subCategory->category->slug && request()->route('subCategory') == $subCategory->slug  ? 'color: #E93314;' : '' }}">{{ $subCategory->name }}</a>
 
                                             @if(($loop->iteration % 5) == 0)
                                             </li>

@@ -53,12 +53,12 @@
                         @forelse ($news as $item)
                             <div class="news-card-five">
                                 <div class="news-card-img">
-                                    <a href="#"><img src="{{asset('storage/'. $item->image)}}" alt="Image" height="140" width="100%" /></a>
+                                    <a href="javascript:void(0)"><img src="{{asset('storage/'. $item->image)}}" alt="Image" height="140" width="100%" /></a>
                                     <a data-toggle="tooltip" data-placement="top" title="{{ $item->newsCategories[0]->category->name }}"
-                                        href="#" class="news-cat">{{ $item->newsCategories[0]->category->name }}</a>
+                                        href="{{ route('categories.show.user', ['category' => $new->slug]) }}" class="news-cat">{{ $item->newsCategories[0]->category->name }}</a>
                                 </div>
                                 <div class="news-card-info">
-                                    <h3><a data-toggle="tooltip" data-placement="top" title="Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange"
+                                    <h3><a data-toggle="tooltip" data-placement="top" title="{{ $item->name }}"
                                             href="{{ route('news.singlepost', ['news' => $item->slug]) }}">{!! Illuminate\Support\Str::limit(strip_tags($item->name), 200, '...') !!}
                                         </a>
                                     </h3>
@@ -88,55 +88,21 @@
                             <div class="sidebar-widget">
                                 <h3 class="sidebar-widget-title">Kategori Populer</h3>
                                 <ul class="category-widget list-style">
-                                    <li>
-                                        <a data-toggle="tooltip" data-placement="top" title="Fashion"
-                                            href="#"><img
-                                                src="{{ asset('assets/img/icons/arrow-right.svg') }}"
-                                                alt="Image">Fashion
-                                            <span>( 10 )</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a data-toggle="tooltip" data-placement="top" title="Fashion"
-                                            href="#"><img
-                                                src="{{ asset('assets/img/icons/arrow-right.svg') }}"
-                                                alt="Image">Fashion
-                                            <span>( 10 )</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a data-toggle="tooltip" data-placement="top" title="Fashion"
-                                            href="#"><img
-                                                src="{{ asset('assets/img/icons/arrow-right.svg') }}"
-                                                alt="Image">Fashion
-                                            <span>( 10 )</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a data-toggle="tooltip" data-placement="top" title="Fashion"
-                                            href="#"><img
-                                                src="{{ asset('assets/img/icons/arrow-right.svg') }}"
-                                                alt="Image">Fashion
-                                            <span>( 10 )</span>
-                                        </a>
-                                    </li>
+                                    @foreach ($popularCategory as $category)
+                                    <li><a data-toggle="tooltip" data-placement="top" title="{{ $category->name }}" href="{{ route('categories.show.user', ['category' => $category->slug]) }}"><img src="{{ asset('assets/img/icons/arrow-right.svg') }}" alt="Image">{{ $category->name }}
+                                            <span>({{ $category->news_categories_count }})</span></a></li>
+                                    @endforeach
                                 </ul>
                             </div>
 
                             <div class="sidebar-widget bg-transparent shadow-sm">
                                 <h3 class="sidebar-widget-title">Tag Populer</h3>
                                 <ul class="tag-list list-style">
-                                <li><a href="{{route('list-tag.user')}}">BUSINESS</a></li>
-                                <li><a href="{{route('list-tag.user')}}">FOOD</a></li>
-                                <li><a href="{{route('list-tag.user')}}">SCIENCE</a></li>
-                                <li><a href="{{route('list-tag.user')}}">LIFESTYLE</a></li>
-                                <li><a href="{{route('list-tag.user')}}">SPORTS</a></li>
-                                <li><a href="{{route('list-tag.user')}}">PHOTO</a></li>
-                                <li><a href="{{route('list-tag.user')}}">TECHNOLOGY</a></li>
-                                <li><a href="{{route('list-tag.user')}}">CONTENT</a></li>
-                                <li><a href="{{route('list-tag.user')}}">FEATURED</a></li>
-                                <li><a href="{{route('list-tag.user')}}">AUDIO</a></li>
-                                <li><a href="{{route('list-tag.user')}}">FASHION</a></li>
+                                    @forelse ($popularTags as $popularTag)
+                                    <li><a href="{{route('list-tag.user')}}">{{ $popularTag->name }}</a></li>
+                                    @empty
+    
+                                    @endforelse
                                 </ul>
                                 </div>
                         </div>

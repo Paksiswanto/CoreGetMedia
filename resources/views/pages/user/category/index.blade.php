@@ -66,7 +66,7 @@
                             </h3>
                             <ul class="news-metainfo list-style">
                                 <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">{{ \Carbon\Carbon::parse($item->created_at)->translatedFormat('d F Y') }}</a></li>
-                                <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">{{ $item->newsViews_count }}x dilihat</a></li>
+                                <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">{{ $item->newsViews_count ? $item->newsViews_count : '0' }}x dilihat</a></li>
                             </ul>
                         </div>
                     </div>
@@ -91,14 +91,14 @@
                     @forelse ($latests as $new)
                     <div class="news-card-five">
                         <div class="news-card-img">
-                            <a href="javascript:void(0)"><img src="{{ asset('storage/' . $new->image) }}" alt="Image" height="140" width="100%" /></a>
-                            <a data-toggle="tooltip" data-placement="top" title="Sports" href="#" class="news-cat">{{ $new->newsCategories[0]->category->name }}</a>
+                            <a href="javascript:void(0)"><img src="{{ asset('storage/' . $new->image) }}" alt="Image" height="150" width="100%" /></a>
+                            <a data-toggle="tooltip" data-placement="top" title="Sports" href="{{ route('categories.show.user', ['category' => $new->slug]) }}" class="news-cat">{{ $new->newsCategories[0]->category->name }}</a>
                         </div>
                         <div class="news-card-info">
-                            <h3><a data-toggle="tooltip" data-placement="top" title="Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange" href="{{ route('news.singlepost', ['news' => $new->slug]) }}">{!! Illuminate\Support\Str::limit($new->name, $limit = 45, $end = '...') !!}
+                            <h3><a data-toggle="tooltip" data-placement="top" title="{{ $new->name }}" href="{{ route('news.singlepost', ['news' => $new->slug]) }}">{!! Illuminate\Support\Str::limit($new->name, $limit = 200, $end = '...') !!}
                                 </a>
                             </h3>
-                            <p>{!! Illuminate\Support\Str::limit($new->name, $limit = 110, $end = '...') !!}</p>
+                            <p>{!! Illuminate\Support\Str::limit($new->description, $limit = 200, $end = '...') !!}</p>
                             <ul class="news-metainfo list-style">
                                 <li><i class="fi fi-rr-calendar-minus"></i><a href="javascript:void(0)">{{ \Carbon\Carbon::parse($new->created_at)->translatedFormat('d F Y') }}</a></li>
                                 <li><i class="fi fi-rr-eye"></i><a href="javascript:void(0)">{{ $new->newsViews_count ? $item->newsViews_count : '0' }}x dilihat</a></li>
@@ -136,7 +136,7 @@
 
                         <div class="sidebar-widget" style="width: 400px">
                             <h3 class="sidebar-widget-title">
-                                Berita Popular
+                                Berita Populer
                             </h3>
                             @forelse ($trendings as $trending)
                             <div class="news-card-three">
@@ -144,10 +144,10 @@
                                     <img src="{{ asset('storage/' . $trending->image) }}" alt="Image" />
                                 </div>
                                 <div class="news-card-info">
-                                    <h3><a href="{{ route('news.singlepost', ['news' => $trending->slug]) }}">{{$trending->name}}</a></h3>
+                                    <h3><a href="{{ route('news.singlepost', ['news' => $trending->slug]) }}">{!! Illuminate\Support\Str::limit($trending->name, $limit = 110, $end = '...') !!}</a></h3>
                                     <ul class="news-metainfo list-style d-flex">
-                                        <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html" style="font-size: 15px;">15 Apr 2023</a></li>
-                                        <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus" style="font-size: 15px;">10</a></li>
+                                        <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html" style="font-size: 15px;">{{ \Carbon\Carbon::parse($trending->date)->translatedFormat('d F Y') }}</a></li>
+                                        <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus" style="font-size: 15px;">{{ $trending->newsViews_count ? $trending->newsViews_count : '0' }}x dilihat</a></li>
                                     </ul>
                                 </div>
                             </div>
