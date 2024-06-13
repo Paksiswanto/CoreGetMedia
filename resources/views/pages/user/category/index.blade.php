@@ -57,7 +57,7 @@
                 <div class="">
                     <div class="news-card-four" style="height: 550px;">
                         <div class="news-card-img">
-                            <a href="#"> <img src="{{asset('storage/'. $item->image)}}" alt="Image" width="100%" style="object-fit: cover" height="450" /></a>
+                            <a href="javascript:void(0)"> <img src="{{asset('storage/'. $item->image)}}" alt="Image" width="100%" style="object-fit: cover" height="450" /></a>
                         </div>
 
                         <div class="news-card-info">
@@ -91,8 +91,8 @@
                     @forelse ($latests as $new)
                     <div class="news-card-five">
                         <div class="news-card-img">
-                            <a href="#"><img src="{{ asset('storage/' . $new->image) }}" alt="Image" height="140" width="100%" /></a>
-                            <a data-toggle="tooltip" data-placement="top" title="Sports" href="#" class="news-cat">Sports</a>
+                            <a href="javascript:void(0)"><img src="{{ asset('storage/' . $new->image) }}" alt="Image" height="140" width="100%" /></a>
+                            <a data-toggle="tooltip" data-placement="top" title="Sports" href="#" class="news-cat">{{ $new->newsCategories[0]->category->name }}</a>
                         </div>
                         <div class="news-card-info">
                             <h3><a data-toggle="tooltip" data-placement="top" title="Muga Nemo Aptent Quaerat Explicabo Urna Ni Like Ange" href="{{ route('news.singlepost', ['news' => $new->slug]) }}">{!! Illuminate\Support\Str::limit($new->name, $limit = 45, $end = '...') !!}
@@ -101,7 +101,7 @@
                             <p>{!! Illuminate\Support\Str::limit($new->name, $limit = 110, $end = '...') !!}</p>
                             <ul class="news-metainfo list-style">
                                 <li><i class="fi fi-rr-calendar-minus"></i><a href="javascript:void(0)">{{ \Carbon\Carbon::parse($new->created_at)->translatedFormat('d F Y') }}</a></li>
-                                <li><i class="fi fi-rr-eye"></i><a href="javascript:void(0)">{{ $new->views_count }}x dilihat</a></li>
+                                <li><i class="fi fi-rr-eye"></i><a href="javascript:void(0)">{{ $new->newsViews_count ? $item->newsViews_count : '0' }}x dilihat</a></li>
                             </ul>
                         </div>
                     </div>

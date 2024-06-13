@@ -3,17 +3,45 @@
 namespace App\Http\Controllers;
 
 use App\Models\NewsTag;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreNewsTagRequest;
 use App\Http\Requests\UpdateNewsTagRequest;
+use App\Contracts\Interfaces\NewsTagInterface;
+use App\Contracts\Interfaces\NewsInterface;
+use App\Contracts\Interfaces\TagInterface;
+use App\Contracts\Interfaces\CategoryInterface;
 
 class NewsTagController extends Controller
 {
+    private NewsInterface $news;
+    private TagInterface $tag;
+    private NewsTagInterface $tags;
+    private CategoryInterface $category;
+
+    public function __construct(NewsInterface $news, TagInterface $tag, NewsTagInterface $tags, CategoryInterface $category)
+    {
+        $this->news = $news;
+        $this->tag = $tag;
+        $this->tags = $tags;
+        $this->category = $category;
+    }
+
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request, $slug)
     {
-        //
+        $news = $this->tag->showWithSLug($slug);
+
+        $query = $request->input('search');
+        $news_tags = $this->tags->where($news->id, 'top');
+        $newsTags = $this->tags->latest($news->id, $query);
+        $CategoryPopulars = $this->category->showWithCount();
+        $query = $request->input('search');
+        $trendings = $this->news->whereCategory($news->id, $query);
+        $popularTags = $this->tag->showWithCount();
+
+        return view('pages.user.tag.index', compact('news_tags', 'news', 'newsTags', 'CategoryPopulars', 'trendings', 'popularTags'));
     }
 
     /**
@@ -38,6 +66,23 @@ class NewsTagController extends Controller
     public function show(NewsTag $newsTag)
     {
         //
+    }
+
+        /**
+     * Display the specified resource.
+     */
+    public function showAll(Request $request, $slug)
+    {
+        $news = $this->tag->showWithSLug($slug);
+
+        $query = $request->input('search');
+        $newsTags = $this->tags->latest($news->id, $query);
+        $CategoryPopulars = $this->category->showWithCount();
+        $query = $request->input('search');
+        $trendings = $this->news->whereCategory($news->id, $query);
+        $popularTags = $this->tag->showWithCount();
+
+        return view('pages.user.tag.all-tag', compact('news', 'newsTags', 'CategoryPopulars', 'trendings', 'popularTags'));
     }
 
     /**
