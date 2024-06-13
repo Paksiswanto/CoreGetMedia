@@ -14,6 +14,7 @@ return new class extends Migration
     {
         Schema::create('authors', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->foreignUuid('user_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->text('cv');
             $table->enum('status', [AuthorEnum::PENDING->value, AuthorEnum::ACCEPTED->value, AuthorEnum::REJECT->value])->default(AuthorEnum::PENDING->value);
             $table->timestamps();
