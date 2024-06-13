@@ -18,7 +18,9 @@ class NewsViewService
      */
     public function store($news_id, $ip_address)
     {
-        $existingVisitor = NewsView::where('news_id', $news_id)->first();
+        $existingVisitor = NewsView::where('news_id', $news_id)
+                                ->where('ip_address', $ip_address)
+                                ->first();
 
         if (!$existingVisitor) {
             NewsView::create([
