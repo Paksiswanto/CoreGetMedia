@@ -597,7 +597,7 @@
         var formLike = document.getElementById('form-like');
         var formLiked = document.getElementById('form-liked');
         var likeCount = document.getElementById('like');
-        var likedByUser = {{ $likedByUser ? 'false' : 'true' }};
+        var likedByUser = {{ $likedByUser ? 'true' : 'false' }};
         var likeData = parseInt(likeCount.getAttribute('data-like'));
 
         if (likedByUser) {
