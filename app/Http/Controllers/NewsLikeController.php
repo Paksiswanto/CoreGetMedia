@@ -53,7 +53,7 @@ class NewsLikeController extends Controller
         $data = $this->service->store($user_id, $news->id, $ipAddress);
         $this->like->store($data);
 
-        return Response::success(null);
+        return response()->json();
     }
 
     /**

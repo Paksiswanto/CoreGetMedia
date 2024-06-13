@@ -151,18 +151,16 @@ class NewsController extends Controller
     public function show(Request $request, $slug)
     {
         $ipAddress = $request->ip();
+
         $news = $this->news->showWithSlug($slug);
         $news_id = $news->id;
         $data = $this->viewService->store($news_id, $ipAddress);
         $tags = $this->newstags->where($news_id);
         $comments = $this->comments->get($news_id);
         $likes = $this->newsLikes->get($news_id);
-        $user_id = "";
-        if (Auth::check()) {
-            $user_id = auth()->user()->id;
-        }
-        $likedByUser = $this->newsLikes->where($user_id, $ipAddress);
 
+        $likedByUser = $this->newsLikes->where($news_id, $ipAddress);
+        
         $CategoryPopulars = $this->categories->showWithCount();
         $popularTags = $this->tags->showWithCount();
         return view('pages.user.singlepost.index', compact('likedByUser', 'news', 'news_id', 'CategoryPopulars', 'tags', 'popularTags', 'comments', 'likes'));
