@@ -35,15 +35,15 @@ class NewsController extends Controller
     private NewsViewService $viewService;
 
     public function __construct(
-        NewsInterface $news, 
-        CategoryInterface $categories, 
-        SubCategoryInterface $subcategories, 
-        TagInterface $tags, 
-        NewsCategoryInterface $newscategories, 
-        NewsSubCategoryInterface $newssubcategories, 
+        NewsInterface $news,
+        CategoryInterface $categories,
+        SubCategoryInterface $subcategories,
+        TagInterface $tags,
+        NewsCategoryInterface $newscategories,
+        NewsSubCategoryInterface $newssubcategories,
         NewsTagInterface $newstags,
         NewsViewInterface $newsViews,
-        NewsViewService $viewService, 
+        NewsViewService $viewService,
         NewsService $service)
     {
         $this->news = $news;
@@ -73,6 +73,20 @@ class NewsController extends Controller
     {
         $news = $this->news->where(NewsEnum::PENDING->value);
         return view('pages.admin.news.confirm-news', compact('news'));
+    }
+
+    public function pin_news(News $news)
+    {
+        $data['pin'] = 1;
+        $this->news->update($news->id, $data);
+        return back()->with('success', 'Berhasil mengpin berita');
+    }
+
+    public function unpin_news(News $news)
+    {
+        $data['pin'] = 0;
+        $this->news->update($news->id, $data);
+        return back()->with('success', 'Berhasil mengunpin berita');
     }
 
     public function news_list()
@@ -132,10 +146,10 @@ class NewsController extends Controller
         $news_id = $news->id;
         $data = $this->viewService->store($news_id, $ipAddress);
         $tags = $this->newstags->where($news_id);
-        
+
         $CategoryPopulars = $this->categories->showWithCount();
         $popularTags = $this->tags->showWithCount();
-        return view('pages.user.singlepost.index', compact('news', 'CategoryPopulars', 'tags', 'popularTags'));   
+        return view('pages.user.singlepost.index', compact('news', 'CategoryPopulars', 'tags', 'popularTags'));
     }
 
     /**

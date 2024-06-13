@@ -19,7 +19,8 @@ class News extends Model
         'user_id',
         'description',
         'date',
-        'status'
+        'status',
+        'pin'
     ];
 
     protected $primaryKey = 'id';

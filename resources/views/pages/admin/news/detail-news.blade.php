@@ -80,55 +80,24 @@
             @if ($news->status != 'accepted')
                 <div class="">
                     <button id="btn-reject-{{ $news->id }}" data-id="{{ $news->id }}" type="button" class="btn btn-danger btn-reject btn-lg px-3">Tolak</button>
-                </div> 
+                </div>
                 <div class="">
                     <button id="btn-approved-{{ $news->id }}" data-id="{{ $news->id }}" type="button" class="btn btn-success btn-approved btn-lg px-3">Terima</button>
                 </div>
-            @endif
-
-            {{-- @if ($news->status === "active")
-            <div class="">
-                <a href="{{ route('news.user',  ['news' => $news->slug,'year'=> $dateParts['year'],'month'=>$dateParts['month'],'day'=> $dateParts['day'] ]) }}" class="btn btn-warning btn-lg px-3">Preview</a>
-            </div>
-            @endif
-            @if ($news->status === 'panding')
-            <div class="d-flex gap-2">
+            @elseif ($news->pin != '1')
                 <div class="">
-                    <a class="btn btn-danger btn-lg px-3 btn-reject" id="btn-reject-{{ $news->id }}">Tolak</a>
+                    <button id="btn-pin-{{ $news->id }}" data-id="{{ $news->id }}" type="button" class="btn btn-primary btn-pin btn-lg px-3">Pin Berita</button>
                 </div>
-                <form action="{{ route('approved.news.admin', ['news' => $news->id]) }}" method="post">
-                    @method('patch')
-                    @csrf
-                    <button type="submit" class="btn btn-success btn-lg px-3">Terima</button>
-                </form>
-
-            </div>
+            @elseif ($news->pin == '1')
+                <div class="">
+                    <button id="btn-unpin-{{ $news->id }}" data-id="{{ $news->id }}" type="button" class="btn btn-primary btn-unpin btn-lg px-3">Unpin Berita</button>
+                </div>
             @else
-            <div>
-                <a href="{{ route('news.option.editor', ['news' => $news->id]) }}" class="btn btn-lg px-3 btn-{{ $news->is_primary ? 'danger' : 'primary' }}">
-                    <div class="d-flex gap-2">
-                        @if ($news->is_primary)
-                        <i><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24">
-                                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m3 3l18 18M15 4.5l-3.249 3.249m-2.57 1.433L7 10l-1.5 1.5l7 7L14 17l.82-2.186m1.43-2.563L19.5 9M9 15l-4.5 4.5M14.5 4L20 9.5" />
-                            </svg></i>
-                        Hapus Pin
-                        @else
-                        <i><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24">
-                                <path fill="currentColor" fill-rule="evenodd" d="M16 9V4h2V2H6v2h2v5c0 1.66-1.34 3-3 3v2h5.97v7l1 1l1-1v-7H19v-2c-1.66 0-3-1.34-3-3" />
-                            </svg></i>
-                        Pin Berita
-                        @endif
-                    </div>
-                </a>
-            </div>
-            @endif --}}
+            @endif
         </div>
     </div>
 
     <form id="myForm" method="post" enctype="multipart/form-data">
-        {{-- @method('put')
-        @csrf --}}
-
         <div class="row">
             <div class="col-12 col-md-6 col-lg-5">
                 <div class="card">
@@ -168,16 +137,6 @@
                                 </p>
                                 @endforeach
                             </div>
-                            {{-- <select id="category_id" class="select2 form-control category @error('category') is-invalid @enderror" name="category[]" multiple="true" aria-label="Default select example">
-                                <option>pilih kategori</option>
-                                <option value="" selected>Pendidikan</option>
-                                <option value="">Hiburan</option> --}}
-                                {{-- @foreach ($categories as $category)
-                                <option value="{{ $category->id }}" {{ $newsCategories->contains('category_id', $category->id) ? 'selected' : '' }}>
-                                    {{ $category->name }}
-                                </option>
-                                @endforeach --}}
-                            {{-- </select> --}}
                             @error('category')
                             <span class="invalid-feedback" role="alert" style="color: red">
                                 <strong>{{ $message }}</strong>
@@ -194,16 +153,6 @@
                                     </p>
                                     @endforeach
                                 </div>
-                                {{-- <select id="sub_category_id" class="form-control sub-category select2 @error('sub_category') is-invalid @enderror" name="sub_category[]" multiple="true" value="" aria-label="Default select example">
-                                    <option>pilih sub kategori</option>
-                                    <option value="" selected>Biografi</option>
-                                    <option value="">Music</option> --}}
-                                    {{-- @foreach ($subCategories as $subCategory)
-                                    <option value="{{ $subCategory->id }}" {{ $newsSubCategories->contains('sub_category_id', $subCategory->id) ? 'selected' : '' }}>
-                                        {{ $subCategory->name }}
-                                    </option>
-                                    @endforeach --}}
-                                {{-- </select> --}}
                                 @error('sub_category')
                                 <span class="invalid-feedback" role="alert" style="color: red">
                                     <strong>{{ $message }}</strong>
@@ -229,16 +178,6 @@
                                 </p>
                                 @endforeach
                             </div>
-                            {{-- <select class="form-control select2 tags" name="tags[]" multiple="multiple">
-                                <option>pilih tags</option>
-                                <option value="">populer</option>
-                                <option value="">news</option> --}}
-                                {{-- @foreach ($tags as $tag)
-                                <option value="{{ $tag->name }}" {{ $newsTags->contains('tag_id', $tag->id) ? 'selected' : '' }}>
-                                    {{ $tag->name }}
-                                </option>
-                                @endforeach --}}
-                            {{-- </select> --}}
                             @error('tags')
                             <span class="invalid-feedback" role="alert" style="color: red;">
                                 <strong>{{ $message }}</strong>
@@ -276,7 +215,6 @@
                 </div>
             </div>
         </div>
-        {{-- <button type="submit" class="btn btn-success">Simpan</button> --}}
     </form>
 </div>
 </div>
@@ -311,6 +249,65 @@
     </div>
 </div>
 
+<div class="modal fade" id="modal-pin" tabindex="-1" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <form id="form-pin" method="POST" class="modal-content">
+            @method('put')
+            @csrf
+            <div class="modal-header d-flex align-items-center">
+                <h4 class="modal-title" id="myModalLabel">
+                    Pin Berita
+                </h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <p>Apakah anda yakin akan mengpin berita ini?</p>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light-warning text-warning font-medium waves-effect"
+                    data-bs-dismiss="modal">
+                    Tidak
+                </button>
+                <button type="submit" class="btn btn-light-success text-success font-medium waves-effect"
+                    data-bs-dismiss="modal">
+                    Ya
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-unpin" tabindex="-1" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <form id="form-unpin" method="POST" class="modal-content">
+            @method('put')
+            @csrf
+            <div class="modal-header d-flex align-items-center">
+                <h4 class="modal-title" id="myModalLabel">
+                    Unpin Berita
+                </h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <p>Apakah anda yakin akan mengunpin berita ini?</p>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light-warning text-warning font-medium waves-effect"
+                    data-bs-dismiss="modal">
+                    Tidak
+                </button>
+                <button type="submit" class="btn btn-light-success text-success font-medium waves-effect"
+                    data-bs-dismiss="modal">
+                    Ya
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
 
 <div class="modal fade" id="modal-reject" tabindex="-1" aria-labelledby="modal-reject Label">
     <div class="modal-dialog modal-lg">
@@ -357,6 +354,18 @@
         var id = $(this).data('id');
         $('#form-approved').attr('action', '/approved-news/' + id);
         $('#modal-approved').modal('show');
+    })
+
+    $('.btn-pin').click(function() {
+        var id = $(this).data('id');
+        $('#form-pin').attr('action', '/pin-news/' + id);
+        $('#modal-pin').modal('show');
+    })
+
+    $('.btn-unpin').click(function() {
+        var id = $(this).data('id');
+        $('#form-unpin').attr('action', '/unpin-news/' + id);
+        $('#modal-unpin').modal('show');
     })
 
     $('.btn-reject').click(function() {
