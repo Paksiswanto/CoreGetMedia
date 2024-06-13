@@ -132,7 +132,7 @@
     <div class="container-fluid pb-75">
         <div class="news-col-wrap">
             <div class="news-col-one">
-                @forelse ($categoryPopulars->take(6) as $key => $categoryPopular)
+                @forelse ($categoryPopulars->take(5) as $key => $categoryPopular)
                     @if (++$key == 1)
                         <div class="news-card-two">
                             <div class="news-card-img">
@@ -200,7 +200,7 @@
             </div>
 
             <div class="news-col-three">
-            @forelse ($category2Populars->take(6) as $key => $category2Popular)
+            @forelse ($category2Populars->take(5) as $key => $category2Popular)
                 @if (++$key == 1)
                     <div class="news-card-two">
                         <div class="news-card-img">
