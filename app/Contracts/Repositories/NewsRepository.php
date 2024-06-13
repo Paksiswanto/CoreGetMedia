@@ -77,7 +77,7 @@ class NewsRepository extends BaseRepository implements NewsInterface
             ->where('pin', '1')
             ->withCount('newsViews')
             ->orderByDesc('news_views_count')
-            ->take(9)
+            ->take(3)
             ->get();
 
     }
