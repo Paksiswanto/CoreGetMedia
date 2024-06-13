@@ -362,7 +362,7 @@
                             @elseif ($key >= 14)
                                 <div class="news-card-three">
                                     <div class="news-card-img">
-                                        <img src="{{ asset('storage/' . $popular->image) }}" class="w-100" style="height: 150px; object-fit: cover;" alt="Image" />
+                                        <img src="{{ asset('storage/' . $popular->image) }}" class="w-100" style="height: 100px; object-fit: cover;" alt="Image" />
                                     </div>
                                     <div class="news-card-info">
                                         <a href="{{ route('categories.show.user', $popular->newsCategories[0]->category->slug) }}"
