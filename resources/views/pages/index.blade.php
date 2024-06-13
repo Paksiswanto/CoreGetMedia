@@ -79,6 +79,7 @@
         .news-card-one .news-card-img img {
             border-radius: 50%;
             height: 100px;
+            width: 100px;
         }
     </style>
 @endsection
@@ -107,7 +108,7 @@
                             @forelse ($populars->take(10) as $popular)
                                 <div class="swiper-slide news-card-one">
                                     <div class="news-card-img">
-                                        <img src="{{ asset('storage/' . $popular->image) }}" alt="Image" />
+                                        <img src="{{ asset('storage/' . $popular->image) }}" alt="Image" style="object-fit: cover;"/>
                                     </div>
                                     <div class="news-card-info">
                                         <h3><a
