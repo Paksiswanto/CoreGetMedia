@@ -68,6 +68,18 @@ class NewsRepository extends BaseRepository implements NewsInterface
             ->get();
     }
 
+    public function news_pin() : mixed
+    {
+        return $this->model->query()
+            ->where('status', NewsEnum::ACCEPTED->value)
+            ->where('pin', '1')
+            ->withCount('newsViews')
+            ->orderByDesc('news_views_count')
+            ->take(9)
+            ->get();
+
+    }
+
     public function whereSubCategory($id, $query): mixed
     {
         return $this->model->query()
