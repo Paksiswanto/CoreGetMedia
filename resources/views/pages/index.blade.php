@@ -248,7 +248,7 @@
         <div class="row gx-45">
             <div class="col-xl-9">
                 <div class="news-col-wrap">
-                    @forelse ($latests->take(5) as $latest)
+                    @forelse ($latests as $latest)
                         <div class="news-card-five pb-3">
                             <div class="news-card-img">
                                 <img src="{{ asset('storage/' . $latest->image) }}" alt="{{ $latest->image }}" />
@@ -342,7 +342,7 @@
                             @endforelse
                         </div>
                         <div class="col-xl-5">
-                            @forelse ($populars->skip(13)->take(4) as $key => $popular)
+                            @forelse ($populars->skip(10)->take(4) as $key => $popular)
                             @if ($key == 1)
                                 <div class="news-card-two">
                                     <div class="news-card-img">
