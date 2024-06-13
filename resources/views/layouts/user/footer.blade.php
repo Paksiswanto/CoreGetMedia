@@ -30,7 +30,7 @@
                     <li class="mb-2"><a href="/" style="color: #FFFFFF">Beranda</a></li>
                     <li class="mb-2"><a href="{{ route('about.us') }}" style="color: #FFFFFF">Tentang Kami</a></li>
                     <li class="mb-2"><a href="/contact-us" style="color: #FFFFFF">Hubungi Kami</a></li>
-                    <li class="mb-2"><a href="/list-author" style="color: #FFFFFF">Penulis</a></li>
+                    <li class="mb-2"><a href="{{ route('user.list.author') }}" style="color: #FFFFFF">Penulis</a></li>
                     <li class="mb-2"><a href="{{route('faq-list.user')}}" style="color: #FFFFFF">Faq</a></li>
                 </ul>
             </div>

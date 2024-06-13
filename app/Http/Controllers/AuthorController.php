@@ -81,4 +81,10 @@ class AuthorController extends Controller
         $this->author->delete($author->id);
         return back()->wihh('success', 'Berhasil menghapus data');
     }
+
+    public function landing()
+    {
+        $authors = $this->author->accepted();
+        return view('pages.user.author.list-author', compact('authors'));
+    }
 }
