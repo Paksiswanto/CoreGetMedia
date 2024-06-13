@@ -31,7 +31,7 @@
     <div class="container">
       <h2 class="breadcrumb-title">Author</h2>
       <ul class="breadcrumb-menu list-style">
-        <li><a href="/">Home</a></li>
+        <li><a href="/">Beranda</a></li>
         <li>Author</li>
       </ul>
     </div>

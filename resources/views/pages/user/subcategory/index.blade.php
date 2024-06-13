@@ -38,7 +38,7 @@
         <div class="breadcrumb-wrap">
             <h2 class="breadcrumb-title">{{ $subcategory->name }}</h2>
             <ul class="breadcrumb-menu list-style">
-                <li><a href="/">Home</a></li>
+                <li><a href="/">Beranda</a></li>
                 <li>{{ $subcategory->name }}</li>
             </ul>
         </div>
