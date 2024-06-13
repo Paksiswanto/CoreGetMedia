@@ -1,5 +1,6 @@
 @extends('layouts.user.app')
 @section('seo')
+    <meta name="description" content="{{ Str::limit(strip_tags($news->description), 200) }}" />
     <meta name="title" content="{{ $news->name }} - Get Media" />
     <meta name="og:image" content="{{ asset('storage/' . $news->image) }}" />
     <meta name="og:image:secure_url" content="{{ asset('storage/' . $news->image) }}" />
@@ -40,8 +41,8 @@
         }
 
         /* .hidden-content {
-                    display: none;
-                } */
+                        display: none;
+                    } */
         .read-more {
             color: blue;
             cursor: pointer;
