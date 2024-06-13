@@ -88,4 +88,14 @@ class News extends Model
     {
         return $this->hasMany(NewsSubCategory::class);
     }
+
+    /**
+     * Get all of the comments for the News
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

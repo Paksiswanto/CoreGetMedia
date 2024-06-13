@@ -21,7 +21,7 @@ class CommentService
     {
         $data = $request->validated();
 
-        $user_id = "";
+        $user_id = null;
         if (Auth::check()) {
             $user_id = auth()->user()->id;
         }

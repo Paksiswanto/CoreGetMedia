@@ -10,7 +10,6 @@
     <meta property="og:url" content="{{ url('/') }}" />
     <meta property="og:type" content="article" />
     <link rel="canonical" href="{{ url('/') }}" />
-    
 @endsection
 
 @section('style')
@@ -90,7 +89,6 @@
                                             </g>
                                         </g>
                                     </svg>
-
                                 </a>
                                 <a id="fb">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
@@ -156,7 +154,6 @@
                                             <path fill="#292929"
                                                 d="M240 88.23a54.43 54.43 0 0 1-16 37L189.25 160a54.27 54.27 0 0 1-38.63 16h-.05A54.63 54.63 0 0 1 96 119.84a8 8 0 0 1 16 .45A38.62 38.62 0 0 0 150.58 160a38.4 38.4 0 0 0 27.31-11.31l34.75-34.75a38.63 38.63 0 0 0-54.63-54.63l-11 11A8 8 0 0 1 135.7 59l11-11a54.65 54.65 0 0 1 77.3 0a54.86 54.86 0 0 1 16 40.23m-131 97.43l-11 11A38.4 38.4 0 0 1 70.6 208a38.63 38.63 0 0 1-27.29-65.94L78 107.31a38.63 38.63 0 0 1 66 28.4a8 8 0 0 0 16 .45A54.86 54.86 0 0 0 144 96a54.65 54.65 0 0 0-77.27 0L32 130.75A54.62 54.62 0 0 0 70.56 224a54.28 54.28 0 0 0 38.64-16l11-11a8 8 0 0 0-11.2-11.34" />
                                         </svg>
-
                                     </span>
                                 </a>
                             </p>
@@ -196,11 +193,36 @@
                                                 </li>
                                                 <li>
                                                     <i class="fi fi-rr-eye" style="margin-top: 2px;"></i>
-                                                    <span>{{ $news->views_count }}x dilihat</span>
+                                                    <span>{{ $news->news_views_count }}x dilihat</span>
                                                 </li>
                                                 <li>
-                                                    <form class="d-flex">
+                                                    {{-- <form id="form-like">
+                                                        @csrf
+                                                        <button type="submit"
+                                                            style="background: transparent;border:transparent"
+                                                            class="like">
+                                                            <svg class="last mb-1" xmlns="http://www.w3.org/2000/svg"
+                                                                width="18" height="18" viewBox="0 0 24 24">
+                                                                <path fill="#E93314"
+                                                                    d="M18 21H7V8l7-7l1.25 1.25q.175.175.288.475t.112.575v.35L14.55 8H21q.8 0 1.4.6T23 10v2q0 .175-.05.375t-.1.375l-3 7.05q-.225.5-.75.85T18 21m-9-2h9l3-7v-2h-9l1.35-5.5L9 8.85zM9 8.85V19zM7 8v2H4v9h3v2H2V8z" />
+                                                            </svg>
+                                                        </button>
+                                                    </form>
 
+                                                    <form id="form-liked" style="display: none;">
+                                                        @csrf
+                                                        <button type="submit"
+                                                            style="background: transparent;border:transparent"
+                                                            class="liked">
+                                                            <svg class="last mb-1" xmlns="http://www.w3.org/2000/svg"
+                                                                width="18" height="18" viewBox="0 0 24 24">
+                                                                <path fill="red"
+                                                                    d="M18 21H8V8l7-7l1.25 1.25q.175.175.288.475t.112.575v.35L15.55 8H21q.8 0 1.4.6T23 10v2q0 .175-.037.375t-.113.375l-3 7.05q-.225.5-.75.85T18 21M6 8v13H2V8z" />
+                                                            </svg>
+                                                        </button>
+                                                    </form> --}}
+
+                                                    <form class="d-flex">
                                                         <i><button type="submit"
                                                                 style="background: transparent;border:transparent"
                                                                 class="liked">
@@ -209,66 +231,10 @@
                                                                     <path fill="#434343"
                                                                         d="M14.17 1L7 8.18V21h12.31L23 12.4V8h-8.31l1.12-5.38zM1 9h4v12H1z" />
                                                                 </svg>
-                                                            </button></i>
+                                                        </button></i>
                                                     </form>
 
-                                                    {{-- @auth()
-                                                        <form id="form-like">
-                                                            @csrf
-                                                            @if (auth()->check())
-                                                                <button type="submit"
-                                                                    style="background: transparent;border:transparent"
-                                                                    class="like">
-                                                                    <svg class="last mb-1" xmlns="http://www.w3.org/2000/svg"
-                                                                        width="18" height="18" viewBox="0 0 24 24">
-                                                                        <path fill="#E93314"
-                                                                            d="M18 21H7V8l7-7l1.25 1.25q.175.175.288.475t.112.575v.35L14.55 8H21q.8 0 1.4.6T23 10v2q0 .175-.05.375t-.1.375l-3 7.05q-.225.5-.75.85T18 21m-9-2h9l3-7v-2h-9l1.35-5.5L9 8.85zM9 8.85V19zM7 8v2H4v9h3v2H2V8z" />
-                                                                    </svg>
-                                                                </button>
-                                                            @endif
-                                                        </form>
-
-                                                        <form id="form-liked" style="display: none;">
-                                                            @csrf
-                                                            <button type="submit"
-                                                                style="background: transparent;border:transparent"
-                                                                class="liked">
-                                                                <svg class="last mb-1" xmlns="http://www.w3.org/2000/svg"
-                                                                    width="18" height="18" viewBox="0 0 24 24">
-                                                                    <path fill="red"
-                                                                        d="M18 21H8V8l7-7l1.25 1.25q.175.175.288.475t.112.575v.35L15.55 8H21q.8 0 1.4.6T23 10v2q0 .175-.037.375t-.113.375l-3 7.05q-.225.5-.75.85T18 21M6 8v13H2V8z" />
-                                                                </svg>
-                                                            </button>
-                                                        </form>
-                                                    @else
-                                                        <form id="form-like">
-                                                            @csrf
-                                                            <button type="button"
-                                                                style="background: transparent;border:transparent"
-                                                                class="like not-login">
-                                                                <svg class="mb-1" xmlns="http://www.w3.org/2000/svg"
-                                                                    width="18" height="18" viewBox="0 0 24 24">
-                                                                    <path fill="#E93314"
-                                                                        d="M18 21H7V8l7-7l1.25 1.25q.175.175.288.475t.112.575v.35L14.55 8H21q.8 0 1.4.6T23 10v2q0 .175-.05.375t-.1.375l-3 7.05q-.225.5-.75.85T18 21m-9-2h9l3-7v-2h-9l1.35-5.5L9 8.85zM9 8.85V19zM7 8v2H4v9h3v2H2V8z" />
-                                                                </svg>
-                                                            </button>
-                                                        </form>
-
-                                                        <form id="form-liked" style="display: none;">
-                                                            @csrf
-                                                            <button type="submit"
-                                                                style="background: transparent;border:transparent"
-                                                                class="liked">
-                                                                <svg class="mb-1" xmlns="http://www.w3.org/2000/svg"
-                                                                    width="18" height="18" viewBox="0 0 24 24">
-                                                                    <path fill="red"
-                                                                        d="M18 21H8V8l7-7l1.25 1.25q.175.175.288.475t.112.575v.35L15.55 8H21q.8 0 1.4.6T23 10v2q0 .175-.037.375t-.113.375l-3 7.05q-.225.5-.75.85T18 21M6 8v13H2V8z" />
-                                                                </svg>
-                                                            </button>
-                                                        </form>
-                                                    @endauth --}}
-
-                                                    <span class="ms-2">12</span>
+                                                    <span id="like">12</span>
                                                 </li>
                                             </div>
                                         </div>
@@ -320,16 +286,6 @@
                             </p>
                             <span id="read-more" class="read-more">Baca Selengkapnya</span>
                         </div>
-                        {{-- <div class="news-img">
-                            <img src="{{asset('assets/img/news/single-news-6.webp')}}" alt="Image">
-                        </div> --}}
-                        {{-- <blockquote class="wp-block-quote">
-                            <i class="fi fi-rr-quote-right"></i>
-                            <p>“ People find waiting more tolerable when they can see the work being done on their
-                                behalf ”</p>
-                            <h6>William Benjamin</h6>
-                        </blockquote> --}}
-
                         <p> Tag :
                             @forelse ($tags as $tag)
                                 <a data-toggle="tooltip" data-placement="top" title="{{ $tag->tags->name }}"
@@ -338,7 +294,6 @@
                             @empty
                             @endforelse
                         </p>
-
                     </article>
 
                     <div id="cmt-form">
@@ -346,16 +301,18 @@
                             <div class="mb-30">
                                 <h3 class="comment-box-title">Tinggalkan Komentar</h3>
                             </div>
-                            <form action="#" class="comment-form">
+                            <form action="{{ route('comment.create', ['news' => $news->id]) }}" class="comment-form" method="POST">
+                                @method('post')
+                                @csrf
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <textarea name="messages" id="messages" cols="30" rows="10" placeholder="Tinggalkan komentar"></textarea>
+                                            <textarea name="description" id="messages" cols="30" rows="10" placeholder="Tinggalkan komentar"></textarea>
                                         </div>
                                     </div>
 
                                     <div class="col-md-12 mt-1 d-flex justify-content-end">
-                                        <button class="btn-two">Komentar</button>
+                                        <button type="submit" class="btn-two">Komentar</button>
                                     </div>
                                 </div>
                             </form>
@@ -363,7 +320,9 @@
                             <div class="mb-30">
                                 <h3 class="comment-box-title">Tinggalkan Komentar</h3>
                             </div>
-                            <form action="#" class="comment-form">
+                            <form action="{{ route('comment.create', ['news' => $news->id]) }}" class="comment-form" method="POST">
+                                @method('post')
+                                @csrf
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -378,76 +337,78 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <textarea name="messages" id="messages" cols="30" rows="10" placeholder="Tinggalkan komentar"></textarea>
+                                            <textarea name="description" id="messages" cols="30" rows="10" placeholder="Tinggalkan komentar"></textarea>
                                         </div>
                                     </div>
 
                                     <div class="col-md-12 mt-1 d-flex justify-content-end">
-                                        <button class="btn-two">Komentar</button>
+                                        <button type="submit" class="btn-two">Komentar</button>
                                     </div>
                                 </div>
                             </form>
                         @endauth
                     </div>
 
-                    <h3 class="comment-box-title mt-5">3 Komentar</h3>
+                    <h3 class="comment-box-title mt-5">{{ $news->comments_count }} Komentar</h3>
                     <div class="comment-item-wrap">
                         <div class="comment-item">
-                            <div class="comment-author-img">
-                                <img src="{{ asset('admin/dist/images/profile/user-6.jpg') }}" alt="Image">
-                            </div>
-                            <div class="comment-author-wrap">
-                                <div class="comment-author-info">
-                                    <div class="row align-items-start">
-                                        <div class="col-md-9 col-sm-12 col-12 order-md-1 order-sm-1 order-1">
-                                            <div class="comment-author-name">
-                                                <h5>Killian Mider</h5>
-                                                <span class="comment-date">2 Menit yang lalu</span>
+                            @forelse ($comments as $comment)
+                                <div class="comment-author-img">
+                                    <img src="{{ asset('admin/dist/images/profile/user-6.jpg') }}" alt="Image">
+                                </div>
+                                <div class="comment-author-wrap">
+                                    <div class="comment-author-info">
+                                        <div class="row align-items-start">
+                                            <div class="col-md-9 col-sm-12 col-12 order-md-1 order-sm-1 order-1">
+                                                <div class="comment-author-name">
+                                                    @if ($comment->user != null)
+                                                        <h5>{{ $comment->user->name }}</h5>
+                                                    @else
+                                                        <h5>Guest</h5>
+                                                    @endif
+                                                    <span class="comment-date">{{ $comment->created_at->diffInMinutes() }} Menit yang lalu</span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-3 col-sm-3 col-3 text-md-end order-md-1 order-sm-1 order-1">
-                                            {{-- <a href="#cmt-form">Reply</a> --}}
-
-                                            <a class="" href="javascript:void(0)" role="button"
-                                                id="dropdownMenuLink1" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
-                                                    viewBox="0 0 24 24">
-                                                    <path fill="none" stroke="currentColor" stroke-linejoin="round"
-                                                        stroke-width="3"
-                                                        d="M12 12h.01v.01H12zm0-7h.01v.01H12zm0 14h.01v.01H12z" />
-                                                </svg>
-                                            </a>
-                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
-                                                <li>
-                                                    <button class="btn btn-sm" data-bs-toggle="modal"
-                                                        data-bs-target="#edit-replay">
-                                                        Edit
-                                                    </button>
-                                                </li>
-                                                <li>
-                                                    <button class="btn btn-sm" data-bs-toggle="modal"
-                                                        data-bs-target="#report">
-                                                        Laporkan
-                                                    </button>
-                                                </li>
-                                            </ul>
-
-                                        </div>
-                                        <div class="col-md-12 col-sm-12 col-12 order-md-3 order-sm-3 order-3">
-                                            <div class="comment-text">
-                                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                                                    sed diam nonumy eirmod tempor invidunt ut labore et dolore
-                                                    magna aliquyam.
-                                                </p>
+                                            <div class="col-md-3 col-sm-3 col-3 text-md-end order-md-1 order-sm-1 order-1">
+    
+                                                <a class="" href="javascript:void(0)" role="button"
+                                                    id="dropdownMenuLink1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
+                                                        viewBox="0 0 24 24">
+                                                        <path fill="none" stroke="currentColor" stroke-linejoin="round"
+                                                            stroke-width="3"
+                                                            d="M12 12h.01v.01H12zm0-7h.01v.01H12zm0 14h.01v.01H12z" />
+                                                    </svg>
+                                                </a>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
+                                                    <li>
+                                                        <button class="btn btn-sm" data-bs-toggle="modal"
+                                                            data-bs-target="#edit-replay">
+                                                            Edit
+                                                        </button>
+                                                    </li>
+                                                    <li>
+                                                        <button class="btn btn-sm" data-bs-toggle="modal"
+                                                            data-bs-target="#report">
+                                                            Laporkan
+                                                        </button>
+                                                    </li>
+                                                </ul>
                                             </div>
-                                        </div>
-                                        <div
-                                            class="col-md-12 col-sm-12 col-12 text-md-start order-md-3 order-sm-3 order-3">
-                                            <a href="#cmt-form" class="reply-btn">Balas</a>
+                                            <div class="col-md-12 col-sm-12 col-12 order-md-3 order-sm-3 order-3">
+                                                <div class="comment-text">
+                                                    <p>{{$comment->description}}</p>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="col-md-12 col-sm-12 col-12 text-md-start order-md-3 order-sm-3 order-3">
+                                                <a href="#cmt-form" class="reply-btn">Balas</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            @empty
+                            @endforelse
                         </div>
                         <div class="comment-item reply">
                             <div class="comment-author-img">

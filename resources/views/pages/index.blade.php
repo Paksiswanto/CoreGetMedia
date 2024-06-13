@@ -211,7 +211,7 @@
                             <ul class="news-metainfo list-style">
                                 <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">{{ $category2Popular->date }}</a></li>
                                 <li><i class="fi fi-rr-eye"></i>{{ $category2Popular->news_views_count }}x dilihat</li>
-                            </ul>ardi
+                            </ul>
                         </div>
                     </div>
                 @else

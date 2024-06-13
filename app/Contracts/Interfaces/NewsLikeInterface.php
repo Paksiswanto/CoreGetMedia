@@ -9,7 +9,8 @@ use App\Contracts\Interfaces\Eloquent\ShowWithSlugInterface;
 use App\Contracts\Interfaces\Eloquent\StoreInterface;
 use App\Contracts\Interfaces\Eloquent\UpdateInterface;
 
-interface NewsLikeInterface extends GetInterface, StoreInterface, UpdateInterface, ShowInterface
+interface NewsLikeInterface extends StoreInterface, UpdateInterface, ShowInterface
 {
     public function delete($user_id, $ip, $news) : mixed;
+    public function get($news_id) : mixed;
 }

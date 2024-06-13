@@ -52,7 +52,7 @@ class NewsLikeRepository extends BaseRepository implements NewsLikeInterface
      *
      * @return mixed
      */
-    public function get(): mixed
+    public function get($news_id): mixed
     {
         return $this->model->query()
             ->get();

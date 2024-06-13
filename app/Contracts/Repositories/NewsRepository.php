@@ -47,6 +47,8 @@ class NewsRepository extends BaseRepository implements NewsInterface
     {
         return $this->model->query()
             ->where('slug', $slug)
+            ->withCount('newsViews')
+            ->withCount('comments')
             ->firstOrFail();
     }
 
