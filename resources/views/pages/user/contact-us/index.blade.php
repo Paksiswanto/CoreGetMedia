@@ -78,7 +78,11 @@
 {{-- <div class="container-fluid pb-75 mt-5">
     
 </div> --}}
-
+@if(session('berhasil'))
+<div class="alert alert-primary" role="alert">
+    {{ session('berhasil') }}
+</div>
+@endif
 <div class="row">
     <div class="col-lg-6">
         <div class="img-contact">
@@ -144,26 +148,29 @@
     <div class="col-lg-6">
         <div style="padding-top: 150px;padding-left: 50px;padding-right: 250px;">
             <h3>Kirimkan Pesan</h3>
+            <form action="{{ route('contact.send') }}" method="POST">
             <div class="row">
-                <div class="col-lg-12 mb-4">
-                    <input id="name" class="form-control" type="text" placeholder="Name" name="name">
+                    @csrf
+                    <div class="col-lg-12 mb-4">
+                        <input id="name" class="form-control" type="text" placeholder="Name" name="name">
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                        <input id="email" class="form-control" type="text" placeholder="Email" name="email">
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                        <input id="no_telp" class="form-control" type="text" placeholder="Nomor Telepon" name="no_telp">
+                    </div>
+                    <div class="col-lg-12 mb-4">
+                        <textarea class="form-control" placeholder="Isi Pesan" id="" rows="7" name="description" ></textarea>
+                    </div>
+                    <div class="col-md-12">
+                        <button class="btn-two py-3">
+                            Kirim Pesan
+                            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24"><path fill="#ffffff" d="M3 20v-6l8-2l-8-2V4l19 8z"/></svg>    
+                        </button>
+                    </div>
                 </div>
-                <div class="col-lg-6 mb-4">
-                    <input id="email" class="form-control" type="text" placeholder="Email" name="email">
-                </div>
-                <div class="col-lg-6 mb-4">
-                    <input id="no_telp" class="form-control" type="text" placeholder="Nomor Telepon" name="no_telp">
-                </div>
-                <div class="col-lg-12 mb-4">
-                    <textarea name="description" class="form-control" placeholder="Isi Pesan" id="" rows="7"></textarea>
-                </div>
-                <div class="col-md-12">
-                    <button class="btn-two py-3">
-                        Kirim Pesan
-                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24"><path fill="#ffffff" d="M3 20v-6l8-2l-8-2V4l19 8z"/></svg>    
-                    </button>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>

@@ -5,9 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\ContactUs;
 use App\Http\Requests\StoreContactUsRequest;
 use App\Http\Requests\UpdateContactUsRequest;
+use App\Services\ContactService;
+use Illuminate\Http\Request;
 
 class ContactUsController extends Controller
 {
+    private ContactService $service;
+
+    public function __construct(ContactService $service)
+    {
+        $this->service = $service;
+    }
     /**
      * Display a listing of the resource.
      */
@@ -27,9 +35,10 @@ class ContactUsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreContactUsRequest $request)
+    public function store(Request $request)
     {
-        //
+        $this->service->SendMail($request, 'farahamalia328@gmail.com');
+        return back()->with('berhasil','Pesan anda sudah terkirim!');
     }
 
     /**
