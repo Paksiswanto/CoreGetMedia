@@ -10,6 +10,7 @@ use App\Contracts\Interfaces\NewsLikeInterface;
 use App\Contracts\Interfaces\NewsSubCategoryInterface;
 use App\Contracts\Interfaces\NewsTagInterface;
 use App\Contracts\Interfaces\NewsViewInterface;
+use App\Contracts\Interfaces\PopularInterface;
 use App\Contracts\Interfaces\SubCategoryInterface;
 use App\Contracts\Interfaces\TagInterface;
 use App\Enums\NewsEnum;
@@ -38,6 +39,7 @@ class NewsController extends Controller
 
     private NewsService $service;
     private NewsViewService $viewService;
+    private PopularInterface $popularNews;
 
     public function __construct(
         NewsInterface $news,
@@ -51,7 +53,9 @@ class NewsController extends Controller
         NewsViewInterface $newsViews,
         NewsLikeInterface $newsLikes,
         NewsViewService $viewService,
-        NewsService $service)
+        NewsService $service,
+        PopularInterface $popularNews,
+        )
     {
         $this->news = $news;
         $this->categories = $categories;
@@ -67,6 +71,8 @@ class NewsController extends Controller
 
         $this->viewService = $viewService;
         $this->service = $service;
+
+        $this->popularNews = $popularNews;
     }
     /**
      * Display a listing of the resource.
@@ -248,5 +254,15 @@ class NewsController extends Controller
         $subCategories = $this->subcategories->get();
 
         return view('pages.user.news.all-news-latest', compact('news', 'CategoryPopulars', 'popularTags', 'subCategories'));
+    }
+
+    public function popularNews()
+    {
+        $popular = $this->popularNews->getpopular();
+        $CategoryPopulars = $this->categories->showWithCount();
+        $popularTags = $this->tags->showWithCount();
+        $subCategories = $this->subcategories->get();
+
+        return view('pages.user.news.all-news-popular', compact('popular','CategoryPopulars', 'popularTags', 'subCategories'));
     }
 }

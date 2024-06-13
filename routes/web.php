@@ -222,6 +222,7 @@ Route::get('jksaj', [NewsCategoryController::class, 'showAll'])->name('allcatego
 // Route::get('{category}', [NewsController::class, 'showCategories'])->name('categories.show.user');
 
 Route::get('news/latest-news', [NewsController::class, 'latestNews'])->name('latest.news');
+Route::get('news/popular-news', [NewsController::class, 'popularNews'])->name('popular.news');
 
 require_once __DIR__ . '/jovita.php';
 require_once __DIR__ . '/ardi.php';
