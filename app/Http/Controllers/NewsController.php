@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\CategoryInterface;
+use App\Contracts\Interfaces\CommentInterface;
 use App\Contracts\Interfaces\NewsCategoryInterface;
 use App\Contracts\Interfaces\NewsInterface;
+use App\Contracts\Interfaces\NewsLikeInterface;
 use App\Contracts\Interfaces\NewsSubCategoryInterface;
 use App\Contracts\Interfaces\NewsTagInterface;
 use App\Contracts\Interfaces\NewsViewInterface;
@@ -25,11 +27,13 @@ class NewsController extends Controller
     private CategoryInterface $categories;
     private SubCategoryInterface $subcategories;
     private TagInterface $tags;
+    private CommentInterface $comments;
 
     private NewsCategoryInterface $newscategories;
     private NewsSubCategoryInterface $newssubcategories;
     private NewsTagInterface $newstags;
     private NewsViewInterface $newsViews;
+    private NewsLikeInterface $newsLikes;
 
     private NewsService $service;
     private NewsViewService $viewService;
@@ -39,10 +43,12 @@ class NewsController extends Controller
         CategoryInterface $categories,
         SubCategoryInterface $subcategories,
         TagInterface $tags,
+        CommentInterface $comments,
         NewsCategoryInterface $newscategories,
         NewsSubCategoryInterface $newssubcategories,
         NewsTagInterface $newstags,
         NewsViewInterface $newsViews,
+        NewsLikeInterface $newsLikes,
         NewsViewService $viewService,
         NewsService $service)
     {
@@ -50,11 +56,13 @@ class NewsController extends Controller
         $this->categories = $categories;
         $this->subcategories = $subcategories;
         $this->tags = $tags;
+        $this->comments = $comments;
 
         $this->newscategories = $newscategories;
         $this->newssubcategories = $newssubcategories;
         $this->newstags = $newstags;
         $this->newsViews = $newsViews;
+        $this->newsLikes = $newsLikes;
 
         $this->viewService = $viewService;
         $this->service = $service;
@@ -146,10 +154,12 @@ class NewsController extends Controller
         $news_id = $news->id;
         $data = $this->viewService->store($news_id, $ipAddress);
         $tags = $this->newstags->where($news_id);
+        $comments = $this->comments->get($news_id);
+        $newsLikes = $this->newsLikes->get($news_id);
 
         $CategoryPopulars = $this->categories->showWithCount();
         $popularTags = $this->tags->showWithCount();
-        return view('pages.user.singlepost.index', compact('news', 'CategoryPopulars', 'tags', 'popularTags'));
+        return view('pages.user.singlepost.index', compact('news', 'CategoryPopulars', 'tags', 'popularTags', 'comments', 'newsLikes'));
     }
 
     /**
