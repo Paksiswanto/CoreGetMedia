@@ -77,13 +77,18 @@ class NewsCategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function showAll()
+    public function showAll(Request $request, $slug)
     {
+        $category = $this->category->showWithSLug($slug);
+        $category_id = $category->id;
+
         $categories = $this->category->get();
         $subCategories = $this->subCategories->get();
-        $news = $this->newsCategory->get();
+
+        $query = $request->input('search');
+        $news = $this->news->whereCategory($category_id, $query);
         $popularCategory = $this->category->showWithCount();
-        return view('pages.user.category.all-category', compact('news','categories', 'subCategories', 'popularCategory'));
+        return view('pages.user.category.all-category', compact('category', 'news','categories', 'subCategories', 'popularCategory'));
     }
 
 

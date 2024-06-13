@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Http\Request;
 use App\Contracts\Interfaces\CategoryInterface;
 use App\Contracts\Interfaces\NewsCategoryInterface;
 use App\Contracts\Interfaces\NewsInterface;
@@ -49,7 +49,7 @@ class NewsSubCategoryController extends Controller
         $popularCategory = $this->category->showWithCount();
 
         $populatTags = $this->tags->showWithCount();
-        return view('pages.user.subcategory.index', compact('categories', 'subCategories', 'news', 'newsTop', 'popularCategory', 'newsPopulars'));
+        return view('pages.user.subcategory.index', compact('categories', 'subCategories', 'news', 'newsTop', 'popularCategory', 'newsPopulars', 'subcategory'));
     }
 
     public function all_subcategory()
@@ -60,6 +60,20 @@ class NewsSubCategoryController extends Controller
         $news = $this->newsSubCategory->get();
         $popularCategory = $this->category->showWithCount();
         return view('pages.user.subcategory.all-subcategory', compact('news','categories', 'subCategories', 'popularCategory'));
+    }
+
+    public function showAll(Request $request, $slug)
+    {
+        $subCategory = $this->subCategories->showWithSLug($slug);
+        $subCategory_id = $subCategory->id;
+
+        $categories = $this->category->get();
+        $subCategories = $this->subCategories->get();
+
+        $query = $request->input('search');
+        $news = $this->news->whereSubCategory($subCategory_id, $query);
+        $popularCategory = $this->category->showWithCount();
+        return view('pages.user.subcategory.all-subcategory', compact('subCategory', 'news','categories', 'subCategories', 'popularCategory'));
     }
 
     /**

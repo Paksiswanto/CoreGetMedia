@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\NewsCategoryController;
+use App\Http\Controllers\NewsSubCategoryController;
 use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,8 +17,6 @@ Route::get('detail-author', function(){
     return view('pages.user.author.detail-author');
 })->name('detail-author.user');
 
-// Route::get('allcategory', [NewsCategoryController::class, 'showAll'])->name('allcategory.user');
+Route::get('all-category/{category}', [NewsCategoryController::class, 'showAll'])->name('all-category-list.user');
 
-// Route::get('jksaj', [NewsCategoryController::class, 'showAll'])->name('allcategory.user');
-
-// Route::get('allcategory', [NewsCategoryController::class, 'showAll'])->name('allcategory.user');
+Route::get('all-subcategory/{subcategory}', [NewsSubCategoryController::class, 'showAll'])->name('all-subcategory-list.user');
