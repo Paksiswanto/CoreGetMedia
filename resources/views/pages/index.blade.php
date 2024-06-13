@@ -170,7 +170,7 @@
                 @forelse ($newsPins->take(3) as $key => $newsPin)
                 @if (++$key == 1)
                     <div class="news-card-four">
-                        <img src="{{ asset('storage/'. $newsPin->image) }}" class="w-100" style="height: 700px; object-fit: cover;" alt="Image" />
+                        <img src="{{ asset('storage/'. $newsPin->image) }}" class="w-100" style="height: 500px; object-fit: cover;" alt="Image" />
                         <div class="news-card-info">
                             <h3><a href="{{ route('news.singlepost', ['news' => $newsPin->slug]) }}">{{ $newsPin->name }}</a></h3>
                             <ul class="news-metainfo">
@@ -182,7 +182,7 @@
                 @else
                     <div class="news-card-five">
                         <div class="news-card-img">
-                            <img src="{{ asset('storage/'. $newsPin->image) }}" class="w-100" style="height: 200px; object-fit: cover;" alt="Image" />
+                            <img src="{{ asset('storage/'. $newsPin->image) }}" class="w-100" style="height: 180px; object-fit: cover;" alt="Image" />
                             <a href="{{ route('categories.show.user', $newsPin->newsCategories[0]->category->slug) }}" class="news-cat">{{ $newsPin->newsCategories[0]->category->name }}</a>
                         </div>
                         <div class="news-card-info">
