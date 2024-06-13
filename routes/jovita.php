@@ -25,3 +25,4 @@ Route::get('all-subcategory/{subcategory}', [NewsSubCategoryController::class, '
 Route::get('news-tag-lis/{tag}', [NewsTagController::class, 'index'])->name('news-tag-list.user');
 
 Route::get('all-tag/{tag}', [NewsTagController::class, 'showAll'])->name('all-tag-list.user');
+

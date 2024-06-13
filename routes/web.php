@@ -172,9 +172,9 @@ Route::get('profile-author', function () {
 
 Route::get('faq', [HomeFaqController::class, 'index'])->name('faq-list.user');
 
-Route::get('profile-user', function () {
-    return view('pages.user.profile.index');
-})->name('profile-user.user');
+// Route::get('profile-user', function () {
+//     return view('pages.user.profile.index');
+// })->name('profile-user.user');
 
 Route::get('profile-update', function () {
     return view('pages.user.profile.update');

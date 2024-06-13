@@ -132,7 +132,7 @@
                                
                                 <li class="nav-item">
                                     <a href="javascript:void(0)" class="nav-link">
-                                        <img src="{{ asset( Auth::user()->photo ? 'storage/'.Auth::user()->photo : "default.png")  }}" class="mb-2" alt="Image" width="40" height="40" style="min-width: 40px;border-radius: 50%;object-fit:cover;min-height: 40px;"/>
+                                        <img src="{{ asset( Auth::user()->image ? 'storage/'.Auth::user()->image : "default.png")  }}" class="mb-2" alt="Image" width="40" height="40" style="min-width: 40px;border-radius: 50%;object-fit:cover;min-height: 40px;"/>
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li class="nav-item">

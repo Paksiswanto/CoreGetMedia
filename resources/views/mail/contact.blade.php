@@ -227,8 +227,6 @@
                     vertical-align: top;
                     direction: ltr;
                     font-size: 0px;
-                    padding: 4px;
-                    padding-left: 90px;
                   "
                 >
                   <!--[if mso | IE]>
@@ -246,7 +244,7 @@
                       text-align: center;
                     "
                   >
-                  <img src="https://i.ibb.co.com/zZ2NwWr/kop.png"  width="400px" alt="kop" border="0">
+                  <img src="https://i.ibb.co.com/zZ2NwWr/kop.png"  width="700px" alt="kop" border="0">
                   </div>
                   <!--[if mso | IE]>
         </td></tr></table>
