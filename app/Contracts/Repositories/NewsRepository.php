@@ -161,4 +161,28 @@ class NewsRepository extends BaseRepository implements NewsInterface
     //         })
     //         ->get();
     // }
+
+     public function news_pin_categories() : mixed
+    {
+        return $this->model->query()
+            ->select('categories.name')
+            ->join('news_categories', 'news.id', '=', 'news_categories.news_id')
+            ->join('categories', 'news_categories.category_id', '=', 'categories.id')
+            ->where('news.status', NewsEnum::ACCEPTED->value)
+            ->where('news.pin', '1')
+            ->groupBy('categories.name')
+            ->get();
+    }
+
+    public function news_by_category($categoryName) : mixed
+    {
+        return $this->model->query()
+            ->join('news_categories', 'news.id', '=', 'news_categories.news_id')
+            ->join('categories', 'news_categories.category_id', '=', 'categories.id')
+            ->where('news.status', NewsEnum::ACCEPTED->value)
+            ->where('news.pin', '1')
+            ->where('categories.name', $categoryName)
+            ->select('news.*')
+            ->get();
+    }
 }
