@@ -57,16 +57,16 @@
                     @forelse ($news_tags as $item)
                     <div class="news-card-four" style="height: 550px;">
                         <div class="news-card-img">
-                            <a href="javascript:void(0)"> <img src="{{asset('storage/' . $item->image)}}" alt="Image" width="100%" style="object-fit: cover" height="450" /></a>
+                            <a href="javascript:void(0)"> <img src="{{asset('storage/' . $item->news->image)}}" alt="Image" width="100%" style="object-fit: cover" height="450" /></a>
                         </div>
 
                         <div class="news-card-info">
-                            <h3><a data-toggle="tooltip" data-placement="top" title="Apex Legends Season 11 Start Date, Time, & What To Expect" href="#">{!! Illuminate\Support\Str::limit(strip_tags($item->name), 300, '...') !!}
+                            <h3><a data-toggle="tooltip" data-placement="top" title="Apex Legends Season 11 Start Date, Time, & What To Expect" href="#">{!! Illuminate\Support\Str::limit(strip_tags($item->news->name), 300, '...') !!}
                                 </a>
                             </h3>
                             <ul class="news-metainfo list-style">
-                                <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">{{ \Carbon\Carbon::parse($item->date)->translatedFormat('d F Y') }}</a></li>
-                                <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">{{ $item->newsViews_count ? $item->newsViews_count : '0' }}x dilihat</a></li>
+                                <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">{{ \Carbon\Carbon::parse($item->news->date)->translatedFormat('d F Y') }}</a></li>
+                                <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">{{ $item->news->newsViews_count ? $item->news->newsViews_count : '0' }}x dilihat</a></li>
                             </ul>
                         </div>
                     </div>
@@ -93,11 +93,11 @@
                     @forelse ($newsTags as $data)
                     <div class="news-card-five">
                         <div class="news-card-img">
-                            <a href="#"><img src="{{asset('storage/' . $data->image)}}" alt="Image" height="140" width="100%" /></a>
+                            <a href="#"><img src="{{asset('storage/' . $data->news->image)}}" alt="Image" height="140" width="100%" /></a>
                             <a data-toggle="tooltip" data-placement="top" title="Sports" href="#" class="news-cat">{{ $data->news->newsCategories[0]->category->name }}</a>
                         </div>
                         <div class="news-card-info">
-                            <h3><a data-toggle="tooltip" data-placement="top" title="{{ $data->name }}" href="{{ route('news.singlepost', ['news' => $data->news->slug]) }}">{!! Illuminate\Support\Str::limit(strip_tags($data->news->name), 200, '...') !!}
+                            <h3><a data-toggle="tooltip" data-placement="top" title="{{ $data->news->name }}" href="{{ route('news.singlepost', ['news' => $data->news->slug]) }}">{!! Illuminate\Support\Str::limit(strip_tags($data->news->name), 200, '...') !!}
                                 </a>
                             </h3>
                             <p>{!! Illuminate\Support\Str::limit(strip_tags($data->news->description), 200, '...') !!}</p>

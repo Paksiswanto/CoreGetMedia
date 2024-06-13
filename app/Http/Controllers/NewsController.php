@@ -173,6 +173,16 @@ class NewsController extends Controller
         return view('pages.user.singlepost.index', compact('likedByUser', 'news', 'news_id', 'CategoryPopulars', 'tags', 'popularTags', 'comments', 'likes'));
     }
 
+    public function showPinned()
+    {
+        $newsPin = $this->news->allPin();
+        $subCategories = $this->subcategories->get();
+
+        $CategoryPopulars = $this->categories->showWithCount();
+        $popularTags = $this->tags->showWithCount();
+        return view('pages.user.news.all-news-pinned', compact('newsPin', 'subCategories', 'CategoryPopulars', 'popularTags'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      */

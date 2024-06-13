@@ -515,7 +515,7 @@
                 </div>
             </div>
             <div class="">
-                <a href="{{ route('news.category') }}" class="btn-three d-block w-100 mt-20">Lihat Lainnya<i
+                <a href="{{ route('all-pinned-list.user') }}" class="btn-three d-block w-100 mt-20">Lihat Lainnya<i
                         class="flaticon-arrow-right "></i></a>
 
             </div>
