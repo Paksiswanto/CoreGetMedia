@@ -38,8 +38,16 @@ class HomeController extends Controller
         $categoryPopulars = $this->populars->getbycategory($category_id_1);
         $category2Populars = $this->populars->getbycategory($category_id_2);
         $newsPins = $this->news->news_pin();
+        $popularCategories = $this->categories->showWithCount();
 
-        return view('pages.index', compact('populars', 'categoryPopulars' ,'latests', 'category2Populars', 'tags', 'newsPins'));
+        $categoriesPin = $this->news->news_pin_categories();
+        $newsByCategory = [];
+        
+        foreach ($categoriesPin as $category) {
+            $newsByCategory[$category->name] = $this->news->news_by_category($category->name);
+        }
+
+        return view('pages.index', compact('populars', 'categoryPopulars' ,'latests', 'category2Populars', 'tags', 'newsPins', 'popularCategories', 'categoriesPin', 'newsByCategory'));
     }
 
     public function navbar(Request $request){
