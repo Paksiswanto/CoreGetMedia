@@ -241,9 +241,15 @@
     </div> --}}
 
     <div class="container-fluid pb-75">
-        <div>
-            <h2 class="section-title">Artikel Terbaru</h2>
-            <div class="mb-4 col-1" style="border: 1px solid #E93314; width 200px"></div>
+        <div class="row align-items-start mb-40">
+            <div class="col-md-7">
+                <h2 class="section-title">Artikel Terbaru</h2>
+                <div class="mb-4 col-3" style="border: 1px solid #E93314; width 200px"></div>
+            </div>
+            <div class="col-md-5 text-md-end">
+                <a href="#" class="link-one">Lihat Semua<i
+                        class="flaticon-right-arrow"></i></a>
+            </div>
         </div>
         <div class="row gx-45">
             <div class="col-xl-9">
