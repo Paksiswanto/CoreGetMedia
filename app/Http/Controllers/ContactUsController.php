@@ -37,7 +37,7 @@ class ContactUsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->service->SendMail($request, 'farahamalia328@gmail.com');
+        $this->service->SendMail($request, 'maganghummatech@gmail.com');
         return back()->with('berhasil','Pesan anda sudah terkirim!');
     }
 
