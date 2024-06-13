@@ -65,8 +65,9 @@
                                         <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">{{ $item->newsViews_count ? $item->newsViews_count : '0' }}x dilihat</a></li>
                                     </ul>
                                 </div>
+
                             </div>
-                        </div>
+                        @endif
                     @empty
                     @endforelse
 
@@ -116,13 +117,15 @@
                                 <h3 class="sidebar-widget-title">Kategori Populer</h3>
                                 <ul class="category-widget list-style">
                                     @forelse ($popularCategory as $item)
-                                        <li>
-                                            <a data-toggle="tooltip" data-placement="top" title="{{ $item->name }}" href="{{ route('categories.show.user', ['category' => $item->slug]) }}"><img
-                                                    src="{{ asset('assets/img/icons/arrow-right.svg') }}"
-                                                    alt="Image">{{ $item->name }}
-                                                <span>( {{ $item->news_categories_count }} )</span>
-                                            </a>
-                                        </li>
+                                        @if ($item->news_categories_count > 0)
+                                            <li>
+                                                <a data-toggle="tooltip" data-placement="top" title="{{ $item->name }}" href="{{ route('categories.show.user', ['category' => $item->slug]) }}"><img
+                                                        src="{{ asset('assets/img/icons/arrow-right.svg') }}"
+                                                        alt="Image">{{ $item->name }}
+                                                    <span>( {{ $item->news_categories_count }} )</span>
+                                                </a>
+                                            </li>
+                                        @endif
                                     @empty
                                     @endforelse
                                 </ul>
@@ -134,9 +137,17 @@
                                 </h3>
 
                                 @forelse ($newsPopulars as $trending)
-                                <div class="news-card-three">
-                                    <div class="news-card-img" style="height: 100px; width: 100px">
-                                        <img src="{{ asset('storage/' . $trending->image) }}" alt="Image" />
+                                    <div class="news-card-three">
+                                        <div class="news-card-img" style="height: 100px; width: 100px">
+                                            <img src="{{ asset('storage/' . $trending->image) }}" alt="Image" />
+                                        </div>
+                                        <div class="news-card-info">
+                                            <h3><a href="business-details.html">{{$trending->name}}</a></h3>
+                                            <ul class="news-metainfo list-style d-flex">
+                                                <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html" style="font-size: 15px;">15 Apr 2023</a></li>
+                                                <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus" style="font-size: 15px;">10</a></li>
+                                            </ul>
+                                        </div>
                                     </div>
                                     <div class="news-card-info">
                                         <h3><a href="business-details.html">{{$trending->name}}</a></h3>
@@ -146,6 +157,7 @@
                                         </ul>
                                     </div>
                                 </div>
+
                                 @empty
                                 <div class="d-flex justify-content-center">
                                     <div class="my-auto ">

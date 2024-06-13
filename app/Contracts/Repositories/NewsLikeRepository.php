@@ -28,12 +28,11 @@ class NewsLikeRepository extends BaseRepository implements NewsLikeInterface
             ->delete();
     }
 
-    public function where($news_id, $ip): mixed
+    public function where($news_id): mixed
     {
         return $this->model->query()
             ->where('news_id', $news_id)
-            ->where('ip_address', $ip)
-            ->get();
+            ->pluck('ip_address');
     }
 
     /**

@@ -155,12 +155,13 @@ class NewsController extends Controller
         $news = $this->news->showWithSlug($slug);
         $news_id = $news->id;
         $data = $this->viewService->store($news_id, $ipAddress);
-        $tags = $this->newstags->where($news_id);
+        $tags = $this->newstags->where($news_id, 'notop');
         $comments = $this->comments->get($news_id);
         $likes = $this->newsLikes->get($news_id);
 
-        $likedByUser = $this->newsLikes->where($news_id, $ipAddress);
-        
+        $userLike = $this->newsLikes->where($news_id);
+        $likedByUser = $userLike->contains($ipAddress);
+
         $CategoryPopulars = $this->categories->showWithCount();
         $popularTags = $this->tags->showWithCount();
         return view('pages.user.singlepost.index', compact('likedByUser', 'news', 'news_id', 'CategoryPopulars', 'tags', 'popularTags', 'comments', 'likes'));
@@ -176,7 +177,7 @@ class NewsController extends Controller
 
         $newsCategory = $this->newscategories->where($news_id);
         $newsSubcategory = $this->newssubcategories->where($news_id);
-        $newsTags = $this->newstags->where($news_id);
+        $newsTags = $this->newstags->where($news_id, 'notop');
 
         $categories = $this->categories->get();
         $subcategories = $this->subcategories->get();
