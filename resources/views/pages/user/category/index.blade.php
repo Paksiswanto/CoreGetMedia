@@ -66,7 +66,7 @@
                             </h3>
                             <ul class="news-metainfo list-style">
                                 <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html">{{ \Carbon\Carbon::parse($item->created_at)->translatedFormat('d F Y') }}</a></li>
-                                <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">{{ $item->newsViews_count ? $item->newsViews_count : '0' }}x dilihat</a></li>
+                                <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus">{{ $item->news_views_count ? $item->news_views_count : '0' }}x dilihat</a></li>
                             </ul>
                         </div>
                     </div>
@@ -88,7 +88,12 @@
                         </a>
                     </div>
 
-                    @forelse ($latests as $new)
+                    @php
+                        $trending_id = $trendings->where('news_views_count', '>', 0)->pluck('id');
+                        $latest_news = $latests->whereNotIn('id', $trending_id);
+                    @endphp
+
+                    @forelse ($latest_news as $new)
                     <div class="news-card-five">
                         <div class="news-card-img">
                             <a href="javascript:void(0)"><img src="{{ asset('storage/' . $new->image) }}" alt="Image" height="150" width="100%" /></a>
@@ -101,7 +106,7 @@
                             <p>{!! Illuminate\Support\Str::limit($new->description, $limit = 200, $end = '...') !!}</p>
                             <ul class="news-metainfo list-style">
                                 <li><i class="fi fi-rr-calendar-minus"></i><a href="javascript:void(0)">{{ \Carbon\Carbon::parse($new->created_at)->translatedFormat('d F Y') }}</a></li>
-                                <li><i class="fi fi-rr-eye"></i><a href="javascript:void(0)">{{ $new->newsViews_count ? $item->newsViews_count : '0' }}x dilihat</a></li>
+                                <li><i class="fi fi-rr-eye"></i><a href="javascript:void(0)">{{ $new->news_views_count ? $new->news_views_count : '0' }}x dilihat</a></li>
                             </ul>
                         </div>
                     </div>
@@ -134,23 +139,30 @@
                             </ul>
                         </div>
 
+                        @php
+                            $news_top_id = $newsTop->pluck('id');
+                            $trending_news = $trendings->whereNotin('id', $news_top_id);
+                        @endphp
+
                         <div class="sidebar-widget" style="width: 400px">
                             <h3 class="sidebar-widget-title">
                                 Berita Populer
                             </h3>
-                            @forelse ($trendings as $trending)
-                            <div class="news-card-three">
-                                <div class="news-card-img" style="height: 100px; width: 100px">
-                                    <img src="{{ asset('storage/' . $trending->image) }}" alt="Image" />
+                            @forelse ($trending_news as $trending)
+                            @if ($trending->news_views_count > 0)
+                                <div class="news-card-three">
+                                    <div class="news-card-img" style="height: 100px; width: 100px">
+                                        <img src="{{ asset('storage/' . $trending->image) }}" alt="Image" />
+                                    </div>
+                                    <div class="news-card-info">
+                                        <h3><a href="{{ route('news.singlepost', ['news' => $trending->slug]) }}">{!! Illuminate\Support\Str::limit($trending->name, $limit = 110, $end = '...') !!}</a></h3>
+                                        <ul class="news-metainfo list-style d-flex">
+                                            <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html" style="font-size: 15px;">{{ \Carbon\Carbon::parse($trending->date)->translatedFormat('d F Y') }}</a></li>
+                                            <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus" style="font-size: 15px;">{{ $trending->news_views_count ? $trending->news_views_count : '0' }}x dilihat</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="news-card-info">
-                                    <h3><a href="{{ route('news.singlepost', ['news' => $trending->slug]) }}">{!! Illuminate\Support\Str::limit($trending->name, $limit = 110, $end = '...') !!}</a></h3>
-                                    <ul class="news-metainfo list-style d-flex">
-                                        <li><i class="fi fi-rr-calendar-minus"></i><a href="news-by-date.html" style="font-size: 15px;">{{ \Carbon\Carbon::parse($trending->date)->translatedFormat('d F Y') }}</a></li>
-                                        <li><i class="fi fi-rr-eye"></i><a href="news-by-dateus" style="font-size: 15px;">{{ $trending->newsViews_count ? $trending->newsViews_count : '0' }}x dilihat</a></li>
-                                    </ul>
-                                </div>
-                            </div>
+                            @endif
                             @empty
                             <div class="d-flex justify-content-center">
                                 <div class="my-auto ">
@@ -167,7 +179,6 @@
                                 @forelse ($popularTags as $popularTag)
                                 <li><a href="{{route('news-tag-list.user', ['tag' => $popularTag->slug])}}">{{ $popularTag->name }}</a></li>
                                 @empty
-
                                 @endforelse
                             </ul>
 

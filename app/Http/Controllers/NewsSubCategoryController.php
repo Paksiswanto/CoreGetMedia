@@ -48,8 +48,8 @@ class NewsSubCategoryController extends Controller
         $newsPopulars = $this->news->whereSubCategory($subcategory_id, 'notop');
         $popularCategory = $this->category->showWithCount();
 
-        $populatTags = $this->tags->showWithCount();
-        return view('pages.user.subcategory.index', compact('categories', 'subCategories', 'news', 'newsTop', 'popularCategory', 'newsPopulars', 'subcategory'));
+        $popularTags = $this->tags->showWithCount();
+        return view('pages.user.subcategory.index', compact('categories', 'subCategories', 'news', 'newsTop', 'popularCategory', 'newsPopulars', 'subcategory', 'popularTags'));
     }
 
     public function all_subcategory()

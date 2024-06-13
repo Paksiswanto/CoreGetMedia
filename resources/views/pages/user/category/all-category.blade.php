@@ -55,7 +55,7 @@
                                 <div class="news-card-img">
                                     <a href="javascript:void(0)"><img src="{{asset('storage/'. $item->image)}}" alt="Image" height="140" width="100%" /></a>
                                     <a data-toggle="tooltip" data-placement="top" title="{{ $item->newsCategories[0]->category->name }}"
-                                        href="{{ route('categories.show.user', ['category' => $new->slug]) }}" class="news-cat">{{ $item->newsCategories[0]->category->name }}</a>
+                                        href="{{ route('categories.show.user', ['category' => $item->slug]) }}" class="news-cat">{{ $item->newsCategories[0]->category->name }}</a>
                                 </div>
                                 <div class="news-card-info">
                                     <h3><a data-toggle="tooltip" data-placement="top" title="{{ $item->name }}"

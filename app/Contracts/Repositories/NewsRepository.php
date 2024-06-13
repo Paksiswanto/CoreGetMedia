@@ -113,10 +113,12 @@ class NewsRepository extends BaseRepository implements NewsInterface
             ->get();
     }
 
-    public function categoryLatest() : mixed
+    public function categoryLatest($category_id) : mixed
     {
         return $this->model->query()
+        ->whereRelation('newsCategories', 'category_id', $category_id)
         ->where('status', NewsEnum::ACCEPTED->value)
+        ->withCount('newsViews')
         ->latest()
         ->get();
     }
