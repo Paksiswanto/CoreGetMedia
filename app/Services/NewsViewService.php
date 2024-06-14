@@ -20,6 +20,7 @@ class NewsViewService
     {
         $existingVisitor = NewsView::where('news_id', $news_id)
                                 ->where('ip_address', $ip_address)
+                                ->whereDate('created_at', today())
                                 ->first();
 
         if (!$existingVisitor) {

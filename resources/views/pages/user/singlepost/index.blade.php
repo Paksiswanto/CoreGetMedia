@@ -338,9 +338,7 @@
                     </div>
 
                     <h3 class="comment-box-title mt-5">{{ $news->comments_count }} Komentar</h3>
-                    <div class="comment-item-wrap">
-                        <div class="comment-item">
-
+                        <div class="comment-item-wrap">
                             @php
                                 $groupedReplies = [];
                                     foreach ($comments as $comment) {
@@ -356,62 +354,64 @@
 
                             @forelse ($comments as $comment)
                                 @if ($comment->parent_id === null)
-                                    <div class="comment-author-img">
-                                        <img src=" 
-                                            @if ($comment->user_id != null)
-                                                {{ asset( $comment->user->image ? 'storage/'. $comment->user->image : "default.png")  }}
-                                            @else
-                                                {{ asset('default.png')  }}
-                                            @endif
-                                        " alt="Image">
-                                    </div>
-                                    <div class="comment-author-wrap">
-                                        <div class="comment-author-info">
-                                            <div class="row align-items-start">
-                                                <div class="col-md-9 col-sm-12 col-12 order-md-1 order-sm-1 order-1">
-                                                    <div class="comment-author-name">
-                                                        @if ($comment->user != null)
-                                                            <h5>{{ $comment->user->name }}</h5>
-                                                        @else
-                                                            <h5>Guest</h5>
-                                                        @endif
-                                                        <span class="comment-date">{{ $comment->created_at->diffInMinutes() }} Menit yang lalu</span>
+                                    <div class="comment-item">
+                                        <div class="comment-author-img">
+                                            <img src="
+                                                @if ($comment->user_id != null)
+                                                    {{ asset( $comment->user->image ? 'storage/'. $comment->user->image : "default.png")  }}
+                                                @else
+                                                    {{ asset('default.png')  }}
+                                                @endif
+                                            " alt="Image">
+                                        </div>
+                                        <div class="comment-author-wrap">
+                                            <div class="comment-author-info">
+                                                <div class="row align-items-start">
+                                                    <div class="col-md-9 col-sm-12 col-12 order-md-1 order-sm-1 order-1">
+                                                        <div class="comment-author-name">
+                                                            @if ($comment->user != null)
+                                                                <h5>{{ $comment->user->name }}</h5>
+                                                            @else
+                                                                <h5>Guest</h5>
+                                                            @endif
+                                                            <span class="comment-date">{{ $comment->created_at->diffInMinutes() }} Menit yang lalu</span>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-3 col-sm-3 col-3 text-md-end order-md-1 order-sm-1 order-1">
+                                                    <div class="col-md-3 col-sm-3 col-3 text-md-end order-md-1 order-sm-1 order-1">
 
-                                                    <a class="" href="javascript:void(0)" role="button"
-                                                        id="dropdownMenuLink1" data-bs-toggle="dropdown" aria-expanded="false">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
-                                                            viewBox="0 0 24 24">
-                                                            <path fill="none" stroke="currentColor" stroke-linejoin="round"
-                                                                stroke-width="3"
-                                                                d="M12 12h.01v.01H12zm0-7h.01v.01H12zm0 14h.01v.01H12z" />
-                                                        </svg>
-                                                    </a>
-                                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
-                                                        <li>
-                                                            <button class="btn btn-sm" data-bs-toggle="modal"
-                                                                data-bs-target="#edit-replay">
-                                                                Edit
-                                                            </button>
-                                                        </li>
-                                                        <li>
-                                                            <button class="btn btn-sm" data-bs-toggle="modal"
-                                                                data-bs-target="#report">
-                                                                Laporkan
-                                                            </button>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-md-12 col-sm-12 col-12 order-md-3 order-sm-3 order-3">
-                                                    <div class="comment-text">
-                                                        <p>{{$comment->description}}</p>
+                                                        <a class="" href="javascript:void(0)" role="button"
+                                                            id="dropdownMenuLink1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
+                                                                viewBox="0 0 24 24">
+                                                                <path fill="none" stroke="currentColor" stroke-linejoin="round"
+                                                                    stroke-width="3"
+                                                                    d="M12 12h.01v.01H12zm0-7h.01v.01H12zm0 14h.01v.01H12z" />
+                                                            </svg>
+                                                        </a>
+                                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
+                                                            <li>
+                                                                <button class="btn btn-sm" data-bs-toggle="modal"
+                                                                    data-bs-target="#edit-replay">
+                                                                    Edit
+                                                                </button>
+                                                            </li>
+                                                            <li>
+                                                                <button class="btn btn-sm" data-bs-toggle="modal"
+                                                                    data-bs-target="#report">
+                                                                    Laporkan
+                                                                </button>
+                                                            </li>
+                                                        </ul>
                                                     </div>
-                                                </div>
-                                                <div
-                                                    class="col-md-12 col-sm-12 col-12 text-md-start order-md-3 order-sm-3 order-3">
-                                                    <a href="avascript:void(0)" class="reply-btn"  onclick="showReplyForm({{ $comment->id }})">Balas</a>
+                                                    <div class="col-md-12 col-sm-12 col-12 order-md-3 order-sm-3 order-3">
+                                                        <div class="comment-text">
+                                                            <p>{{$comment->description}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="col-md-12 col-sm-12 col-12 text-md-start order-md-3 order-sm-3 order-3">
+                                                        <a href="avascript:void(0)" class="reply-btn"  onclick="showReplyForm({{ $comment->id }})">Balas</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -429,58 +429,64 @@
                                 @endif
 
                                 @foreach ($groupedReplies[$comment->id] ?? [] as $index => $reply)
-                                    <div class="comment-author-img">
-                                        <img src="
-                                            @if ($reply->user_id != null)
-                                                {{ asset( $reply->user->image ? 'storage/'. $reply->user->image : "default.png")  }}
-                                            @else
-                                                {{ asset('default.png')  }}
-                                            @endif
-                                        " alt="Image" class="ms-4">
-                                    </div>
-                                    <div class="comment-author-wrap">
-                                        <div class="comment-author-info">
-                                            <div class="row align-items-start">
-                                                <div class="col-md-9 col-sm-12 col-12 order-md-1 order-sm-1 order-1">
-                                                    <div class="comment-author-name ms-4">
-                                                        @if ($reply->user != null)
-                                                            <h5>{{ $reply->user->name }}</h5>
-                                                        @else
-                                                            <h5>Guest</h5>
-                                                        @endif
-                                                        <span class="comment-date">{{ $reply->created_at->diffInMinutes() }} Menit yang lalu</span>
+                                    <div class="comment-item reply">
+                                        <div class="comment-author-img">
+                                            <img src="
+                                                @if ($reply->user_id != null)
+                                                    {{ asset( $reply->user->image ? 'storage/'. $reply->user->image : "default.png")  }}
+                                                @else
+                                                    {{ asset('default.png')  }}
+                                                @endif
+                                                " alt="Image">
+                                        </div>
+                                        <div class="comment-author-wrap">
+                                            <div class="comment-author-info">
+                                                <div class="row align-items-start">
+                                                    <div class="col-md-9 col-sm-12 col-12 order-md-1 order-sm-1 order-1">
+                                                        <div class="comment-author-name">
+                                                            @if ($reply->user != null)
+                                                                <h5>{{ $reply->user->name }}</h5>
+                                                            @else
+                                                                <h5>Guest</h5>
+                                                            @endif
+                                                            <span class="comment-date">{{ $reply->created_at->diffInMinutes() }} hari yang lalu</span>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-3 col-sm-3 col-3 text-md-end order-md-1 order-sm-1 order-1">
+                                                    <div class="col-md-3 col-sm-3 col-3 text-md-end order-md-1 order-sm-1 order-1">
+                                                        <a class="" href="javascript:void(0)" role="button"
+                                                            id="dropdownMenuLink2" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
+                                                                viewBox="0 0 24 24">
+                                                                <path fill="none" stroke="currentColor" stroke-linejoin="round"
+                                                                    stroke-width="3"
+                                                                    d="M12 12h.01v.01H12zm0-7h.01v.01H12zm0 14h.01v.01H12z" />
+                                                            </svg>
+                                                        </a>
+                                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink2">
+                                                            <li>
+                                                                <button class="btn btn-sm" data-bs-toggle="modal"
+                                                                    data-bs-target="#edit-replay">
+                                                                    Edit
+                                                                </button>
+                                                            </li>
+                                                            <li>
+                                                                <button class="btn btn-sm" data-bs-toggle="modal"
+                                                                    data-bs-target="#report">
+                                                                    Laporkan
+                                                                </button>
+                                                            </li>
+                                                        </ul>
 
-                                                    <a class="" href="javascript:void(0)" role="button"
-                                                        id="dropdownMenuLink1" data-bs-toggle="dropdown" aria-expanded="false">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
-                                                            viewBox="0 0 24 24">
-                                                            <path fill="none" stroke="currentColor" stroke-linejoin="round"
-                                                                stroke-width="3"
-                                                                d="M12 12h.01v.01H12zm0-7h.01v.01H12zm0 14h.01v.01H12z" />
-                                                        </svg>
-                                                    </a>
-                                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
-                                                        <li>
-                                                            <button class="btn btn-sm" data-bs-toggle="modal"
-                                                                data-bs-target="#edit-replay">
-                                                                Edit
-                                                            </button>
-                                                        </li>
-                                                        <li>
-                                                            <button class="btn btn-sm" data-bs-toggle="modal"
-                                                                data-bs-target="#report">
-                                                                Laporkan
-                                                            </button>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-md-12 col-sm-12 col-12 order-md-3 order-sm-3 order-3">
-                                                    <div class="comment-text ms-4">
-                                                        <p>{{$reply->description}}</p>
                                                     </div>
+                                                    <div class="col-md-12 col-sm-12 col-12 order-md-3 order-sm-3 order-3">
+                                                        <div class="comment-text">
+                                                            <p>{{$reply->description}}</p>
+                                                        </div>
+                                                    </div>
+                                                    {{-- <div
+                                                        class="col-md-12 col-sm-12 col-12 text-md-start order-md-3 order-sm-3 order-3">
+                                                        <a href="#cmt-form" class="reply-btn">Balas</a>
+                                                    </div> --}}
                                                 </div>
                                             </div>
                                         </div>
@@ -488,7 +494,6 @@
                                 @endforeach
                             @empty
                             @endforelse
-                        </div>
                     </div>
                 </div>
                 <div class="col-lg-4">
