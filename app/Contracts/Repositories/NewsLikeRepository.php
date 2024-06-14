@@ -22,7 +22,6 @@ class NewsLikeRepository extends BaseRepository implements NewsLikeInterface
     public function delete($user_id, $ip, $news): mixed
     {
         return $this->model->query()
-            ->where('user_id', $user_id)
             ->where('ip_address', $ip)
             ->where('news_id', $news)
             ->delete();
