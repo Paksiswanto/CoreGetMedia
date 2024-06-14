@@ -8,4 +8,3 @@ Route::post('contact/store', [ContactUsController::class, 'store'])->name('conta
 
 
 // profile user
-Route::get('profile-user', [ProfileController::class, 'index'])->name('profile-user.user');
