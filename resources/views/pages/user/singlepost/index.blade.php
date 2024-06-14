@@ -463,7 +463,7 @@
                                                             @if ($reply->user != null)
                                                                 <h5>{{ $reply->user->name }}</h5>
                                                             @else
-                                                                <h5>{{ $comment->name }}</h5>
+                                                                <h5>{{ $reply->name }}</h5>
                                                             @endif
                                                             <span class="comment-date">{{ $reply->created_at->diffInMinutes() }} Menit yang lalu</span>
                                                         </div>
