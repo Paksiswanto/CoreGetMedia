@@ -225,6 +225,14 @@ Route::get('author', [AuthorController::class, 'landing'])->name('user.list.auth
 Route::get('author/{author}', [AuthorController::class, 'show'])->name('author.detail');
 Route::get('news/latest-news', [NewsController::class, 'latestNews'])->name('latest.news');
 Route::get('news/popular-news', [NewsController::class, 'popularNews'])->name('popular.news');
+
+Route::get('author-registration', function(){
+    return view('pages.user.profile.author-registration');
+})->name('author-registration');
+
+
+Route::get('all-pinned', [NewsController::class, 'showPinned'])->name('all-pinned-list.user');
+
 require_once __DIR__ . '/jovita.php';
 require_once __DIR__ . '/ardi.php';
 require_once __DIR__ . '/farah.php';
