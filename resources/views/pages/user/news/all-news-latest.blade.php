@@ -16,8 +16,10 @@
         border-radius: 10px;
     }
 
-    .img{
-        
+    .img-all{
+        width: 400px;
+        height: 250px;
+        object-fit: cover;
     }
 </style>
 @endsection
@@ -63,7 +65,7 @@
                             <div class="col-md-6">
                                 <div class="news-card-six">
                                     <div class="news-card-img">
-                                        <img src="{{ asset('storage/' . $news->image) }}" alt="" width="400px" height="250px" style="width: 100%;object-fit:cover;">
+                                        <img src="{{ asset('storage/' . $news->image) }}" alt="" class="img-all">
                                         @foreach ($subCategories as $subCategory)
                                         <p class="tag">
                                             <a href="{{ route('categories.show.user', ['category' => $news->newsCategories[0]->category->slug]) }}" class="news-cat">{{ $news->newsCategories[0]->category->name }}</a>
