@@ -1,4 +1,6 @@
 @extends('layouts.user.app')
+@section('title', 'Artikel Populer')
+
 
 @section('style')
     <style>

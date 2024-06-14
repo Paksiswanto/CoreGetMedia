@@ -246,7 +246,7 @@
             <h5>Apakah Anda memiliki hasrat untuk menjadi menulis</h5>
         </div>
         <div style="display: flex; align-items: center;">
-            <a class="button-selengkapnya" href="{{route('profile-author-registration.user')}}"
+            <a class="button-selengkapnya" href="{{route('author-registration')}}"
                 style=" text-decoration: none;">Baca
                 Selengkapnya <i data-feather="chevron-down"></i></a>
         </div>

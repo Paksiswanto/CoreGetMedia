@@ -26,5 +26,6 @@ Route::get('news-tag-lis/{tag}', [NewsTagController::class, 'index'])->name('new
 
 Route::get('all-tag/{tag}', [NewsTagController::class, 'showAll'])->name('all-tag-list.user');
 
-Route::get('all-pinned', [NewsController::class, 'showPinned'])->name('all-pinned-list.user');
+
+Route::post('registration-author', [AuthorController::class, 'store'])->name('regis-author-list.user');
 

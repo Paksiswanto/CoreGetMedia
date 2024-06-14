@@ -12,6 +12,7 @@ use App\Http\Controllers\TagsController;
 use App\Http\Controllers\VoucherrController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\NewsCategoryController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -176,6 +177,8 @@ Route::get('faq', [HomeFaqController::class, 'index'])->name('faq-list.user');
 //     return view('pages.user.profile.index');
 // })->name('profile-user.user');
 
+Route::get('profile-user', [ProfileController::class, 'index'])->name('profile-user.user');
+
 Route::get('profile-update', function () {
     return view('pages.user.profile.update');
 })->name('profile-update.user');
@@ -225,6 +228,14 @@ Route::get('author', [AuthorController::class, 'landing'])->name('user.list.auth
 Route::get('author/{author}', [AuthorController::class, 'show'])->name('author.detail');
 Route::get('news/latest-news', [NewsController::class, 'latestNews'])->name('latest.news');
 Route::get('news/popular-news', [NewsController::class, 'popularNews'])->name('popular.news');
+
+Route::get('author-registration', function(){
+    return view('pages.user.profile.author-registration');
+})->name('author-registration');
+
+
+Route::get('all-pinned', [NewsController::class, 'showPinned'])->name('all-pinned-list.user');
+
 require_once __DIR__ . '/jovita.php';
 require_once __DIR__ . '/ardi.php';
 require_once __DIR__ . '/farah.php';
