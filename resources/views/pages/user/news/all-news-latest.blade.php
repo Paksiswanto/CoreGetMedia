@@ -16,6 +16,9 @@
         border-radius: 10px;
     }
 
+    .img{
+        
+    }
 </style>
 @endsection
 
