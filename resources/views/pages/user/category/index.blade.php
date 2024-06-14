@@ -89,7 +89,7 @@
                     </div>
 
                     @php
-                        $trending_id = $trendings->where('news_views_count', '>', 0)->pluck('id');
+                        $trending_id = $trendings->take(8)->where('news_views_count', '>', 0)->pluck('id');
                         $latest_news = $latests->whereNotIn('id', $trending_id);
                     @endphp
 
@@ -141,7 +141,7 @@
 
                         @php
                             $news_top_id = $newsTop->pluck('id');
-                            $trending_news = $trendings->whereNotin('id', $news_top_id);
+                            $trending_news = $trendings->take(8)->whereNotin('id', $news_top_id);
                         @endphp
 
                         <div class="sidebar-widget" style="width: 400px">
