@@ -44,25 +44,23 @@
     </div>
 </div>
 
-<!-- <div class="alert d-flex align-items-center p-3 border border-2">
-        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 84 84" fill="none">
-            <circle cx="42" cy="42" r="40" stroke="#175A95 " stroke-width="4" />
-            <circle cx="42.1422" cy="59.5001" r="4.9" fill="#175A95 " />
-            <path
-                d="M36.7667 22.6095C36.6449 20.9852 37.93 19.6001 39.5589 19.6001L44.0975 19.6001C45.6988 19.6001 46.974 20.9406 46.894 22.5399L45.774 44.9399C45.6995 46.4301 44.4696 47.6001 42.9775 47.6001H41.2389C39.7737 47.6001 38.5563 46.4706 38.4467 45.0095L36.7667 22.6095Z"
-                fill="#175A95 " />
-        </svg>
-        <div class="d-flex flex-column ms-3">
-            <h5 style="font-weight: 600; color: #175A95">Ketentuan dan Persyaratan</h5>
-            <h6 style="font-weight: 600; font-size:18px; color: #175A95">Patikan anda membaca ketentuan dan persyaratan dibawah ini sebelum
-                mengunggah artikel</h6>
-            <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                class="btn btn-sm text-white d-flex justify-content-start"
-                style="width: 163px;background-color: #175A95;">
+<div class="alert d-flex align-items-center p-3 border-primary border-1 bg-light-primary">
+    <svg class="ms-3" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 84 84" fill="none">
+        <circle cx="42" cy="42" r="40" stroke="#175A95 " stroke-width="4" />
+        <circle cx="42.1422" cy="59.5001" r="4.9" fill="#175A95 " />
+        <path d="M36.7667 22.6095C36.6449 20.9852 37.93 19.6001 39.5589 19.6001L44.0975 19.6001C45.6988 19.6001 46.974 20.9406 46.894 22.5399L45.774 44.9399C45.6995 46.4301 44.4696 47.6001 42.9775 47.6001H41.2389C39.7737 47.6001 38.5563 46.4706 38.4467 45.0095L36.7667 22.6095Z" fill="#175A95 " />
+    </svg>
+    <div class="d-flex flex-column ms-4 p-2">
+        <h5 class="card-title" style="font-weight: 700; color: #175A95; font-size:20px">Ketentuan dan Persyaratan</h5>
+        <h6 class="mt-3" style="font-weight: 600; font-size:17px;">Pastikan anda membaca dibawah ini ketentuan & Persyaratan dibawah ini sebelum mengunggah artikel</h6>
+        <h6 class="mt-2" style="font-weight: 600; font-size:17px;">Baca Selengkapnya:</h6>
+        <div class="mt-2">
+            <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-sm text-white d-flex justify-content-start" style="width: 163px;background-color: #175A95;">
                 Ketentuan & Persyaratan
             </button>
         </div>
-    </div> -->
+    </div>
+</div>
 
 {{-- <div class="ms-1">
     <h5>Baca ketentuan dan persyaratan sembelum mengunggah berita</h5>
@@ -82,24 +80,22 @@
                     <h3 for="" class="form-label">Thumbnail</h3>
 
                     <div class="gambar-iklan mb-4 d-flex justify-content-center">
-                        <img id="preview" class="hide" style="object-fit: cover; border: transparent;" width="350"
-                            height="200" alt="">
+                        <img id="preview" class="hide" style="object-fit: cover; border: transparent;" width="350" height="200" alt="">
                     </div>
                     <div class="d-flex justify-content-center mt-3">
                         <label for="image-upload" class="btn btn-primary">
                             Unggah
                         </label>
-                        <input type="file" name="image" id="image-upload"
-                            class="hide @error('photo') is-invalid @enderror" onchange="previewImage(event)">
+                        <input type="file" name="image" id="image-upload" class="hide @error('photo') is-invalid @enderror" onchange="previewImage(event)">
                     </div>
                     <div class="d-flex justify-content-center">
                         <p class="text-muted mt-3">File dengan format Jpg atau Png </p>
                     </div>
 
                     @error('photo')
-                        <span class="invalid-feedback" role="alert" style="color: red;">
-                            <strong>{{ $message }}</strong>
-                        </span>
+                    <span class="invalid-feedback" role="alert" style="color: red;">
+                        <strong>{{ $message }}</strong>
+                    </span>
                     @enderror
 
                 </div>
@@ -109,56 +105,49 @@
                     <h3 class="mb-3">Detail Lainya</h3>
                     <div class="col-lg-12 mb-4">
                         <label class="form-label" for="password_confirmation">Kategori</label>
-                        <select id="category_id"
-                            class="select2 form-control category @error('category') is-invalid @enderror"
-                            name="category[]" multiple aria-label="Default select example">
+                        <select id="category_id" class="select2 form-control category @error('category') is-invalid @enderror" name="category[]" multiple aria-label="Default select example">
                             @foreach ($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
                         </select>
                         @error('category')
-                            <span class="invalid-feedback" role="alert" style="color: red">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                        <span class="invalid-feedback" role="alert" style="color: red">
+                            <strong>{{ $message }}</strong>
+                        </span>
                         @enderror
                     </div>
                     <div class="col-lg-12 mb-4">
                         <div class="mt-2" style="max-width: 100%;">
                             <label class="form-label" for="password_confirmation">Sub Kategori</label>
-                            <select id="sub_category_id"
-                                class="form-control sub-category select2 @error('sub_category') is-invalid @enderror"
-                                name="sub_category[]" multiple="true" aria-label="Default select example">
+                            <select id="sub_category_id" class="form-control sub-category select2 @error('sub_category') is-invalid @enderror" name="sub_category[]" multiple="true" aria-label="Default select example">
                             </select>
                             @error('sub_category')
-                                <span class="invalid-feedback" role="alert" style="color: red">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                            <span class="invalid-feedback" role="alert" style="color: red">
+                                <strong>{{ $message }}</strong>
+                            </span>
                             @enderror
                         </div>
                     </div>
                     <div class="col-lg-12 mb-4">
                         <label class="form-label" for="password_confirmation">Tanggal Upload</label>
-                        <input type="datetime-local" id="upload_date" name="date" placeholder="date"
-                            value="{{ old('upload_date') }}"
-                            class="form-control @error('upload_date') is-invalid @enderror">
+                        <input type="datetime-local" id="upload_date" name="date" placeholder="date" value="{{ old('upload_date') }}" class="form-control @error('upload_date') is-invalid @enderror">
                         @error('upload_date')
-                            <span class="invalid-feedback" role="alert" style="color: red">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                        <span class="invalid-feedback" role="alert" style="color: red">
+                            <strong>{{ $message }}</strong>
+                        </span>
                         @enderror
                     </div>
                     <div class="col-lg-12 mb-3">
                         <label class="form-label" for="password_confirmation">Tags</label>
-                        <select class="form-control @error('tag') is-invalid @enderror select2 tags" name="tag[]"
-                            multiple="multiple">
+                        <select class="form-control @error('tag') is-invalid @enderror select2 tags" name="tag[]" multiple="multiple">
                             @foreach ($tags as $tag)
-                                <option value="{{ $tag->name }}">{{ $tag->name }}</option>
+                            <option value="{{ $tag->name }}">{{ $tag->name }}</option>
                             @endforeach
                         </select>
                         @error('tag')
-                            <span class="invalid-feedback" role="alert" style="color: red;">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                        <span class="invalid-feedback" role="alert" style="color: red;">
+                            <strong>{{ $message }}</strong>
+                        </span>
                         @enderror
                     </div>
                 </div>
@@ -171,22 +160,20 @@
                     <div>
                         <div class="col-lg-12 mb-4">
                             <label class="form-label" for="nomor">Judul Berita</label>
-                            <input type="text" id="name" name="name" placeholder="name" value="{{ old('name') }}"
-                                class="form-control @error('name') is-invalid @enderror">
+                            <input type="text" id="name" name="name" placeholder="name" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror">
                             @error('name')
-                                <span class="invalid-feedback" role="alert" style="color: red;">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                            <span class="invalid-feedback" role="alert" style="color: red;">
+                                <strong>{{ $message }}</strong>
+                            </span>
                             @enderror
                         </div>
                         <div class="col-lg-12 mb-4" style="height: auto;">
                             <label class="form-label" for="content">Isi Berita</label>
-                            <textarea id="content" name="description" placeholder="content" value="{{ old('content') }}"
-                                class="form  @error('content') is-invalid @enderror">{{ old('content') }}</textarea>
+                            <textarea id="content" name="description" placeholder="content" value="{{ old('content') }}" class="form  @error('content') is-invalid @enderror">{{ old('content') }}</textarea>
                             @error('content')
-                                <span class="invalid-feedback" role="alert" style="color: red;">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                            <span class="invalid-feedback" role="alert" style="color: red;">
+                                <strong>{{ $message }}</strong>
+                            </span>
                             @enderror
                         </div>
                     </div>
@@ -206,8 +193,7 @@
 </form>
 
 <!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
@@ -249,8 +235,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                    style="background-color: #C94F4F;">Kembali</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color: #C94F4F;">Kembali</button>
             </div>
         </div>
     </div>
@@ -261,7 +246,7 @@
 <script src="{{ asset('admin/dist/libs/summernote/dist/summernote-lite.min.js') }}"></script>
 
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         var quote = $('<blockquote class="quote">hello<footer>world</footer></blockquote>')[0];
 
         $('#content').summernote({
@@ -295,7 +280,7 @@
 </script>
 
 <script>
-    $('.category').change(function () {
+    $('.category').change(function() {
         // getSubCategory($(this).val())
         var selectedCategories = $(this).val();
         getSubCategory(selectedCategories);
@@ -309,11 +294,11 @@
                 category_ids: ids
             },
             dataType: "JSON",
-            beforeSend: function () {
+            beforeSend: function() {
                 $('.sub-category').html('')
             },
-            success: function (response) {
-                $.each(response.data, function (index, data) {
+            success: function(response) {
+                $.each(response.data, function(index, data) {
                     $('.sub-category').append('<option value="' + data.id + '">' + data.name +
                         '</option>');
                 });
@@ -343,7 +328,7 @@
         var previewImg = document.getElementById('preview');
         if (input.files && input.files[0]) {
             var reader = new FileReader();
-            reader.onload = function (e) {
+            reader.onload = function(e) {
                 previewImg.src = e.target.result;
                 previewImg.classList.remove('hide');
             }

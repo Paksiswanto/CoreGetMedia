@@ -33,17 +33,17 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        User::observe(UserObserver::class);
-        Author::observe(AuthorObserver::class);
-        News::observe(NewsObserver::class);
+        // User::observe(UserObserver::class);
+        // Author::observe(AuthorObserver::class);
+        // News::observe(NewsObserver::class);
 
-        parent::boot();
+        // parent::boot();
 
-        $categories = Category::all();
-        $subCategories = SubCategory::all();
+        // $categories = Category::all();
+        // $subCategories = SubCategory::all();
 
-        view()->share('categories', $categories);
-        view()->share('subCategories', $subCategories);
+        // view()->share('categories', $categories);
+        // view()->share('subCategories', $subCategories);
     }
 
     /**
