@@ -128,6 +128,7 @@ a:focus {
 
 img {
   max-width: 100%;
+  height: none;
   /* height: auto; */
 }
 
