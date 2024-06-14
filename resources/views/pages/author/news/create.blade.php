@@ -1,24 +1,24 @@
 @extends('layouts.author.app')
 
 @section('style')
-    <link rel="stylesheet" href="{{ asset('admin/dist/libs/summernote/dist/summernote-lite.min.css') }}">
-    <style>
-        .note-editable ul {
-            list-style: disc !important;
-            list-style-position: inside !important;
-        }
+<link rel="stylesheet" href="{{ asset('admin/dist/libs/summernote/dist/summernote-lite.min.css') }}">
+<style>
+    .note-editable ul {
+        list-style: disc !important;
+        list-style-position: inside !important;
+    }
 
-        .note-editable ol {
-            list-style: decimal !important;
-            list-style-position: inside !important;
-        }
+    .note-editable ol {
+        list-style: decimal !important;
+        list-style-position: inside !important;
+    }
 
-        @media (max-width: 768px) {
-            .bg-mobile {
-                width: 150px;
-            }
+    @media (max-width: 768px) {
+        .bg-mobile {
+            width: 150px;
         }
-    </style>
+    }
+</style>
 @endsection
 
 <head>
@@ -28,23 +28,23 @@
 </head>
 
 @section('content')
-    <div class="card shadow-sm position-relative overflow-hidden" style="background-color: #175A95;">
-        <div class="card-body px-4 py-4">
-            <div class="row justify-content-between">
-                <div class="col-8 text-white">
-                    <h4 class="fw-semibold mb-3 mt-2 text-white">Pengisian Berita</h4>
-                    <p>Tuliskan beritamu di getmedia</p>
-                </div>
-                <div class="col-3">
-                    <div class="text-center mb-n4">
-                        <img src="{{ asset('assets/img/bg-ajuan.svg') }}" width="250px" alt="" class="bg-mobile">
-                    </div>
+<div class="card shadow-sm position-relative overflow-hidden" style="background-color: #175A95;">
+    <div class="card-body px-4 py-4">
+        <div class="row justify-content-between">
+            <div class="col-8 text-white">
+                <h4 class="fw-semibold mb-3 mt-2 text-white">Pengisian Berita</h4>
+                <p>Tuliskan beritamu di getmedia</p>
+            </div>
+            <div class="col-3">
+                <div class="text-center mb-n4">
+                    <img src="{{ asset('assets/img/bg-ajuan.svg') }}" width="250px" alt="" class="bg-mobile">
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="alert d-flex align-items-center p-3 border border-2">
+<!-- <div class="alert d-flex align-items-center p-3 border border-2">
         <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 84 84" fill="none">
             <circle cx="42" cy="42" r="40" stroke="#175A95 " stroke-width="4" />
             <circle cx="42.1422" cy="59.5001" r="4.9" fill="#175A95 " />
@@ -62,100 +62,128 @@
                 Ketentuan & Persyaratan
             </button>
         </div>
+    </div> -->
+
+{{-- <div class="ms-1">
+    <h5>Baca ketentuan dan persyaratan sembelum mengunggah berita</h5>
+</div> --}}
+
+<form action="{{ route('store.news') }}" method="post" enctype="multipart/form-data">
+    @method('post')
+    @csrf
+    <div class="ms-1 mt-5 mb-2 d-flex justify-content-between">
+        <h5>Isi form dibawah ini untuk mengunggah berita</h5>
     </div>
 
-    {{-- <div class="ms-1">
-        <h5>Baca ketentuan dan persyaratan sembelum mengunggah berita</h5>
-    </div> --}}
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-5">
+            <div class="card">
+                <div class="card-body">
+                    <h3 for="" class="form-label">Thumbnail</h3>
 
-    <form action="{{ route('store.news') }}" method="post" enctype="multipart/form-data">
-        @method('post')
-        @csrf
-        <div class="ms-1 mt-5 d-flex justify-content-between">
-            <h5>Isi form dibawah ini untuk mengunggah berita</h5>
-        </div>
+                    <div class="gambar-iklan mb-4 d-flex justify-content-center">
+                        <img id="preview" class="hide" style="object-fit: cover; border: transparent;" width="350"
+                            height="200" alt="">
+                    </div>
+                    <div class="d-flex justify-content-center mt-3">
+                        <label for="image-upload" class="btn btn-primary">
+                            Unggah
+                        </label>
+                        <input type="file" name="image" id="image-upload"
+                            class="hide @error('photo') is-invalid @enderror" onchange="previewImage(event)">
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <p class="text-muted mt-3">File dengan format Jpg atau Png </p>
+                    </div>
 
-        <div class="row">
-            <div class="col-12 col-md-6 col-lg-5">
-                <div class="card">
-                    <div class="card-body">
-                        <h3 for="" class="form-label">Thumbnail</h3>
+                    @error('photo')
+                        <span class="invalid-feedback" role="alert" style="color: red;">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
 
-                        <div class="gambar-iklan mb-4 d-flex justify-content-center">
-                            <img id="preview" class="hide" style="object-fit: cover; border: transparent;"
-                                width="350" height="200" alt="">
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="mb-3">Detail Lainya</h3>
+                    <div class="col-lg-12 mb-4">
+                        <label class="form-label" for="password_confirmation">Kategori</label>
+                        <select id="category_id"
+                            class="select2 form-control category @error('category') is-invalid @enderror"
+                            name="category[]" multiple aria-label="Default select example">
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('category')
+                            <span class="invalid-feedback" role="alert" style="color: red">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="col-lg-12 mb-4">
+                        <div class="mt-2" style="max-width: 100%;">
+                            <label class="form-label" for="password_confirmation">Sub Kategori</label>
+                            <select id="sub_category_id"
+                                class="form-control sub-category select2 @error('sub_category') is-invalid @enderror"
+                                name="sub_category[]" multiple="true" aria-label="Default select example">
+                            </select>
+                            @error('sub_category')
+                                <span class="invalid-feedback" role="alert" style="color: red">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
-                        <div class="d-flex justify-content-center mt-3">
-                            <label for="image-upload" class="btn btn-primary">
-                                Unggah
-                            </label>
-                            <input type="file" name="image" id="image-upload"
-                                class="hide @error('photo') is-invalid @enderror" onchange="previewImage(event)">
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <p class="text-muted mt-3">File dengan format Jpg atau Png </p>
-                        </div>
-
-                        @error('photo')
+                    </div>
+                    <div class="col-lg-12 mb-4">
+                        <label class="form-label" for="password_confirmation">Tanggal Upload</label>
+                        <input type="datetime-local" id="upload_date" name="date" placeholder="date"
+                            value="{{ old('upload_date') }}"
+                            class="form-control @error('upload_date') is-invalid @enderror">
+                        @error('upload_date')
+                            <span class="invalid-feedback" role="alert" style="color: red">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="col-lg-12 mb-3">
+                        <label class="form-label" for="password_confirmation">Tags</label>
+                        <select class="form-control @error('tag') is-invalid @enderror select2 tags" name="tag[]"
+                            multiple="multiple">
+                            @foreach ($tags as $tag)
+                                <option value="{{ $tag->name }}">{{ $tag->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('tag')
                             <span class="invalid-feedback" role="alert" style="color: red;">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
-
                     </div>
                 </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h3 class="mb-3">Detail Lainya</h3>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-7">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="mb-3">Isi Berita</h3>
+                    <div>
                         <div class="col-lg-12 mb-4">
-                            <label class="form-label" for="password_confirmation">Kategori</label>
-                            <select id="category_id"
-                                class="select2 form-control category @error('category') is-invalid @enderror"
-                                name="category[]" multiple aria-label="Default select example">
-                                @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                @endforeach
-                            </select>
-                            @error('category')
-                                <span class="invalid-feedback" role="alert" style="color: red">
+                            <label class="form-label" for="nomor">Judul Berita</label>
+                            <input type="text" id="name" name="name" placeholder="name" value="{{ old('name') }}"
+                                class="form-control @error('name') is-invalid @enderror">
+                            @error('name')
+                                <span class="invalid-feedback" role="alert" style="color: red;">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
-                        <div class="col-lg-12 mb-4">
-                            <div class="mt-2" style="max-width: 100%;">
-                                <label class="form-label" for="password_confirmation">Sub Kategori</label>
-                                <select id="sub_category_id"
-                                    class="form-control sub-category select2 @error('sub_category') is-invalid @enderror"
-                                    name="sub_category[]" multiple="true" aria-label="Default select example">
-                                </select>
-                                @error('sub_category')
-                                    <span class="invalid-feedback" role="alert" style="color: red">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-lg-12 mb-4">
-                            <label class="form-label" for="password_confirmation">Tanggal Upload</label>
-                            <input type="datetime-local" id="upload_date" name="date" placeholder="date"
-                                value="{{ old('upload_date') }}"
-                                class="form-control @error('upload_date') is-invalid @enderror">
-                            @error('upload_date')
-                                <span class="invalid-feedback" role="alert" style="color: red">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="col-lg-12 mb-3">
-                            <label class="form-label" for="password_confirmation">Tags</label>
-                            <select class="form-control @error('tag') is-invalid @enderror select2 tags" name="tag[]"
-                                multiple="multiple">
-                                @foreach ($tags as $tag)
-                                    <option value="{{ $tag->name }}">{{ $tag->name }}</option>
-                                @endforeach
-                            </select>
-                            @error('tag')
+                        <div class="col-lg-12 mb-4" style="height: auto;">
+                            <label class="form-label" for="content">Isi Berita</label>
+                            <textarea id="content" name="description" placeholder="content" value="{{ old('content') }}"
+                                class="form  @error('content') is-invalid @enderror">{{ old('content') }}</textarea>
+                            @error('content')
                                 <span class="invalid-feedback" role="alert" style="color: red;">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -164,165 +192,137 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-7">
-                <div class="card">
-                    <div class="card-body">
-                        <h3 class="mb-3">Isi Berita</h3>
-                        <div>
-                            <div class="col-lg-12 mb-4">
-                                <label class="form-label" for="nomor">Judul Berita</label>
-                                <input type="text" id="name" name="name" placeholder="name"
-                                    value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror">
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert" style="color: red;">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="col-lg-12 mb-4" style="height: auto;">
-                                <label class="form-label" for="content">Isi Berita</label>
-                                <textarea id="content" name="description" placeholder="content" value="{{ old('content') }}"
-                                    class="form  @error('content') is-invalid @enderror">{{ old('content') }}</textarea>
-                                @error('content')
-                                    <span class="invalid-feedback" role="alert" style="color: red;">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-end">
+        <button type="reset" class="btn btn-danger m-2">
+            Batal
+        </button>
+        <button type="submit" class="btn btn-primary m-2" id="submitButton1">
+            Upload
+        </button>
+    </div>
+    </div>
+</form>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="staticBackdropLabel">Ketentuan & Persyaratan</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="card shadow-none border p-3">
+                    <p>Ketentuan dan Persyaratan Sebelum Menulis Berita</p>
+                    <ol>
+                        <li>Keaslian dan Orisinalitas
+                            <ul class="ms-4" style="list-style-type:disc">
+                                <li>Berita harus asli dan bukan hasil plagiasi</li>
+                                <li>Berita harus ditulis dengan gaya bahasa yang profesional dan mudah dipahami.</li>
+                                <li>Berita harus bebas dari unsur SARA, fitnah, dan konten negatif lainnya.</li>
+                            </ul>
+                        </li>
+                        <li>Keakuratan dan Kebenaran
+                            <ul class="ms-4" style="list-style-type:disc">
+                                <li>Berita harus akurat dan berdasarkan fakta yang dapat diverifikasi.</li>
+                                <li>Sumber informasi harus jelas dan kredibel.</li>
+                                <li>Berita harus faktual dan tidak memihak.</li>
+                            </ul>
+                        </li>
+                        <li>Keseimbangan
+                            <ul class="ms-4" style="list-style-type:disc">
+                                <li>Berita harus menyajikan informasi secara seimbang dan tidak memihak.</li>
+                                <li>Berita harus memberikan ruang kepada semua pihak yang terkait untuk menyampaikan
+                                    pendapatnya.</li>
+                            </ul>
+                        </li>
+                        <li>Objektivitas
+                            <ul class="ms-4" style="list-style-type:disc">
+                                <li>Berita harus ditulis secara objektif dan tidak memihak.</li>
+                                <li>Penulis berita harus menghindari opini dan prasangka pribadi.</li>
+                            </ul>
+                        </li>
+                    </ol>
                 </div>
             </div>
-        </div>
-        <div class="d-flex justify-content-end">
-            <button type="reset" class="btn btn-danger m-2">
-                Batal
-            </button>
-            <button type="submit" class="btn btn-primary m-2" id="submitButton1">
-                Upload
-            </button>
-        </div>
-        </div>
-    </form>
-
-    <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="staticBackdropLabel">Ketentuan & Persyaratan</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="card shadow-none border p-3">
-                        <p>Ketentuan dan Persyaratan Sebelum Menulis Berita</p>
-                        <ol>
-                            <li>Keaslian dan Orisinalitas
-                                <ul class="ms-4" style="list-style-type:disc">
-                                    <li>Berita harus asli dan bukan hasil plagiasi</li>
-                                    <li>Berita harus ditulis dengan gaya bahasa yang profesional dan mudah dipahami.</li>
-                                    <li>Berita harus bebas dari unsur SARA, fitnah, dan konten negatif lainnya.</li>
-                                </ul>
-                            </li>
-                            <li>Keakuratan dan Kebenaran
-                                <ul class="ms-4" style="list-style-type:disc">
-                                    <li>Berita harus akurat dan berdasarkan fakta yang dapat diverifikasi.</li>
-                                    <li>Sumber informasi harus jelas dan kredibel.</li>
-                                    <li>Berita harus faktual dan tidak memihak.</li>
-                                </ul>
-                            </li>
-                            <li>Keseimbangan
-                                <ul class="ms-4" style="list-style-type:disc">
-                                    <li>Berita harus menyajikan informasi secara seimbang dan tidak memihak.</li>
-                                    <li>Berita harus memberikan ruang kepada semua pihak yang terkait untuk menyampaikan
-                                        pendapatnya.</li>
-                                </ul>
-                            </li>
-                            <li>Objektivitas
-                                <ul class="ms-4" style="list-style-type:disc">
-                                    <li>Berita harus ditulis secara objektif dan tidak memihak.</li>
-                                    <li>Penulis berita harus menghindari opini dan prasangka pribadi.</li>
-                                </ul>
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                        style="background-color: #C94F4F;">Kembali</button>
-                </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                    style="background-color: #C94F4F;">Kembali</button>
             </div>
         </div>
     </div>
+</div>
 @endsection
 
 @section('script')
-    <script src="{{ asset('admin/dist/libs/summernote/dist/summernote-lite.min.js') }}"></script>
+<script src="{{ asset('admin/dist/libs/summernote/dist/summernote-lite.min.js') }}"></script>
 
-    <script>
-        $(document).ready(function() {
-            var quote = $('<blockquote class="quote">hello<footer>world</footer></blockquote>')[0];
+<script>
+    $(document).ready(function () {
+        var quote = $('<blockquote class="quote">hello<footer>world</footer></blockquote>')[0];
 
-            $('#content').summernote({
-                blockquoteBreakingLevel: 2,
-                height: 520,
-                toolbar: [
-                    ['style', ['style']],
-                    ['font', ['bold', 'italic', 'underline', 'strikethrough', 'clear']],
-                    ['fontname', ['fontname']],
-                    ['fontsize', ['fontsize']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph', 'height']],
-                    ['table', ['table']],
-                    ['link', ['link']],
-                    ['picture', ['picture']],
-                    ['video', ['video']],
-                    ['codeview', ['codeview']],
-                    ['help', ['help']],
-                    ['insert', ['ul', 'blockquote']] // Include Blockquote button in 'insert' dropdown
-                ],
+        $('#content').summernote({
+            blockquoteBreakingLevel: 2,
+            height: 520,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'italic', 'underline', 'strikethrough', 'clear']],
+                ['fontname', ['fontname']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph', 'height']],
+                ['table', ['table']],
+                ['link', ['link']],
+                ['picture', ['picture']],
+                ['video', ['video']],
+                ['codeview', ['codeview']],
+                ['help', ['help']],
+                ['insert', ['ul', 'blockquote']] // Include Blockquote button in 'insert' dropdown
+            ],
 
-                fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Helvetica', 'Impact',
-                    'Lucida Grande', 'Tahoma', 'Times New Roman', 'Verdana'
-                ],
-                fontNamesIgnoreCheck: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Helvetica',
-                    'Impact', 'Lucida Grande', 'Tahoma', 'Times New Roman', 'Verdana'
-                ]
+            fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Helvetica', 'Impact',
+                'Lucida Grande', 'Tahoma', 'Times New Roman', 'Verdana'
+            ],
+            fontNamesIgnoreCheck: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Helvetica',
+                'Impact', 'Lucida Grande', 'Tahoma', 'Times New Roman', 'Verdana'
+            ]
 
-            });
         });
-    </script>
+    });
+</script>
 
-    <script>
-        $('.category').change(function() {
-            // getSubCategory($(this).val())
-            var selectedCategories = $(this).val();
-            getSubCategory(selectedCategories);
+<script>
+    $('.category').change(function () {
+        // getSubCategory($(this).val())
+        var selectedCategories = $(this).val();
+        getSubCategory(selectedCategories);
+    })
+
+    function getSubCategory(ids) {
+        $.ajax({
+            url: "get-sub-category",
+            method: "GET",
+            data: {
+                category_ids: ids
+            },
+            dataType: "JSON",
+            beforeSend: function () {
+                $('.sub-category').html('')
+            },
+            success: function (response) {
+                $.each(response.data, function (index, data) {
+                    $('.sub-category').append('<option value="' + data.id + '">' + data.name +
+                        '</option>');
+                });
+            }
         })
+    }
+</script>
 
-        function getSubCategory(ids) {
-            $.ajax({
-                url: "get-sub-category",
-                method: "GET",
-                data: {
-                    category_ids: ids
-                },
-                dataType: "JSON",
-                beforeSend: function() {
-                    $('.sub-category').html('')
-                },
-                success: function(response) {
-                    $.each(response.data, function(index, data) {
-                        $('.sub-category').append('<option value="' + data.id + '">' + data.name +
-                            '</option>');
-                    });
-                }
-            })
-        }
-    </script>
-
-    <script>
+<script>
     var today = new Date();
     var year = today.getFullYear();
     var month = ('0' + (today.getMonth() + 1)).slice(-2);
@@ -343,7 +343,7 @@
         var previewImg = document.getElementById('preview');
         if (input.files && input.files[0]) {
             var reader = new FileReader();
-            reader.onload = function(e) {
+            reader.onload = function (e) {
                 previewImg.src = e.target.result;
                 previewImg.classList.remove('hide');
             }
@@ -353,5 +353,5 @@
             previewImg.classList.add('hide');
         }
     }
-    </script>
+</script>
 @endsection
