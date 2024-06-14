@@ -146,7 +146,11 @@
                 <div class="card-detail p-4 card-hover shadow-sm">
                     <div class="row">
                         <div class="col-lg-3">
-                            <img src="{{ asset('user/dist/images/profile/user-1.jpg') }}" alt="" style="border-radius: 50%;" class="mb-3" style="object-fit: cover" width="90" height="90">
+                            @if ($author->user->image != null && Storage::disk('public')->exists($author->user->image))
+                                <img src="{{ asset('storage/' . $author->user->image) }}" style="border-radius: 50%;" class="mb-3" style="object-fit: cover" width="90" height="90">
+                            @else
+                                <img src="{{ asset('default.png') }}" style="border-radius: 50%;" class="mb-3" style="object-fit: cover" width="90" height="90">
+                            @endif
                             <div class="">
                                 <a href="{{ route('author.detail', $author->id) }}" class="btn btn-sm mt-3 mb-1 py-1 px-4 w-100 text-primary bg-light-primary" style="background-color: #CEE4F2; border-radius: 8px;">Detail</a>
                                 <button class="btn btn-sm mt-1 py-1 px-4 w-100 text-white" style="background-color: #175A95; border-radius: 8px;">Ikuti</button>
