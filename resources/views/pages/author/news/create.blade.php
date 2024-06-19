@@ -172,7 +172,7 @@
                             <textarea id="content" name="description" placeholder="content" value="{{ old('content') }}" class="form  @error('content') is-invalid @enderror">{{ old('content') }}</textarea>
                             @error('content')
                             <span class="invalid-feedback" role="alert" style="color: red;">
-                                <strong>{{ $message }}</strong>
+                                <strong>{!! $message !!}</strong>
                             </span>
                             @enderror
                         </div>

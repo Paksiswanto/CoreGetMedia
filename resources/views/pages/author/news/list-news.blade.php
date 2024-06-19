@@ -72,7 +72,7 @@
                         <div class="">
                             <div class="order-md-1">
                                 <h4>{{ $data->name }}</h4>
-                                <span>{!! $data->description !!}</span>
+                                <p>{!! $data->description !!}</p>
                             </div>
                         </div>
                     </div>
