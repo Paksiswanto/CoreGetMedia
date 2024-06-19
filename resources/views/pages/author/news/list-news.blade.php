@@ -72,7 +72,7 @@
                         <div class="">
                             <div class="order-md-1">
                                 <h4>{{ $data->name }}</h4>
-                                <p>{!! strip_tags ($data->description) !!}</p>
+                                <span>{!! $data->description !!}</span>
                             </div>
                         </div>
                     </div>
