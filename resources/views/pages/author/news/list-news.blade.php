@@ -72,6 +72,7 @@
                         <div class="">
                             <div class="order-md-1">
                                 <h4>{{ $data->name }}</h4>
+                                <!-- <p>{!! $data->description !!}</p> -->
                                 <p>{!! $data->description !!}</p>
                             </div>
                         </div>
